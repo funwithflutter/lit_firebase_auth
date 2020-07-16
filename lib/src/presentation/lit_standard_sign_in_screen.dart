@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../domain/auth/auth_providers.dart';
 import 'core/auth_config.dart';
 import 'widgets/loading.dart';
 import 'widgets/sign_in_buttons.dart';
@@ -17,11 +19,12 @@ class StandardSignInWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProviders = context.watch<AuthProviders>();
     return Column(
       children: [
         _title(context),
         const SizedBox(height: 8),
-        if (config.enableEmailAndPassword)
+        if (authProviders.emailAndPassword)
           SignInForm(
             formChild: Column(
               children: [
@@ -36,9 +39,9 @@ class StandardSignInWidget extends StatelessWidget {
               ],
             ),
           ),
-        if (config.enableAnonymous)
+        if (authProviders.anonymous)
           SignInAnonymouslyButton(buttonConfig: config.anonymousButton),
-        if (config.enableGoogle) const SignInWithGoogleButton(),
+        if (authProviders.google) const SignInWithGoogleButton(),
         const LoadingWidget(),
       ],
     );

@@ -68,20 +68,9 @@ typedef AuthFailureCallback = void Function(AuthFailure failure);
 /// )
 /// ```
 /// {@end-tool}
-/// This will use the defaults configuration and UI theming. By default only
-/// password and email authentication is enabled.
-/// The other authentication providers can manually be enabled or disabled, for
-/// example:
-/// ```dart
-/// LitAuth(
-///   config: AuthConfig.standard(
-///     enableEmailAndPassword: false,
-///     enableGoogle: true,
-///     enableAnonymous: true,
-/// )
-/// ```
-/// {@end-tool}
-/// For theming and a custom log-in widget, please see the
+/// This will use the defaults configuration and UI theming.
+///
+/// For theming and custom Sign-in widgets, please see the
 /// README.md file
 ///
 /// You can provide callbacks for authentication, with
@@ -91,11 +80,11 @@ typedef AuthFailureCallback = void Function(AuthFailure failure);
 ///   config: AuthConfig.standard()
 ///   onAuthFailure: (failure) {
 ///     print('Auth failed.');
-///     // show error message
+///     // todo: show error message
 ///   },
 ///   onAuthSuccess: () {
 ///     print('Auth success.');
-///     // navigate to authenticated screen
+///     // todo: navigate to authenticated screen
 ///   },
 /// )
 /// ```
@@ -113,19 +102,7 @@ class LitAuth extends StatelessWidget {
   /// )
   /// ```
   /// {@end-tool}
-  /// This will use the defaults configuration and UI theming. By default only
-  /// password and email authentication is enabled.
-  /// The other authentication providers can manually be enabled or disabled, for
-  /// example:
-  /// ```dart
-  /// LitAuth(
-  ///   config: AuthConfig.standard(
-  ///     enableEmailAndPassword: false,
-  ///     enableGoogle: true,
-  ///     enableAnonymous: true,
-  /// )
-  /// ```
-  /// {@end-tool}
+  /// This will use the defaults configuration and UI theming.
   ///
   /// It's easy to provide custom decoration/configuration for the sign-in
   /// elements. For example, to override the standard email [InputDecoration]

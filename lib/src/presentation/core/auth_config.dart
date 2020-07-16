@@ -7,9 +7,9 @@ part 'auth_config.freezed.dart';
 @freezed
 abstract class AuthConfig with _$AuthConfig {
   const factory AuthConfig.standard({
-    @Default(true) bool enableEmailAndPassword,
-    @Default(false) bool enableAnonymous,
-    @Default(false) bool enableGoogle,
+    // @Default(true) bool enableEmailAndPassword,
+    // @Default(false) bool enableAnonymous,
+    // @Default(false) bool enableGoogle,
     ButtonConfig emailButton,
     ButtonConfig passwordButton,
     ButtonConfig anonymousButton,

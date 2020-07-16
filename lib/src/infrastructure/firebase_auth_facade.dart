@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:lit_firebase_auth/src/domain/auth/exceptions.dart';
 import 'package:meta/meta.dart';
 
 import '../domain/auth/auth.dart';
@@ -12,12 +13,12 @@ import '../domain/auth/value_objects.dart';
 class FirebaseAuthFacade implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
-  final bool enableGoogleSignIn;
+  final bool googleSignInEnabled;
 
   FirebaseAuthFacade({
     FirebaseAuth firebaseAuth,
     GoogleSignIn googleSignIn,
-    this.enableGoogleSignIn = false,
+    this.googleSignInEnabled = false,
   })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn();
 
@@ -93,9 +94,8 @@ class FirebaseAuthFacade implements AuthFacade {
 
   @override
   Future<Auth> signInWithGoogle() async {
-    if (!enableGoogleSignIn) {
-      // TODO provide a better error message
-      throw Exception('Google SignIn is not enabled');
+    if (!googleSignInEnabled) {
+      throw AuthProviderNotEnabled('Google');
     }
 
     // TODO investigate alternative solutions to handle these exceptions
@@ -146,7 +146,7 @@ class FirebaseAuthFacade implements AuthFacade {
   }
 
   Future<void> _signOutGoogle() async {
-    if (!enableGoogleSignIn) return;
+    if (!googleSignInEnabled) return;
     try {
       await _googleSignIn.signOut();
     } catch (e) {

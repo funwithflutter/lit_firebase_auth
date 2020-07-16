@@ -1,3 +1,4 @@
+export 'src/domain/auth/auth_providers.dart';
 export 'src/domain/auth/i_auth_facade.dart';
 export 'src/infrastructure/firebase_auth_facade.dart';
 export 'src/presentation/core/auth_config.dart';

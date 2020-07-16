@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../domain/auth/auth_providers.dart';
 import '../domain/auth/i_auth_facade.dart';
 import '../domain/auth/user.dart';
 import '../infrastructure/firebase_auth_facade.dart';
@@ -9,7 +10,7 @@ import '../infrastructure/firebase_auth_facade.dart';
 class LitAuthInit extends StatelessWidget {
   const LitAuthInit({
     Key key,
-    this.authProviders = const AuthProviders(), //TODO refine
+    this.authProviders = const AuthProviders(),
     @required this.child,
   })  : assert(child != null),
         super(key: key);
@@ -25,8 +26,9 @@ class LitAuthInit extends StatelessWidget {
           value: authProviders,
         ),
         Provider<AuthFacade>(
-          create: (_) =>
-              FirebaseAuthFacade(enableGoogleSignIn: authProviders.google),
+          create: (_) => FirebaseAuthFacade(
+            googleSignInEnabled: authProviders.google,
+          ),
           lazy: false,
         ),
         StreamProvider(
@@ -44,16 +46,4 @@ class LitAuthInit extends StatelessWidget {
       child: child,
     );
   }
-}
-
-class AuthProviders {
-  final bool emailAndPassword;
-  final bool anonymous;
-  final bool google;
-
-  const AuthProviders({
-    this.emailAndPassword = true,
-    this.anonymous = false,
-    this.google = false,
-  });
 }

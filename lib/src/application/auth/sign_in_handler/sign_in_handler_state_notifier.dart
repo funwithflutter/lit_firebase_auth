@@ -2,7 +2,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:state_notifier/state_notifier.dart';
 
+import '../../../../lit_firebase_auth.dart';
 import '../../../domain/auth/auth.dart';
+import '../../../domain/auth/exceptions.dart';
 import '../../../domain/auth/i_auth_facade.dart';
 import '../../../domain/auth/value_objects.dart';
 import 'sign_in_handler_state.dart';
@@ -36,6 +38,9 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
   }
 
   Future<void> signInWithGoogle() async {
+    if (!read<AuthProviders>().google) {
+      throw AuthProviderNotEnabled('Google');
+    }
     state = state.copyWith(
       isSubmitting: true,
       authFailureOrSuccessOption: none(),
@@ -48,6 +53,9 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
   }
 
   Future<void> signInAnonymously() async {
+    if (!read<AuthProviders>().anonymous) {
+      throw AuthProviderNotEnabled('Anonymous');
+    }
     state = state.copyWith(
       isSubmitting: true,
       authFailureOrSuccessOption: none(),
@@ -66,6 +74,10 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     })
         forwardedCall,
   ) async {
+    if (!read<AuthProviders>().emailAndPassword) {
+      throw AuthProviderNotEnabled('Email and Password');
+    }
+
     final isEmailValid = state.emailAddress.isValid();
     final isPasswordValid = state.password.isValid();
 

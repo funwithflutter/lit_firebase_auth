@@ -7,45 +7,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LitAuthInit(
-      authProviders: AuthProviders(google: true),
+      authProviders: AuthProviders(
+        emailAndPassword: true,
+        google: true,
+        anonymous: true,
+      ),
       child: MaterialApp(
-          title: 'Material App',
-          theme: ThemeData(
-            primarySwatch: Colors.green,
-            accentColor: Colors.pink,
-            // buttonTheme: ButtonThemeData(
-            //   buttonColor: Colors.pink,
-            // ),
-            visualDensity: VisualDensity.adaptivePlatformDensity,
-          ),
-          home: SplashScreen()
-          // LitAuthHandler(
-          //   homeScreen: Home(),
-          //   config: UIConfig.standard(
-          //       // enableGoogle: true,
-          //       ),
-          //   // config: UIConfig.custom(signInScreen: MySignInPage()),
-          //   // config: UIConfig.standard(
-          //   //   // enableEmailAndPassword: true,
-          //   //   enableAnonymous: true,
-          //   //   // enableGoolge: true,
-          //   //   anonymousButtonConfig: ButtonConfig(
-          //   //     themeData: ButtonThemeData(buttonColor: Colors.purple),
-          //   //     child: Text(
-          //   //       'Anonymous',
-          //   //       style: TextStyle(
-          //   //         color: Colors.white,
-          //   //       ),
-          //   //     ),
-          //   //   ),
-          //   // ),
-          //   // authProviders: [
-          //   //   AuthProvider.anonymousSignIn(),
-          //   //   AuthProvider.githubSignIn(),
-          //   //   AuthProvider.emailAndPassword(),
-          //   // ],
-          // ),
-          ),
+        title: 'Material App',
+        theme: ThemeData(
+          primarySwatch: Colors.green,
+          accentColor: Colors.pink,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: SplashScreen(),
+      ),
     );
   }
 }
@@ -70,12 +45,8 @@ class SplashScreen extends StatelessWidget {
                 child: Text('Sign out'),
               ),
               unauthenticated: LitAuth(
-                config: AuthConfig.standard(
-                  enableEmailAndPassword: false,
-                  enableGoogle: true,
-                  enableAnonymous: true,
-                ),
-                // config: UIConfig.custom(
+                config: AuthConfig.standard(),
+                // config: AuthConfig.custom(
                 //   signInScreen: CustomSignInWidget(),
                 // ),
                 onAuthFailure: (failure) {
@@ -101,26 +72,31 @@ class CustomSignInWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Welcome'),
+        Text('Welcome', style: Theme.of(context).textTheme.headline4),
         RaisedButton(
           onPressed: () {
             context.signInAnonymously();
           },
-          child: Text('Anony'),
+          child: Text('Anony Sign In'),
         ),
         SignInForm(
           formChild: Column(
             children: [
-              Text('This is my sign in form'),
-              EmailTextFormField(
-                decoration: InputDecoration(labelText: 'Me Email Label'),
+              Text(
+                'This is my custom form',
+                style: Theme.of(context).textTheme.headline5,
               ),
-              PasswordTextFormField(),
+              EmailTextFormField(
+                decoration: InputDecoration(labelText: 'My Email Label'),
+              ),
+              PasswordTextFormField(
+                decoration: InputDecoration(labelText: 'My Password Label'),
+              ),
               RaisedButton(
                 onPressed: () {
                   context.signInWithEmailAndPassword();
                 },
-                child: Text('Sign In bro'),
+                child: Text('Sign In'),
               )
             ],
           ),
