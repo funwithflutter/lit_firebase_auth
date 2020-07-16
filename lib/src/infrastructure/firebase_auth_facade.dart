@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:lit_firebase_auth/src/domain/auth/exceptions.dart';
 import 'package:meta/meta.dart';
 
 import '../domain/auth/auth.dart';
 import '../domain/auth/auth_failure.dart';
+import '../domain/auth/exceptions.dart';
 import '../domain/auth/i_auth_facade.dart';
 import '../domain/auth/user.dart';
 import '../domain/auth/value_objects.dart';
