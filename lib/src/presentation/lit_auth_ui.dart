@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz.dart' as func;
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
@@ -153,7 +153,7 @@ class _LitAuthImpl extends StatelessWidget {
   final AuthFailureCallback onAuthFailure;
 
   void _handleAuthFailureOrSuccess(
-      BuildContext context, Option<Auth> authFailureOrSuccessOption) {
+      BuildContext context, func.Option<Auth> authFailureOrSuccessOption) {
     authFailureOrSuccessOption.fold(
       () => () {}, // don't do anything, no auth request has been made
       (auth) {
