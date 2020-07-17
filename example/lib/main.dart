@@ -34,17 +34,11 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            LitAuthState(
-              authenticated: RaisedButton(
-                onPressed: () {
-                  context.signOut();
-                },
-                child: Text('Sign out'),
-              ),
-              unauthenticated: LitAuth(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              LitAuth(
                 config: AuthConfig.standard(),
                 // config: AuthConfig.custom(
                 //   signInScreen: CustomSignInWidget(),
@@ -56,9 +50,29 @@ class SplashScreen extends StatelessWidget {
                   print('Auth success.');
                 },
               ),
-              // unintialized: Text('Unintialized'),
-            ),
-          ],
+              LitAuthState(
+                authenticated: RaisedButton(
+                  onPressed: () {
+                    context.signOut();
+                  },
+                  child: Text('Sign out'),
+                ),
+                unauthenticated: LitAuth(
+                  config: AuthConfig.standard(),
+                  // config: AuthConfig.custom(
+                  //   signInScreen: CustomSignInWidget(),
+                  // ),
+                  onAuthFailure: (failure) {
+                    print('Auth failed.');
+                  },
+                  onAuthSuccess: () {
+                    print('Auth success.');
+                  },
+                ),
+                // unintialized: Text('Unintialized'),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
@@ -44,10 +46,25 @@ class FirebaseAuthFacade implements AuthFacade {
   }) async {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
-    try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+    if (kIsWeb) {
+      return _webRegisterWithEmailAndPassword(
         email: emailAddressStr,
         password: passwordStr,
+      );
+    } else {
+      return _registerWithEmailAndPassword(
+        email: emailAddressStr,
+        password: passwordStr,
+      );
+    }
+  }
+
+  Future<Auth> _webRegisterWithEmailAndPassword(
+      {String email, String password}) async {
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
       );
       return const Auth.success();
     } catch (e) {
@@ -62,6 +79,23 @@ class FirebaseAuthFacade implements AuthFacade {
     }
   }
 
+  Future<Auth> _registerWithEmailAndPassword(
+      {String email, String password}) async {
+    try {
+      await _firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return const Auth.success();
+    } on PlatformException catch (e) {
+      if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
+        return const Auth.failure(AuthFailure.emailAlreadyInUse());
+      } else {
+        return const Auth.failure(AuthFailure.serverError());
+      }
+    }
+  }
+
   @override
   Future<Auth> signInWithEmailAndPassword({
     @required EmailAddress emailAddress,
@@ -69,10 +103,27 @@ class FirebaseAuthFacade implements AuthFacade {
   }) async {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
-    try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+    if (kIsWeb) {
+      return _webSignInWithEmailAndPassword(
         email: emailAddressStr,
         password: passwordStr,
+      );
+    } else {
+      return _signInWithEmailAndPassword(
+        email: emailAddressStr,
+        password: passwordStr,
+      );
+    }
+  }
+
+  Future<Auth> _webSignInWithEmailAndPassword({
+    String email,
+    String password,
+  }) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
       );
       return const Auth.success();
     } catch (e) {
@@ -92,12 +143,47 @@ class FirebaseAuthFacade implements AuthFacade {
     }
   }
 
+  Future<Auth> _signInWithEmailAndPassword({
+    String email,
+    String password,
+  }) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return const Auth.success();
+    } on PlatformException catch (e) {
+      switch (e.code) {
+        case "ERROR_WRONG_PASSWORD":
+        case "ERROR_USER_NOT_FOUND":
+          return const Auth.failure(
+            AuthFailure.invalidEmailAndPasswordCombination(),
+          );
+          break;
+        case "ERROR_USER_DISABLED":
+          return const Auth.failure(AuthFailure.userDisabled());
+          break;
+        default:
+          return const Auth.failure(AuthFailure.serverError());
+      }
+    }
+  }
+
   @override
   Future<Auth> signInWithGoogle() async {
     if (!googleSignInEnabled) {
       throw AuthProviderNotEnabled('Google');
     }
 
+    if (kIsWeb) {
+      return _webSignInWithGoogle();
+    } else {
+      return _signInWithGoogle();
+    }
+  }
+
+  Future<Auth> _webSignInWithGoogle() async {
     // TODO investigate alternative solutions to handle these exceptions
     // Will possibly be solved once the Firebase Auth rework is complete
     // See: https://github.com/FirebaseExtended/flutterfire/issues/2582
@@ -123,6 +209,27 @@ class FirebaseAuthFacade implements AuthFacade {
       return const Auth.success();
     } catch (e) {
       print(e);
+      return const Auth.failure(AuthFailure.serverError());
+    }
+  }
+
+  Future<Auth> _signInWithGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      if (googleUser == null) {
+        return const Auth.failure(AuthFailure.cancelledByUser());
+      }
+
+      final googleAuthentication = await googleUser.authentication;
+
+      final authCredential = GoogleAuthProvider.getCredential(
+        idToken: googleAuthentication.idToken,
+        accessToken: googleAuthentication.accessToken,
+      );
+
+      await _firebaseAuth.signInWithCredential(authCredential);
+      return const Auth.success();
+    } on PlatformException catch (_) {
       return const Auth.failure(AuthFailure.serverError());
     }
   }

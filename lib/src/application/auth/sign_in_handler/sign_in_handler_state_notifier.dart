@@ -46,10 +46,14 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
       authFailureOrSuccessOption: none(),
     );
     final auth = await read<AuthFacade>().signInWithGoogle();
-    state = state.copyWith(
-      isSubmitting: false,
-      authFailureOrSuccessOption: some(auth),
-    );
+
+    // Need to check mounted
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(auth),
+      );
+    }
   }
 
   Future<void> signInAnonymously() async {
@@ -61,10 +65,14 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
       authFailureOrSuccessOption: none(),
     );
     final auth = await read<AuthFacade>().signInAnonymously();
-    state = state.copyWith(
-      isSubmitting: false,
-      authFailureOrSuccessOption: some(auth),
-    );
+
+    // Need to check mounted
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(auth),
+      );
+    }
   }
 
   Future<void> _performActionOnAuthFacadeWithEmailAndPassword(
@@ -101,10 +109,13 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
       password: state.password,
     );
 
-    state = state.copyWith(
-      isSubmitting: false,
-      showErrorMessages: true,
-      authFailureOrSuccessOption: some(auth),
-    );
+    // Need to check mounted
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: true,
+        authFailureOrSuccessOption: some(auth),
+      );
+    }
   }
 }
