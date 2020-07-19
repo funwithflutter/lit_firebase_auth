@@ -28,10 +28,7 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
 
 See the [example](example/) project to get up and running fast.
 
-## Usage
-The two most important widgets are 
-- `LitAuthInit` - which initializes the package and exposes the services that will be used in your application.
-- `LitAuth` - which renders the UI (forms, buttons and dialogs).
+## Platform Configuration
 
 ### Android integration
 
@@ -65,11 +62,45 @@ Otherwise you will not be able to authenticate.
 
 ### Web integration
 
-In addition to the `firebase_auth` dependency, you'll need to modify the `web/index.html` of your app following the Firebase setup instructions:
+You'll need to modify the `web/index.html` of your app following the Firebase setup instructions:
 
 * [Add Firebase to your JavaScript project](https://firebase.google.com/docs/web/setup#from-the-cdn).
 
 Read more in the [`firebase_auth_web` README](https://github.com/FirebaseExtended/flutterfire/blob/master/packages/firebase_auth/firebase_auth_web/README.md).
+
+Below is an example of a Flutter Web `index.html` with Firebase Auth enabled:
+
+```html
+...
+<body>
+
+  <!-- GOOGLE SignIn Client ID -->
+  <meta name="google-signin-client_id" content="ADD-YOUR-CLIENT-ID.apps.googleusercontent.com">
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      ...// ADD CONFIG HERE
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- CONTINUE TO INITIALIZE FLUTTER WEB -->
+  ...
+```
+
+## Usage
+The two most important widgets are 
+- `LitAuthInit` - which initializes the package and exposes the services that will be used in your application.
+- `LitAuth` - which renders the UI (forms, buttons and dialogs).
 
 ### Lit Firebase Initialization
 First, you need to initialize the package with `LitAuthInit`. This should be at the root of your application. Above `MaterialApp`/`CupertinoApp`, and above any widgets that want to access authentication functionality.
