@@ -48,8 +48,17 @@ class LitAuthState extends StatelessWidget {
     return user.when(
       (user) => authenticated,
       empty: () => unauthenticated,
-      initializing: () =>
-          unintialized ?? const Center(child: CircularProgressIndicator()),
+      initializing: () => unintialized ?? _loading(),
+    );
+  }
+
+  SizedBox _loading() {
+    return const SizedBox(
+      height: 100,
+      width: 100,
+      child: Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }
@@ -177,6 +186,7 @@ class _LitAuthImpl extends StatelessWidget {
                   emailAlreadyInUse: (_) => 'Email already in use',
                   invalidEmailAndPasswordCombination: (_) =>
                       'Invalid email and password combination',
+                  malformed: (_) => 'Not a valid email address',
                   userDisabled: (_) =>
                       'User disabled. Contact customer care for assistance',
                 ),

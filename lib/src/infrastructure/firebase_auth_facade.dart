@@ -134,6 +134,9 @@ class FirebaseAuthFacade implements AuthFacade {
             AuthFailure.invalidEmailAndPasswordCombination(),
           );
           break;
+        case "auth/invalid-email":
+          return const Auth.failure(AuthFailure.malformed());
+          break;
         case "auth/user-disabled":
           return const Auth.failure(AuthFailure.userDisabled());
           break;
@@ -160,6 +163,9 @@ class FirebaseAuthFacade implements AuthFacade {
           return const Auth.failure(
             AuthFailure.invalidEmailAndPasswordCombination(),
           );
+          break;
+        case "ERROR_INVALID_EMAIL":
+          return const Auth.failure(AuthFailure.malformed());
           break;
         case "ERROR_USER_DISABLED":
           return const Auth.failure(AuthFailure.userDisabled());

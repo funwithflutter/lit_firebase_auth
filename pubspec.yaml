@@ -19,6 +19,7 @@ dependencies:
   state_notifier: ^0.5.0
   flutter_state_notifier: ^0.4.2
   flushbar: ^1.10.4
+  flutter_auth_buttons: ^0.8.0
 
 dev_dependencies:
   flutter_test:

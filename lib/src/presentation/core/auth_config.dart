@@ -7,9 +7,7 @@ part 'auth_config.freezed.dart';
 @freezed
 abstract class AuthConfig with _$AuthConfig {
   const factory AuthConfig.standard({
-    // @Default(true) bool enableEmailAndPassword,
-    // @Default(false) bool enableAnonymous,
-    // @Default(false) bool enableGoogle,
+    Widget title,
     ButtonConfig emailButton,
     ButtonConfig passwordButton,
     ButtonConfig anonymousButton,
@@ -23,11 +21,18 @@ abstract class AuthConfig with _$AuthConfig {
 }
 
 class ButtonConfig {
-  final Widget child;
   final ButtonThemeData themeData;
-
+  final ButtonType type;
+  final Widget child;
   ButtonConfig({
-    this.child,
     this.themeData,
+    this.type,
+    this.child,
   });
+}
+
+@freezed
+abstract class ButtonType with _$ButtonType {
+  const factory ButtonType.raised() = _ButtonTypeRaised;
+  const factory ButtonType.flat() = _ButtonTypeFlat;
 }

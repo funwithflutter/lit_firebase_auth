@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Material App',
         theme: ThemeData(
-          primarySwatch: Colors.green,
-          accentColor: Colors.pink,
+          primaryColor: Colors.blueGrey,
+          accentColor: Colors.pink[400],
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: SplashScreen(),
@@ -35,43 +35,22 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              LitAuth(
-                config: AuthConfig.standard(),
-                // config: AuthConfig.custom(
-                //   signInScreen: CustomSignInWidget(),
-                // ),
-                onAuthFailure: (failure) {
-                  print('Auth failed.');
-                },
-                onAuthSuccess: () {
-                  print('Auth success.');
-                },
-              ),
-              LitAuthState(
-                authenticated: RaisedButton(
-                  onPressed: () {
-                    context.signOut();
-                  },
-                  child: Text('Sign out'),
+          child: LitAuthState(
+            authenticated: RaisedButton(
+              onPressed: () {
+                context.signOut();
+              },
+              child: Text('Sign out'),
+            ),
+            unauthenticated: LitAuth(
+              config: AuthConfig.standard(
+                title: Text(
+                  '🔥Welcome to Lit Firebase!🔥',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
-                unauthenticated: LitAuth(
-                  config: AuthConfig.standard(),
-                  // config: AuthConfig.custom(
-                  //   signInScreen: CustomSignInWidget(),
-                  // ),
-                  onAuthFailure: (failure) {
-                    print('Auth failed.');
-                  },
-                  onAuthSuccess: () {
-                    print('Auth success.');
-                  },
-                ),
-                // unintialized: Text('Unintialized'),
               ),
-            ],
+            ),
           ),
         ),
       ),

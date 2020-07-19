@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 
 import 'failures.dart';
 
+// TODO improve this. Doesn't support spaces/tabs
 Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   const emailRegex =
       r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";

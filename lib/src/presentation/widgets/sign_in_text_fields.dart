@@ -5,6 +5,10 @@ import '../../application/auth/sign_in_handler/sign_in_handler_state.dart';
 import '../../application/auth/sign_in_handler/sign_in_handler_state_notifier.dart';
 import '../../domain/auth/value_objects.dart';
 
+final border = OutlineInputBorder(
+  borderRadius: BorderRadius.circular(7),
+);
+
 class PasswordTextFormField extends StatelessWidget {
   const PasswordTextFormField({
     Key key,
@@ -19,9 +23,12 @@ class PasswordTextFormField extends StatelessWidget {
         context.select((SignInHandlerState state) => state.password);
     return TextFormField(
       decoration: decoration ??
-          const InputDecoration(
-            prefixIcon: Icon(Icons.lock),
+          InputDecoration(
+            prefixIcon: const Icon(Icons.vpn_key),
             labelText: 'Password',
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(7),
+            ),
           ),
       autocorrect: false,
       obscureText: true,
@@ -53,8 +60,9 @@ class EmailTextFormField extends StatelessWidget {
         context.select((SignInHandlerState state) => state.emailAddress);
     return TextFormField(
       decoration: decoration ??
-          const InputDecoration(
-            prefixIcon: Icon(Icons.email),
+          InputDecoration(
+            prefixIcon: const Icon(Icons.email),
+            border: border,
             labelText: 'Email',
           ),
       autocorrect: false,

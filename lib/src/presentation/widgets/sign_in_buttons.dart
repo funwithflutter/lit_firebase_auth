@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import '../core/auth_config.dart';
 import '../core/extensions.dart';
 
@@ -8,29 +8,28 @@ class _ButtonConfigOverride extends StatelessWidget {
     Key key,
     @required this.buttonConfig,
     @required this.onPressed,
-    @required this.child,
-  }) : super(key: key);
+  })  : assert(buttonConfig != null),
+        super(key: key);
 
   final ButtonConfig buttonConfig;
   final VoidCallback onPressed;
-  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final buttonChild = buttonConfig?.child ?? child;
-    final button = RaisedButton(
-      onPressed: onPressed,
-      child: buttonChild,
-    );
+    final button = buttonConfig.type.map(
+        raised: (_) => RaisedButton(
+              onPressed: onPressed,
+              child: buttonConfig.child,
+            ),
+        flat: (_) => FlatButton(
+              onPressed: onPressed,
+              child: buttonConfig.child,
+            ));
 
-    if (buttonConfig?.themeData != null) {
-      return ButtonTheme.fromButtonThemeData(
-        data: buttonConfig.themeData,
-        child: button,
-      );
-    } else {
-      return button;
-    }
+    return ButtonTheme.fromButtonThemeData(
+      data: buttonConfig.themeData,
+      child: button,
+    );
   }
 }
 
@@ -44,23 +43,41 @@ class _ButtonConfigOverride extends StatelessWidget {
 class SignInWithGoogleButton extends StatelessWidget {
   const SignInWithGoogleButton({
     Key key,
+    this.config,
   }) : super(key: key);
+
+  final ButtonConfig config;
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
-      onPressed: () {
-        context.signInWithGoogle();
-      },
-      color: Colors.lightBlue,
-      child: const Text(
-        'SIGN IN WITH GOOGLE',
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+    if (config != null) {
+      return _ButtonConfigOverride(
+        buttonConfig: ButtonConfig(
+          type: config?.type ?? const ButtonType.raised(),
+          themeData: config?.themeData ??
+              const ButtonThemeData(
+                buttonColor: Colors.lightBlue,
+              ),
+          child: config?.child ??
+              const Text(
+                'SIGN IN WITH GOOGLE',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
         ),
-      ),
-    );
+        onPressed: () {
+          context.signInWithGoogle();
+        },
+      );
+    } else {
+      return GoogleSignInButton(
+        onPressed: () {
+          context.signInWithGoogle();
+        },
+      );
+    }
   }
 }
 
@@ -74,22 +91,38 @@ class SignInWithGoogleButton extends StatelessWidget {
 class SignInAnonymouslyButton extends StatelessWidget {
   const SignInAnonymouslyButton({
     Key key,
-    this.buttonConfig,
+    this.config,
   }) : super(key: key);
 
-  final ButtonConfig buttonConfig;
+  final ButtonConfig config;
+
+  static final _buttonColor = Colors.blue[400];
+
+  static const _buttonHeight = 40.0;
 
   @override
   Widget build(BuildContext context) {
     return _ButtonConfigOverride(
-      buttonConfig: buttonConfig,
+      buttonConfig: ButtonConfig(
+        themeData: config?.themeData ??
+            ButtonThemeData(
+              buttonColor: _buttonColor,
+              height: _buttonHeight,
+            ),
+        type: config?.type ?? const ButtonType.raised(),
+        child: config?.child ??
+            Text(
+              'SIGN IN ANONYMOUSLY',
+              style: TextStyle(
+                color: _buttonColor.computeLuminance() > 0.5
+                    ? Colors.black
+                    : Colors.white,
+              ),
+            ),
+      ),
       onPressed: () {
         context.signInAnonymously();
       },
-      child: const Text(
-        'SIGN IN ANONYMOUSLY',
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
     );
   }
 }
@@ -104,19 +137,36 @@ class SignInAnonymouslyButton extends StatelessWidget {
 class EmailAndPasswordSignInButton extends StatelessWidget {
   const EmailAndPasswordSignInButton({
     Key key,
-    this.buttonConfig,
+    this.config,
   }) : super(key: key);
 
-  final ButtonConfig buttonConfig;
+  final ButtonConfig config;
+
+  static const _buttonHeight = 40.0;
 
   @override
   Widget build(BuildContext context) {
+    final accentColor = Theme.of(context).accentColor;
     return _ButtonConfigOverride(
-      buttonConfig: buttonConfig,
+      buttonConfig: ButtonConfig(
+        type: config?.type ?? const ButtonType.raised(),
+        themeData: config?.type ??
+            Theme.of(context).buttonTheme.copyWith(
+                  buttonColor: accentColor,
+                  height: _buttonHeight,
+                ),
+        child: Text(
+          'SIGN IN',
+          style: TextStyle(
+            color: accentColor.computeLuminance() > 0.5
+                ? Colors.black
+                : Colors.white,
+          ),
+        ),
+      ),
       onPressed: () {
         context.signInWithEmailAndPassword();
       },
-      child: const Text('SIGN IN'),
     );
   }
 }
@@ -136,14 +186,22 @@ class EmailAndPasswordRegisterButton extends StatelessWidget {
 
   final ButtonConfig config;
 
+  static const _buttonHeight = 40.0;
+
   @override
   Widget build(BuildContext context) {
     return _ButtonConfigOverride(
-      buttonConfig: config,
+      buttonConfig: ButtonConfig(
+        type: config?.type ?? const ButtonType.flat(),
+        themeData: const ButtonThemeData(
+          buttonColor: Colors.transparent,
+          height: _buttonHeight,
+        ),
+        child: const Text('REGISTER'),
+      ),
       onPressed: () {
         context.registerWithEmailAndPassword();
       },
-      child: const Text('REGISTER'),
     );
   }
 }

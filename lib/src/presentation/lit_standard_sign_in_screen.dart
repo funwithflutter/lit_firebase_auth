@@ -17,33 +17,66 @@ class StandardSignInWidget extends StatelessWidget {
 
   final AuthConfigStandard config;
 
+  // static final textInputDecoration = InputDecoration(
+  //   border: OutlineInputBorder(
+  //     borderRadius: BorderRadius.circular(2),
+  //   ),
+  // );
+  static const maxWidth = 500.0;
+
   @override
   Widget build(BuildContext context) {
     final authProviders = context.watch<AuthProviders>();
-    return Column(
-      children: [
-        _title(context),
-        const SizedBox(height: 8),
-        if (authProviders.emailAndPassword)
-          SignInForm(
-            formChild: Column(
-              children: [
-                EmailTextFormField(
-                  decoration: config.emailTextFormField,
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(maxWidth: maxWidth),
+        child: Column(
+          children: [
+            config.title ?? _title(context),
+            const SizedBox(height: 16),
+            if (authProviders.emailAndPassword)
+              SignInForm(
+                formChild: Column(
+                  children: [
+                    EmailTextFormField(
+                      decoration: config.emailTextFormField,
+                    ),
+                    const SizedBox(height: 8),
+                    PasswordTextFormField(
+                      decoration: config.passwordTextFormField,
+                    ),
+                    _formButtons(context),
+                  ],
                 ),
-                const SizedBox(height: 8),
-                PasswordTextFormField(
-                  decoration: config.passwordTextFormField,
-                ),
-                _formButtons(context),
-              ],
+              ),
+            const SizedBox(height: 16),
+            Text(
+              'or',
+              style: Theme.of(context).textTheme.overline,
             ),
-          ),
-        if (authProviders.anonymous)
-          SignInAnonymouslyButton(buttonConfig: config.anonymousButton),
-        if (authProviders.google) const SignInWithGoogleButton(),
-        const LoadingWidget(),
-      ],
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 300),
+              child: const Divider(
+                thickness: 2,
+              ),
+            ),
+            if (authProviders.anonymous)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInAnonymouslyButton(config: config.anonymousButton),
+              ),
+            if (authProviders.google)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInWithGoogleButton(
+                  config: config.googleButton,
+                ),
+              ),
+            const LoadingWidget(),
+          ],
+        ),
+      ),
     );
   }
 
@@ -57,11 +90,14 @@ class StandardSignInWidget extends StatelessWidget {
 
   Widget _formButtons(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: const [
-        Expanded(
+        Padding(
+          padding: EdgeInsets.all(8.0),
           child: EmailAndPasswordSignInButton(),
         ),
-        Expanded(
+        Padding(
+          padding: EdgeInsets.all(8.0),
           child: EmailAndPasswordRegisterButton(),
         ),
       ],
