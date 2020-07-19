@@ -1,4 +1,4 @@
-<p align="center"><img src="https://raw.githubusercontent.com/funwithflutter/lit_firebase_auth/assets/lit.png" height="125" alt="Lit Firebase"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/funwithflutter/lit_firebase_auth/master/assets/lit.png" height="125" alt="Lit Firebase"></p>
 
 <h1 align="center" style="margin-top: 0px; font-size: 4em;">Lit Firebase Auth</h1>
 
