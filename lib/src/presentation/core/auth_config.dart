@@ -26,7 +26,7 @@ class ButtonConfig {
   final Widget child;
   ButtonConfig({
     this.themeData,
-    this.type,
+    this.type = const ButtonType.raised(),
     this.child,
   });
 }
