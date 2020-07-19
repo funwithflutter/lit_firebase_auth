@@ -25,6 +25,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// class Tester extends StatelessWidget {
+//   const Tester({Key key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: RaisedButton(
+//           onPressed: () {
+//             print('test');
+//           },
+//           child: Text('helo')),
+//     );
+//   }
+// }
+
 class SplashScreen extends StatelessWidget {
   const SplashScreen({
     Key key,
@@ -44,18 +59,18 @@ class SplashScreen extends StatelessWidget {
             ),
             unauthenticated: LitAuth(
               /// STANDARD
-              config: AuthConfig.standard(
-                title: Text(
-                  '🔥Welcome to Lit Firebase!🔥',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
+              // config: AuthConfig.standard(
+              //   title: Text(
+              //     '🔥Welcome to Lit Firebase!🔥',
+              //     textAlign: TextAlign.center,
+              //     style: Theme.of(context).textTheme.headline4,
+              //   ),
+              // ),
 
               /// CUSTOM
-              // config: AuthConfig.custom(
-              //   signIn: CustomSignInWidget(),
-              // ),
+              config: AuthConfig.custom(
+                signIn: CustomSignInWidget(),
+              ),
             ),
           ),
         ),
