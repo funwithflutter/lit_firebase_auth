@@ -197,15 +197,16 @@ Tutorials and code samples will be added soon on how to create a custom Sign-in 
 
 |                   | State       |                                                                  |
 | ----------------- | ----------  | ---------------------------------------------------------------- |
-| More platforms    | 🔄          | Support more platforms (Windows, macOS, Linux)                   |
-| More providers    | 🔄          | Support more authentication providers (Github, Facebook)         |
+| Platforms         | ⌛          | Support more platforms (Windows, macOS, Linux)                   |
+| Auth providers    | ⌛          | Support more authentication providers (Github, Facebook)         |
+| Cupertino         | ⌛          | Cupertino look and feel                                          |
 | Password reset    | ❌          | Add services and UI to reset password/email                      |
 | Email confirmation| ❌          | Add UI to notify users they need to confirm their email address  |
 | Support UI        | ❌          | Assist users who cannot authenticate with support links          |
 | Custom dialogs    | ❌          | Add support to customize dialog messages                         |
-| Adaptive layouts  | ❌          | Adaptive layouts to support multiple screen sizes               |
-| More customization| ❌          | Even more customization | Or easier customiation                 |
-| Testing           | ❌          | Add testing                                                      |
+| Adaptive layouts  | ⌛          | Adaptive layouts to support multiple screen sizes               |
+| Customization     | ❌          | Even more, or easier, customization                             |
+| Testing           | ❌          | Add testing                                                     |
 
 ## Dart Versions
 
