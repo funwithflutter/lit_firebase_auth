@@ -1,3 +1,7 @@
+# 0.0.3
+
+- docs: minor documentation updates
+
 # 0.0.2
 
 - feat: add generated files
