@@ -66,6 +66,9 @@ class LitAuthState extends StatelessWidget {
 typedef AuthFailureCallback = void Function(AuthFailure failure);
 
 /// The main widget to do any form of Authentication using **LitFirebaseAuth**.
+///
+/// Must be below a [Scaffold].
+///
 /// This widget is used to configure the UI, provide decorations/themes, or
 /// override the standard sign-in widget with a custom implementation.
 ///

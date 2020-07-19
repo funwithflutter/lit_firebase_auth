@@ -1,4 +1,4 @@
-<p align="center"><img src="assets/lit.png" height="125" alt="Lit Firebase"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/funwithflutter/lit_firebase_auth/assets/lit.png" height="125" alt="Lit Firebase"></p>
 
 <h1 align="center" style="margin-top: 0px; font-size: 4em;">Lit Firebase Auth</h1>
 
@@ -140,6 +140,7 @@ LitAuth(
 ```
 
 This will use the default configuration and UI theming. See the section on decoration and theming for customization.
+**NOTE**: This widget needs to be below a `Scaffold` widget.
 
 ### Handle auth state changes
 To determine the current auth state, make use of `LitAuthState`:
