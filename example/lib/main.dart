@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return LitAuthInit(
       authProviders: AuthProviders(
-        emailAndPassword: true,
+        emailAndPassword: true, // enabled by default
         google: true,
         anonymous: true,
       ),
@@ -43,6 +43,7 @@ class SplashScreen extends StatelessWidget {
               child: Text('Sign out'),
             ),
             unauthenticated: LitAuth(
+              /// STANDARD
               config: AuthConfig.standard(
                 title: Text(
                   '🔥Welcome to Lit Firebase!🔥',
@@ -50,6 +51,11 @@ class SplashScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline4,
                 ),
               ),
+
+              /// CUSTOM
+              // config: AuthConfig.custom(
+              //   signIn: CustomSignInWidget(),
+              // ),
             ),
           ),
         ),
@@ -58,6 +64,7 @@ class SplashScreen extends StatelessWidget {
   }
 }
 
+/// A custom Sign-in widget built with Lit Firebase components
 class CustomSignInWidget extends StatelessWidget {
   const CustomSignInWidget({Key key}) : super(key: key);
 
@@ -66,31 +73,40 @@ class CustomSignInWidget extends StatelessWidget {
     return Column(
       children: [
         Text('Welcome', style: Theme.of(context).textTheme.headline4),
-        RaisedButton(
-          onPressed: () {
-            context.signInAnonymously();
-          },
-          child: Text('Anony Sign In'),
-        ),
         SignInForm(
           formChild: Column(
             children: [
-              Text(
-                'This is my custom form',
-                style: Theme.of(context).textTheme.headline5,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'A custom form',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
               ),
-              EmailTextFormField(
-                decoration: InputDecoration(labelText: 'My Email Label'),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: EmailTextFormField(
+                  decoration: InputDecoration(labelText: 'My Email Label'),
+                ),
               ),
-              PasswordTextFormField(
-                decoration: InputDecoration(labelText: 'My Password Label'),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PasswordTextFormField(
+                  decoration: InputDecoration(labelText: 'My Password Label'),
+                ),
               ),
               RaisedButton(
                 onPressed: () {
                   context.signInWithEmailAndPassword();
                 },
                 child: Text('Sign In'),
-              )
+              ),
+              FlatButton(
+                onPressed: () {
+                  context.signInAnonymously();
+                },
+                child: Text('Anony Sign In'),
+              ),
             ],
           ),
         ),
