@@ -207,6 +207,6 @@ class _LitAuthImpl extends StatelessWidget {
     );
     return config.map(
         standard: (c) => StandardSignInWidget(config: c),
-        custom: (c) => c.signInScreen);
+        custom: (c) => c.signIn);
   }
 }

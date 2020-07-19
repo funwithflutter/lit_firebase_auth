@@ -16,7 +16,7 @@ abstract class AuthConfig with _$AuthConfig {
     InputDecoration passwordTextFormField,
   }) = AuthConfigStandard;
   const factory AuthConfig.custom({
-    @required Widget signInScreen,
+    @required Widget signIn,
   }) = AuthConfigCustom;
 }
 

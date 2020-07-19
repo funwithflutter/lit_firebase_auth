@@ -185,7 +185,7 @@ Instead of using the standard `AuthConfig`, set it to custom and provide your cu
 ```dart
 LitAuth(
   config: AuthConfig.custom(
-    signInScreen: CustomSignInWidget(),
+    signIn: CustomSignInWidget(),
   ),
 );
 ```
