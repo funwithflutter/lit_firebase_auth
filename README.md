@@ -33,7 +33,45 @@ The two most important widgets are
 - `LitAuthInit` - which initializes the package and exposes the services that will be used in your application.
 - `LitAuth` - which renders the UI (forms, buttons and dialogs).
 
-### Initialization
+### Android integration
+
+Enable the Google services by configuring the Gradle scripts as such.
+
+1. Add the classpath to the `[project]/android/build.gradle` file.
+```gradle
+dependencies {
+  // Example existing classpath
+  classpath 'com.android.tools.build:gradle:3.2.1'
+  // Add the google services classpath
+  classpath 'com.google.gms:google-services:4.3.0'
+}
+```
+
+2. Add the apply plugin to the `[project]/android/app/build.gradle` file.
+```gradle
+// ADD THIS AT THE BOTTOM
+apply plugin: 'com.google.gms.google-services'
+```
+
+*Note:* If this section is not completed you will get an error like this:
+```
+java.lang.IllegalStateException:
+Default FirebaseApp is not initialized in this process [package name].
+Make sure to call FirebaseApp.initializeApp(Context) first.
+```
+
+*Note:* When you are debugging on android, use a device or AVD with Google Play services.
+Otherwise you will not be able to authenticate.
+
+### Web integration
+
+In addition to the `firebase_auth` dependency, you'll need to modify the `web/index.html` of your app following the Firebase setup instructions:
+
+* [Add Firebase to your JavaScript project](https://firebase.google.com/docs/web/setup#from-the-cdn).
+
+Read more in the [`firebase_auth_web` README](https://github.com/FirebaseExtended/flutterfire/blob/master/packages/firebase_auth/firebase_auth_web/README.md).
+
+### Lit Firebase Initialization
 First, you need to initialize the package with `LitAuthInit`. This should be at the root of your application. Above `MaterialApp`/`CupertinoApp`, and above any widgets that want to access authentication functionality.
 
 For example:
