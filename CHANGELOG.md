@@ -1,3 +1,7 @@
+# 0.0.4
+
+- docs: update logo path
+
 # 0.0.3
 
 - docs: minor documentation updates
