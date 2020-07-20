@@ -59,18 +59,18 @@ class SplashScreen extends StatelessWidget {
             ),
             unauthenticated: LitAuth(
               /// STANDARD
-              // config: AuthConfig.standard(
-              //   title: Text(
-              //     '🔥Welcome to Lit Firebase!🔥',
-              //     textAlign: TextAlign.center,
-              //     style: Theme.of(context).textTheme.headline4,
-              //   ),
-              // ),
+              config: AuthConfig.standard(
+                title: Text(
+                  '🔥Welcome to Lit Firebase!🔥',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ),
 
               /// CUSTOM
-              config: AuthConfig.custom(
-                signIn: CustomSignInWidget(),
-              ),
+              // config: AuthConfig.custom(
+              //   signIn: CustomSignInWidget(),
+              // ),
             ),
           ),
         ),

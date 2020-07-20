@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 
+import '../../lit_firebase_auth.dart';
 import '../application/auth/sign_in_handler/sign_in_handler_state.dart';
 import '../application/auth/sign_in_handler/sign_in_handler_state_notifier.dart';
 import '../domain/auth/auth.dart';
 import '../domain/auth/auth_failure.dart';
+import '../domain/auth/auth_providers.dart';
 import '../domain/auth/user.dart';
 import 'core/auth_config.dart';
 import 'lit_standard_sign_in_screen.dart';
@@ -142,7 +144,10 @@ class LitAuth extends StatelessWidget {
   Widget build(BuildContext context) {
     return StateNotifierProvider<SignInHandlerStateNotifier,
         SignInHandlerState>(
-      create: (context) => SignInHandlerStateNotifier(),
+      create: (context) => SignInHandlerStateNotifier(
+        authProviders: Provider.of<AuthProviders>(context, listen: false),
+        authFacade: Provider.of<AuthFacade>(context, listen: false),
+      ),
       child: _LitAuthImpl(
         config: config,
         onAuthFailure: onAuthFailure,

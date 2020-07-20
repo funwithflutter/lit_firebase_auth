@@ -11,7 +11,17 @@ import 'sign_in_handler_state.dart';
 
 class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     with LocatorMixin {
-  SignInHandlerStateNotifier() : super(SignInHandlerState.initial());
+  SignInHandlerStateNotifier({
+    @required AuthProviders authProviders,
+    @required AuthFacade authFacade,
+  })  : assert(authProviders != null),
+        assert(authFacade != null),
+        _authProviders = authProviders,
+        _authFacade = authFacade,
+        super(SignInHandlerState.initial());
+
+  final AuthProviders _authProviders;
+  final AuthFacade _authFacade;
 
   void emailChanged(EmailAddress e) {
     state = state.copyWith(
@@ -29,25 +39,24 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
 
   Future<void> registerWithEmailAndPassword() async {
     await _performActionOnAuthFacadeWithEmailAndPassword(
-        read<AuthFacade>().registerWithEmailAndPassword);
+        _authFacade.registerWithEmailAndPassword);
   }
 
   Future<void> signInWithEmailAndPassword() async {
     await _performActionOnAuthFacadeWithEmailAndPassword(
-        read<AuthFacade>().signInWithEmailAndPassword);
+        _authFacade.signInWithEmailAndPassword);
   }
 
   Future<void> signInWithGoogle() async {
-    if (!read<AuthProviders>().google) {
+    if (!_authProviders.google) {
       throw AuthProviderNotEnabled('Google');
     }
     state = state.copyWith(
       isSubmitting: true,
       authFailureOrSuccessOption: none(),
     );
-    final auth = await read<AuthFacade>().signInWithGoogle();
+    final auth = await _authFacade.signInWithGoogle();
 
-    // Need to check mounted
     if (mounted) {
       state = state.copyWith(
         isSubmitting: false,
@@ -57,16 +66,15 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
   }
 
   Future<void> signInAnonymously() async {
-    if (!read<AuthProviders>().anonymous) {
+    if (!_authProviders.anonymous) {
       throw AuthProviderNotEnabled('Anonymous');
     }
     state = state.copyWith(
       isSubmitting: true,
       authFailureOrSuccessOption: none(),
     );
-    final auth = await read<AuthFacade>().signInAnonymously();
+    final auth = await _authFacade.signInAnonymously();
 
-    // Need to check mounted
     if (mounted) {
       state = state.copyWith(
         isSubmitting: false,
@@ -82,7 +90,7 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     })
         forwardedCall,
   ) async {
-    if (!read<AuthProviders>().emailAndPassword) {
+    if (!_authProviders.emailAndPassword) {
       throw AuthProviderNotEnabled('Email and Password');
     }
 

@@ -20,16 +20,25 @@ abstract class AuthConfig with _$AuthConfig {
   }) = AuthConfigCustom;
 }
 
-class ButtonConfig {
-  final ButtonThemeData themeData;
-  final ButtonType type;
-  final Widget child;
-  ButtonConfig({
-    this.themeData,
-    this.type = const ButtonType.raised(),
-    this.child,
-  });
+@freezed
+abstract class ButtonConfig with _$ButtonConfig {
+  const factory ButtonConfig({
+    ButtonThemeData themeData,
+    ButtonType type,
+    Widget child,
+  }) = _ButtonConfig;
 }
+
+// class ButtonConfig {
+//   final ButtonThemeData themeData;
+//   final ButtonType type;
+//   final Widget child;
+//   ButtonConfig({
+//     this.themeData,
+//     this.type = const ButtonType.raised(),
+//     this.child,
+//   });
+// }
 
 @freezed
 abstract class ButtonType with _$ButtonType {

@@ -107,6 +107,11 @@ abstract class $AuthConfigStandardCopyWith<$Res> {
       ButtonConfig googleButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField});
+
+  $ButtonConfigCopyWith<$Res> get emailButton;
+  $ButtonConfigCopyWith<$Res> get passwordButton;
+  $ButtonConfigCopyWith<$Res> get anonymousButton;
+  $ButtonConfigCopyWith<$Res> get googleButton;
 }
 
 class _$AuthConfigStandardCopyWithImpl<$Res>
@@ -150,6 +155,46 @@ class _$AuthConfigStandardCopyWithImpl<$Res>
           ? _value.passwordTextFormField
           : passwordTextFormField as InputDecoration,
     ));
+  }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get emailButton {
+    if (_value.emailButton == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.emailButton, (value) {
+      return _then(_value.copyWith(emailButton: value));
+    });
+  }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get passwordButton {
+    if (_value.passwordButton == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.passwordButton, (value) {
+      return _then(_value.copyWith(passwordButton: value));
+    });
+  }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get anonymousButton {
+    if (_value.anonymousButton == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.anonymousButton, (value) {
+      return _then(_value.copyWith(anonymousButton: value));
+    });
+  }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get googleButton {
+    if (_value.googleButton == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.googleButton, (value) {
+      return _then(_value.copyWith(googleButton: value));
+    });
   }
 }
 
@@ -465,6 +510,175 @@ abstract class AuthConfigCustom implements AuthConfig {
 
   Widget get signIn;
   $AuthConfigCustomCopyWith<AuthConfigCustom> get copyWith;
+}
+
+class _$ButtonConfigTearOff {
+  const _$ButtonConfigTearOff();
+
+  _ButtonConfig call(
+      {ButtonThemeData themeData, ButtonType type, Widget child}) {
+    return _ButtonConfig(
+      themeData: themeData,
+      type: type,
+      child: child,
+    );
+  }
+}
+
+// ignore: unused_element
+const $ButtonConfig = _$ButtonConfigTearOff();
+
+mixin _$ButtonConfig {
+  ButtonThemeData get themeData;
+  ButtonType get type;
+  Widget get child;
+
+  $ButtonConfigCopyWith<ButtonConfig> get copyWith;
+}
+
+abstract class $ButtonConfigCopyWith<$Res> {
+  factory $ButtonConfigCopyWith(
+          ButtonConfig value, $Res Function(ButtonConfig) then) =
+      _$ButtonConfigCopyWithImpl<$Res>;
+  $Res call({ButtonThemeData themeData, ButtonType type, Widget child});
+
+  $ButtonTypeCopyWith<$Res> get type;
+}
+
+class _$ButtonConfigCopyWithImpl<$Res> implements $ButtonConfigCopyWith<$Res> {
+  _$ButtonConfigCopyWithImpl(this._value, this._then);
+
+  final ButtonConfig _value;
+  // ignore: unused_field
+  final $Res Function(ButtonConfig) _then;
+
+  @override
+  $Res call({
+    Object themeData = freezed,
+    Object type = freezed,
+    Object child = freezed,
+  }) {
+    return _then(_value.copyWith(
+      themeData: themeData == freezed
+          ? _value.themeData
+          : themeData as ButtonThemeData,
+      type: type == freezed ? _value.type : type as ButtonType,
+      child: child == freezed ? _value.child : child as Widget,
+    ));
+  }
+
+  @override
+  $ButtonTypeCopyWith<$Res> get type {
+    if (_value.type == null) {
+      return null;
+    }
+    return $ButtonTypeCopyWith<$Res>(_value.type, (value) {
+      return _then(_value.copyWith(type: value));
+    });
+  }
+}
+
+abstract class _$ButtonConfigCopyWith<$Res>
+    implements $ButtonConfigCopyWith<$Res> {
+  factory _$ButtonConfigCopyWith(
+          _ButtonConfig value, $Res Function(_ButtonConfig) then) =
+      __$ButtonConfigCopyWithImpl<$Res>;
+  @override
+  $Res call({ButtonThemeData themeData, ButtonType type, Widget child});
+
+  @override
+  $ButtonTypeCopyWith<$Res> get type;
+}
+
+class __$ButtonConfigCopyWithImpl<$Res> extends _$ButtonConfigCopyWithImpl<$Res>
+    implements _$ButtonConfigCopyWith<$Res> {
+  __$ButtonConfigCopyWithImpl(
+      _ButtonConfig _value, $Res Function(_ButtonConfig) _then)
+      : super(_value, (v) => _then(v as _ButtonConfig));
+
+  @override
+  _ButtonConfig get _value => super._value as _ButtonConfig;
+
+  @override
+  $Res call({
+    Object themeData = freezed,
+    Object type = freezed,
+    Object child = freezed,
+  }) {
+    return _then(_ButtonConfig(
+      themeData: themeData == freezed
+          ? _value.themeData
+          : themeData as ButtonThemeData,
+      type: type == freezed ? _value.type : type as ButtonType,
+      child: child == freezed ? _value.child : child as Widget,
+    ));
+  }
+}
+
+class _$_ButtonConfig with DiagnosticableTreeMixin implements _ButtonConfig {
+  const _$_ButtonConfig({this.themeData, this.type, this.child});
+
+  @override
+  final ButtonThemeData themeData;
+  @override
+  final ButtonType type;
+  @override
+  final Widget child;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ButtonConfig(themeData: $themeData, type: $type, child: $child)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ButtonConfig'))
+      ..add(DiagnosticsProperty('themeData', themeData))
+      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('child', child));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ButtonConfig &&
+            (identical(other.themeData, themeData) ||
+                const DeepCollectionEquality()
+                    .equals(other.themeData, themeData)) &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.child, child) ||
+                const DeepCollectionEquality().equals(other.child, child)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(themeData) ^
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(child);
+
+  @override
+  _$ButtonConfigCopyWith<_ButtonConfig> get copyWith =>
+      __$ButtonConfigCopyWithImpl<_ButtonConfig>(this, _$identity);
+}
+
+abstract class _ButtonConfig implements ButtonConfig {
+  const factory _ButtonConfig(
+      {ButtonThemeData themeData,
+      ButtonType type,
+      Widget child}) = _$_ButtonConfig;
+
+  @override
+  ButtonThemeData get themeData;
+  @override
+  ButtonType get type;
+  @override
+  Widget get child;
+  @override
+  _$ButtonConfigCopyWith<_ButtonConfig> get copyWith;
 }
 
 class _$ButtonTypeTearOff {
