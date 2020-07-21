@@ -6,6 +6,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Initialize Lit Firebase Auth. Needs to be above [MaterialApp]
     return LitAuthInit(
       authProviders: AuthProviders(
         emailAndPassword: true, // enabled by default
@@ -25,21 +26,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// class Tester extends StatelessWidget {
-//   const Tester({Key key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: RaisedButton(
-//           onPressed: () {
-//             print('test');
-//           },
-//           child: Text('helo')),
-//     );
-//   }
-// }
-
 class SplashScreen extends StatelessWidget {
   const SplashScreen({
     Key key,
@@ -51,30 +37,46 @@ class SplashScreen extends StatelessWidget {
       body: Center(
         child: SingleChildScrollView(
           child: LitAuthState(
-            authenticated: RaisedButton(
-              onPressed: () {
-                context.signOut();
-              },
-              child: Text('Sign out'),
-            ),
+            authenticated: YourAuthenticatedWidget(),
+
+            /// Standard
             unauthenticated: LitAuth(
-              /// STANDARD
-              config: AuthConfig.standard(
+              config: AuthConfig(
                 title: Text(
                   '🔥Welcome to Lit Firebase!🔥',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline4,
                 ),
               ),
-
-              /// CUSTOM
-              // config: AuthConfig.custom(
-              //   signIn: CustomSignInWidget(),
-              // ),
             ),
+
+            // USE THIS FOR A CUSTOM SIGN IN WIDGET
+            /// Custom
+            // unauthenticated: LitAuth.custom(
+            //   child: CustomSignInWidget(),
+            // ),
           ),
         ),
       ),
+    );
+  }
+}
+
+/// An example widget. This can be anything that you want to show after
+/// succesful authentication
+class YourAuthenticatedWidget extends StatelessWidget {
+  const YourAuthenticatedWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return RaisedButton.icon(
+      icon: Icon(Icons.lock_outline),
+      onPressed: () {
+        context.signOut();
+      },
+      label: Text("Sign out"),
     );
   }
 }

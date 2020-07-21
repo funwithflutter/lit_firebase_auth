@@ -5,8 +5,10 @@ import 'package:flutter/foundation.dart';
 part 'auth_config.freezed.dart';
 
 @freezed
+
+/// The UI configuration when using the standard [LitAuth] widget.
 abstract class AuthConfig with _$AuthConfig {
-  const factory AuthConfig.standard({
+  const factory AuthConfig({
     Widget title,
     ButtonConfig emailButton,
     ButtonConfig passwordButton,
@@ -14,13 +16,12 @@ abstract class AuthConfig with _$AuthConfig {
     ButtonConfig googleButton,
     InputDecoration emailTextFormField,
     InputDecoration passwordTextFormField,
-  }) = AuthConfigStandard;
-  const factory AuthConfig.custom({
-    @required Widget signIn,
-  }) = AuthConfigCustom;
+  }) = _AuthConfig;
 }
 
 @freezed
+
+/// Provide configuration and themes for the standard sign-in buttons
 abstract class ButtonConfig with _$ButtonConfig {
   const factory ButtonConfig({
     ButtonThemeData themeData,
@@ -29,18 +30,9 @@ abstract class ButtonConfig with _$ButtonConfig {
   }) = _ButtonConfig;
 }
 
-// class ButtonConfig {
-//   final ButtonThemeData themeData;
-//   final ButtonType type;
-//   final Widget child;
-//   ButtonConfig({
-//     this.themeData,
-//     this.type = const ButtonType.raised(),
-//     this.child,
-//   });
-// }
-
 @freezed
+
+/// Specify different button types. For example, [RaisedButton] or [FlatButton]
 abstract class ButtonType with _$ButtonType {
   const factory ButtonType.raised() = _ButtonTypeRaised;
   const factory ButtonType.flat() = _ButtonTypeFlat;

@@ -15,13 +15,8 @@ class StandardSignInWidget extends StatelessWidget {
     this.config,
   }) : super(key: key);
 
-  final AuthConfigStandard config;
+  final AuthConfig config;
 
-  // static final textInputDecoration = InputDecoration(
-  //   border: OutlineInputBorder(
-  //     borderRadius: BorderRadius.circular(2),
-  //   ),
-  // );
   static const maxWidth = 500.0;
 
   @override
@@ -33,18 +28,18 @@ class StandardSignInWidget extends StatelessWidget {
         constraints: const BoxConstraints(maxWidth: maxWidth),
         child: Column(
           children: [
-            config.title ?? _title(context),
+            config?.title ?? _title(context),
             const SizedBox(height: 16),
             if (authProviders.emailAndPassword)
               SignInForm(
                 formChild: Column(
                   children: [
                     EmailTextFormField(
-                      decoration: config.emailTextFormField,
+                      decoration: config?.emailTextFormField,
                     ),
                     const SizedBox(height: 8),
                     PasswordTextFormField(
-                      decoration: config.passwordTextFormField,
+                      decoration: config?.passwordTextFormField,
                     ),
                     _formButtons(context),
                   ],
@@ -64,13 +59,13 @@ class StandardSignInWidget extends StatelessWidget {
             if (authProviders.anonymous)
               Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: SignInAnonymouslyButton(config: config.anonymousButton),
+                child: SignInAnonymouslyButton(config: config?.anonymousButton),
               ),
             if (authProviders.google)
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: SignInWithGoogleButton(
-                  config: config.googleButton,
+                  config: config?.googleButton,
                 ),
               ),
             const LoadingWidget(),

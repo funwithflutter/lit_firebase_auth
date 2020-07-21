@@ -12,7 +12,7 @@ T _$identity<T>(T value) => value;
 class _$AuthConfigTearOff {
   const _$AuthConfigTearOff();
 
-  AuthConfigStandard standard(
+  _AuthConfig call(
       {Widget title,
       ButtonConfig emailButton,
       ButtonConfig passwordButton,
@@ -20,7 +20,7 @@ class _$AuthConfigTearOff {
       ButtonConfig googleButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField}) {
-    return AuthConfigStandard(
+    return _AuthConfig(
       title: title,
       emailButton: emailButton,
       passwordButton: passwordButton,
@@ -30,75 +30,27 @@ class _$AuthConfigTearOff {
       passwordTextFormField: passwordTextFormField,
     );
   }
-
-  AuthConfigCustom custom({@required Widget signIn}) {
-    return AuthConfigCustom(
-      signIn: signIn,
-    );
-  }
 }
 
 // ignore: unused_element
 const $AuthConfig = _$AuthConfigTearOff();
 
 mixin _$AuthConfig {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result standard(
-            Widget title,
-            ButtonConfig emailButton,
-            ButtonConfig passwordButton,
-            ButtonConfig anonymousButton,
-            ButtonConfig googleButton,
-            InputDecoration emailTextFormField,
-            InputDecoration passwordTextFormField),
-    @required Result custom(Widget signIn),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result standard(
-        Widget title,
-        ButtonConfig emailButton,
-        ButtonConfig passwordButton,
-        ButtonConfig anonymousButton,
-        ButtonConfig googleButton,
-        InputDecoration emailTextFormField,
-        InputDecoration passwordTextFormField),
-    Result custom(Widget signIn),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result standard(AuthConfigStandard value),
-    @required Result custom(AuthConfigCustom value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result standard(AuthConfigStandard value),
-    Result custom(AuthConfigCustom value),
-    @required Result orElse(),
-  });
+  Widget get title;
+  ButtonConfig get emailButton;
+  ButtonConfig get passwordButton;
+  ButtonConfig get anonymousButton;
+  ButtonConfig get googleButton;
+  InputDecoration get emailTextFormField;
+  InputDecoration get passwordTextFormField;
+
+  $AuthConfigCopyWith<AuthConfig> get copyWith;
 }
 
 abstract class $AuthConfigCopyWith<$Res> {
   factory $AuthConfigCopyWith(
           AuthConfig value, $Res Function(AuthConfig) then) =
       _$AuthConfigCopyWithImpl<$Res>;
-}
-
-class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
-  _$AuthConfigCopyWithImpl(this._value, this._then);
-
-  final AuthConfig _value;
-  // ignore: unused_field
-  final $Res Function(AuthConfig) _then;
-}
-
-abstract class $AuthConfigStandardCopyWith<$Res> {
-  factory $AuthConfigStandardCopyWith(
-          AuthConfigStandard value, $Res Function(AuthConfigStandard) then) =
-      _$AuthConfigStandardCopyWithImpl<$Res>;
   $Res call(
       {Widget title,
       ButtonConfig emailButton,
@@ -114,15 +66,12 @@ abstract class $AuthConfigStandardCopyWith<$Res> {
   $ButtonConfigCopyWith<$Res> get googleButton;
 }
 
-class _$AuthConfigStandardCopyWithImpl<$Res>
-    extends _$AuthConfigCopyWithImpl<$Res>
-    implements $AuthConfigStandardCopyWith<$Res> {
-  _$AuthConfigStandardCopyWithImpl(
-      AuthConfigStandard _value, $Res Function(AuthConfigStandard) _then)
-      : super(_value, (v) => _then(v as AuthConfigStandard));
+class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
+  _$AuthConfigCopyWithImpl(this._value, this._then);
 
-  @override
-  AuthConfigStandard get _value => super._value as AuthConfigStandard;
+  final AuthConfig _value;
+  // ignore: unused_field
+  final $Res Function(AuthConfig) _then;
 
   @override
   $Res call({
@@ -134,7 +83,7 @@ class _$AuthConfigStandardCopyWithImpl<$Res>
     Object emailTextFormField = freezed,
     Object passwordTextFormField = freezed,
   }) {
-    return _then(AuthConfigStandard(
+    return _then(_value.copyWith(
       title: title == freezed ? _value.title : title as Widget,
       emailButton: emailButton == freezed
           ? _value.emailButton
@@ -198,10 +147,75 @@ class _$AuthConfigStandardCopyWithImpl<$Res>
   }
 }
 
-class _$AuthConfigStandard
-    with DiagnosticableTreeMixin
-    implements AuthConfigStandard {
-  const _$AuthConfigStandard(
+abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
+  factory _$AuthConfigCopyWith(
+          _AuthConfig value, $Res Function(_AuthConfig) then) =
+      __$AuthConfigCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {Widget title,
+      ButtonConfig emailButton,
+      ButtonConfig passwordButton,
+      ButtonConfig anonymousButton,
+      ButtonConfig googleButton,
+      InputDecoration emailTextFormField,
+      InputDecoration passwordTextFormField});
+
+  @override
+  $ButtonConfigCopyWith<$Res> get emailButton;
+  @override
+  $ButtonConfigCopyWith<$Res> get passwordButton;
+  @override
+  $ButtonConfigCopyWith<$Res> get anonymousButton;
+  @override
+  $ButtonConfigCopyWith<$Res> get googleButton;
+}
+
+class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
+    implements _$AuthConfigCopyWith<$Res> {
+  __$AuthConfigCopyWithImpl(
+      _AuthConfig _value, $Res Function(_AuthConfig) _then)
+      : super(_value, (v) => _then(v as _AuthConfig));
+
+  @override
+  _AuthConfig get _value => super._value as _AuthConfig;
+
+  @override
+  $Res call({
+    Object title = freezed,
+    Object emailButton = freezed,
+    Object passwordButton = freezed,
+    Object anonymousButton = freezed,
+    Object googleButton = freezed,
+    Object emailTextFormField = freezed,
+    Object passwordTextFormField = freezed,
+  }) {
+    return _then(_AuthConfig(
+      title: title == freezed ? _value.title : title as Widget,
+      emailButton: emailButton == freezed
+          ? _value.emailButton
+          : emailButton as ButtonConfig,
+      passwordButton: passwordButton == freezed
+          ? _value.passwordButton
+          : passwordButton as ButtonConfig,
+      anonymousButton: anonymousButton == freezed
+          ? _value.anonymousButton
+          : anonymousButton as ButtonConfig,
+      googleButton: googleButton == freezed
+          ? _value.googleButton
+          : googleButton as ButtonConfig,
+      emailTextFormField: emailTextFormField == freezed
+          ? _value.emailTextFormField
+          : emailTextFormField as InputDecoration,
+      passwordTextFormField: passwordTextFormField == freezed
+          ? _value.passwordTextFormField
+          : passwordTextFormField as InputDecoration,
+    ));
+  }
+}
+
+class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
+  const _$_AuthConfig(
       {this.title,
       this.emailButton,
       this.passwordButton,
@@ -227,14 +241,14 @@ class _$AuthConfigStandard
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthConfig.standard(title: $title, emailButton: $emailButton, passwordButton: $passwordButton, anonymousButton: $anonymousButton, googleButton: $googleButton, emailTextFormField: $emailTextFormField, passwordTextFormField: $passwordTextFormField)';
+    return 'AuthConfig(title: $title, emailButton: $emailButton, passwordButton: $passwordButton, anonymousButton: $anonymousButton, googleButton: $googleButton, emailTextFormField: $emailTextFormField, passwordTextFormField: $passwordTextFormField)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'AuthConfig.standard'))
+      ..add(DiagnosticsProperty('type', 'AuthConfig'))
       ..add(DiagnosticsProperty('title', title))
       ..add(DiagnosticsProperty('emailButton', emailButton))
       ..add(DiagnosticsProperty('passwordButton', passwordButton))
@@ -248,7 +262,7 @@ class _$AuthConfigStandard
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AuthConfigStandard &&
+        (other is _AuthConfig &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
             (identical(other.emailButton, emailButton) ||
@@ -283,233 +297,36 @@ class _$AuthConfigStandard
       const DeepCollectionEquality().hash(passwordTextFormField);
 
   @override
-  $AuthConfigStandardCopyWith<AuthConfigStandard> get copyWith =>
-      _$AuthConfigStandardCopyWithImpl<AuthConfigStandard>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result standard(
-            Widget title,
-            ButtonConfig emailButton,
-            ButtonConfig passwordButton,
-            ButtonConfig anonymousButton,
-            ButtonConfig googleButton,
-            InputDecoration emailTextFormField,
-            InputDecoration passwordTextFormField),
-    @required Result custom(Widget signIn),
-  }) {
-    assert(standard != null);
-    assert(custom != null);
-    return standard(title, emailButton, passwordButton, anonymousButton,
-        googleButton, emailTextFormField, passwordTextFormField);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result standard(
-        Widget title,
-        ButtonConfig emailButton,
-        ButtonConfig passwordButton,
-        ButtonConfig anonymousButton,
-        ButtonConfig googleButton,
-        InputDecoration emailTextFormField,
-        InputDecoration passwordTextFormField),
-    Result custom(Widget signIn),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (standard != null) {
-      return standard(title, emailButton, passwordButton, anonymousButton,
-          googleButton, emailTextFormField, passwordTextFormField);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result standard(AuthConfigStandard value),
-    @required Result custom(AuthConfigCustom value),
-  }) {
-    assert(standard != null);
-    assert(custom != null);
-    return standard(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result standard(AuthConfigStandard value),
-    Result custom(AuthConfigCustom value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (standard != null) {
-      return standard(this);
-    }
-    return orElse();
-  }
+  _$AuthConfigCopyWith<_AuthConfig> get copyWith =>
+      __$AuthConfigCopyWithImpl<_AuthConfig>(this, _$identity);
 }
 
-abstract class AuthConfigStandard implements AuthConfig {
-  const factory AuthConfigStandard(
+abstract class _AuthConfig implements AuthConfig {
+  const factory _AuthConfig(
       {Widget title,
       ButtonConfig emailButton,
       ButtonConfig passwordButton,
       ButtonConfig anonymousButton,
       ButtonConfig googleButton,
       InputDecoration emailTextFormField,
-      InputDecoration passwordTextFormField}) = _$AuthConfigStandard;
+      InputDecoration passwordTextFormField}) = _$_AuthConfig;
 
+  @override
   Widget get title;
+  @override
   ButtonConfig get emailButton;
+  @override
   ButtonConfig get passwordButton;
+  @override
   ButtonConfig get anonymousButton;
+  @override
   ButtonConfig get googleButton;
+  @override
   InputDecoration get emailTextFormField;
+  @override
   InputDecoration get passwordTextFormField;
-  $AuthConfigStandardCopyWith<AuthConfigStandard> get copyWith;
-}
-
-abstract class $AuthConfigCustomCopyWith<$Res> {
-  factory $AuthConfigCustomCopyWith(
-          AuthConfigCustom value, $Res Function(AuthConfigCustom) then) =
-      _$AuthConfigCustomCopyWithImpl<$Res>;
-  $Res call({Widget signIn});
-}
-
-class _$AuthConfigCustomCopyWithImpl<$Res>
-    extends _$AuthConfigCopyWithImpl<$Res>
-    implements $AuthConfigCustomCopyWith<$Res> {
-  _$AuthConfigCustomCopyWithImpl(
-      AuthConfigCustom _value, $Res Function(AuthConfigCustom) _then)
-      : super(_value, (v) => _then(v as AuthConfigCustom));
-
   @override
-  AuthConfigCustom get _value => super._value as AuthConfigCustom;
-
-  @override
-  $Res call({
-    Object signIn = freezed,
-  }) {
-    return _then(AuthConfigCustom(
-      signIn: signIn == freezed ? _value.signIn : signIn as Widget,
-    ));
-  }
-}
-
-class _$AuthConfigCustom
-    with DiagnosticableTreeMixin
-    implements AuthConfigCustom {
-  const _$AuthConfigCustom({@required this.signIn}) : assert(signIn != null);
-
-  @override
-  final Widget signIn;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthConfig.custom(signIn: $signIn)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'AuthConfig.custom'))
-      ..add(DiagnosticsProperty('signIn', signIn));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is AuthConfigCustom &&
-            (identical(other.signIn, signIn) ||
-                const DeepCollectionEquality().equals(other.signIn, signIn)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(signIn);
-
-  @override
-  $AuthConfigCustomCopyWith<AuthConfigCustom> get copyWith =>
-      _$AuthConfigCustomCopyWithImpl<AuthConfigCustom>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required
-        Result standard(
-            Widget title,
-            ButtonConfig emailButton,
-            ButtonConfig passwordButton,
-            ButtonConfig anonymousButton,
-            ButtonConfig googleButton,
-            InputDecoration emailTextFormField,
-            InputDecoration passwordTextFormField),
-    @required Result custom(Widget signIn),
-  }) {
-    assert(standard != null);
-    assert(custom != null);
-    return custom(signIn);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result standard(
-        Widget title,
-        ButtonConfig emailButton,
-        ButtonConfig passwordButton,
-        ButtonConfig anonymousButton,
-        ButtonConfig googleButton,
-        InputDecoration emailTextFormField,
-        InputDecoration passwordTextFormField),
-    Result custom(Widget signIn),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (custom != null) {
-      return custom(signIn);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result standard(AuthConfigStandard value),
-    @required Result custom(AuthConfigCustom value),
-  }) {
-    assert(standard != null);
-    assert(custom != null);
-    return custom(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result standard(AuthConfigStandard value),
-    Result custom(AuthConfigCustom value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (custom != null) {
-      return custom(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AuthConfigCustom implements AuthConfig {
-  const factory AuthConfigCustom({@required Widget signIn}) =
-      _$AuthConfigCustom;
-
-  Widget get signIn;
-  $AuthConfigCustomCopyWith<AuthConfigCustom> get copyWith;
+  _$AuthConfigCopyWith<_AuthConfig> get copyWith;
 }
 
 class _$ButtonConfigTearOff {

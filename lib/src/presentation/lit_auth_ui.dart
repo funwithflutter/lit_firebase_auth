@@ -14,16 +14,16 @@ import '../domain/auth/user.dart';
 import 'core/auth_config.dart';
 import 'lit_standard_sign_in_screen.dart';
 
-/// A convenience widget to display a specific widget depending on the
+/// A widget to switch between child widgets, depending on the
 /// current authentication state.
 ///
 /// Updates will automatically be triggered when the user's authentication state
 /// changes.
 ///
-/// You can easily create your own subscription by calling the following in a
-/// widget build method:
+/// You can easily create your own auth state subscription by calling the
+/// following in a widget build method:
 /// `final user = context.watch<User>();`
-/// Which will return the current [User] object.
+/// Which will listen to the current [User] object.
 class LitAuthState extends StatelessWidget {
   const LitAuthState({
     Key key,
@@ -41,7 +41,7 @@ class LitAuthState extends StatelessWidget {
   /// The widget to be displayed while Firebase is initializing.
   /// This should only show on Web.
   ///
-  /// Defaults to a `CircularProgressIndicator`
+  /// Defaults to a `CircularProgressIndicator()`
   final Widget unintialized;
 
   @override
@@ -65,6 +65,7 @@ class LitAuthState extends StatelessWidget {
   }
 }
 
+/// TypeDef callback for authentication failure
 typedef AuthFailureCallback = void Function(AuthFailure failure);
 
 /// The main widget to do any form of Authentication using **LitFirebaseAuth**.
@@ -72,26 +73,33 @@ typedef AuthFailureCallback = void Function(AuthFailure failure);
 /// Must be below a [Scaffold].
 ///
 /// This widget is used to configure the UI, provide decorations/themes, or
-/// override the standard sign-in widget with a custom implementation.
+/// create a completely custom sign-in form.
 ///
-/// The [config] parameter is required.
-/// The easiest way to get started is to set the config to standard.
+/// To get started:
 /// ```dart
-/// LitAuth(
-///   config: AuthConfig.standard()
-/// )
+/// LitAuth()
 /// ```
 /// {@end-tool}
 /// This will use the defaults configuration and UI theming.
 ///
-/// For theming and custom Sign-in widgets, please see the
-/// README.md file
+/// Provide an [AuthConfig] parameter to override theming and decoration of the
+/// standard sign-in form.
 ///
-/// You can provide callbacks for authentication, with
-/// [onAuthSuccess] and [onAuthFailure].
+/// Or, to create a completely custom sign-in form, make use of:
+/// ```dart
+/// LitAuth.custom(
+///   child: YourCustomSignInWidget(),
+/// )
+/// ```
+///
+/// For more theming and custom sign-in widgets, please see the README.md file
+///
+/// **Auth Success / Auth Failure**
+///
+/// You can provide callbacks for authentication, with [onAuthSuccess] and
+/// [onAuthFailure]
 /// ```dart
 /// LitAuth(
-///   config: AuthConfig.standard()
 ///   onAuthFailure: (failure) {
 ///     print('Auth failed.');
 ///     // todo: show error message
@@ -105,69 +113,86 @@ typedef AuthFailureCallback = void Function(AuthFailure failure);
 /// {@end-tool}
 ///
 class LitAuth extends StatelessWidget {
-  /// Configure the sign-in UI. `AuthConfig.standard()` will show the
-  /// standard sign-in widget. A custom implementation can be provided with
-  /// `AuthConfig.custom()`
+  /// Configure the sign-in UI and provide custom decoration/configuration for
+  /// the sign-in elements. Leaving this empty will show the standard sign-in
+  /// widgets.
   ///
-  /// The easiest way to get started is to set the config to standard.
-  /// ```dart
-  /// LitAuth(
-  ///   config: AuthConfig.standard()
-  /// )
-  /// ```
-  /// {@end-tool}
-  /// This will use the defaults configuration and UI theming.
-  ///
-  /// It's easy to provide custom decoration/configuration for the sign-in
-  /// elements. For example, to override the standard email [InputDecoration]
+  /// For example, to override the standard email [InputDecoration]
   /// just provide a custom [InputDecoration] for the [emailTextFormField]:
   /// ```dart
   /// LitAuth(
-  ///   config: AuthConfig.standard(
-  ///   emailTextFormField: InputDecoration(labelText: 'My beautiful label'),
+  ///   config: AuthConfig(
+  ///     emailTextFormField: InputDecoration(labelText: 'My beautiful label'),
   /// )
   /// ```
   /// {@end-tool}
   final AuthConfig config;
+
+  /// Callback to be called after successful authentication
   final VoidCallback onAuthSuccess;
+
+  /// Callback to be called if authentication fails
   final AuthFailureCallback onAuthFailure;
 
   const LitAuth({
     Key key,
-    @required this.config,
+    this.config,
     this.onAuthSuccess,
     this.onAuthFailure,
-  })  : assert(config != null),
-        super(key: key);
+  }) : super(key: key);
+
+  /// A factory constructor to create a custom [LitAuth] widget. Instead of using
+  /// the standard sign-in widgets you can now provide your own custom
+  /// sign-in form.
+  ///
+  /// For example:
+  /// ```dart
+  /// LitAuth.custom(
+  ///    builder: (context, child) {
+  ///      return RaisedButton(
+  ///        onPressed: () {
+  ///          context.signInAnonymously();
+  ///        },
+  ///        child: Text('Sign in'),
+  ///      );
+  ///    },
+  ///  )
+  /// ```
+  ///
+  /// See the documentation for more examples.
+  const factory LitAuth.custom({
+    Key key,
+    VoidCallback onAuthSuccess,
+    AuthFailureCallback onAuthFailure,
+    TransitionBuilder builder,
+    Widget child,
+  }) = _LitAuthCustom;
 
   @override
   Widget build(BuildContext context) {
-    return StateNotifierProvider<SignInHandlerStateNotifier,
-        SignInHandlerState>(
-      create: (context) => SignInHandlerStateNotifier(
-        authProviders: Provider.of<AuthProviders>(context, listen: false),
-        authFacade: Provider.of<AuthFacade>(context, listen: false),
-      ),
-      child: _LitAuthImpl(
+    return _SignInBuilder(
+      onAuthFailure: onAuthFailure,
+      onAuthSuccess: onAuthSuccess,
+      child: StandardSignInWidget(
         config: config,
-        onAuthFailure: onAuthFailure,
-        onAuthSuccess: onAuthSuccess,
       ),
     );
   }
 }
 
-class _LitAuthImpl extends StatelessWidget {
-  const _LitAuthImpl({
+class _SignInBuilder extends StatelessWidget {
+  const _SignInBuilder({
     Key key,
-    this.config,
-    @required this.onAuthSuccess,
     @required this.onAuthFailure,
+    @required this.onAuthSuccess,
+    this.builder,
+    this.child,
   }) : super(key: key);
 
-  final AuthConfig config;
   final VoidCallback onAuthSuccess;
   final AuthFailureCallback onAuthFailure;
+  final TransitionBuilder builder;
+  final Widget child;
 
   void _handleAuthFailureOrSuccess(
       BuildContext context, func.Option<Auth> authFailureOrSuccessOption) {
@@ -208,13 +233,51 @@ class _LitAuthImpl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.select(
-      (SignInHandlerState state) {
-        _handleAuthFailureOrSuccess(context, state.authFailureOrSuccessOption);
+    return StateNotifierProvider<SignInHandlerStateNotifier,
+        SignInHandlerState>(
+      create: (context) => SignInHandlerStateNotifier(
+        authProviders: Provider.of<AuthProviders>(context, listen: false),
+        authFacade: Provider.of<AuthFacade>(context, listen: false),
+      ),
+      builder: (context, _) {
+        context.select(
+          (SignInHandlerState state) {
+            _handleAuthFailureOrSuccess(
+                context, state.authFailureOrSuccessOption);
+          },
+        );
+        if (builder != null) {
+          return builder(context, child);
+        }
+        return child;
       },
     );
-    return config.map(
-        standard: (c) => StandardSignInWidget(config: c),
-        custom: (c) => c.signIn);
+  }
+}
+
+class _LitAuthCustom extends LitAuth {
+  const _LitAuthCustom({
+    Key key,
+    VoidCallback onAuthSuccess,
+    AuthFailureCallback onAuthFailure,
+    this.builder,
+    @required this.child,
+  }) : super(
+          key: key,
+          onAuthSuccess: onAuthSuccess,
+          onAuthFailure: onAuthFailure,
+        );
+
+  final Widget child;
+  final TransitionBuilder builder;
+
+  @override
+  Widget build(BuildContext context) {
+    return _SignInBuilder(
+      onAuthSuccess: onAuthSuccess,
+      onAuthFailure: onAuthFailure,
+      builder: builder,
+      child: child,
+    );
   }
 }
