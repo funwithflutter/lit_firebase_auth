@@ -143,7 +143,11 @@ LitAuth(
 );
 ```
 
-This will use the default configuration and UI theming. See the section on [decoration and theming](#decoration-and-theming) for customization.
+This will use the default configuration and UI theming.
+
+<p align="left"><img src="https://user-images.githubusercontent.com/45597490/88035376-3ee01200-cb6c-11ea-8076-782b9f424e7e.jpg" height="200" alt="Lit Firebase"></p>
+
+See the section on [decoration and theming](#decoration-and-theming) for customization.
 
 **NOTE**: This widget needs to be a child of a `Scaffold` widget.
 
@@ -247,7 +251,7 @@ LitAuth(
  ```
 
 ### Dialogs
-For now dialog nessage are rendered using the `flushbar` package.
+For now dialog message are rendered using the `flushbar` package.
 
 **todo**: provide additional theming/overrides for dialogs.
 
