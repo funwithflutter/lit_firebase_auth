@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../../application/auth/sign_in_handler/sign_in_handler_state.dart';
 import '../../application/auth/sign_in_handler/sign_in_handler_state_notifier.dart';
 import '../../domain/auth/i_auth_facade.dart';
 import '../../domain/auth/user.dart';
@@ -45,6 +46,25 @@ extension AuthContext on BuildContext {
   Future<void> signInAnonymously() async {
     Provider.of<SignInHandlerStateNotifier>(this, listen: false)
         .signInAnonymously();
+  }
+
+  /// Wether Lit Firebase is currently attempting to authenticate. Can be used
+  /// to show a loading indicator.
+  ///
+  /// Should only be used in the build method. For example:
+  ///
+  /// ```dart
+  /// Widget build(BuildContext context) {
+  ///   final isSubmitting = context.isSubmitting();
+  ///   return Visibility(
+  ///     visible: isSubmitting,
+  ///     child: CircularProgressIndicator(),
+  ///   );
+  /// }
+  /// ```
+  bool isSubmitting() {
+    // return Provider.of<SignInHandlerState>(this).isSubmitting;
+    return select((SignInHandlerState state) => state.isSubmitting);
   }
 
   /// Retrieves the currently signed in user
