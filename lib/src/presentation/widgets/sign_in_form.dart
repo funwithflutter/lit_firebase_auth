@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import '../../application/auth/sign_in_handler/sign_in_handler_state.dart';
 
 class SignInForm extends StatelessWidget {
-  const SignInForm({Key key, @required this.formChild})
-      : assert(formChild != null),
+  const SignInForm({Key key, @required this.child})
+      : assert(child != null),
         super(key: key);
 
-  final Widget formChild;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class SignInForm extends StatelessWidget {
     );
     return Form(
       autovalidate: showErrorMessages,
-      child: formChild,
+      child: child,
     );
   }
 }

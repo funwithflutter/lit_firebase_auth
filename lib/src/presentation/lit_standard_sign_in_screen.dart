@@ -32,7 +32,7 @@ class StandardSignInWidget extends StatelessWidget {
             const SizedBox(height: 16),
             if (authProviders.emailAndPassword)
               SignInForm(
-                formChild: Column(
+                child: Column(
                   children: [
                     EmailTextFormField(
                       decoration: config?.emailTextFormField,

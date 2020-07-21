@@ -97,7 +97,7 @@ class CustomSignInWidget extends StatelessWidget {
         // You need to wrap the custom sign-in widgets with a [SignInForm].
         // This is used to validate the email and password
         SignInForm(
-          formChild: Column(
+          child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
