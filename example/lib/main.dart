@@ -93,7 +93,8 @@ class CustomSignInWidget extends StatelessWidget {
     return Column(
       children: [
         Text('Welcome', style: Theme.of(context).textTheme.headline4),
-        // You need to wrap the custom sign-in widgets with a SignIn form.
+
+        // You need to wrap the custom sign-in widgets with a [SignInForm].
         // This is used to validate the email and password
         SignInForm(
           formChild: Column(
@@ -133,30 +134,6 @@ class CustomSignInWidget extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Signed In'),
-        actions: [
-          FlatButton(
-            onPressed: () {
-              context.signOut();
-            },
-            child: Text('Sign out'),
-          ),
-        ],
-      ),
-      body: Center(
-        child: Text('You can do what you want here'),
-      ),
     );
   }
 }
