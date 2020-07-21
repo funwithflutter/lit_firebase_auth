@@ -4,7 +4,7 @@
 
 <b>⚠️ Attention: This package is at an early stage. A lot of features are missing. Eventually this package will be "lit", but for now, use at your own risk.</b>
 
-Pre-lit Firebase authentication. It provides a set of convenient utilities and widgets to easily add Firebase auth to a Flutter app.
+Pre-lit Firebase authentication. It provides a set of convenient utilities and widgets to easily add Firebase authentication to a Flutter app.
 
 
 ## Features
@@ -27,8 +27,8 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
 ## Getting started
 
 See the [example](example/) project to get up and running fast.
-
-## Platform Configuration
+<details>
+<summary><h2>Platform Configuration</h2></summary>
 
 ### Android integration
 
@@ -96,6 +96,7 @@ Below is an example of a Flutter Web `index.html` with Firebase Auth enabled:
   <!-- CONTINUE TO INITIALIZE FLUTTER WEB -->
   ...
 ```
+</details>
 
 ## Usage
 The two most important widgets are 
@@ -130,16 +131,16 @@ class MyApp extends StatelessWidget {
 
 ### Standard Sign-in widget
 You can either create your own custom Sign-in widget, or make use of the standard built in one.
-To use the standard widget:
-
+To use the standard sign-in form with no changes:
 
 ```dart
 LitAuth(
-  config: AuthConfig.standard(),
+  config: AuthConfig(),
 );
 ```
 
 This will use the default configuration and UI theming. See the section on decoration and theming for customization.
+
 **NOTE**: This widget needs to be below a `Scaffold` widget.
 
 ### Handle auth state changes
@@ -165,7 +166,6 @@ You can provide optional callbacks in `LitAuth` to handle success and failure wh
 
 ```dart
 LitAuth(
-  config: AuthConfig.standard(),
   onAuthFailure: (failure) {
     print('Auth failed.'); // show error message
   },
@@ -176,13 +176,12 @@ LitAuth(
 ```
 **Note**: these handlers will not be called if `LitAuth` is already disposed.
 
-For example, if you were to wrap this widget in `LitAuthState`, such as:
+For example, if you were to wrap this `LitAuth` in `LitAuthState`, such as:
 ```dart
 LitAuthState(
   authenticated: () =>
       Text('Authenticated'), // Login widget, or sign in button
   unauthenticated: () => LitAuth(
-    config: AuthConfig.standard(),
     onAuthFailure: (failure) {
       print('Auth failed.'); // show error message
     },
@@ -192,7 +191,7 @@ LitAuthState(
   ),
 );
 ```
-Then in this instance the `onAuthSuccess` handler may not be called. As the *`authenticated`* state will be triggered and `LitAuth` widget disposed. *Depending on the platform, behaviour may be different. For web it may take longer for `LitAuthState` to receive a new auth value and push changes. Thus resulting in `onAuthSuccess` being called.*
+Then in this instance the `onAuthSuccess` handler may not be called. As the `authenticated` state will be triggered and the `LitAuth` widget disposed.
 
 ### Sign out
 To sign out the current user, make use of the `signOut` extension method on `BuildContext`. For example:
@@ -221,8 +220,8 @@ For example, to override the standard email `InputDecoration` just provide a cus
 
 ```dart
 LitAuth(
-  config: AuthConfig.standard(
-  emailTextFormField: InputDecoration(labelText: 'My beautiful label'),
+  config: AuthConfig(
+    emailTextFormField: InputDecoration(labelText: 'My beautiful label'),
 )
  ```
 
@@ -230,8 +229,9 @@ LitAuth(
 
  ```dart
 LitAuth(
-  config: AuthConfig.standard(
+  config: AuthConfig(
     googleButton: ButtonConfig(
+      type: ButtonType.raised(),
       themeData: ButtonThemeData(
         buttonColor: Colors.red,
       ),
@@ -243,24 +243,76 @@ LitAuth(
  ```
 
 ### Dialogs
-For now dialogs are rendered using the `flushbar` package to show dialog messages.
+For now dialog nessage are rendered using the `flushbar` package.
 
 **todo**: provide additional theming/overrides for dialogs.
 
 ### Additional Customization
 
-For further customization you can directly make use of the Lit Firebase components to build a completely custom Sign-in widget. Legos fitting together. 
+For further customization you can directly make use of the Lit Firebase components to build a completely custom sign-in widget.
 
 Instead of using the standard `AuthConfig`, set it to custom and provide your custom Sign-in widget:
 ```dart
-LitAuth(
-  config: AuthConfig.custom(
-    signIn: CustomSignInWidget(),
-  ),
+LitAuth.custom(
+  child: YourCustomSignInWidget(),
 );
 ```
 
-Tutorials and code samples will be added soon on how to create a custom Sign-in widget. For now, see the example project for more information.
+You can build any form you want, for example:
+
+```dart
+class YourCustomSignInWidget extends StatelessWidget {
+  const CustomSignInWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Welcome', style: Theme.of(context).textTheme.headline4),
+        // You need to wrap the custom sign-in widgets with a SignIn form.
+        // This is used to validate the email and password
+        SignInForm(
+          formChild: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'A custom form',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: EmailTextFormField(
+                  decoration: InputDecoration(labelText: 'My Email Label'),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PasswordTextFormField(
+                  decoration: InputDecoration(labelText: 'My Password Label'),
+                ),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  context.signInWithEmailAndPassword();
+                },
+                child: Text('Sign In'),
+              ),
+              FlatButton(
+                onPressed: () {
+                  context.signInAnonymously();
+                },
+                child: Text('Anony Sign In'),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+```
 
 ## Planned features
 

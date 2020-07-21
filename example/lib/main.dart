@@ -33,6 +33,9 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+// LitAuth.custom(
+//   child: CustomSignInWidget(),
+// );
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -90,6 +93,8 @@ class CustomSignInWidget extends StatelessWidget {
     return Column(
       children: [
         Text('Welcome', style: Theme.of(context).textTheme.headline4),
+        // You need to wrap the custom sign-in widgets with a SignIn form.
+        // This is used to validate the email and password
         SignInForm(
           formChild: Column(
             children: [
