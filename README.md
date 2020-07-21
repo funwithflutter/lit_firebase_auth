@@ -27,8 +27,12 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
 ## Getting started
 
 See the [example](example/) project to get up and running fast.
+
+Or take a look at a [live demo](https://funwithflutter.github.io/lit_firebase_example/).
+
+## Platform Configuration
 <details>
-<summary><h2>Platform Configuration</h2></summary>
+<summary>...</summary>
 
 ### Android integration
 
@@ -130,7 +134,7 @@ class MyApp extends StatelessWidget {
 ```
 
 ### Standard Sign-in widget
-You can either create your own custom Sign-in widget, or make use of the standard built in one.
+You can either create your own custom sign-in widget, or make use of the standard built in one.
 To use the standard sign-in form with no changes:
 
 ```dart
@@ -139,9 +143,9 @@ LitAuth(
 );
 ```
 
-This will use the default configuration and UI theming. See the section on decoration and theming for customization.
+This will use the default configuration and UI theming. See the section on [decoration and theming](#decoration-and-theming) for customization.
 
-**NOTE**: This widget needs to be below a `Scaffold` widget.
+**NOTE**: This widget needs to be a child of a `Scaffold` widget.
 
 ### Handle auth state changes
 To determine the current auth state, make use of `LitAuthState`:
@@ -213,7 +217,7 @@ context.getSignedInUser()
 ## Decoration and theming
 The UI can be as customizable as you need. But for simple usage it's fairly straight forward.
 
-It's easy to provide custom decoration/configuration for the sign-in elements. You can either customize the elements of the standard Sign-in widget, or create an entirely custom Sign-in widget from scratch. Up to you.
+It's easy to provide custom decoration/configuration for the sign-in elements. You can either customize the elements of the standard sign-in widget, or create an entirely custom sign-in widget from scratch. Up to you.
 
 ### Standard Sign-in widget customization
 For example, to override the standard email `InputDecoration` just provide a custom `InputDecoration` for the `emailTextFormField`:
@@ -251,7 +255,7 @@ For now dialog nessage are rendered using the `flushbar` package.
 
 For further customization you can directly make use of the Lit Firebase components to build a completely custom sign-in widget.
 
-Instead of using the standard `AuthConfig`, set it to custom and provide your custom Sign-in widget:
+Instead of using the standard `AuthConfig`, set it to custom and provide your custom sign-in widget:
 ```dart
 LitAuth.custom(
   child: YourCustomSignInWidget(),
