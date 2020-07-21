@@ -17,14 +17,15 @@ class _ButtonConfigOverride extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final button = buttonConfig.type.map(
-        raised: (_) => RaisedButton(
-              onPressed: onPressed,
-              child: buttonConfig.child,
-            ),
-        flat: (_) => FlatButton(
-              onPressed: onPressed,
-              child: buttonConfig.child,
-            ));
+      raised: (_) => RaisedButton(
+        onPressed: onPressed,
+        child: buttonConfig.child,
+      ),
+      flat: (_) => FlatButton(
+        onPressed: onPressed,
+        child: buttonConfig.child,
+      ),
+    );
 
     return ButtonTheme.fromButtonThemeData(
       data: buttonConfig.themeData,
@@ -150,19 +151,20 @@ class EmailAndPasswordSignInButton extends StatelessWidget {
     return _ButtonConfigOverride(
       buttonConfig: ButtonConfig(
         type: config?.type ?? const ButtonType.raised(),
-        themeData: config?.type ??
+        themeData: config?.themeData ??
             Theme.of(context).buttonTheme.copyWith(
                   buttonColor: accentColor,
                   height: _buttonHeight,
                 ),
-        child: Text(
-          'SIGN IN',
-          style: TextStyle(
-            color: accentColor.computeLuminance() > 0.5
-                ? Colors.black
-                : Colors.white,
-          ),
-        ),
+        child: config?.child ??
+            Text(
+              'SIGN IN',
+              style: TextStyle(
+                color: accentColor.computeLuminance() > 0.5
+                    ? Colors.black
+                    : Colors.white,
+              ),
+            ),
       ),
       onPressed: () {
         context.signInWithEmailAndPassword();
@@ -193,11 +195,12 @@ class EmailAndPasswordRegisterButton extends StatelessWidget {
     return _ButtonConfigOverride(
       buttonConfig: ButtonConfig(
         type: config?.type ?? const ButtonType.flat(),
-        themeData: const ButtonThemeData(
-          buttonColor: Colors.transparent,
-          height: _buttonHeight,
-        ),
-        child: const Text('REGISTER'),
+        themeData: config?.themeData ??
+            const ButtonThemeData(
+              buttonColor: Colors.transparent,
+              height: _buttonHeight,
+            ),
+        child: config?.child ?? const Text('REGISTER'),
       ),
       onPressed: () {
         context.registerWithEmailAndPassword();
