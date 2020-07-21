@@ -1,3 +1,8 @@
+# 0.1.0
+
+- BREAKING: logic related to `LitAuth` and `AuthConfig` to manage sign-in customization.
+- docs: various documentation updates
+
 # 0.0.4
 
 - docs: update logo path
