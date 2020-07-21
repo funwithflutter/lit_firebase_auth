@@ -138,9 +138,7 @@ You can either create your own custom sign-in widget, or make use of the standar
 To use the standard sign-in form with no changes:
 
 ```dart
-LitAuth(
-  config: AuthConfig(),
-);
+LitAuth();
 ```
 
 This will use the default configuration and UI theming.
@@ -173,7 +171,7 @@ class Home extends StatelessWidget {
 You can provide optional callbacks in `LitAuth` to handle success and failure when performing sign-in.
 
 ```dart
-LitAuth(
+return LitAuth(
   onAuthFailure: (failure) {
     print('Auth failed.'); // show error message
   },
@@ -186,7 +184,7 @@ LitAuth(
 
 For example, if you were to wrap this `LitAuth` in `LitAuthState`, such as:
 ```dart
-LitAuthState(
+return LitAuthState(
   authenticated: () =>
       Text('Authenticated'), // Login widget, or sign in button
   unauthenticated: () => LitAuth(
@@ -227,16 +225,17 @@ It's easy to provide custom decoration/configuration for the sign-in elements. Y
 For example, to override the standard email `InputDecoration` just provide a custom `InputDecoration` for the `emailTextFormField`:
 
 ```dart
-LitAuth(
+return LitAuth(
   config: AuthConfig(
     emailTextFormField: InputDecoration(labelText: 'My beautiful label'),
-)
+  )
+);
  ```
 
  Or, to customize a button:
 
  ```dart
-LitAuth(
+return LitAuth(
   config: AuthConfig(
     googleButton: ButtonConfig(
       type: ButtonType.raised(),
@@ -251,7 +250,7 @@ LitAuth(
  ```
 
 ### Dialogs
-For now dialog message are rendered using the `flushbar` package.
+Dialog message are rendered using the `flushbar` package. Further customization will be available in a later version.
 
 **todo**: provide additional theming/overrides for dialogs.
 
@@ -261,7 +260,7 @@ For further customization you can directly make use of the Lit Firebase componen
 
 Instead of using the standard `AuthConfig`, set it to custom and provide your custom sign-in widget:
 ```dart
-LitAuth.custom(
+return LitAuth.custom(
   child: YourCustomSignInWidget(),
 );
 ```
