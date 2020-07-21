@@ -210,11 +210,25 @@ RaisedButton(
 );
 ```
 
-### Current User
+### Current user
 Get the current signed-in user:
 ```dart
 context.getSignedInUser()
 ```
+### Determine if submitting is active
+ Wether Lit Firebase is currently attempting to authenticate. Can be used to show a loading indicator.
+
+ Should only be used in the build method. For example:
+
+ ```dart
+ Widget build(BuildContext context) {
+   final isSubmitting = context.isSubmitting();
+   return Visibility(
+     visible: isSubmitting,
+     child: CircularProgressIndicator(),
+   );
+ }
+ ```
 
 ## Decoration and theming
 The UI can be as customizable as you need. But for simple usage it's fairly straight forward.
@@ -276,7 +290,7 @@ class YourCustomSignInWidget extends StatelessWidget {
     return Column(
       children: [
         Text('Welcome', style: Theme.of(context).textTheme.headline4),
-        // You need to wrap the custom sign-in widgets with a SignIn form.
+        // You need to wrap the custom sign-in widgets with a SignInForm.
         // This is used to validate the email and password
         SignInForm(
           formChild: Column(
