@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
 import 'auth.dart';
@@ -18,6 +19,7 @@ abstract class AuthFacade {
     @required Password password,
   });
   Future<Auth> signInWithGoogle();
+  Future<Auth> signInWithCredential(AuthCredential credential);
   Future<Auth> signInAnonymously();
   Future<void> signOut();
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -38,6 +39,14 @@ extension AuthContext on BuildContext {
   Future<void> signInWithGoogle() async {
     Provider.of<SignInHandlerStateNotifier>(this, listen: false)
         .signInWithGoogle();
+  }
+
+  /// Sign in with Credentials
+  ///
+  /// Should only be used if your implementing your own third party sign-in
+  Future<void> signInWithCredential(AuthCredential credential) async {
+    Provider.of<SignInHandlerStateNotifier>(this, listen: false)
+        .signInWithCredential(credential);
   }
 
   /// Perform Firebase anonymous sign-in

@@ -251,6 +251,16 @@ class FirebaseAuthFacade implements AuthFacade {
   }
 
   @override
+  Future<Auth> signInWithCredential(AuthCredential credential) async {
+    try {
+      await _firebaseAuth.signInWithCredential(credential);
+      return const Auth.success();
+    } on PlatformException catch (_) {
+      return const Auth.failure(AuthFailure.serverError());
+    }
+  }
+
+  @override
   Future<void> signOut() async {
     return Future.wait([
       _signOutGoogle(),

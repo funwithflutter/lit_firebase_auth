@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:state_notifier/state_notifier.dart';
 
@@ -55,7 +56,24 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
       isSubmitting: true,
       authFailureOrSuccessOption: none(),
     );
+
     final auth = await _authFacade.signInWithGoogle();
+
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(auth),
+      );
+    }
+  }
+
+  Future<void> signInWithCredential(AuthCredential credential) async {
+    state = state.copyWith(
+      isSubmitting: true,
+      authFailureOrSuccessOption: none(),
+    );
+
+    final auth = await _authFacade.signInWithCredential(credential);
 
     if (mounted) {
       state = state.copyWith(
