@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart' as func;
-import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +11,7 @@ import '../domain/auth/auth_failure.dart';
 import '../domain/auth/auth_providers.dart';
 import '../domain/auth/user.dart';
 import 'core/auth_config.dart';
+import 'core/notifications.dart';
 import 'lit_standard_sign_in_screen.dart';
 
 /// A widget to switch between child widgets, depending on the
@@ -134,11 +134,19 @@ class LitAuth extends StatelessWidget {
   /// Callback to be called if authentication fails
   final AuthFailureCallback onAuthFailure;
 
+  /// Configuration for custom error notifications
+  final NotificationConfig errorNotification;
+
+  /// Configuration for custom success notifications
+  final NotificationConfig successNotification;
+
   const LitAuth({
     Key key,
     this.config,
     this.onAuthSuccess,
     this.onAuthFailure,
+    this.errorNotification = const NotificationConfig(),
+    this.successNotification = const NotificationConfig(),
   }) : super(key: key);
 
   /// A factory constructor to create a custom [LitAuth] widget. Instead of using
@@ -173,6 +181,8 @@ class LitAuth extends StatelessWidget {
     return _SignInBuilder(
       onAuthFailure: onAuthFailure,
       onAuthSuccess: onAuthSuccess,
+      errorNotification: errorNotification,
+      successNotification: successNotification,
       child: StandardSignInWidget(
         config: config,
       ),
@@ -186,12 +196,16 @@ class _SignInBuilder extends StatelessWidget {
     @required this.onAuthFailure,
     @required this.onAuthSuccess,
     this.builder,
+    @required this.errorNotification,
+    @required this.successNotification,
     this.child,
   }) : super(key: key);
 
   final VoidCallback onAuthSuccess;
   final AuthFailureCallback onAuthFailure;
   final TransitionBuilder builder;
+  final NotificationConfig errorNotification;
+  final NotificationConfig successNotification;
   final Widget child;
 
   void _handleAuthFailureOrSuccess(
@@ -205,6 +219,15 @@ class _SignInBuilder extends StatelessWidget {
               WidgetsBinding.instance
                   .addPostFrameCallback((_) => onAuthSuccess());
             }
+            WidgetsBinding.instance.addPostFrameCallback(
+              (_) {
+                NotificationHelper.success(
+                        message: 'Signed in',
+                        config: successNotification,
+                        context: context)
+                    .show(context);
+              },
+            );
           },
           failure: (f) {
             if (onAuthFailure != null) {
@@ -212,7 +235,9 @@ class _SignInBuilder extends StatelessWidget {
                   .addPostFrameCallback((_) => onAuthFailure(f.failure));
             }
             WidgetsBinding.instance.addPostFrameCallback(
-              (_) => FlushbarHelper.createError(
+              (_) => NotificationHelper.error(
+                context: context,
+                config: errorNotification,
                 message: f.failure.map(
                   cancelledByUser: (_) => 'Cancelled',
                   serverError: (_) => 'Server error',
@@ -260,12 +285,16 @@ class _LitAuthCustom extends LitAuth {
     Key key,
     VoidCallback onAuthSuccess,
     AuthFailureCallback onAuthFailure,
+    NotificationConfig errorNotification,
+    NotificationConfig successNotification,
     this.builder,
     @required this.child,
   }) : super(
           key: key,
           onAuthSuccess: onAuthSuccess,
           onAuthFailure: onAuthFailure,
+          errorNotification: errorNotification,
+          successNotification: successNotification,
         );
 
   final Widget child;
@@ -277,6 +306,8 @@ class _LitAuthCustom extends LitAuth {
       onAuthSuccess: onAuthSuccess,
       onAuthFailure: onAuthFailure,
       builder: builder,
+      errorNotification: errorNotification,
+      successNotification: successNotification,
       child: child,
     );
   }

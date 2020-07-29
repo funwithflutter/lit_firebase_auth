@@ -14,7 +14,7 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
   - Windows, macOS and Linux to be added in the future
 - **Multiple authentication providers**
   - Package supported: Google and Apple
-  - Please see Authentication Providers[Authentication Providers](#authentication-providers) for other sign-in providers
+  - Please see [Authentication Providers](#authentication-providers) for other sign-in providers
 - **Services and state managed for you**
   - Easily interact with Firebase from anywhere in your app
   - Monitor the auth state and react to changes
@@ -288,10 +288,19 @@ return LitAuth(
 
  ```
 
-### Dialogs
-Dialog message are rendered using the `flushbar` package. Further customization will be available in a later version.
+### Notifications
+Notifications are rendered using the [flushbar](https://pub.dev/packages/flushbar) package.
 
-**todo**: provide additional theming/overrides for dialogs.
+You can customize the error and success notifications:
+
+```dart
+LitAuth(
+  errorNotification: NotificationConfig(backgroundColor: Colors.pink),
+  successNotification: NotificationConfig(backgroundColor: Colors.pink),
+);
+```
+
+There are many attributes that can be altered to create the desired notification. Please see the `NotificationConfig` class for additional information.
 
 ### Additional Customization
 

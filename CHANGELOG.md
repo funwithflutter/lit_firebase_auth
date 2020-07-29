@@ -1,3 +1,7 @@
+# 0.1.3
+
+- feat: add functionality to customize notification messages
+
 # 0.1.2
 
 - feat: add sign in with apple support
