@@ -1,3 +1,9 @@
+# 0.1.2
+
+- feat: add sign in with apple support
+- feat: add sign in with credential support for other identity providers
+- docs: documentation updates
+
 # 0.1.1
 
 - feat: add `isSubmitting()` extension to `BuildContext`. To determine if an authentication request is currently active

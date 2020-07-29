@@ -67,6 +67,27 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     }
   }
 
+  Future<void> signInWithApple() async {
+    if (_authProviders.apple == null) {
+      throw AuthProviderNotEnabled('Apple');
+    }
+    state = state.copyWith(
+      isSubmitting: true,
+      authFailureOrSuccessOption: none(),
+    );
+
+    final auth = await _authFacade.signInWithApple(
+      webAuthenticationOptions: _authProviders.apple.webAuthenticationOptions,
+    );
+
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(auth),
+      );
+    }
+  }
+
   Future<void> signInWithCredential(AuthCredential credential) async {
     state = state.copyWith(
       isSubmitting: true,

@@ -11,10 +11,10 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
 
 - **Multiple platform support**
   - Works on mobile and web. No changes needed
-  - Windows, macOS and Linux to be added soon
+  - Windows, macOS and Linux to be added in the future
 - **Multiple authentication providers**
-  - Enable third party providers (Google)
-  - More to be added soon
+  - Package supported: Google and Apple
+  - Please see Authentication Providers[Authentication Providers](#authentication-providers) for other sign-in providers
 - **Services and state managed for you**
   - Easily interact with Firebase from anywhere in your app
   - Monitor the auth state and react to changes
@@ -123,6 +123,15 @@ class MyApp extends StatelessWidget {
         emailAndPassword: true, // enabled by default
         google: true,
         anonymous: true,
+        apple: AppleAuthProvider(
+          // required for web-based authentication flows (Android)
+          webAuthenticationOptions: WebAuthenticationOptions(
+            clientId: 'com.aboutyou.dart_packages.sign_in_with_apple.example', // example clientId
+            redirectUri: Uri.parse(
+              'https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple', // example redirectUri
+            ),
+          ),
+        ),
       ),
       child: MaterialApp(
         title: 'Material App',
@@ -227,6 +236,22 @@ context.getSignedInUser()
      visible: isSubmitting,
      child: CircularProgressIndicator(),
    );
+ }
+ ```
+
+## Authentication Providers
+For the time being, Lit Firebase auth will only directly provide Google and Apple sign in.
+
+**NOTE:** Apple requires Apple sign in to be a sign-in option if any other third-party sign-in option is used.
+
+Other identity providers (Facebook, Github, etc.) will need to be implemented seperately. After successful third party sign in, you can sign in to Firebase by making use of the `signInWithCredential` method available on `BuildContext`.
+
+For example:
+
+```dart
+ Widget build(BuildContext context) {
+   AuthCredential credential = // get credential for identity provider (Facebook, Github, etc.)
+   context.signInWithCredential(credential);
  }
  ```
 

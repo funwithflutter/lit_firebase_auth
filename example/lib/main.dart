@@ -12,6 +12,15 @@ class MyApp extends StatelessWidget {
         emailAndPassword: true, // enabled by default
         google: true,
         anonymous: true,
+        // apple: AppleAuthProvider(
+        //   // required for web-based authentication flows
+        //   webAuthenticationOptions: WebAuthenticationOptions(
+        //     clientId: 'com.aboutyou.dart_packages.sign_in_with_apple.example',
+        //     redirectUri: Uri.parse(
+        //       'https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple',
+        //     ),
+        //   ),
+        // ),
       ),
       child: MaterialApp(
         title: 'Material App',
@@ -33,9 +42,6 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-// LitAuth.custom(
-//   child: CustomSignInWidget(),
-// );
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -129,6 +135,11 @@ class CustomSignInWidget extends StatelessWidget {
                   context.signInAnonymously();
                 },
                 child: Text('Anony Sign In'),
+              ),
+              SignInWithAppleButton(
+                onPressed: () {
+                  context.signInWithApple();
+                },
               ),
             ],
           ),

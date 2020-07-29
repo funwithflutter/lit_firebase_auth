@@ -41,6 +41,14 @@ extension AuthContext on BuildContext {
         .signInWithGoogle();
   }
 
+  /// Perform sign-in with Apple.
+  ///
+  /// Should only be used if you're creating your own custom sign-in form
+  Future<void> signInWithApple() async {
+    Provider.of<SignInHandlerStateNotifier>(this, listen: false)
+        .signInWithApple();
+  }
+
   /// Sign in with Credentials
   ///
   /// Should only be used if your implementing your own third party sign-in

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../core/auth_config.dart';
 import '../core/extensions.dart';
 
@@ -77,6 +78,57 @@ class SignInWithGoogleButton extends StatelessWidget {
         onPressed: () {
           context.signInWithGoogle();
         },
+      );
+    }
+  }
+}
+
+/// Button to sign-in with Apple on Firebase
+///
+/// Make sure to enable Apple sign-in in your Firebase Authentication
+/// console
+///
+/// Create your own sign-in button by calling
+/// `context.signInWithApple();` in the [onPressed] handler
+class SignInWithAppleLitButton extends StatelessWidget {
+  const SignInWithAppleLitButton({
+    Key key,
+    this.config,
+  }) : super(key: key);
+
+  final ButtonConfig config;
+
+  @override
+  Widget build(BuildContext context) {
+    if (config != null) {
+      return _ButtonConfigOverride(
+        buttonConfig: ButtonConfig(
+          type: config?.type ?? const ButtonType.raised(),
+          themeData: config?.themeData ??
+              const ButtonThemeData(
+                buttonColor: Colors.lightBlue,
+              ),
+          child: config?.child ??
+              const Text(
+                'SIGN IN WITH APPLE',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        ),
+        onPressed: () {
+          context.signInWithGoogle();
+        },
+      );
+    } else {
+      return SizedBox(
+        width: 250,
+        child: SignInWithAppleButton(
+          onPressed: () {
+            context.signInWithApple();
+          },
+        ),
       );
     }
   }

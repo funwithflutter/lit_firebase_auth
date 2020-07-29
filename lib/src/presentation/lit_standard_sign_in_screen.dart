@@ -68,6 +68,13 @@ class StandardSignInWidget extends StatelessWidget {
                   config: config?.googleButton,
                 ),
               ),
+            if (authProviders.apple != null)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInWithAppleLitButton(
+                  config: config?.googleButton,
+                ),
+              ),
             const LoadingWidget(),
           ],
         ),

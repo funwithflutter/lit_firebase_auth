@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../domain/auth/auth.dart';
 import '../domain/auth/auth_failure.dart';
@@ -236,6 +237,35 @@ class FirebaseAuthFacade implements AuthFacade {
       await _firebaseAuth.signInWithCredential(authCredential);
       return const Auth.success();
     } on PlatformException catch (_) {
+      return const Auth.failure(AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Auth> signInWithApple({
+    WebAuthenticationOptions webAuthenticationOptions,
+  }) async {
+    try {
+      final appleUser = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        webAuthenticationOptions: webAuthenticationOptions,
+      );
+      const oAuthProvider = OAuthProvider(providerId: 'apple.com');
+      final authCredential = oAuthProvider.getCredential(
+        idToken: appleUser.identityToken,
+        accessToken: appleUser.authorizationCode,
+      );
+      await _firebaseAuth.signInWithCredential(authCredential);
+      return const Auth.success();
+    } on SignInWithAppleAuthorizationException catch (e) {
+      if (e.code == AuthorizationErrorCode.canceled) {
+        return const Auth.failure(AuthFailure.cancelledByUser());
+      }
+      return const Auth.failure(AuthFailure.serverError());
+    } catch (e) {
       return const Auth.failure(AuthFailure.serverError());
     }
   }

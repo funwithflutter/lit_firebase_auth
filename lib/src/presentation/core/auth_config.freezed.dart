@@ -18,6 +18,7 @@ class _$AuthConfigTearOff {
       ButtonConfig passwordButton,
       ButtonConfig anonymousButton,
       ButtonConfig googleButton,
+      ButtonConfig appleButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField}) {
     return _AuthConfig(
@@ -26,6 +27,7 @@ class _$AuthConfigTearOff {
       passwordButton: passwordButton,
       anonymousButton: anonymousButton,
       googleButton: googleButton,
+      appleButton: appleButton,
       emailTextFormField: emailTextFormField,
       passwordTextFormField: passwordTextFormField,
     );
@@ -41,6 +43,7 @@ mixin _$AuthConfig {
   ButtonConfig get passwordButton;
   ButtonConfig get anonymousButton;
   ButtonConfig get googleButton;
+  ButtonConfig get appleButton;
   InputDecoration get emailTextFormField;
   InputDecoration get passwordTextFormField;
 
@@ -57,6 +60,7 @@ abstract class $AuthConfigCopyWith<$Res> {
       ButtonConfig passwordButton,
       ButtonConfig anonymousButton,
       ButtonConfig googleButton,
+      ButtonConfig appleButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField});
 
@@ -64,6 +68,7 @@ abstract class $AuthConfigCopyWith<$Res> {
   $ButtonConfigCopyWith<$Res> get passwordButton;
   $ButtonConfigCopyWith<$Res> get anonymousButton;
   $ButtonConfigCopyWith<$Res> get googleButton;
+  $ButtonConfigCopyWith<$Res> get appleButton;
 }
 
 class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
@@ -80,6 +85,7 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
     Object passwordButton = freezed,
     Object anonymousButton = freezed,
     Object googleButton = freezed,
+    Object appleButton = freezed,
     Object emailTextFormField = freezed,
     Object passwordTextFormField = freezed,
   }) {
@@ -97,6 +103,9 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
       googleButton: googleButton == freezed
           ? _value.googleButton
           : googleButton as ButtonConfig,
+      appleButton: appleButton == freezed
+          ? _value.appleButton
+          : appleButton as ButtonConfig,
       emailTextFormField: emailTextFormField == freezed
           ? _value.emailTextFormField
           : emailTextFormField as InputDecoration,
@@ -145,6 +154,16 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
       return _then(_value.copyWith(googleButton: value));
     });
   }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get appleButton {
+    if (_value.appleButton == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.appleButton, (value) {
+      return _then(_value.copyWith(appleButton: value));
+    });
+  }
 }
 
 abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
@@ -158,6 +177,7 @@ abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
       ButtonConfig passwordButton,
       ButtonConfig anonymousButton,
       ButtonConfig googleButton,
+      ButtonConfig appleButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField});
 
@@ -169,6 +189,8 @@ abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
   $ButtonConfigCopyWith<$Res> get anonymousButton;
   @override
   $ButtonConfigCopyWith<$Res> get googleButton;
+  @override
+  $ButtonConfigCopyWith<$Res> get appleButton;
 }
 
 class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
@@ -187,6 +209,7 @@ class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
     Object passwordButton = freezed,
     Object anonymousButton = freezed,
     Object googleButton = freezed,
+    Object appleButton = freezed,
     Object emailTextFormField = freezed,
     Object passwordTextFormField = freezed,
   }) {
@@ -204,6 +227,9 @@ class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
       googleButton: googleButton == freezed
           ? _value.googleButton
           : googleButton as ButtonConfig,
+      appleButton: appleButton == freezed
+          ? _value.appleButton
+          : appleButton as ButtonConfig,
       emailTextFormField: emailTextFormField == freezed
           ? _value.emailTextFormField
           : emailTextFormField as InputDecoration,
@@ -221,6 +247,7 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
       this.passwordButton,
       this.anonymousButton,
       this.googleButton,
+      this.appleButton,
       this.emailTextFormField,
       this.passwordTextFormField});
 
@@ -235,13 +262,15 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
   @override
   final ButtonConfig googleButton;
   @override
+  final ButtonConfig appleButton;
+  @override
   final InputDecoration emailTextFormField;
   @override
   final InputDecoration passwordTextFormField;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthConfig(title: $title, emailButton: $emailButton, passwordButton: $passwordButton, anonymousButton: $anonymousButton, googleButton: $googleButton, emailTextFormField: $emailTextFormField, passwordTextFormField: $passwordTextFormField)';
+    return 'AuthConfig(title: $title, emailButton: $emailButton, passwordButton: $passwordButton, anonymousButton: $anonymousButton, googleButton: $googleButton, appleButton: $appleButton, emailTextFormField: $emailTextFormField, passwordTextFormField: $passwordTextFormField)';
   }
 
   @override
@@ -254,6 +283,7 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
       ..add(DiagnosticsProperty('passwordButton', passwordButton))
       ..add(DiagnosticsProperty('anonymousButton', anonymousButton))
       ..add(DiagnosticsProperty('googleButton', googleButton))
+      ..add(DiagnosticsProperty('appleButton', appleButton))
       ..add(DiagnosticsProperty('emailTextFormField', emailTextFormField))
       ..add(
           DiagnosticsProperty('passwordTextFormField', passwordTextFormField));
@@ -277,6 +307,9 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
             (identical(other.googleButton, googleButton) ||
                 const DeepCollectionEquality()
                     .equals(other.googleButton, googleButton)) &&
+            (identical(other.appleButton, appleButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.appleButton, appleButton)) &&
             (identical(other.emailTextFormField, emailTextFormField) ||
                 const DeepCollectionEquality()
                     .equals(other.emailTextFormField, emailTextFormField)) &&
@@ -293,6 +326,7 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
       const DeepCollectionEquality().hash(passwordButton) ^
       const DeepCollectionEquality().hash(anonymousButton) ^
       const DeepCollectionEquality().hash(googleButton) ^
+      const DeepCollectionEquality().hash(appleButton) ^
       const DeepCollectionEquality().hash(emailTextFormField) ^
       const DeepCollectionEquality().hash(passwordTextFormField);
 
@@ -308,6 +342,7 @@ abstract class _AuthConfig implements AuthConfig {
       ButtonConfig passwordButton,
       ButtonConfig anonymousButton,
       ButtonConfig googleButton,
+      ButtonConfig appleButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField}) = _$_AuthConfig;
 
@@ -321,6 +356,8 @@ abstract class _AuthConfig implements AuthConfig {
   ButtonConfig get anonymousButton;
   @override
   ButtonConfig get googleButton;
+  @override
+  ButtonConfig get appleButton;
   @override
   InputDecoration get emailTextFormField;
   @override
