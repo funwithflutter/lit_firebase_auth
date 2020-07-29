@@ -287,6 +287,8 @@ class FirebaseAuthFacade implements AuthFacade {
       return const Auth.success();
     } on PlatformException catch (_) {
       return const Auth.failure(AuthFailure.serverError());
+    } catch (_) {
+      return const Auth.failure(AuthFailure.serverError()); // todo improve
     }
   }
 
