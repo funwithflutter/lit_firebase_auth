@@ -59,6 +59,7 @@ class EmailTextFormField extends StatelessWidget {
     final emailAddress =
         context.select((SignInHandlerState state) => state.emailAddress);
     return TextFormField(
+      keyboardType: TextInputType.emailAddress,
       decoration: decoration ??
           InputDecoration(
             prefixIcon: const Icon(Icons.email),
