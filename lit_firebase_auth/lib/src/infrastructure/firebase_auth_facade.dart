@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:lit_firebase_auth_platform_interface/lit_firebase_auth_platform_interface.dart';
 import 'package:meta/meta.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -102,19 +103,21 @@ class FirebaseAuthFacade implements AuthFacade {
     @required EmailAddress emailAddress,
     @required Password password,
   }) async {
-    final emailAddressStr = emailAddress.getOrCrash();
-    final passwordStr = password.getOrCrash();
-    if (kIsWeb) {
-      return _webSignInWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
-      );
-    } else {
-      return _signInWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
-      );
-    }
+    LitFirebaseAuthPlatform.instance.signInWithEmailAndPassword('test');
+    return const Auth.success();
+    // final emailAddressStr = emailAddress.getOrCrash();
+    // final passwordStr = password.getOrCrash();
+    // if (kIsWeb) {
+    //   return _webSignInWithEmailAndPassword(
+    //     email: emailAddressStr,
+    //     password: passwordStr,
+    //   );
+    // } else {
+    //   return _signInWithEmailAndPassword(
+    //     email: emailAddressStr,
+    //     password: passwordStr,
+    //   );
+    // }
   }
 
   Future<Auth> _webSignInWithEmailAndPassword({

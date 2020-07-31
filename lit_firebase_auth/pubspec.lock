@@ -373,6 +373,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  lit_firebase_auth_platform_interface:
+    dependency: "direct main"
+    description:
+      path: "../lit_firebase_auth_platform_interface"
+      relative: true
+    source: path
+    version: "0.0.1"
+  lit_firebase_auth_web:
+    dependency: "direct main"
+    description:
+      path: "../lit_firebase_auth_web"
+      relative: true
+    source: path
+    version: "0.0.1"
   logging:
     dependency: transitive
     description:

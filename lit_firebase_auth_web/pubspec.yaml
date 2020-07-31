@@ -1,0 +1,33 @@
+name: lit_firebase_auth_web
+description: Web implementation for the Lit Firebase Auth package
+homepage: https://github.com/funwithflutter/lit_firebase_auth/lit_firebase_auth_web
+# NOTE: We strongly prefer non-breaking changes, even at the expense of a
+# less-clean API. See https://flutter.dev/go/platform-interface-breaking-changes
+version: 0.0.1
+
+flutter:
+  plugin:
+    platforms:
+      web:
+        pluginClass: LitFirebaseAuthWebPlugin
+        fileName: lit_firebase_auth_web.dart
+
+dependencies:
+  lit_firebase_auth_platform_interface:
+    path: ../lit_firebase_auth_platform_interface
+  flutter:
+    sdk: flutter
+  meta: ^1.0.5
+  flutter_web_plugins:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lit_firebase_auth:
+    path: ../lit_firebase_auth
+  lint: ^1.2.0
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+  flutter: ">=1.9.1+hotfix.4 <2.0.0"

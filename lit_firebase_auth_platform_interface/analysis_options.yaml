@@ -1,0 +1,32 @@
+include: package:lint/analysis_options.yaml
+
+analyzer:
+  exclude:
+  - "**/*.g.dart"
+  - "**/*.gr.dart"
+  - "**/*.iconfig.dart"
+  - "**/*.freezed.dart"
+  - "**/firebase_auth_facade.dart"
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+  errors:
+    # TODO: enable these two lint once firebase_auth throws 
+    # [PlatformException] or some other exception that can be caught 
+    argument_type_not_assignable: ignore
+    switch_expression_not_assignable: ignore
+
+    # treat missing required parameters as a warning (not a hint)
+    missing_required_param: error
+    # treat missing returns as a warning (not a hint)
+    missing_return: error
+    # allow having TODOs in the code
+    todo: info
+    # Ignore analyzer hints for updating pubspecs when using Future or
+    # Stream and not importing dart:async
+    # Please see https://github.com/flutter/flutter/pull/24528 for details.
+    sdk_version_async_exported_from_core: ignore
+
+linter:
+  rules:
+   - prefer_relative_imports
