@@ -10,11 +10,16 @@ dependencies:
     sdk: flutter
   meta: ^1.0.5
   plugin_platform_interface: ^1.0.1
+  firebase_auth: ^0.16.1
+  google_sign_in: ^4.5.1
+  sign_in_with_apple: ^2.5.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   lint: ^1.2.0
+  lit_firebase_auth:
+    path: ../lit_firebase_auth
 
 environment:
   sdk: ">=2.1.0 <3.0.0"

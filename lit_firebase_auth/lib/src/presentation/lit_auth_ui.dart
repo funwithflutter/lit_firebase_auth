@@ -293,8 +293,9 @@ class _LitAuthCustom extends LitAuth {
           key: key,
           onAuthSuccess: onAuthSuccess,
           onAuthFailure: onAuthFailure,
-          errorNotification: errorNotification,
-          successNotification: successNotification,
+          errorNotification: errorNotification ?? const NotificationConfig(),
+          successNotification:
+              successNotification ?? const NotificationConfig(),
         );
 
   final Widget child;

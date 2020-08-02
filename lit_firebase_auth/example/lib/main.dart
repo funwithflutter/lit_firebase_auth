@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,15 +14,16 @@ class MyApp extends StatelessWidget {
         emailAndPassword: true, // enabled by default
         google: true,
         anonymous: true,
-        // apple: AppleAuthProvider(
-        //   // required for web-based authentication flows
-        //   webAuthenticationOptions: WebAuthenticationOptions(
-        //     clientId: 'com.aboutyou.dart_packages.sign_in_with_apple.example',
-        //     redirectUri: Uri.parse(
-        //       'https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple',
-        //     ),
-        //   ),
-        // ),
+        github: true,
+        apple: AppleAuthProvider(
+          // required for web-based authentication flows
+          webAuthenticationOptions: AppleWebAuthenticationOptions(
+            clientId: 'com.aboutyou.dart_packages.sign_in_with_apple.example',
+            redirectUri: Uri.parse(
+              'https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple',
+            ),
+          ),
+        ),
       ),
       child: MaterialApp(
         title: 'Material App',
@@ -45,25 +48,29 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          child: LitAuthState(
+          child:
+              // LitAuth.custom(
+              //   child: CustomSignInWidget(),
+              // ),
+              LitAuthState(
             authenticated: YourAuthenticatedWidget(),
 
             /// Standard
-            unauthenticated: LitAuth(
-              config: AuthConfig(
-                title: Text(
-                  '🔥Welcome to Lit Firebase!🔥',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-            ),
+            // unauthenticated: LitAuth(
+            //   config: AuthConfig(
+            //     title: Text(
+            //       '🔥Welcome to Lit Firebase!🔥',
+            //       textAlign: TextAlign.center,
+            //       style: Theme.of(context).textTheme.headline4,
+            //     ),
+            //   ),
+            // ),
 
             // USE THIS FOR A CUSTOM SIGN IN WIDGET
             /// Custom
-            // unauthenticated: LitAuth.custom(
-            //   child: CustomSignInWidget(),
-            // ),
+            unauthenticated: LitAuth.custom(
+              child: CustomSignInWidget(),
+            ),
           ),
         ),
       ),
@@ -136,9 +143,24 @@ class CustomSignInWidget extends StatelessWidget {
                 },
                 child: Text('Anony Sign In'),
               ),
-              SignInWithAppleButton(
+              RaisedButton(
                 onPressed: () {
                   context.signInWithApple();
+                },
+                child: Text('Sign in with apple'),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  context.signInWithGithub();
+                },
+                child: Text('Github'),
+              ),
+              RaisedButton(
+                onPressed: () {
+                  // if (!kIsWeb) {
+                  // loginWithFacebook(context);
+                  context.signInWithFacebook();
+                  // }
                 },
               ),
             ],

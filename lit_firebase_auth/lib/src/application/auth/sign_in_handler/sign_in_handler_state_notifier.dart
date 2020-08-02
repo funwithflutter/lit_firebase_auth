@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:lit_firebase_auth/src/presentation/core/auth_provider_result.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 import '../../../../lit_firebase_auth.dart';
@@ -52,67 +53,236 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     if (!_authProviders.google) {
       throw AuthProviderNotEnabled('Google');
     }
-    state = state.copyWith(
-      isSubmitting: true,
-      authFailureOrSuccessOption: none(),
+
+    _performActionOnAuthFacadeWithSignInProviders(
+      () => _authFacade.signInWithGoogle(),
     );
+    // state = state.copyWith(
+    //   isSubmitting: true,
+    //   authFailureOrSuccessOption: none(),
+    // );
 
-    final auth = await _authFacade.signInWithGoogle();
+    // final auth = await _authFacade.signInWithGoogle();
 
-    if (mounted) {
-      state = state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(auth),
-      );
-    }
+    // if (mounted) {
+    //   state = state.copyWith(
+    //     isSubmitting: false,
+    //     authFailureOrSuccessOption: some(auth),
+    //   );
+    // }
   }
 
   Future<void> signInWithApple() async {
     if (_authProviders.apple == null) {
       throw AuthProviderNotEnabled('Apple');
     }
-    state = state.copyWith(
-      isSubmitting: true,
-      authFailureOrSuccessOption: none(),
-    );
 
-    final auth = await _authFacade.signInWithApple(
-      webAuthenticationOptions: _authProviders.apple.webAuthenticationOptions,
+    await _performActionOnAuthFacadeWithSignInProviders(
+      () => _authFacade.signInWithApple(
+        webAuthenticationOptions: _authProviders.apple.webAuthenticationOptions,
+      ),
     );
+    // state = state.copyWith(
+    //   isSubmitting: true,
+    //   authFailureOrSuccessOption: none(),
+    // );
 
-    if (mounted) {
-      state = state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(auth),
+    // final auth = await _authFacade.signInWithApple(
+    //   webAuthenticationOptions: _authProviders.apple.webAuthenticationOptions,
+    // );
+
+    // if (mounted) {
+    //   state = state.copyWith(
+    //     isSubmitting: false,
+    //     authFailureOrSuccessOption: some(auth),
+    //   );
+    // }
+  }
+
+  Future<void> signInWithGithub([AuthProviderResult result]) async {
+    // if (!_authProviders.github) {
+    //   throw AuthProviderNotEnabled('Github');
+    // }
+
+    if (result != null) {
+      result.map(
+        success: (s) async {
+          print('find me brosepth');
+          print(s.token);
+          final githubAuthCred =
+              GithubAuthProvider.getCredential(token: s.token);
+          await _performActionOnAuthFacadeWithSignInProviders(
+            () => _authFacade.signInWithCredential(githubAuthCred),
+          );
+        },
+        failure: (_) {
+          _setFailureState();
+        },
+        cancelled: (_) {
+          _setCancelledState();
+        },
+      );
+    } else {
+      await _performActionOnAuthFacadeWithSignInProviders(
+        () => _authFacade.signInWithGithub(),
+      );
+    }
+
+    // await _performActionOnAuthFacadeWithSignInProviders(
+    //   () => _authFacade.signInWithGithub(),
+    // );
+    // state = state.copyWith(
+    //   isSubmitting: true,
+    //   authFailureOrSuccessOption: none(),
+    // );
+
+    // final auth = await _authFacade.signInWithGithub();
+
+    // if (mounted) {
+    //   state = state.copyWith(
+    //     isSubmitting: false,
+    //     authFailureOrSuccessOption: some(auth),
+    //   );
+    // }
+
+    print(result);
+
+    // if (accessToken != null) {
+    //   try {
+    //     final githubAuthCred =
+    //         GithubAuthProvider.getCredential(token: accessToken);
+    //     await _performActionOnAuthFacadeWithSignInProviders(
+    //       () => _authFacade.signInWithCredential(githubAuthCred),
+    //     );
+    //   } catch (e) {
+    //     print(e);
+    //     if (mounted) {
+    //       state = state.copyWith(
+    //         isSubmitting: false,
+    //         authFailureOrSuccessOption:
+    //             some(const Auth.failure(AuthFailure.serverError())),
+    //       );
+    //     }
+    //   }
+    // }
+    // if (credential != null) {
+    //   await _performActionOnAuthFacadeWithSignInProviders(
+    //     () => _authFacade.signInWithCredential(credential),
+    //   );
+    // }
+    // else {
+    //   await _performActionOnAuthFacadeWithSignInProviders(
+    //     () => _authFacade.signInWithGithub(),
+    //   );
+    // }
+  }
+
+  Future<void> signInWithFacebook([String accessToken]) async {
+    // if (!_authProviders.github) {
+    //   throw AuthProviderNotEnabled('Github');
+    // }
+
+    if (accessToken != null) {
+      try {
+        final facebookAuthCred =
+            FacebookAuthProvider.getCredential(accessToken: accessToken);
+        await _performActionOnAuthFacadeWithSignInProviders(
+          () => _authFacade.signInWithCredential(facebookAuthCred),
+        );
+      } catch (e) {
+        print(e);
+        if (mounted) {
+          state = state.copyWith(
+            isSubmitting: false,
+            authFailureOrSuccessOption:
+                some(const Auth.failure(AuthFailure.serverError())),
+          );
+        }
+      }
+    }
+    // if (credential != null) {
+    //   await _performActionOnAuthFacadeWithSignInProviders(
+    //     () => _authFacade.signInWithCredential(credential),
+    //   );
+    // }
+    else {
+      await _performActionOnAuthFacadeWithSignInProviders(
+        () => _authFacade.signInWithFacebook(),
       );
     }
   }
 
   Future<void> signInWithCredential(AuthCredential credential) async {
-    state = state.copyWith(
-      isSubmitting: true,
-      authFailureOrSuccessOption: none(),
+    await _performActionOnAuthFacadeWithSignInProviders(
+      () => _authFacade.signInWithCredential(credential),
     );
+    // state = state.copyWith(
+    //   isSubmitting: true,
+    //   authFailureOrSuccessOption: none(),
+    // );
 
-    final auth = await _authFacade.signInWithCredential(credential);
+    // final auth = await _authFacade.signInWithCredential(credential);
 
-    if (mounted) {
-      state = state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(auth),
-      );
-    }
+    // if (mounted) {
+    //   state = state.copyWith(
+    //     isSubmitting: false,
+    //     authFailureOrSuccessOption: some(auth),
+    //   );
+    // }
   }
 
   Future<void> signInAnonymously() async {
     if (!_authProviders.anonymous) {
       throw AuthProviderNotEnabled('Anonymous');
     }
+
+    await _performActionOnAuthFacadeWithSignInProviders(
+      () => _authFacade.signInAnonymously(),
+    );
+    // state = state.copyWith(
+    //   isSubmitting: true,
+    //   authFailureOrSuccessOption: none(),
+    // );
+    // final auth = await _authFacade.signInAnonymously();
+
+    // if (mounted) {
+    //   state = state.copyWith(
+    //     isSubmitting: false,
+    //     authFailureOrSuccessOption: some(auth),
+    //   );
+    // }
+  }
+
+  void _setCancelledState() {
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(
+          const Auth.failure(AuthFailure.cancelledByUser()),
+        ),
+      );
+    }
+  }
+
+  void _setFailureState() {
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
+        authFailureOrSuccessOption: some(
+          const Auth.failure(AuthFailure.serverError()),
+        ),
+      );
+    }
+  }
+
+  Future<void> _performActionOnAuthFacadeWithSignInProviders(
+    Future<Auth> Function() signInProvider,
+  ) async {
     state = state.copyWith(
       isSubmitting: true,
       authFailureOrSuccessOption: none(),
     );
-    final auth = await _authFacade.signInAnonymously();
+    final auth = await signInProvider();
 
     if (mounted) {
       state = state.copyWith(

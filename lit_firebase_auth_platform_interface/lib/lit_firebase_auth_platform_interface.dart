@@ -1,11 +1,12 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:meta/meta.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
-
-import 'mobile_lit_firebase_auth.dart';
+import 'package:lit_firebase_auth/lit_firebase_auth.dart';
+import 'lit_firebase_auth.dart';
 
 abstract class LitFirebaseAuthPlatform extends PlatformInterface {
-  /// Constructs a UrlLauncherPlatform.
   LitFirebaseAuthPlatform() : super(token: _token);
 
   static final Object _token = Object();
@@ -14,7 +15,7 @@ abstract class LitFirebaseAuthPlatform extends PlatformInterface {
 
   /// The default instance of [LitFirebaseAuthPlatform] to use.
   ///
-  /// Defaults to [MobileLitFirebaseAuth].
+  /// Defaults to [LitFirebaseAuth].
   static LitFirebaseAuthPlatform get instance => _instance;
 
   /// Platform-specific plugins should set this with their own platform-specific
@@ -24,7 +25,45 @@ abstract class LitFirebaseAuthPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<bool> signInWithEmailAndPassword(String url) {
-    throw UnimplementedError('launch() has not been implemented.');
+  Future<Auth> registerWithEmailAndPassword({
+    @required String email,
+    @required String password,
+  }) {
+    throw UnimplementedError(
+        'registerWithEmailAndPassword() has not been implemented.');
+  }
+
+  Future<Auth> signInWithEmailAndPassword({
+    @required String email,
+    @required String password,
+  }) {
+    throw UnimplementedError(
+        'signInWithEmailAndPassword() has not been implemented.');
+  }
+
+  Future<Auth> signInWithApple({
+    AppleWebAuthenticationOptions authOptions,
+  }) {
+    throw UnimplementedError('signInWithApple() has not been implemented.');
+  }
+
+  Future<Auth> signInWithGoogle() {
+    throw UnimplementedError('signInWithGoogle() has not been implemented.');
+  }
+
+  Future<Auth> signInWithGithub() {
+    throw UnimplementedError('signInWithGithub() has not been implemented.');
+  }
+
+  Future<Auth> signInWithFacebook() {
+    throw UnimplementedError('signInWithFacebook() has not been implemented.');
+  }
+
+  Future<Auth> signInWithTwitter() {
+    throw UnimplementedError('signInWithTwitter() has not been implemented.');
+  }
+
+  Future<void> signOut() {
+    throw UnimplementedError('signOut() has not been implemented.');
   }
 }

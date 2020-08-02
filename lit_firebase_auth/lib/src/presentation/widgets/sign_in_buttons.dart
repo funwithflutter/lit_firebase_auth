@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../core/auth_config.dart';
 import '../core/extensions.dart';
 
@@ -124,7 +123,7 @@ class SignInWithAppleLitButton extends StatelessWidget {
     } else {
       return SizedBox(
         width: 250,
-        child: SignInWithAppleButton(
+        child: AppleSignInButton(
           onPressed: () {
             context.signInWithApple();
           },

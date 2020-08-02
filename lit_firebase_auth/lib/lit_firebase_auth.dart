@@ -1,7 +1,9 @@
-export 'package:sign_in_with_apple/sign_in_with_apple.dart';
-
+export 'src/domain/auth/auth.dart';
 export 'src/domain/auth/auth_providers.dart';
 export 'src/domain/auth/i_auth_facade.dart';
+export 'src/domain/auth/user.dart';
+export 'src/domain/auth/auth_failure.dart';
+export 'src/presentation/widgets/auth_web_view.dart';
 export 'src/infrastructure/firebase_auth_facade.dart';
 export 'src/presentation/core/auth_config.dart';
 export 'src/presentation/core/extensions.dart';

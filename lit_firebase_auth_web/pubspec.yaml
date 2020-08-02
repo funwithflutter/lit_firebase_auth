@@ -20,6 +20,9 @@ dependencies:
   meta: ^1.0.5
   flutter_web_plugins:
     sdk: flutter
+  firebase_auth: ^0.16.1
+  google_sign_in: ^4.5.1
+  firebase_core: ^0.4.5
 
 dev_dependencies:
   flutter_test:

@@ -3,9 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:lit_firebase_auth/src/domain/auth/auth_providers.dart';
 import 'package:lit_firebase_auth_platform_interface/lit_firebase_auth_platform_interface.dart';
 import 'package:meta/meta.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../domain/auth/auth.dart';
 import '../domain/auth/auth_failure.dart';
@@ -16,15 +16,15 @@ import '../domain/auth/value_objects.dart';
 
 class FirebaseAuthFacade implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignIn;
+  // final GoogleSignIn _googleSignIn;
   final bool googleSignInEnabled;
 
   FirebaseAuthFacade({
     FirebaseAuth firebaseAuth,
-    GoogleSignIn googleSignIn,
+    // GoogleSignIn googleSignIn,
     this.googleSignInEnabled = false,
-  })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn();
+  }) : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+  // _googleSignIn = googleSignIn ?? GoogleSignIn();
 
   @override
   Future<User> getSignedInUser() => _firebaseAuth.currentUser().then(_mapUser);
@@ -48,17 +48,21 @@ class FirebaseAuthFacade implements AuthFacade {
   }) async {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
-    if (kIsWeb) {
-      return _webRegisterWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
-      );
-    } else {
-      return _registerWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
-      );
-    }
+    return LitFirebaseAuthPlatform.instance.registerWithEmailAndPassword(
+      email: emailAddressStr,
+      password: passwordStr,
+    );
+    // if (kIsWeb) {
+    //   return _webRegisterWithEmailAndPassword(
+    //     email: emailAddressStr,
+    //     password: passwordStr,
+    //   );
+    // } else {
+    //   return _registerWithEmailAndPassword(
+    //     email: emailAddressStr,
+    //     password: passwordStr,
+    //   );
+    // }
   }
 
   Future<Auth> _webRegisterWithEmailAndPassword(
@@ -103,10 +107,12 @@ class FirebaseAuthFacade implements AuthFacade {
     @required EmailAddress emailAddress,
     @required Password password,
   }) async {
-    LitFirebaseAuthPlatform.instance.signInWithEmailAndPassword('test');
-    return const Auth.success();
-    // final emailAddressStr = emailAddress.getOrCrash();
-    // final passwordStr = password.getOrCrash();
+    final emailAddressStr = emailAddress.getOrCrash();
+    final passwordStr = password.getOrCrash();
+    return LitFirebaseAuthPlatform.instance.signInWithEmailAndPassword(
+      email: emailAddressStr,
+      password: passwordStr,
+    );
     // if (kIsWeb) {
     //   return _webSignInWithEmailAndPassword(
     //     email: emailAddressStr,
@@ -185,96 +191,116 @@ class FirebaseAuthFacade implements AuthFacade {
     if (!googleSignInEnabled) {
       throw AuthProviderNotEnabled('Google');
     }
-
-    if (kIsWeb) {
-      return _webSignInWithGoogle();
-    } else {
-      return _signInWithGoogle();
-    }
+    return LitFirebaseAuthPlatform.instance.signInWithGoogle();
+    // if (kIsWeb) {
+    //   return _webSignInWithGoogle();
+    // } else {
+    //   return _signInWithGoogle();
+    // }
   }
 
-  Future<Auth> _webSignInWithGoogle() async {
-    // TODO investigate alternative solutions to handle these exceptions
-    // Will possibly be solved once the Firebase Auth rework is complete
-    // See: https://github.com/FirebaseExtended/flutterfire/issues/2582
-    GoogleSignInAccount googleUser;
-    try {
-      googleUser = await _googleSignIn.signIn();
-    } catch (e) {
-      if (e.toString().contains('appClientId != null')) {
-        print(e);
-        return const Auth.failure(AuthFailure.serverError());
-      }
-      return const Auth.failure(AuthFailure.cancelledByUser());
-    }
-    try {
-      final googleAuthentication = await googleUser.authentication;
+  // Future<Auth> _webSignInWithGoogle() async {
+  //   // TODO investigate alternative solutions to handle these exceptions
+  //   // Will possibly be solved once the Firebase Auth rework is complete
+  //   // See: https://github.com/FirebaseExtended/flutterfire/issues/2582
+  //   GoogleSignInAccount googleUser;
+  //   try {
+  //     googleUser = await _googleSignIn.signIn();
+  //   } catch (e) {
+  //     if (e.toString().contains('appClientId != null')) {
+  //       print(e);
+  //       return const Auth.failure(AuthFailure.serverError());
+  //     }
+  //     return const Auth.failure(AuthFailure.cancelledByUser());
+  //   }
+  //   try {
+  //     final googleAuthentication = await googleUser.authentication;
 
-      final authCredential = GoogleAuthProvider.getCredential(
-        idToken: googleAuthentication.idToken,
-        accessToken: googleAuthentication.accessToken,
-      );
+  //     final authCredential = GoogleAuthProvider.getCredential(
+  //       idToken: googleAuthentication.idToken,
+  //       accessToken: googleAuthentication.accessToken,
+  //     );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
-      return const Auth.success();
-    } catch (e) {
-      print(e);
-      return const Auth.failure(AuthFailure.serverError());
-    }
-  }
+  //     await _firebaseAuth.signInWithCredential(authCredential);
+  //     return const Auth.success();
+  //   } catch (e) {
+  //     print(e);
+  //     return const Auth.failure(AuthFailure.serverError());
+  //   }
+  // }
 
-  Future<Auth> _signInWithGoogle() async {
-    try {
-      final googleUser = await _googleSignIn.signIn();
-      if (googleUser == null) {
-        return const Auth.failure(AuthFailure.cancelledByUser());
-      }
+  // Future<Auth> _signInWithGoogle() async {
+  //   try {
+  //     final googleUser = await _googleSignIn.signIn();
+  //     if (googleUser == null) {
+  //       return const Auth.failure(AuthFailure.cancelledByUser());
+  //     }
 
-      final googleAuthentication = await googleUser.authentication;
+  //     final googleAuthentication = await googleUser.authentication;
 
-      final authCredential = GoogleAuthProvider.getCredential(
-        idToken: googleAuthentication.idToken,
-        accessToken: googleAuthentication.accessToken,
-      );
+  //     final authCredential = GoogleAuthProvider.getCredential(
+  //       idToken: googleAuthentication.idToken,
+  //       accessToken: googleAuthentication.accessToken,
+  //     );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
-      return const Auth.success();
-    } on PlatformException catch (_) {
-      return const Auth.failure(AuthFailure.serverError());
-    }
+  //     await _firebaseAuth.signInWithCredential(authCredential);
+  //     return const Auth.success();
+  //   } on PlatformException catch (_) {
+  //     return const Auth.failure(AuthFailure.serverError());
+  //   }
+  // }
+
+  @override
+  Future<Auth> signInWithGithub() {
+    return LitFirebaseAuthPlatform.instance.signInWithGithub();
   }
 
   @override
   Future<Auth> signInWithApple({
-    WebAuthenticationOptions webAuthenticationOptions,
-  }) async {
-    try {
-      final appleUser = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-        webAuthenticationOptions: webAuthenticationOptions,
-      );
-      const oAuthProvider = OAuthProvider(providerId: 'apple.com');
-      final authCredential = oAuthProvider.getCredential(
-        idToken: appleUser.identityToken,
-        accessToken: appleUser.authorizationCode,
-      );
-      await _firebaseAuth.signInWithCredential(authCredential);
-      return const Auth.success();
-    } on SignInWithAppleAuthorizationException catch (e) {
-      if (e.code == AuthorizationErrorCode.canceled) {
-        return const Auth.failure(AuthFailure.cancelledByUser());
-      }
-      return const Auth.failure(AuthFailure.serverError());
-    } catch (e) {
-      return const Auth.failure(AuthFailure.serverError());
-    }
+    AppleWebAuthenticationOptions webAuthenticationOptions,
+  }) {
+    return LitFirebaseAuthPlatform.instance.signInWithApple(
+      authOptions: webAuthenticationOptions,
+    );
+
+    // try {
+    //   final appleUser = await SignInWithApple.getAppleIDCredential(
+    //     scopes: [
+    //       AppleIDAuthorizationScopes.email,
+    //       AppleIDAuthorizationScopes.fullName,
+    //     ],
+    //     webAuthenticationOptions: webAuthenticationOptions,
+    //   );
+    //   const oAuthProvider = OAuthProvider(providerId: 'apple.com');
+    //   final authCredential = oAuthProvider.getCredential(
+    //     idToken: appleUser.identityToken,
+    //     accessToken: appleUser.authorizationCode,
+    //   );
+    //   await _firebaseAuth.signInWithCredential(authCredential);
+    //   return const Auth.success();
+    // } on SignInWithAppleAuthorizationException catch (e) {
+    //   if (e.code == AuthorizationErrorCode.canceled) {
+    //     return const Auth.failure(AuthFailure.cancelledByUser());
+    //   }
+    //   return const Auth.failure(AuthFailure.serverError());
+    // } catch (e) {
+    //   return const Auth.failure(AuthFailure.serverError());
+    // }
+  }
+
+  @override
+  Future<Auth> signInWithFacebook() {
+    return LitFirebaseAuthPlatform.instance.signInWithFacebook();
+  }
+
+  @override
+  Future<Auth> signInWithTwitter() {
+    return LitFirebaseAuthPlatform.instance.signInWithTwitter();
   }
 
   @override
   Future<Auth> signInAnonymously() async {
+    // return LitFirebaseAuthPlatform.instance.signInAnonymously();
     try {
       await _firebaseAuth.signInAnonymously();
       return const Auth.success();
@@ -296,19 +322,21 @@ class FirebaseAuthFacade implements AuthFacade {
   }
 
   @override
-  Future<void> signOut() async {
-    return Future.wait([
-      _signOutGoogle(),
-      _firebaseAuth.signOut(),
-    ]);
+  Future<void> signOut() {
+    // return LitFirebaseAuthPlatform.instance.signOut();
+    return _firebaseAuth.signOut();
+    // return Future.wait([
+    //   _signOutGoogle(),
+    //   _firebaseAuth.signOut(),
+    // ]);
   }
 
-  Future<void> _signOutGoogle() async {
-    if (!googleSignInEnabled) return;
-    try {
-      await _googleSignIn.signOut();
-    } catch (e) {
-      rethrow;
-    }
-  }
+  // Future<void> _signOutGoogle() async {
+  //   if (!googleSignInEnabled) return;
+  //   try {
+  //     await _googleSignIn.signOut();
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
 }
