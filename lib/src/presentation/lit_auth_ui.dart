@@ -285,8 +285,8 @@ class _LitAuthCustom extends LitAuth {
     Key key,
     VoidCallback onAuthSuccess,
     AuthFailureCallback onAuthFailure,
-    NotificationConfig errorNotification,
-    NotificationConfig successNotification,
+    NotificationConfig errorNotification = const NotificationConfig(),
+    NotificationConfig successNotification = const NotificationConfig(),
     this.builder,
     @required this.child,
   }) : super(

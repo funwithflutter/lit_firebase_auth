@@ -41,12 +41,12 @@ extension AuthContext on BuildContext {
         .signInWithGoogle();
   }
 
-  /// Perform sign-in with Apple.
+  /// Perform sign-in with Github.
   ///
   /// Should only be used if you're creating your own custom sign-in form
-  Future<void> signInWithApple() async {
+  Future<void> signInWithGithub() async {
     Provider.of<SignInHandlerStateNotifier>(this, listen: false)
-        .signInWithApple();
+        .signInWithGithub();
   }
 
   /// Sign in with Credentials

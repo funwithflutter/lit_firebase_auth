@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_oauth/firebase_auth_oauth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import '../domain/auth/auth.dart';
 import '../domain/auth/auth_failure.dart';
@@ -16,14 +17,17 @@ import '../domain/auth/value_objects.dart';
 class FirebaseAuthFacade implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  final FirebaseApp _app;
   final bool googleSignInEnabled;
 
   FirebaseAuthFacade({
     FirebaseAuth firebaseAuth,
     GoogleSignIn googleSignIn,
+    FirebaseApp app,
     this.googleSignInEnabled = false,
   })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn();
+        _googleSignIn = googleSignIn ?? GoogleSignIn(),
+        _app = app ?? FirebaseApp.instance;
 
   @override
   Future<User> getSignedInUser() => _firebaseAuth.currentUser().then(_mapUser);
@@ -242,35 +246,6 @@ class FirebaseAuthFacade implements AuthFacade {
   }
 
   @override
-  Future<Auth> signInWithApple({
-    WebAuthenticationOptions webAuthenticationOptions,
-  }) async {
-    try {
-      final appleUser = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-        webAuthenticationOptions: webAuthenticationOptions,
-      );
-      const oAuthProvider = OAuthProvider(providerId: 'apple.com');
-      final authCredential = oAuthProvider.getCredential(
-        idToken: appleUser.identityToken,
-        accessToken: appleUser.authorizationCode,
-      );
-      await _firebaseAuth.signInWithCredential(authCredential);
-      return const Auth.success();
-    } on SignInWithAppleAuthorizationException catch (e) {
-      if (e.code == AuthorizationErrorCode.canceled) {
-        return const Auth.failure(AuthFailure.cancelledByUser());
-      }
-      return const Auth.failure(AuthFailure.serverError());
-    } catch (e) {
-      return const Auth.failure(AuthFailure.serverError());
-    }
-  }
-
-  @override
   Future<Auth> signInAnonymously() async {
     try {
       await _firebaseAuth.signInAnonymously();
@@ -289,6 +264,25 @@ class FirebaseAuthFacade implements AuthFacade {
       return const Auth.failure(AuthFailure.serverError());
     } catch (_) {
       return const Auth.failure(AuthFailure.serverError()); // todo improve
+    }
+  }
+
+  @override
+  Future<Auth> signInWithOAuth(String provider, List<String> scopes,
+      Map<String, String> parameters) async {
+    try {
+      await FirebaseAuthOAuth(app: _app)
+          .openSignInFlow(provider, scopes, parameters);
+      return const Auth.success();
+    } on PlatformException catch (error) {
+      /**
+       * The plugin has the following error codes:
+       * 1. FirebaseAuthError: FirebaseAuth related error
+       * 2. PlatformError: An platform related error
+       * 3. PluginError: An error from this plugin
+       */
+      debugPrint("${error.code}: ${error.message}");
+      return const Auth.failure(AuthFailure.serverError()); // todo refine
     }
   }
 

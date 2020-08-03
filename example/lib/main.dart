@@ -45,26 +45,29 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          child: LitAuthState(
-            authenticated: YourAuthenticatedWidget(),
-
-            /// Standard
-            unauthenticated: LitAuth(
-              config: AuthConfig(
-                title: Text(
-                  '🔥Welcome to Lit Firebase!🔥',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline4,
-                ),
-              ),
-            ),
-
-            // USE THIS FOR A CUSTOM SIGN IN WIDGET
-            /// Custom
-            // unauthenticated: LitAuth.custom(
-            //   child: CustomSignInWidget(),
-            // ),
+          child: LitAuth.custom(
+            child: CustomSignInWidget(),
           ),
+          // LitAuthState(
+          //   authenticated: YourAuthenticatedWidget(),
+
+          /// Standard
+          // unauthenticated: LitAuth(
+          //   config: AuthConfig(
+          //     title: Text(
+          //       '🔥Welcome to Lit Firebase!🔥',
+          //       textAlign: TextAlign.center,
+          //       style: Theme.of(context).textTheme.headline4,
+          //     ),
+          //   ),
+          // ),
+
+          // USE THIS FOR A CUSTOM SIGN IN WIDGET
+          /// Custom
+          // unauthenticated: LitAuth.custom(
+          //   child: CustomSignInWidget(),
+          // ),
+          // ),
         ),
       ),
     );
@@ -136,10 +139,16 @@ class CustomSignInWidget extends StatelessWidget {
                 },
                 child: Text('Anony Sign In'),
               ),
-              SignInWithAppleButton(
+              // SignInWithAppleButton(
+              //   onPressed: () {
+              //     context.signInWithApple();
+              //   },
+              // ),
+              FlatButton(
                 onPressed: () {
-                  context.signInWithApple();
+                  context.signInWithGithub();
                 },
+                child: Text('Github Sign In'),
               ),
             ],
           ),

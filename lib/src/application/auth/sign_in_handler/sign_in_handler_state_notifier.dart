@@ -67,17 +67,19 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     }
   }
 
-  Future<void> signInWithApple() async {
-    if (_authProviders.apple == null) {
-      throw AuthProviderNotEnabled('Apple');
+  Future<void> signInWithGithub() async {
+    if (_authProviders.github) {
+      throw AuthProviderNotEnabled('Github');
     }
     state = state.copyWith(
       isSubmitting: true,
       authFailureOrSuccessOption: none(),
     );
 
-    final auth = await _authFacade.signInWithApple(
-      webAuthenticationOptions: _authProviders.apple.webAuthenticationOptions,
+    final auth = await _authFacade.signInWithOAuth(
+      'github.com',
+      ["user:email"],
+      {"lang": "en"},
     );
 
     if (mounted) {
