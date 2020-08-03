@@ -59,7 +59,7 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
   }
 
   Future<void> signInWithGithub() async {
-    if (_authProviders.github) {
+    if (!_authProviders.github) {
       throw AuthProviderNotEnabled('Github');
     }
 
