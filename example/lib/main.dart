@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
         emailAndPassword: true, // enabled by default
         google: true,
         anonymous: true,
+        github: true,
         // apple: AppleAuthProvider(
         //   // required for web-based authentication flows
         //   webAuthenticationOptions: WebAuthenticationOptions(
@@ -45,29 +46,26 @@ class SplashScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
-          child: LitAuth.custom(
-            child: CustomSignInWidget(),
+          child: LitAuthState(
+            authenticated: YourAuthenticatedWidget(),
+
+            /// Standard
+            unauthenticated: LitAuth(
+              config: AuthConfig(
+                title: Text(
+                  '🔥Welcome to Lit Firebase!🔥',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline4,
+                ),
+              ),
+            ),
+
+            // USE THIS FOR A CUSTOM SIGN IN WIDGET
+            /// Custom
+            // unauthenticated: LitAuth.custom(
+            //   child: CustomSignInWidget(),
+            // ),
           ),
-          // LitAuthState(
-          //   authenticated: YourAuthenticatedWidget(),
-
-          /// Standard
-          // unauthenticated: LitAuth(
-          //   config: AuthConfig(
-          //     title: Text(
-          //       '🔥Welcome to Lit Firebase!🔥',
-          //       textAlign: TextAlign.center,
-          //       style: Theme.of(context).textTheme.headline4,
-          //     ),
-          //   ),
-          // ),
-
-          // USE THIS FOR A CUSTOM SIGN IN WIDGET
-          /// Custom
-          // unauthenticated: LitAuth.custom(
-          //   child: CustomSignInWidget(),
-          // ),
-          // ),
         ),
       ),
     );

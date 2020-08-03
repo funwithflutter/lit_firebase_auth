@@ -82,6 +82,55 @@ class SignInWithGoogleButton extends StatelessWidget {
   }
 }
 
+/// Button to sign-in with Github on Firebase
+///
+/// Make sure to enable Github sign-in in your Firebase Authentication
+/// console
+///
+/// Create your own sign-in button by calling
+/// `context.signInWithGithub();` in the [onPressed] handler
+class SignInWithGithubButton extends StatelessWidget {
+  const SignInWithGithubButton({
+    Key key,
+    this.config,
+  }) : super(key: key);
+
+  final ButtonConfig config;
+
+  @override
+  Widget build(BuildContext context) {
+    if (config != null) {
+      return _ButtonConfigOverride(
+        buttonConfig: ButtonConfig(
+          type: config?.type ?? const ButtonType.raised(),
+          themeData: config?.themeData ??
+              const ButtonThemeData(
+                buttonColor: Colors.lightBlue,
+              ),
+          child: config?.child ??
+              const Text(
+                'SIGN IN WITH GITHUB',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        ),
+        onPressed: () {
+          context.signInWithGithub();
+        },
+      );
+    } else {
+      return RaisedButton(
+        onPressed: () {
+          context.signInWithGithub();
+        },
+        child: const Text('Sign in with Github'),
+      );
+    }
+  }
+}
+
 /// Button to sign-in anonymously on Firebase
 ///
 /// Make sure to enable Anonymous sign-in in your Firebase Authentication

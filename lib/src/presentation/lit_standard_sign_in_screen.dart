@@ -68,6 +68,13 @@ class StandardSignInWidget extends StatelessWidget {
                   config: config?.googleButton,
                 ),
               ),
+            if (authProviders.github)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInWithGithubButton(
+                  config: config?.githubButton,
+                ),
+              ),
             const LoadingWidget(),
           ],
         ),
