@@ -274,15 +274,23 @@ class FirebaseAuthFacade implements AuthFacade {
       await FirebaseAuthOAuth(app: _app)
           .openSignInFlow(provider, scopes, parameters);
       return const Auth.success();
-    } on PlatformException catch (error) {
+    } on PlatformException catch (e) {
       /**
        * The plugin has the following error codes:
        * 1. FirebaseAuthError: FirebaseAuth related error
        * 2. PlatformError: An platform related error
        * 3. PluginError: An error from this plugin
        */
-      debugPrint("${error.code}: ${error.message}");
-      return const Auth.failure(AuthFailure.serverError()); // todo refine
+      debugPrint("${e.code}: ${e.message}");
+      if (e.message == 'The web operation was canceled by the user.') {
+        return const Auth.failure(AuthFailure.cancelledByUser());
+      }
+      return const Auth.failure(AuthFailure.serverError());
+    } catch (e) {
+      if (e.toString().contains('auth/popup-closed-by-user')) {
+        return const Auth.failure(AuthFailure.cancelledByUser());
+      }
+      return const Auth.failure(AuthFailure.serverError());
     }
   }
 
