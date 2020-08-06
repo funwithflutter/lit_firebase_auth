@@ -219,7 +219,7 @@ Get the current signed-in user:
 context.getSignedInUser()
 ```
 ### Determine if submitting is active
- Wether Lit Firebase is currently attempting to authenticate. Can be used to show a loading indicator.
+ Whether Lit Firebase is currently attempting to authenticate. Can be used to show a loading indicator.
 
  Should only be used in the build method. For example:
 
@@ -241,7 +241,7 @@ The supported third-party providers are:
 * Github
 * Twitter
 
-**NOTE:** Apple requires Apple sign in to be enalbed if any other third-party sign-in option is used.
+**NOTE:** Apple requires Apple sign in to be enabled if any other third-party sign-in option is used.
 
 These need to be enabled in the `LitAuthInit` widget.
 ```dart
@@ -273,7 +273,7 @@ FlatButton(
 ),
 ```
 
-Other identity providers (for example, Facebook) will need to be implemented seperately. After successful third party sign in you can sign in to Firebase by making use of the `signInWithCredential` method available on `BuildContext`.
+Other identity providers (for example, Facebook) will need to be implemented separately. After successful third party sign in you can sign in to Firebase by making use of the `signInWithCredential` method available on `BuildContext`.
 
 For example:
 
