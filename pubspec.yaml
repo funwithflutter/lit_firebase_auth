@@ -3,7 +3,7 @@ description: Pre-lit Firebase Authentication. Drop in and add Firebase Auth in j
 repository: https://github.com/funwithflutter/lit_firebase_auth
 homepage: https://github.com/funwithflutter/lit_firebase_auth
 
-version: 0.2.0
+version: 0.2.1
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -17,7 +17,7 @@ dependencies:
   google_sign_in: ^4.5.1
   firebase_auth_oauth: ^0.1.1+1
   # annotation
-  meta: ^1.2.2
+  meta: ^1.1.8
   freezed_annotation: ^0.11.0+1
   # state
   dartz: ^0.9.1

@@ -1,3 +1,7 @@
+# 0.2.1
+
+- fix: revert to meta 1.1.8 package for testing
+
 # 0.2.0
 
 - BREAKING: change in Apple authentication method
