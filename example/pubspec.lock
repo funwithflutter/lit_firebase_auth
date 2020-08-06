@@ -78,6 +78,27 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.1"
+  firebase_auth_oauth:
+    dependency: transitive
+    description:
+      name: firebase_auth_oauth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1+1"
+  firebase_auth_oauth_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_auth_oauth_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0+6"
+  firebase_auth_oauth_web:
+    dependency: transitive
+    description:
+      name: firebase_auth_oauth_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0+7"
   firebase_auth_platform_interface:
     dependency: transitive
     description:
@@ -125,20 +146,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_auth_buttons:
-    dependency: transitive
-    description:
-      name: flutter_auth_buttons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.0"
   flutter_state_notifier:
     dependency: transitive
     description:
       name: flutter_state_notifier
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.2"
+    version: "0.6.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -155,7 +169,7 @@ packages:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.0"
+    version: "0.11.0+1"
   google_sign_in:
     dependency: transitive
     description:
@@ -211,7 +225,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.1.3"
+    version: "0.2.0"
   matcher:
     dependency: transitive
     description:
@@ -268,13 +282,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.3"
-  sign_in_with_apple:
-    dependency: transitive
-    description:
-      name: sign_in_with_apple
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.5.2"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -300,7 +307,7 @@ packages:
       name: state_notifier
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0"
+    version: "0.6.0"
   stream_channel:
     dependency: transitive
     description:

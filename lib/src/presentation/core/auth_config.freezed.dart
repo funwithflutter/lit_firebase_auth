@@ -14,20 +14,24 @@ class _$AuthConfigTearOff {
 
   _AuthConfig call(
       {Widget title,
-      ButtonConfig emailButton,
-      ButtonConfig passwordButton,
+      ButtonConfig signInButton,
+      ButtonConfig registerButton,
       ButtonConfig anonymousButton,
-      ButtonConfig googleButton,
-      ButtonConfig appleButton,
+      GoogleButtonConfig googleButton,
+      AppleButtonConfig appleButton,
+      ButtonConfig githubButton,
+      ButtonConfig twitterButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField}) {
     return _AuthConfig(
       title: title,
-      emailButton: emailButton,
-      passwordButton: passwordButton,
+      signInButton: signInButton,
+      registerButton: registerButton,
       anonymousButton: anonymousButton,
       googleButton: googleButton,
       appleButton: appleButton,
+      githubButton: githubButton,
+      twitterButton: twitterButton,
       emailTextFormField: emailTextFormField,
       passwordTextFormField: passwordTextFormField,
     );
@@ -39,11 +43,13 @@ const $AuthConfig = _$AuthConfigTearOff();
 
 mixin _$AuthConfig {
   Widget get title;
-  ButtonConfig get emailButton;
-  ButtonConfig get passwordButton;
+  ButtonConfig get signInButton;
+  ButtonConfig get registerButton;
   ButtonConfig get anonymousButton;
-  ButtonConfig get googleButton;
-  ButtonConfig get appleButton;
+  GoogleButtonConfig get googleButton;
+  AppleButtonConfig get appleButton;
+  ButtonConfig get githubButton;
+  ButtonConfig get twitterButton;
   InputDecoration get emailTextFormField;
   InputDecoration get passwordTextFormField;
 
@@ -56,19 +62,23 @@ abstract class $AuthConfigCopyWith<$Res> {
       _$AuthConfigCopyWithImpl<$Res>;
   $Res call(
       {Widget title,
-      ButtonConfig emailButton,
-      ButtonConfig passwordButton,
+      ButtonConfig signInButton,
+      ButtonConfig registerButton,
       ButtonConfig anonymousButton,
-      ButtonConfig googleButton,
-      ButtonConfig appleButton,
+      GoogleButtonConfig googleButton,
+      AppleButtonConfig appleButton,
+      ButtonConfig githubButton,
+      ButtonConfig twitterButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField});
 
-  $ButtonConfigCopyWith<$Res> get emailButton;
-  $ButtonConfigCopyWith<$Res> get passwordButton;
+  $ButtonConfigCopyWith<$Res> get signInButton;
+  $ButtonConfigCopyWith<$Res> get registerButton;
   $ButtonConfigCopyWith<$Res> get anonymousButton;
-  $ButtonConfigCopyWith<$Res> get googleButton;
-  $ButtonConfigCopyWith<$Res> get appleButton;
+  $GoogleButtonConfigCopyWith<$Res> get googleButton;
+  $AppleButtonConfigCopyWith<$Res> get appleButton;
+  $ButtonConfigCopyWith<$Res> get githubButton;
+  $ButtonConfigCopyWith<$Res> get twitterButton;
 }
 
 class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
@@ -81,31 +91,39 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
   @override
   $Res call({
     Object title = freezed,
-    Object emailButton = freezed,
-    Object passwordButton = freezed,
+    Object signInButton = freezed,
+    Object registerButton = freezed,
     Object anonymousButton = freezed,
     Object googleButton = freezed,
     Object appleButton = freezed,
+    Object githubButton = freezed,
+    Object twitterButton = freezed,
     Object emailTextFormField = freezed,
     Object passwordTextFormField = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed ? _value.title : title as Widget,
-      emailButton: emailButton == freezed
-          ? _value.emailButton
-          : emailButton as ButtonConfig,
-      passwordButton: passwordButton == freezed
-          ? _value.passwordButton
-          : passwordButton as ButtonConfig,
+      signInButton: signInButton == freezed
+          ? _value.signInButton
+          : signInButton as ButtonConfig,
+      registerButton: registerButton == freezed
+          ? _value.registerButton
+          : registerButton as ButtonConfig,
       anonymousButton: anonymousButton == freezed
           ? _value.anonymousButton
           : anonymousButton as ButtonConfig,
       googleButton: googleButton == freezed
           ? _value.googleButton
-          : googleButton as ButtonConfig,
+          : googleButton as GoogleButtonConfig,
       appleButton: appleButton == freezed
           ? _value.appleButton
-          : appleButton as ButtonConfig,
+          : appleButton as AppleButtonConfig,
+      githubButton: githubButton == freezed
+          ? _value.githubButton
+          : githubButton as ButtonConfig,
+      twitterButton: twitterButton == freezed
+          ? _value.twitterButton
+          : twitterButton as ButtonConfig,
       emailTextFormField: emailTextFormField == freezed
           ? _value.emailTextFormField
           : emailTextFormField as InputDecoration,
@@ -116,22 +134,22 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
   }
 
   @override
-  $ButtonConfigCopyWith<$Res> get emailButton {
-    if (_value.emailButton == null) {
+  $ButtonConfigCopyWith<$Res> get signInButton {
+    if (_value.signInButton == null) {
       return null;
     }
-    return $ButtonConfigCopyWith<$Res>(_value.emailButton, (value) {
-      return _then(_value.copyWith(emailButton: value));
+    return $ButtonConfigCopyWith<$Res>(_value.signInButton, (value) {
+      return _then(_value.copyWith(signInButton: value));
     });
   }
 
   @override
-  $ButtonConfigCopyWith<$Res> get passwordButton {
-    if (_value.passwordButton == null) {
+  $ButtonConfigCopyWith<$Res> get registerButton {
+    if (_value.registerButton == null) {
       return null;
     }
-    return $ButtonConfigCopyWith<$Res>(_value.passwordButton, (value) {
-      return _then(_value.copyWith(passwordButton: value));
+    return $ButtonConfigCopyWith<$Res>(_value.registerButton, (value) {
+      return _then(_value.copyWith(registerButton: value));
     });
   }
 
@@ -146,22 +164,42 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
   }
 
   @override
-  $ButtonConfigCopyWith<$Res> get googleButton {
+  $GoogleButtonConfigCopyWith<$Res> get googleButton {
     if (_value.googleButton == null) {
       return null;
     }
-    return $ButtonConfigCopyWith<$Res>(_value.googleButton, (value) {
+    return $GoogleButtonConfigCopyWith<$Res>(_value.googleButton, (value) {
       return _then(_value.copyWith(googleButton: value));
     });
   }
 
   @override
-  $ButtonConfigCopyWith<$Res> get appleButton {
+  $AppleButtonConfigCopyWith<$Res> get appleButton {
     if (_value.appleButton == null) {
       return null;
     }
-    return $ButtonConfigCopyWith<$Res>(_value.appleButton, (value) {
+    return $AppleButtonConfigCopyWith<$Res>(_value.appleButton, (value) {
       return _then(_value.copyWith(appleButton: value));
+    });
+  }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get githubButton {
+    if (_value.githubButton == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.githubButton, (value) {
+      return _then(_value.copyWith(githubButton: value));
+    });
+  }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get twitterButton {
+    if (_value.twitterButton == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.twitterButton, (value) {
+      return _then(_value.copyWith(twitterButton: value));
     });
   }
 }
@@ -173,24 +211,30 @@ abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
   @override
   $Res call(
       {Widget title,
-      ButtonConfig emailButton,
-      ButtonConfig passwordButton,
+      ButtonConfig signInButton,
+      ButtonConfig registerButton,
       ButtonConfig anonymousButton,
-      ButtonConfig googleButton,
-      ButtonConfig appleButton,
+      GoogleButtonConfig googleButton,
+      AppleButtonConfig appleButton,
+      ButtonConfig githubButton,
+      ButtonConfig twitterButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField});
 
   @override
-  $ButtonConfigCopyWith<$Res> get emailButton;
+  $ButtonConfigCopyWith<$Res> get signInButton;
   @override
-  $ButtonConfigCopyWith<$Res> get passwordButton;
+  $ButtonConfigCopyWith<$Res> get registerButton;
   @override
   $ButtonConfigCopyWith<$Res> get anonymousButton;
   @override
-  $ButtonConfigCopyWith<$Res> get googleButton;
+  $GoogleButtonConfigCopyWith<$Res> get googleButton;
   @override
-  $ButtonConfigCopyWith<$Res> get appleButton;
+  $AppleButtonConfigCopyWith<$Res> get appleButton;
+  @override
+  $ButtonConfigCopyWith<$Res> get githubButton;
+  @override
+  $ButtonConfigCopyWith<$Res> get twitterButton;
 }
 
 class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
@@ -205,31 +249,39 @@ class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
   @override
   $Res call({
     Object title = freezed,
-    Object emailButton = freezed,
-    Object passwordButton = freezed,
+    Object signInButton = freezed,
+    Object registerButton = freezed,
     Object anonymousButton = freezed,
     Object googleButton = freezed,
     Object appleButton = freezed,
+    Object githubButton = freezed,
+    Object twitterButton = freezed,
     Object emailTextFormField = freezed,
     Object passwordTextFormField = freezed,
   }) {
     return _then(_AuthConfig(
       title: title == freezed ? _value.title : title as Widget,
-      emailButton: emailButton == freezed
-          ? _value.emailButton
-          : emailButton as ButtonConfig,
-      passwordButton: passwordButton == freezed
-          ? _value.passwordButton
-          : passwordButton as ButtonConfig,
+      signInButton: signInButton == freezed
+          ? _value.signInButton
+          : signInButton as ButtonConfig,
+      registerButton: registerButton == freezed
+          ? _value.registerButton
+          : registerButton as ButtonConfig,
       anonymousButton: anonymousButton == freezed
           ? _value.anonymousButton
           : anonymousButton as ButtonConfig,
       googleButton: googleButton == freezed
           ? _value.googleButton
-          : googleButton as ButtonConfig,
+          : googleButton as GoogleButtonConfig,
       appleButton: appleButton == freezed
           ? _value.appleButton
-          : appleButton as ButtonConfig,
+          : appleButton as AppleButtonConfig,
+      githubButton: githubButton == freezed
+          ? _value.githubButton
+          : githubButton as ButtonConfig,
+      twitterButton: twitterButton == freezed
+          ? _value.twitterButton
+          : twitterButton as ButtonConfig,
       emailTextFormField: emailTextFormField == freezed
           ? _value.emailTextFormField
           : emailTextFormField as InputDecoration,
@@ -243,26 +295,32 @@ class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
 class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
   const _$_AuthConfig(
       {this.title,
-      this.emailButton,
-      this.passwordButton,
+      this.signInButton,
+      this.registerButton,
       this.anonymousButton,
       this.googleButton,
       this.appleButton,
+      this.githubButton,
+      this.twitterButton,
       this.emailTextFormField,
       this.passwordTextFormField});
 
   @override
   final Widget title;
   @override
-  final ButtonConfig emailButton;
+  final ButtonConfig signInButton;
   @override
-  final ButtonConfig passwordButton;
+  final ButtonConfig registerButton;
   @override
   final ButtonConfig anonymousButton;
   @override
-  final ButtonConfig googleButton;
+  final GoogleButtonConfig googleButton;
   @override
-  final ButtonConfig appleButton;
+  final AppleButtonConfig appleButton;
+  @override
+  final ButtonConfig githubButton;
+  @override
+  final ButtonConfig twitterButton;
   @override
   final InputDecoration emailTextFormField;
   @override
@@ -270,7 +328,7 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthConfig(title: $title, emailButton: $emailButton, passwordButton: $passwordButton, anonymousButton: $anonymousButton, googleButton: $googleButton, appleButton: $appleButton, emailTextFormField: $emailTextFormField, passwordTextFormField: $passwordTextFormField)';
+    return 'AuthConfig(title: $title, signInButton: $signInButton, registerButton: $registerButton, anonymousButton: $anonymousButton, googleButton: $googleButton, appleButton: $appleButton, githubButton: $githubButton, twitterButton: $twitterButton, emailTextFormField: $emailTextFormField, passwordTextFormField: $passwordTextFormField)';
   }
 
   @override
@@ -279,11 +337,13 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
     properties
       ..add(DiagnosticsProperty('type', 'AuthConfig'))
       ..add(DiagnosticsProperty('title', title))
-      ..add(DiagnosticsProperty('emailButton', emailButton))
-      ..add(DiagnosticsProperty('passwordButton', passwordButton))
+      ..add(DiagnosticsProperty('signInButton', signInButton))
+      ..add(DiagnosticsProperty('registerButton', registerButton))
       ..add(DiagnosticsProperty('anonymousButton', anonymousButton))
       ..add(DiagnosticsProperty('googleButton', googleButton))
       ..add(DiagnosticsProperty('appleButton', appleButton))
+      ..add(DiagnosticsProperty('githubButton', githubButton))
+      ..add(DiagnosticsProperty('twitterButton', twitterButton))
       ..add(DiagnosticsProperty('emailTextFormField', emailTextFormField))
       ..add(
           DiagnosticsProperty('passwordTextFormField', passwordTextFormField));
@@ -295,12 +355,12 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
         (other is _AuthConfig &&
             (identical(other.title, title) ||
                 const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.emailButton, emailButton) ||
+            (identical(other.signInButton, signInButton) ||
                 const DeepCollectionEquality()
-                    .equals(other.emailButton, emailButton)) &&
-            (identical(other.passwordButton, passwordButton) ||
+                    .equals(other.signInButton, signInButton)) &&
+            (identical(other.registerButton, registerButton) ||
                 const DeepCollectionEquality()
-                    .equals(other.passwordButton, passwordButton)) &&
+                    .equals(other.registerButton, registerButton)) &&
             (identical(other.anonymousButton, anonymousButton) ||
                 const DeepCollectionEquality()
                     .equals(other.anonymousButton, anonymousButton)) &&
@@ -310,6 +370,12 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
             (identical(other.appleButton, appleButton) ||
                 const DeepCollectionEquality()
                     .equals(other.appleButton, appleButton)) &&
+            (identical(other.githubButton, githubButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.githubButton, githubButton)) &&
+            (identical(other.twitterButton, twitterButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.twitterButton, twitterButton)) &&
             (identical(other.emailTextFormField, emailTextFormField) ||
                 const DeepCollectionEquality()
                     .equals(other.emailTextFormField, emailTextFormField)) &&
@@ -322,11 +388,13 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(emailButton) ^
-      const DeepCollectionEquality().hash(passwordButton) ^
+      const DeepCollectionEquality().hash(signInButton) ^
+      const DeepCollectionEquality().hash(registerButton) ^
       const DeepCollectionEquality().hash(anonymousButton) ^
       const DeepCollectionEquality().hash(googleButton) ^
       const DeepCollectionEquality().hash(appleButton) ^
+      const DeepCollectionEquality().hash(githubButton) ^
+      const DeepCollectionEquality().hash(twitterButton) ^
       const DeepCollectionEquality().hash(emailTextFormField) ^
       const DeepCollectionEquality().hash(passwordTextFormField);
 
@@ -338,26 +406,32 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
 abstract class _AuthConfig implements AuthConfig {
   const factory _AuthConfig(
       {Widget title,
-      ButtonConfig emailButton,
-      ButtonConfig passwordButton,
+      ButtonConfig signInButton,
+      ButtonConfig registerButton,
       ButtonConfig anonymousButton,
-      ButtonConfig googleButton,
-      ButtonConfig appleButton,
+      GoogleButtonConfig googleButton,
+      AppleButtonConfig appleButton,
+      ButtonConfig githubButton,
+      ButtonConfig twitterButton,
       InputDecoration emailTextFormField,
       InputDecoration passwordTextFormField}) = _$_AuthConfig;
 
   @override
   Widget get title;
   @override
-  ButtonConfig get emailButton;
+  ButtonConfig get signInButton;
   @override
-  ButtonConfig get passwordButton;
+  ButtonConfig get registerButton;
   @override
   ButtonConfig get anonymousButton;
   @override
-  ButtonConfig get googleButton;
+  GoogleButtonConfig get googleButton;
   @override
-  ButtonConfig get appleButton;
+  AppleButtonConfig get appleButton;
+  @override
+  ButtonConfig get githubButton;
+  @override
+  ButtonConfig get twitterButton;
   @override
   InputDecoration get emailTextFormField;
   @override
@@ -369,11 +443,40 @@ abstract class _AuthConfig implements AuthConfig {
 class _$ButtonConfigTearOff {
   const _$ButtonConfigTearOff();
 
-  _ButtonConfig call(
-      {ButtonThemeData themeData, ButtonType type, Widget child}) {
-    return _ButtonConfig(
-      themeData: themeData,
-      type: type,
+  ButtonConfigRaised raised(
+      {@required ButtonThemeData themedata, @required Widget child}) {
+    return ButtonConfigRaised(
+      themedata: themedata,
+      child: child,
+    );
+  }
+
+  ButtonConfigFlat flat(
+      {@required ButtonThemeData themedata, @required Widget child}) {
+    return ButtonConfigFlat(
+      themedata: themedata,
+      child: child,
+    );
+  }
+
+  ButtonConfigFlatIcon flatIcon(
+      {@required ButtonThemeData themedata,
+      @required Widget icon,
+      @required Widget child}) {
+    return ButtonConfigFlatIcon(
+      themedata: themedata,
+      icon: icon,
+      child: child,
+    );
+  }
+
+  ButtonConfigRaisedIcon raisedIcon(
+      {@required ButtonThemeData themedata,
+      @required Widget icon,
+      @required Widget child}) {
+    return ButtonConfigRaisedIcon(
+      themedata: themedata,
+      icon: icon,
       child: child,
     );
   }
@@ -383,9 +486,41 @@ class _$ButtonConfigTearOff {
 const $ButtonConfig = _$ButtonConfigTearOff();
 
 mixin _$ButtonConfig {
-  ButtonThemeData get themeData;
-  ButtonType get type;
+  ButtonThemeData get themedata;
   Widget get child;
+
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result raised(ButtonThemeData themedata, Widget child),
+    @required Result flat(ButtonThemeData themedata, Widget child),
+    @required
+        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required
+        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result raised(ButtonThemeData themedata, Widget child),
+    Result flat(ButtonThemeData themedata, Widget child),
+    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result raised(ButtonConfigRaised value),
+    @required Result flat(ButtonConfigFlat value),
+    @required Result flatIcon(ButtonConfigFlatIcon value),
+    @required Result raisedIcon(ButtonConfigRaisedIcon value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result raised(ButtonConfigRaised value),
+    Result flat(ButtonConfigFlat value),
+    Result flatIcon(ButtonConfigFlatIcon value),
+    Result raisedIcon(ButtonConfigRaisedIcon value),
+    @required Result orElse(),
+  });
 
   $ButtonConfigCopyWith<ButtonConfig> get copyWith;
 }
@@ -394,9 +529,7 @@ abstract class $ButtonConfigCopyWith<$Res> {
   factory $ButtonConfigCopyWith(
           ButtonConfig value, $Res Function(ButtonConfig) then) =
       _$ButtonConfigCopyWithImpl<$Res>;
-  $Res call({ButtonThemeData themeData, ButtonType type, Widget child});
-
-  $ButtonTypeCopyWith<$Res> get type;
+  $Res call({ButtonThemeData themedata, Widget child});
 }
 
 class _$ButtonConfigCopyWithImpl<$Res> implements $ButtonConfigCopyWith<$Res> {
@@ -408,101 +541,84 @@ class _$ButtonConfigCopyWithImpl<$Res> implements $ButtonConfigCopyWith<$Res> {
 
   @override
   $Res call({
-    Object themeData = freezed,
-    Object type = freezed,
+    Object themedata = freezed,
     Object child = freezed,
   }) {
     return _then(_value.copyWith(
-      themeData: themeData == freezed
-          ? _value.themeData
-          : themeData as ButtonThemeData,
-      type: type == freezed ? _value.type : type as ButtonType,
+      themedata: themedata == freezed
+          ? _value.themedata
+          : themedata as ButtonThemeData,
       child: child == freezed ? _value.child : child as Widget,
     ));
   }
-
-  @override
-  $ButtonTypeCopyWith<$Res> get type {
-    if (_value.type == null) {
-      return null;
-    }
-    return $ButtonTypeCopyWith<$Res>(_value.type, (value) {
-      return _then(_value.copyWith(type: value));
-    });
-  }
 }
 
-abstract class _$ButtonConfigCopyWith<$Res>
+abstract class $ButtonConfigRaisedCopyWith<$Res>
     implements $ButtonConfigCopyWith<$Res> {
-  factory _$ButtonConfigCopyWith(
-          _ButtonConfig value, $Res Function(_ButtonConfig) then) =
-      __$ButtonConfigCopyWithImpl<$Res>;
+  factory $ButtonConfigRaisedCopyWith(
+          ButtonConfigRaised value, $Res Function(ButtonConfigRaised) then) =
+      _$ButtonConfigRaisedCopyWithImpl<$Res>;
   @override
-  $Res call({ButtonThemeData themeData, ButtonType type, Widget child});
-
-  @override
-  $ButtonTypeCopyWith<$Res> get type;
+  $Res call({ButtonThemeData themedata, Widget child});
 }
 
-class __$ButtonConfigCopyWithImpl<$Res> extends _$ButtonConfigCopyWithImpl<$Res>
-    implements _$ButtonConfigCopyWith<$Res> {
-  __$ButtonConfigCopyWithImpl(
-      _ButtonConfig _value, $Res Function(_ButtonConfig) _then)
-      : super(_value, (v) => _then(v as _ButtonConfig));
+class _$ButtonConfigRaisedCopyWithImpl<$Res>
+    extends _$ButtonConfigCopyWithImpl<$Res>
+    implements $ButtonConfigRaisedCopyWith<$Res> {
+  _$ButtonConfigRaisedCopyWithImpl(
+      ButtonConfigRaised _value, $Res Function(ButtonConfigRaised) _then)
+      : super(_value, (v) => _then(v as ButtonConfigRaised));
 
   @override
-  _ButtonConfig get _value => super._value as _ButtonConfig;
+  ButtonConfigRaised get _value => super._value as ButtonConfigRaised;
 
   @override
   $Res call({
-    Object themeData = freezed,
-    Object type = freezed,
+    Object themedata = freezed,
     Object child = freezed,
   }) {
-    return _then(_ButtonConfig(
-      themeData: themeData == freezed
-          ? _value.themeData
-          : themeData as ButtonThemeData,
-      type: type == freezed ? _value.type : type as ButtonType,
+    return _then(ButtonConfigRaised(
+      themedata: themedata == freezed
+          ? _value.themedata
+          : themedata as ButtonThemeData,
       child: child == freezed ? _value.child : child as Widget,
     ));
   }
 }
 
-class _$_ButtonConfig with DiagnosticableTreeMixin implements _ButtonConfig {
-  const _$_ButtonConfig({this.themeData, this.type, this.child});
+class _$ButtonConfigRaised
+    with DiagnosticableTreeMixin
+    implements ButtonConfigRaised {
+  const _$ButtonConfigRaised({@required this.themedata, @required this.child})
+      : assert(themedata != null),
+        assert(child != null);
 
   @override
-  final ButtonThemeData themeData;
-  @override
-  final ButtonType type;
+  final ButtonThemeData themedata;
   @override
   final Widget child;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ButtonConfig(themeData: $themeData, type: $type, child: $child)';
+    return 'ButtonConfig.raised(themedata: $themedata, child: $child)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ButtonConfig'))
-      ..add(DiagnosticsProperty('themeData', themeData))
-      ..add(DiagnosticsProperty('type', type))
+      ..add(DiagnosticsProperty('type', 'ButtonConfig.raised'))
+      ..add(DiagnosticsProperty('themedata', themedata))
       ..add(DiagnosticsProperty('child', child));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ButtonConfig &&
-            (identical(other.themeData, themeData) ||
+        (other is ButtonConfigRaised &&
+            (identical(other.themedata, themedata) ||
                 const DeepCollectionEquality()
-                    .equals(other.themeData, themeData)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
+                    .equals(other.themedata, themedata)) &&
             (identical(other.child, child) ||
                 const DeepCollectionEquality().equals(other.child, child)));
   }
@@ -510,147 +626,42 @@ class _$_ButtonConfig with DiagnosticableTreeMixin implements _ButtonConfig {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(themeData) ^
-      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(themedata) ^
       const DeepCollectionEquality().hash(child);
 
   @override
-  _$ButtonConfigCopyWith<_ButtonConfig> get copyWith =>
-      __$ButtonConfigCopyWithImpl<_ButtonConfig>(this, _$identity);
-}
-
-abstract class _ButtonConfig implements ButtonConfig {
-  const factory _ButtonConfig(
-      {ButtonThemeData themeData,
-      ButtonType type,
-      Widget child}) = _$_ButtonConfig;
-
-  @override
-  ButtonThemeData get themeData;
-  @override
-  ButtonType get type;
-  @override
-  Widget get child;
-  @override
-  _$ButtonConfigCopyWith<_ButtonConfig> get copyWith;
-}
-
-class _$ButtonTypeTearOff {
-  const _$ButtonTypeTearOff();
-
-  _ButtonTypeRaised raised() {
-    return const _ButtonTypeRaised();
-  }
-
-  _ButtonTypeFlat flat() {
-    return const _ButtonTypeFlat();
-  }
-}
-
-// ignore: unused_element
-const $ButtonType = _$ButtonTypeTearOff();
-
-mixin _$ButtonType {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result raised(),
-    @required Result flat(),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result raised(),
-    Result flat(),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result raised(_ButtonTypeRaised value),
-    @required Result flat(_ButtonTypeFlat value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result raised(_ButtonTypeRaised value),
-    Result flat(_ButtonTypeFlat value),
-    @required Result orElse(),
-  });
-}
-
-abstract class $ButtonTypeCopyWith<$Res> {
-  factory $ButtonTypeCopyWith(
-          ButtonType value, $Res Function(ButtonType) then) =
-      _$ButtonTypeCopyWithImpl<$Res>;
-}
-
-class _$ButtonTypeCopyWithImpl<$Res> implements $ButtonTypeCopyWith<$Res> {
-  _$ButtonTypeCopyWithImpl(this._value, this._then);
-
-  final ButtonType _value;
-  // ignore: unused_field
-  final $Res Function(ButtonType) _then;
-}
-
-abstract class _$ButtonTypeRaisedCopyWith<$Res> {
-  factory _$ButtonTypeRaisedCopyWith(
-          _ButtonTypeRaised value, $Res Function(_ButtonTypeRaised) then) =
-      __$ButtonTypeRaisedCopyWithImpl<$Res>;
-}
-
-class __$ButtonTypeRaisedCopyWithImpl<$Res>
-    extends _$ButtonTypeCopyWithImpl<$Res>
-    implements _$ButtonTypeRaisedCopyWith<$Res> {
-  __$ButtonTypeRaisedCopyWithImpl(
-      _ButtonTypeRaised _value, $Res Function(_ButtonTypeRaised) _then)
-      : super(_value, (v) => _then(v as _ButtonTypeRaised));
-
-  @override
-  _ButtonTypeRaised get _value => super._value as _ButtonTypeRaised;
-}
-
-class _$_ButtonTypeRaised
-    with DiagnosticableTreeMixin
-    implements _ButtonTypeRaised {
-  const _$_ButtonTypeRaised();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ButtonType.raised()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'ButtonType.raised'));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ButtonTypeRaised);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
+  $ButtonConfigRaisedCopyWith<ButtonConfigRaised> get copyWith =>
+      _$ButtonConfigRaisedCopyWithImpl<ButtonConfigRaised>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result raised(),
-    @required Result flat(),
+    @required Result raised(ButtonThemeData themedata, Widget child),
+    @required Result flat(ButtonThemeData themedata, Widget child),
+    @required
+        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required
+        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
   }) {
     assert(raised != null);
     assert(flat != null);
-    return raised();
+    assert(flatIcon != null);
+    assert(raisedIcon != null);
+    return raised(themedata, child);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result raised(),
-    Result flat(),
+    Result raised(ButtonThemeData themedata, Widget child),
+    Result flat(ButtonThemeData themedata, Widget child),
+    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (raised != null) {
-      return raised();
+      return raised(themedata, child);
     }
     return orElse();
   }
@@ -658,19 +669,25 @@ class _$_ButtonTypeRaised
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result raised(_ButtonTypeRaised value),
-    @required Result flat(_ButtonTypeFlat value),
+    @required Result raised(ButtonConfigRaised value),
+    @required Result flat(ButtonConfigFlat value),
+    @required Result flatIcon(ButtonConfigFlatIcon value),
+    @required Result raisedIcon(ButtonConfigRaisedIcon value),
   }) {
     assert(raised != null);
     assert(flat != null);
+    assert(flatIcon != null);
+    assert(raisedIcon != null);
     return raised(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result raised(_ButtonTypeRaised value),
-    Result flat(_ButtonTypeFlat value),
+    Result raised(ButtonConfigRaised value),
+    Result flat(ButtonConfigFlat value),
+    Result flatIcon(ButtonConfigFlatIcon value),
+    Result raisedIcon(ButtonConfigRaisedIcon value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -681,71 +698,128 @@ class _$_ButtonTypeRaised
   }
 }
 
-abstract class _ButtonTypeRaised implements ButtonType {
-  const factory _ButtonTypeRaised() = _$_ButtonTypeRaised;
-}
-
-abstract class _$ButtonTypeFlatCopyWith<$Res> {
-  factory _$ButtonTypeFlatCopyWith(
-          _ButtonTypeFlat value, $Res Function(_ButtonTypeFlat) then) =
-      __$ButtonTypeFlatCopyWithImpl<$Res>;
-}
-
-class __$ButtonTypeFlatCopyWithImpl<$Res> extends _$ButtonTypeCopyWithImpl<$Res>
-    implements _$ButtonTypeFlatCopyWith<$Res> {
-  __$ButtonTypeFlatCopyWithImpl(
-      _ButtonTypeFlat _value, $Res Function(_ButtonTypeFlat) _then)
-      : super(_value, (v) => _then(v as _ButtonTypeFlat));
+abstract class ButtonConfigRaised implements ButtonConfig {
+  const factory ButtonConfigRaised(
+      {@required ButtonThemeData themedata,
+      @required Widget child}) = _$ButtonConfigRaised;
 
   @override
-  _ButtonTypeFlat get _value => super._value as _ButtonTypeFlat;
+  ButtonThemeData get themedata;
+  @override
+  Widget get child;
+  @override
+  $ButtonConfigRaisedCopyWith<ButtonConfigRaised> get copyWith;
 }
 
-class _$_ButtonTypeFlat
+abstract class $ButtonConfigFlatCopyWith<$Res>
+    implements $ButtonConfigCopyWith<$Res> {
+  factory $ButtonConfigFlatCopyWith(
+          ButtonConfigFlat value, $Res Function(ButtonConfigFlat) then) =
+      _$ButtonConfigFlatCopyWithImpl<$Res>;
+  @override
+  $Res call({ButtonThemeData themedata, Widget child});
+}
+
+class _$ButtonConfigFlatCopyWithImpl<$Res>
+    extends _$ButtonConfigCopyWithImpl<$Res>
+    implements $ButtonConfigFlatCopyWith<$Res> {
+  _$ButtonConfigFlatCopyWithImpl(
+      ButtonConfigFlat _value, $Res Function(ButtonConfigFlat) _then)
+      : super(_value, (v) => _then(v as ButtonConfigFlat));
+
+  @override
+  ButtonConfigFlat get _value => super._value as ButtonConfigFlat;
+
+  @override
+  $Res call({
+    Object themedata = freezed,
+    Object child = freezed,
+  }) {
+    return _then(ButtonConfigFlat(
+      themedata: themedata == freezed
+          ? _value.themedata
+          : themedata as ButtonThemeData,
+      child: child == freezed ? _value.child : child as Widget,
+    ));
+  }
+}
+
+class _$ButtonConfigFlat
     with DiagnosticableTreeMixin
-    implements _ButtonTypeFlat {
-  const _$_ButtonTypeFlat();
+    implements ButtonConfigFlat {
+  const _$ButtonConfigFlat({@required this.themedata, @required this.child})
+      : assert(themedata != null),
+        assert(child != null);
+
+  @override
+  final ButtonThemeData themedata;
+  @override
+  final Widget child;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ButtonType.flat()';
+    return 'ButtonConfig.flat(themedata: $themedata, child: $child)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties..add(DiagnosticsProperty('type', 'ButtonType.flat'));
+    properties
+      ..add(DiagnosticsProperty('type', 'ButtonConfig.flat'))
+      ..add(DiagnosticsProperty('themedata', themedata))
+      ..add(DiagnosticsProperty('child', child));
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _ButtonTypeFlat);
+    return identical(this, other) ||
+        (other is ButtonConfigFlat &&
+            (identical(other.themedata, themedata) ||
+                const DeepCollectionEquality()
+                    .equals(other.themedata, themedata)) &&
+            (identical(other.child, child) ||
+                const DeepCollectionEquality().equals(other.child, child)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(themedata) ^
+      const DeepCollectionEquality().hash(child);
+
+  @override
+  $ButtonConfigFlatCopyWith<ButtonConfigFlat> get copyWith =>
+      _$ButtonConfigFlatCopyWithImpl<ButtonConfigFlat>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result raised(),
-    @required Result flat(),
+    @required Result raised(ButtonThemeData themedata, Widget child),
+    @required Result flat(ButtonThemeData themedata, Widget child),
+    @required
+        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required
+        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
   }) {
     assert(raised != null);
     assert(flat != null);
-    return flat();
+    assert(flatIcon != null);
+    assert(raisedIcon != null);
+    return flat(themedata, child);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result raised(),
-    Result flat(),
+    Result raised(ButtonThemeData themedata, Widget child),
+    Result flat(ButtonThemeData themedata, Widget child),
+    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (flat != null) {
-      return flat();
+      return flat(themedata, child);
     }
     return orElse();
   }
@@ -753,19 +827,25 @@ class _$_ButtonTypeFlat
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result raised(_ButtonTypeRaised value),
-    @required Result flat(_ButtonTypeFlat value),
+    @required Result raised(ButtonConfigRaised value),
+    @required Result flat(ButtonConfigFlat value),
+    @required Result flatIcon(ButtonConfigFlatIcon value),
+    @required Result raisedIcon(ButtonConfigRaisedIcon value),
   }) {
     assert(raised != null);
     assert(flat != null);
+    assert(flatIcon != null);
+    assert(raisedIcon != null);
     return flat(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result raised(_ButtonTypeRaised value),
-    Result flat(_ButtonTypeFlat value),
+    Result raised(ButtonConfigRaised value),
+    Result flat(ButtonConfigFlat value),
+    Result flatIcon(ButtonConfigFlatIcon value),
+    Result raisedIcon(ButtonConfigRaisedIcon value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -776,6 +856,1298 @@ class _$_ButtonTypeFlat
   }
 }
 
-abstract class _ButtonTypeFlat implements ButtonType {
-  const factory _ButtonTypeFlat() = _$_ButtonTypeFlat;
+abstract class ButtonConfigFlat implements ButtonConfig {
+  const factory ButtonConfigFlat(
+      {@required ButtonThemeData themedata,
+      @required Widget child}) = _$ButtonConfigFlat;
+
+  @override
+  ButtonThemeData get themedata;
+  @override
+  Widget get child;
+  @override
+  $ButtonConfigFlatCopyWith<ButtonConfigFlat> get copyWith;
+}
+
+abstract class $ButtonConfigFlatIconCopyWith<$Res>
+    implements $ButtonConfigCopyWith<$Res> {
+  factory $ButtonConfigFlatIconCopyWith(ButtonConfigFlatIcon value,
+          $Res Function(ButtonConfigFlatIcon) then) =
+      _$ButtonConfigFlatIconCopyWithImpl<$Res>;
+  @override
+  $Res call({ButtonThemeData themedata, Widget icon, Widget child});
+}
+
+class _$ButtonConfigFlatIconCopyWithImpl<$Res>
+    extends _$ButtonConfigCopyWithImpl<$Res>
+    implements $ButtonConfigFlatIconCopyWith<$Res> {
+  _$ButtonConfigFlatIconCopyWithImpl(
+      ButtonConfigFlatIcon _value, $Res Function(ButtonConfigFlatIcon) _then)
+      : super(_value, (v) => _then(v as ButtonConfigFlatIcon));
+
+  @override
+  ButtonConfigFlatIcon get _value => super._value as ButtonConfigFlatIcon;
+
+  @override
+  $Res call({
+    Object themedata = freezed,
+    Object icon = freezed,
+    Object child = freezed,
+  }) {
+    return _then(ButtonConfigFlatIcon(
+      themedata: themedata == freezed
+          ? _value.themedata
+          : themedata as ButtonThemeData,
+      icon: icon == freezed ? _value.icon : icon as Widget,
+      child: child == freezed ? _value.child : child as Widget,
+    ));
+  }
+}
+
+class _$ButtonConfigFlatIcon
+    with DiagnosticableTreeMixin
+    implements ButtonConfigFlatIcon {
+  const _$ButtonConfigFlatIcon(
+      {@required this.themedata, @required this.icon, @required this.child})
+      : assert(themedata != null),
+        assert(icon != null),
+        assert(child != null);
+
+  @override
+  final ButtonThemeData themedata;
+  @override
+  final Widget icon;
+  @override
+  final Widget child;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ButtonConfig.flatIcon(themedata: $themedata, icon: $icon, child: $child)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ButtonConfig.flatIcon'))
+      ..add(DiagnosticsProperty('themedata', themedata))
+      ..add(DiagnosticsProperty('icon', icon))
+      ..add(DiagnosticsProperty('child', child));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ButtonConfigFlatIcon &&
+            (identical(other.themedata, themedata) ||
+                const DeepCollectionEquality()
+                    .equals(other.themedata, themedata)) &&
+            (identical(other.icon, icon) ||
+                const DeepCollectionEquality().equals(other.icon, icon)) &&
+            (identical(other.child, child) ||
+                const DeepCollectionEquality().equals(other.child, child)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(themedata) ^
+      const DeepCollectionEquality().hash(icon) ^
+      const DeepCollectionEquality().hash(child);
+
+  @override
+  $ButtonConfigFlatIconCopyWith<ButtonConfigFlatIcon> get copyWith =>
+      _$ButtonConfigFlatIconCopyWithImpl<ButtonConfigFlatIcon>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result raised(ButtonThemeData themedata, Widget child),
+    @required Result flat(ButtonThemeData themedata, Widget child),
+    @required
+        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required
+        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+  }) {
+    assert(raised != null);
+    assert(flat != null);
+    assert(flatIcon != null);
+    assert(raisedIcon != null);
+    return flatIcon(themedata, icon, child);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result raised(ButtonThemeData themedata, Widget child),
+    Result flat(ButtonThemeData themedata, Widget child),
+    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (flatIcon != null) {
+      return flatIcon(themedata, icon, child);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result raised(ButtonConfigRaised value),
+    @required Result flat(ButtonConfigFlat value),
+    @required Result flatIcon(ButtonConfigFlatIcon value),
+    @required Result raisedIcon(ButtonConfigRaisedIcon value),
+  }) {
+    assert(raised != null);
+    assert(flat != null);
+    assert(flatIcon != null);
+    assert(raisedIcon != null);
+    return flatIcon(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result raised(ButtonConfigRaised value),
+    Result flat(ButtonConfigFlat value),
+    Result flatIcon(ButtonConfigFlatIcon value),
+    Result raisedIcon(ButtonConfigRaisedIcon value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (flatIcon != null) {
+      return flatIcon(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ButtonConfigFlatIcon implements ButtonConfig {
+  const factory ButtonConfigFlatIcon(
+      {@required ButtonThemeData themedata,
+      @required Widget icon,
+      @required Widget child}) = _$ButtonConfigFlatIcon;
+
+  @override
+  ButtonThemeData get themedata;
+  Widget get icon;
+  @override
+  Widget get child;
+  @override
+  $ButtonConfigFlatIconCopyWith<ButtonConfigFlatIcon> get copyWith;
+}
+
+abstract class $ButtonConfigRaisedIconCopyWith<$Res>
+    implements $ButtonConfigCopyWith<$Res> {
+  factory $ButtonConfigRaisedIconCopyWith(ButtonConfigRaisedIcon value,
+          $Res Function(ButtonConfigRaisedIcon) then) =
+      _$ButtonConfigRaisedIconCopyWithImpl<$Res>;
+  @override
+  $Res call({ButtonThemeData themedata, Widget icon, Widget child});
+}
+
+class _$ButtonConfigRaisedIconCopyWithImpl<$Res>
+    extends _$ButtonConfigCopyWithImpl<$Res>
+    implements $ButtonConfigRaisedIconCopyWith<$Res> {
+  _$ButtonConfigRaisedIconCopyWithImpl(ButtonConfigRaisedIcon _value,
+      $Res Function(ButtonConfigRaisedIcon) _then)
+      : super(_value, (v) => _then(v as ButtonConfigRaisedIcon));
+
+  @override
+  ButtonConfigRaisedIcon get _value => super._value as ButtonConfigRaisedIcon;
+
+  @override
+  $Res call({
+    Object themedata = freezed,
+    Object icon = freezed,
+    Object child = freezed,
+  }) {
+    return _then(ButtonConfigRaisedIcon(
+      themedata: themedata == freezed
+          ? _value.themedata
+          : themedata as ButtonThemeData,
+      icon: icon == freezed ? _value.icon : icon as Widget,
+      child: child == freezed ? _value.child : child as Widget,
+    ));
+  }
+}
+
+class _$ButtonConfigRaisedIcon
+    with DiagnosticableTreeMixin
+    implements ButtonConfigRaisedIcon {
+  const _$ButtonConfigRaisedIcon(
+      {@required this.themedata, @required this.icon, @required this.child})
+      : assert(themedata != null),
+        assert(icon != null),
+        assert(child != null);
+
+  @override
+  final ButtonThemeData themedata;
+  @override
+  final Widget icon;
+  @override
+  final Widget child;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ButtonConfig.raisedIcon(themedata: $themedata, icon: $icon, child: $child)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ButtonConfig.raisedIcon'))
+      ..add(DiagnosticsProperty('themedata', themedata))
+      ..add(DiagnosticsProperty('icon', icon))
+      ..add(DiagnosticsProperty('child', child));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ButtonConfigRaisedIcon &&
+            (identical(other.themedata, themedata) ||
+                const DeepCollectionEquality()
+                    .equals(other.themedata, themedata)) &&
+            (identical(other.icon, icon) ||
+                const DeepCollectionEquality().equals(other.icon, icon)) &&
+            (identical(other.child, child) ||
+                const DeepCollectionEquality().equals(other.child, child)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(themedata) ^
+      const DeepCollectionEquality().hash(icon) ^
+      const DeepCollectionEquality().hash(child);
+
+  @override
+  $ButtonConfigRaisedIconCopyWith<ButtonConfigRaisedIcon> get copyWith =>
+      _$ButtonConfigRaisedIconCopyWithImpl<ButtonConfigRaisedIcon>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result raised(ButtonThemeData themedata, Widget child),
+    @required Result flat(ButtonThemeData themedata, Widget child),
+    @required
+        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required
+        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+  }) {
+    assert(raised != null);
+    assert(flat != null);
+    assert(flatIcon != null);
+    assert(raisedIcon != null);
+    return raisedIcon(themedata, icon, child);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result raised(ButtonThemeData themedata, Widget child),
+    Result flat(ButtonThemeData themedata, Widget child),
+    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (raisedIcon != null) {
+      return raisedIcon(themedata, icon, child);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result raised(ButtonConfigRaised value),
+    @required Result flat(ButtonConfigFlat value),
+    @required Result flatIcon(ButtonConfigFlatIcon value),
+    @required Result raisedIcon(ButtonConfigRaisedIcon value),
+  }) {
+    assert(raised != null);
+    assert(flat != null);
+    assert(flatIcon != null);
+    assert(raisedIcon != null);
+    return raisedIcon(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result raised(ButtonConfigRaised value),
+    Result flat(ButtonConfigFlat value),
+    Result flatIcon(ButtonConfigFlatIcon value),
+    Result raisedIcon(ButtonConfigRaisedIcon value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (raisedIcon != null) {
+      return raisedIcon(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ButtonConfigRaisedIcon implements ButtonConfig {
+  const factory ButtonConfigRaisedIcon(
+      {@required ButtonThemeData themedata,
+      @required Widget icon,
+      @required Widget child}) = _$ButtonConfigRaisedIcon;
+
+  @override
+  ButtonThemeData get themedata;
+  Widget get icon;
+  @override
+  Widget get child;
+  @override
+  $ButtonConfigRaisedIconCopyWith<ButtonConfigRaisedIcon> get copyWith;
+}
+
+class _$AppleButtonConfigTearOff {
+  const _$AppleButtonConfigTearOff();
+
+  _AppleButtonConfig call({ButtonConfig config}) {
+    return _AppleButtonConfig(
+      config: config,
+    );
+  }
+
+  _AppleButtonConfigDark dark({Widget label}) {
+    return _AppleButtonConfigDark(
+      label: label,
+    );
+  }
+
+  _AppleButtonConfigLight light({Widget label}) {
+    return _AppleButtonConfigLight(
+      label: label,
+    );
+  }
+}
+
+// ignore: unused_element
+const $AppleButtonConfig = _$AppleButtonConfigTearOff();
+
+mixin _$AppleButtonConfig {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    @required Result dark(Widget label),
+    @required Result light(Widget label),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    Result dark(Widget label),
+    Result light(Widget label),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_AppleButtonConfig value), {
+    @required Result dark(_AppleButtonConfigDark value),
+    @required Result light(_AppleButtonConfigLight value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_AppleButtonConfig value), {
+    Result dark(_AppleButtonConfigDark value),
+    Result light(_AppleButtonConfigLight value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $AppleButtonConfigCopyWith<$Res> {
+  factory $AppleButtonConfigCopyWith(
+          AppleButtonConfig value, $Res Function(AppleButtonConfig) then) =
+      _$AppleButtonConfigCopyWithImpl<$Res>;
+}
+
+class _$AppleButtonConfigCopyWithImpl<$Res>
+    implements $AppleButtonConfigCopyWith<$Res> {
+  _$AppleButtonConfigCopyWithImpl(this._value, this._then);
+
+  final AppleButtonConfig _value;
+  // ignore: unused_field
+  final $Res Function(AppleButtonConfig) _then;
+}
+
+abstract class _$AppleButtonConfigCopyWith<$Res> {
+  factory _$AppleButtonConfigCopyWith(
+          _AppleButtonConfig value, $Res Function(_AppleButtonConfig) then) =
+      __$AppleButtonConfigCopyWithImpl<$Res>;
+  $Res call({ButtonConfig config});
+
+  $ButtonConfigCopyWith<$Res> get config;
+}
+
+class __$AppleButtonConfigCopyWithImpl<$Res>
+    extends _$AppleButtonConfigCopyWithImpl<$Res>
+    implements _$AppleButtonConfigCopyWith<$Res> {
+  __$AppleButtonConfigCopyWithImpl(
+      _AppleButtonConfig _value, $Res Function(_AppleButtonConfig) _then)
+      : super(_value, (v) => _then(v as _AppleButtonConfig));
+
+  @override
+  _AppleButtonConfig get _value => super._value as _AppleButtonConfig;
+
+  @override
+  $Res call({
+    Object config = freezed,
+  }) {
+    return _then(_AppleButtonConfig(
+      config: config == freezed ? _value.config : config as ButtonConfig,
+    ));
+  }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get config {
+    if (_value.config == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.config, (value) {
+      return _then(_value.copyWith(config: value));
+    });
+  }
+}
+
+class _$_AppleButtonConfig
+    with DiagnosticableTreeMixin
+    implements _AppleButtonConfig {
+  const _$_AppleButtonConfig({this.config});
+
+  @override
+  final ButtonConfig config;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AppleButtonConfig(config: $config)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppleButtonConfig'))
+      ..add(DiagnosticsProperty('config', config));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AppleButtonConfig &&
+            (identical(other.config, config) ||
+                const DeepCollectionEquality().equals(other.config, config)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(config);
+
+  @override
+  _$AppleButtonConfigCopyWith<_AppleButtonConfig> get copyWith =>
+      __$AppleButtonConfigCopyWithImpl<_AppleButtonConfig>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    @required Result dark(Widget label),
+    @required Result light(Widget label),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return $default(config);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    Result dark(Widget label),
+    Result light(Widget label),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(config);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_AppleButtonConfig value), {
+    @required Result dark(_AppleButtonConfigDark value),
+    @required Result light(_AppleButtonConfigLight value),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_AppleButtonConfig value), {
+    Result dark(_AppleButtonConfigDark value),
+    Result light(_AppleButtonConfigLight value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AppleButtonConfig implements AppleButtonConfig {
+  const factory _AppleButtonConfig({ButtonConfig config}) =
+      _$_AppleButtonConfig;
+
+  ButtonConfig get config;
+  _$AppleButtonConfigCopyWith<_AppleButtonConfig> get copyWith;
+}
+
+abstract class _$AppleButtonConfigDarkCopyWith<$Res> {
+  factory _$AppleButtonConfigDarkCopyWith(_AppleButtonConfigDark value,
+          $Res Function(_AppleButtonConfigDark) then) =
+      __$AppleButtonConfigDarkCopyWithImpl<$Res>;
+  $Res call({Widget label});
+}
+
+class __$AppleButtonConfigDarkCopyWithImpl<$Res>
+    extends _$AppleButtonConfigCopyWithImpl<$Res>
+    implements _$AppleButtonConfigDarkCopyWith<$Res> {
+  __$AppleButtonConfigDarkCopyWithImpl(_AppleButtonConfigDark _value,
+      $Res Function(_AppleButtonConfigDark) _then)
+      : super(_value, (v) => _then(v as _AppleButtonConfigDark));
+
+  @override
+  _AppleButtonConfigDark get _value => super._value as _AppleButtonConfigDark;
+
+  @override
+  $Res call({
+    Object label = freezed,
+  }) {
+    return _then(_AppleButtonConfigDark(
+      label: label == freezed ? _value.label : label as Widget,
+    ));
+  }
+}
+
+class _$_AppleButtonConfigDark
+    with DiagnosticableTreeMixin
+    implements _AppleButtonConfigDark {
+  const _$_AppleButtonConfigDark({this.label});
+
+  @override
+  final Widget label;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AppleButtonConfig.dark(label: $label)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppleButtonConfig.dark'))
+      ..add(DiagnosticsProperty('label', label));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AppleButtonConfigDark &&
+            (identical(other.label, label) ||
+                const DeepCollectionEquality().equals(other.label, label)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(label);
+
+  @override
+  _$AppleButtonConfigDarkCopyWith<_AppleButtonConfigDark> get copyWith =>
+      __$AppleButtonConfigDarkCopyWithImpl<_AppleButtonConfigDark>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    @required Result dark(Widget label),
+    @required Result light(Widget label),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return dark(label);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    Result dark(Widget label),
+    Result light(Widget label),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (dark != null) {
+      return dark(label);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_AppleButtonConfig value), {
+    @required Result dark(_AppleButtonConfigDark value),
+    @required Result light(_AppleButtonConfigLight value),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return dark(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_AppleButtonConfig value), {
+    Result dark(_AppleButtonConfigDark value),
+    Result light(_AppleButtonConfigLight value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (dark != null) {
+      return dark(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AppleButtonConfigDark implements AppleButtonConfig {
+  const factory _AppleButtonConfigDark({Widget label}) =
+      _$_AppleButtonConfigDark;
+
+  Widget get label;
+  _$AppleButtonConfigDarkCopyWith<_AppleButtonConfigDark> get copyWith;
+}
+
+abstract class _$AppleButtonConfigLightCopyWith<$Res> {
+  factory _$AppleButtonConfigLightCopyWith(_AppleButtonConfigLight value,
+          $Res Function(_AppleButtonConfigLight) then) =
+      __$AppleButtonConfigLightCopyWithImpl<$Res>;
+  $Res call({Widget label});
+}
+
+class __$AppleButtonConfigLightCopyWithImpl<$Res>
+    extends _$AppleButtonConfigCopyWithImpl<$Res>
+    implements _$AppleButtonConfigLightCopyWith<$Res> {
+  __$AppleButtonConfigLightCopyWithImpl(_AppleButtonConfigLight _value,
+      $Res Function(_AppleButtonConfigLight) _then)
+      : super(_value, (v) => _then(v as _AppleButtonConfigLight));
+
+  @override
+  _AppleButtonConfigLight get _value => super._value as _AppleButtonConfigLight;
+
+  @override
+  $Res call({
+    Object label = freezed,
+  }) {
+    return _then(_AppleButtonConfigLight(
+      label: label == freezed ? _value.label : label as Widget,
+    ));
+  }
+}
+
+class _$_AppleButtonConfigLight
+    with DiagnosticableTreeMixin
+    implements _AppleButtonConfigLight {
+  const _$_AppleButtonConfigLight({this.label});
+
+  @override
+  final Widget label;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'AppleButtonConfig.light(label: $label)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'AppleButtonConfig.light'))
+      ..add(DiagnosticsProperty('label', label));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AppleButtonConfigLight &&
+            (identical(other.label, label) ||
+                const DeepCollectionEquality().equals(other.label, label)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(label);
+
+  @override
+  _$AppleButtonConfigLightCopyWith<_AppleButtonConfigLight> get copyWith =>
+      __$AppleButtonConfigLightCopyWithImpl<_AppleButtonConfigLight>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    @required Result dark(Widget label),
+    @required Result light(Widget label),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return light(label);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    Result dark(Widget label),
+    Result light(Widget label),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (light != null) {
+      return light(label);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_AppleButtonConfig value), {
+    @required Result dark(_AppleButtonConfigDark value),
+    @required Result light(_AppleButtonConfigLight value),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return light(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_AppleButtonConfig value), {
+    Result dark(_AppleButtonConfigDark value),
+    Result light(_AppleButtonConfigLight value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (light != null) {
+      return light(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AppleButtonConfigLight implements AppleButtonConfig {
+  const factory _AppleButtonConfigLight({Widget label}) =
+      _$_AppleButtonConfigLight;
+
+  Widget get label;
+  _$AppleButtonConfigLightCopyWith<_AppleButtonConfigLight> get copyWith;
+}
+
+class _$GoogleButtonConfigTearOff {
+  const _$GoogleButtonConfigTearOff();
+
+  _GoogleButtonConfig call({ButtonConfig config}) {
+    return _GoogleButtonConfig(
+      config: config,
+    );
+  }
+
+  _GoogleButtonConfigDark dark({Widget label}) {
+    return _GoogleButtonConfigDark(
+      label: label,
+    );
+  }
+
+  _GoogleButtonConfigLight light({Widget label}) {
+    return _GoogleButtonConfigLight(
+      label: label,
+    );
+  }
+}
+
+// ignore: unused_element
+const $GoogleButtonConfig = _$GoogleButtonConfigTearOff();
+
+mixin _$GoogleButtonConfig {
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    @required Result dark(Widget label),
+    @required Result light(Widget label),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    Result dark(Widget label),
+    Result light(Widget label),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_GoogleButtonConfig value), {
+    @required Result dark(_GoogleButtonConfigDark value),
+    @required Result light(_GoogleButtonConfigLight value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_GoogleButtonConfig value), {
+    Result dark(_GoogleButtonConfigDark value),
+    Result light(_GoogleButtonConfigLight value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $GoogleButtonConfigCopyWith<$Res> {
+  factory $GoogleButtonConfigCopyWith(
+          GoogleButtonConfig value, $Res Function(GoogleButtonConfig) then) =
+      _$GoogleButtonConfigCopyWithImpl<$Res>;
+}
+
+class _$GoogleButtonConfigCopyWithImpl<$Res>
+    implements $GoogleButtonConfigCopyWith<$Res> {
+  _$GoogleButtonConfigCopyWithImpl(this._value, this._then);
+
+  final GoogleButtonConfig _value;
+  // ignore: unused_field
+  final $Res Function(GoogleButtonConfig) _then;
+}
+
+abstract class _$GoogleButtonConfigCopyWith<$Res> {
+  factory _$GoogleButtonConfigCopyWith(
+          _GoogleButtonConfig value, $Res Function(_GoogleButtonConfig) then) =
+      __$GoogleButtonConfigCopyWithImpl<$Res>;
+  $Res call({ButtonConfig config});
+
+  $ButtonConfigCopyWith<$Res> get config;
+}
+
+class __$GoogleButtonConfigCopyWithImpl<$Res>
+    extends _$GoogleButtonConfigCopyWithImpl<$Res>
+    implements _$GoogleButtonConfigCopyWith<$Res> {
+  __$GoogleButtonConfigCopyWithImpl(
+      _GoogleButtonConfig _value, $Res Function(_GoogleButtonConfig) _then)
+      : super(_value, (v) => _then(v as _GoogleButtonConfig));
+
+  @override
+  _GoogleButtonConfig get _value => super._value as _GoogleButtonConfig;
+
+  @override
+  $Res call({
+    Object config = freezed,
+  }) {
+    return _then(_GoogleButtonConfig(
+      config: config == freezed ? _value.config : config as ButtonConfig,
+    ));
+  }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get config {
+    if (_value.config == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.config, (value) {
+      return _then(_value.copyWith(config: value));
+    });
+  }
+}
+
+class _$_GoogleButtonConfig
+    with DiagnosticableTreeMixin
+    implements _GoogleButtonConfig {
+  const _$_GoogleButtonConfig({this.config});
+
+  @override
+  final ButtonConfig config;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GoogleButtonConfig(config: $config)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GoogleButtonConfig'))
+      ..add(DiagnosticsProperty('config', config));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GoogleButtonConfig &&
+            (identical(other.config, config) ||
+                const DeepCollectionEquality().equals(other.config, config)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(config);
+
+  @override
+  _$GoogleButtonConfigCopyWith<_GoogleButtonConfig> get copyWith =>
+      __$GoogleButtonConfigCopyWithImpl<_GoogleButtonConfig>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    @required Result dark(Widget label),
+    @required Result light(Widget label),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return $default(config);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    Result dark(Widget label),
+    Result light(Widget label),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(config);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_GoogleButtonConfig value), {
+    @required Result dark(_GoogleButtonConfigDark value),
+    @required Result light(_GoogleButtonConfigLight value),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_GoogleButtonConfig value), {
+    Result dark(_GoogleButtonConfigDark value),
+    Result light(_GoogleButtonConfigLight value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GoogleButtonConfig implements GoogleButtonConfig {
+  const factory _GoogleButtonConfig({ButtonConfig config}) =
+      _$_GoogleButtonConfig;
+
+  ButtonConfig get config;
+  _$GoogleButtonConfigCopyWith<_GoogleButtonConfig> get copyWith;
+}
+
+abstract class _$GoogleButtonConfigDarkCopyWith<$Res> {
+  factory _$GoogleButtonConfigDarkCopyWith(_GoogleButtonConfigDark value,
+          $Res Function(_GoogleButtonConfigDark) then) =
+      __$GoogleButtonConfigDarkCopyWithImpl<$Res>;
+  $Res call({Widget label});
+}
+
+class __$GoogleButtonConfigDarkCopyWithImpl<$Res>
+    extends _$GoogleButtonConfigCopyWithImpl<$Res>
+    implements _$GoogleButtonConfigDarkCopyWith<$Res> {
+  __$GoogleButtonConfigDarkCopyWithImpl(_GoogleButtonConfigDark _value,
+      $Res Function(_GoogleButtonConfigDark) _then)
+      : super(_value, (v) => _then(v as _GoogleButtonConfigDark));
+
+  @override
+  _GoogleButtonConfigDark get _value => super._value as _GoogleButtonConfigDark;
+
+  @override
+  $Res call({
+    Object label = freezed,
+  }) {
+    return _then(_GoogleButtonConfigDark(
+      label: label == freezed ? _value.label : label as Widget,
+    ));
+  }
+}
+
+class _$_GoogleButtonConfigDark
+    with DiagnosticableTreeMixin
+    implements _GoogleButtonConfigDark {
+  const _$_GoogleButtonConfigDark({this.label});
+
+  @override
+  final Widget label;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GoogleButtonConfig.dark(label: $label)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GoogleButtonConfig.dark'))
+      ..add(DiagnosticsProperty('label', label));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GoogleButtonConfigDark &&
+            (identical(other.label, label) ||
+                const DeepCollectionEquality().equals(other.label, label)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(label);
+
+  @override
+  _$GoogleButtonConfigDarkCopyWith<_GoogleButtonConfigDark> get copyWith =>
+      __$GoogleButtonConfigDarkCopyWithImpl<_GoogleButtonConfigDark>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    @required Result dark(Widget label),
+    @required Result light(Widget label),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return dark(label);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    Result dark(Widget label),
+    Result light(Widget label),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (dark != null) {
+      return dark(label);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_GoogleButtonConfig value), {
+    @required Result dark(_GoogleButtonConfigDark value),
+    @required Result light(_GoogleButtonConfigLight value),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return dark(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_GoogleButtonConfig value), {
+    Result dark(_GoogleButtonConfigDark value),
+    Result light(_GoogleButtonConfigLight value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (dark != null) {
+      return dark(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GoogleButtonConfigDark implements GoogleButtonConfig {
+  const factory _GoogleButtonConfigDark({Widget label}) =
+      _$_GoogleButtonConfigDark;
+
+  Widget get label;
+  _$GoogleButtonConfigDarkCopyWith<_GoogleButtonConfigDark> get copyWith;
+}
+
+abstract class _$GoogleButtonConfigLightCopyWith<$Res> {
+  factory _$GoogleButtonConfigLightCopyWith(_GoogleButtonConfigLight value,
+          $Res Function(_GoogleButtonConfigLight) then) =
+      __$GoogleButtonConfigLightCopyWithImpl<$Res>;
+  $Res call({Widget label});
+}
+
+class __$GoogleButtonConfigLightCopyWithImpl<$Res>
+    extends _$GoogleButtonConfigCopyWithImpl<$Res>
+    implements _$GoogleButtonConfigLightCopyWith<$Res> {
+  __$GoogleButtonConfigLightCopyWithImpl(_GoogleButtonConfigLight _value,
+      $Res Function(_GoogleButtonConfigLight) _then)
+      : super(_value, (v) => _then(v as _GoogleButtonConfigLight));
+
+  @override
+  _GoogleButtonConfigLight get _value =>
+      super._value as _GoogleButtonConfigLight;
+
+  @override
+  $Res call({
+    Object label = freezed,
+  }) {
+    return _then(_GoogleButtonConfigLight(
+      label: label == freezed ? _value.label : label as Widget,
+    ));
+  }
+}
+
+class _$_GoogleButtonConfigLight
+    with DiagnosticableTreeMixin
+    implements _GoogleButtonConfigLight {
+  const _$_GoogleButtonConfigLight({this.label});
+
+  @override
+  final Widget label;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'GoogleButtonConfig.light(label: $label)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'GoogleButtonConfig.light'))
+      ..add(DiagnosticsProperty('label', label));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GoogleButtonConfigLight &&
+            (identical(other.label, label) ||
+                const DeepCollectionEquality().equals(other.label, label)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(label);
+
+  @override
+  _$GoogleButtonConfigLightCopyWith<_GoogleButtonConfigLight> get copyWith =>
+      __$GoogleButtonConfigLightCopyWithImpl<_GoogleButtonConfigLight>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    @required Result dark(Widget label),
+    @required Result light(Widget label),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return light(label);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>(
+    Result $default(ButtonConfig config), {
+    Result dark(Widget label),
+    Result light(Widget label),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (light != null) {
+      return light(label);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>(
+    Result $default(_GoogleButtonConfig value), {
+    @required Result dark(_GoogleButtonConfigDark value),
+    @required Result light(_GoogleButtonConfigLight value),
+  }) {
+    assert($default != null);
+    assert(dark != null);
+    assert(light != null);
+    return light(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>(
+    Result $default(_GoogleButtonConfig value), {
+    Result dark(_GoogleButtonConfigDark value),
+    Result light(_GoogleButtonConfigLight value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (light != null) {
+      return light(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GoogleButtonConfigLight implements GoogleButtonConfig {
+  const factory _GoogleButtonConfigLight({Widget label}) =
+      _$_GoogleButtonConfigLight;
+
+  Widget get label;
+  _$GoogleButtonConfigLightCopyWith<_GoogleButtonConfigLight> get copyWith;
 }

@@ -10,19 +10,19 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
 ## Features
 
 - **Multiple platform support**
-  - Works on mobile and web. No changes needed
+  - Works on mobile (Android/iOS) and web. No changes needed
   - Windows, macOS and Linux to be added in the future
 - **Multiple authentication providers**
-  - Package supported: Google and Apple
-  - Please see [Authentication Providers](#authentication-providers) for other sign-in providers
+  - Package supported: Google, Apple, Twitter and Github
+  - Please see [Authentication Providers](#authentication-providers) for additional information
 - **Services and state managed for you**
   - Easily interact with Firebase from anywhere in your app
   - Monitor the auth state and react to changes
 - **Error handling and error messages**
   - Built in error handling that will display friendly in-app error messages
-  - Error/Success dialogs will be customizable in future versions
+  - Error/Success dialogs can be customized
 - **Highly customizable**
-  - Either use the standard sign-in widgets, or easily create your own.
+  - Either use the standard sign-in widgets, or create your own.
 
 ## Getting started
 
@@ -122,16 +122,10 @@ class MyApp extends StatelessWidget {
       authProviders: AuthProviders(
         emailAndPassword: true, // enabled by default
         google: true,
+        apple: true,
+        twitter: true,
+        github: true,
         anonymous: true,
-        apple: AppleAuthProvider(
-          // required for web-based authentication flows (Android)
-          webAuthenticationOptions: WebAuthenticationOptions(
-            clientId: 'com.aboutyou.dart_packages.sign_in_with_apple.example', // example clientId
-            redirectUri: Uri.parse(
-              'https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple', // example redirectUri
-            ),
-          ),
-        ),
       ),
       child: MaterialApp(
         title: 'Material App',
@@ -242,15 +236,51 @@ context.getSignedInUser()
 ## Authentication Providers
 For the time being, Lit Firebase auth will only directly provide Google and Apple sign in.
 
-**NOTE:** Apple requires Apple sign in to be a sign-in option if any other third-party sign-in option is used.
+**NOTE:** Apple requires Apple sign in to be enalbed if any other third-party sign-in option is used.
 
-Other identity providers (Facebook, Github, etc.) will need to be implemented seperately. After successful third party sign in, you can sign in to Firebase by making use of the `signInWithCredential` method available on `BuildContext`.
+The supported third-party providers are:
+* Google
+* Apple
+* Github
+* Twitter
+
+These need to be enabled in the `LitAuthInit` widget.
+```dart
+LitAuthInit(
+  // specify which auth providers to enable
+  authProviders: AuthProviders(
+    emailAndPassword: true, // enabled by default
+    google: true,
+    apple: true,
+    twitter: true,
+    github: true,
+    anonymous: true,
+  ),
+  child: MaterialApp(
+    title: 'Material App',
+    home: Home(),
+  ),
+);
+```
+
+To initiate authentication with one of these providers, call the relevant method. For example:
+
+```dart
+FlatButton(
+  onPressed: () {
+    context.signInWithGithub();
+  },
+  child: Text('Github Sign In'),
+),
+```
+
+Other identity providers (for example, Facebook) will need to be implemented seperately. After successful third party sign in you can sign in to Firebase by making use of the `signInWithCredential` method available on `BuildContext`.
 
 For example:
 
 ```dart
  Widget build(BuildContext context) {
-   AuthCredential credential = // get credential for identity provider (Facebook, Github, etc.)
+   AuthCredential credential = // get credential for identity provider (Facebook, etc.)
    context.signInWithCredential(credential);
  }
  ```
@@ -276,17 +306,17 @@ return LitAuth(
  ```dart
 return LitAuth(
   config: AuthConfig(
-    googleButton: ButtonConfig(
-      type: ButtonType.raised(),
-      themeData: ButtonThemeData(
-        buttonColor: Colors.red,
-      ),
-      child: Text('My styled Google Sign-in'),
+    signInButton: ButtonConfig.raised(
+      themedata: ButtonThemeData(buttonColor: Colors.red),
+      child: Text('Sign in with Email'),
     ),
+    googleButton: GoogleButtonConfig.light(),
+    appleButton: AppleButtonConfig.dark(),
   ),
-);
-
+),
  ```
+
+There are a number of different button customizations that you can do.
 
 ### Notifications
 Notifications are rendered using the [flushbar](https://pub.dev/packages/flushbar) package.
@@ -307,6 +337,7 @@ There are many attributes that can be altered to create the desired notification
 For further customization you can directly make use of the Lit Firebase components to build a completely custom sign-in widget.
 
 Instead of using the standard `AuthConfig`, set it to custom and provide your custom sign-in widget:
+
 ```dart
 return LitAuth.custom(
   child: YourCustomSignInWidget(),
@@ -375,14 +406,14 @@ class YourCustomSignInWidget extends StatelessWidget {
 |                   | State       |                                                                  |
 | ----------------- | ----------  | ---------------------------------------------------------------- |
 | Platforms         | ⌛          | Support more platforms (Windows, macOS, Linux)                   |
-| Auth providers    | ⌛          | Support more authentication providers (Github, Facebook)         |
+| Auth providers    | ⌛          | Support more authentication providers (Facebook, Microsoft)         |
 | Cupertino         | ⌛          | Cupertino look and feel                                          |
 | Password reset    | ❌          | Add services and UI to reset password/email                      |
 | Email confirmation| ❌          | Add UI to notify users they need to confirm their email address  |
 | Support UI        | ❌          | Assist users who cannot authenticate with support links          |
-| Custom dialogs    | ❌          | Add support to customize dialog messages                         |
+| Custom dialogs    | ✔️          | Add support to customize dialog messages                         |
 | Adaptive layouts  | ⌛          | Adaptive layouts to support multiple screen sizes               |
-| Customization     | ❌          | Even more, or easier, customization                             |
+| Customization     | ✔️          | Even more, or easier, customization                             |
 | Testing           | ❌          | Add testing                                                     |
 
 ## Dart Versions

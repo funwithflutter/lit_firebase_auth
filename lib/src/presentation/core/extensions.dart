@@ -49,6 +49,22 @@ extension AuthContext on BuildContext {
         .signInWithApple();
   }
 
+  /// Perform sign-in with Github.
+  ///
+  /// Should only be used if you're creating your own custom sign-in form
+  Future<void> signInWithGithub() async {
+    Provider.of<SignInHandlerStateNotifier>(this, listen: false)
+        .signInWithGithub();
+  }
+
+  /// Perform sign-in with Twitter.
+  ///
+  /// Should only be used if you're creating your own custom sign-in form
+  Future<void> signInWithTwitter() async {
+    Provider.of<SignInHandlerStateNotifier>(this, listen: false)
+        .signInWithTwitter();
+  }
+
   /// Sign in with Credentials
   ///
   /// Should only be used if your implementing your own third party sign-in

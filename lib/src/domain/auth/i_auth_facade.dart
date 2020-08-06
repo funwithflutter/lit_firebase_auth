@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import 'auth.dart';
 import 'user.dart';
@@ -20,10 +19,12 @@ abstract class AuthFacade {
     @required Password password,
   });
   Future<Auth> signInWithGoogle();
-  Future<Auth> signInWithApple({
-    @required WebAuthenticationOptions webAuthenticationOptions,
-  });
   Future<Auth> signInWithCredential(AuthCredential credential);
+  Future<Auth> signInWithOAuth(
+    String provider,
+    List<String> scopes,
+    Map<String, String> parameters,
+  );
   Future<Auth> signInAnonymously();
   Future<void> signOut();
 }

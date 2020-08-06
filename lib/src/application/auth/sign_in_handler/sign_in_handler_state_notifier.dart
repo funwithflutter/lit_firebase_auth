@@ -52,74 +52,68 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     if (!_authProviders.google) {
       throw AuthProviderNotEnabled('Google');
     }
-    state = state.copyWith(
-      isSubmitting: true,
-      authFailureOrSuccessOption: none(),
+
+    _performActionOnAuthFacadeWithOAuthProviders(
+      () => _authFacade.signInWithGoogle(),
     );
-
-    final auth = await _authFacade.signInWithGoogle();
-
-    if (mounted) {
-      state = state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(auth),
-      );
-    }
   }
 
   Future<void> signInWithApple() async {
-    if (_authProviders.apple == null) {
+    if (!_authProviders.apple) {
       throw AuthProviderNotEnabled('Apple');
     }
-    state = state.copyWith(
-      isSubmitting: true,
-      authFailureOrSuccessOption: none(),
-    );
 
-    final auth = await _authFacade.signInWithApple(
-      webAuthenticationOptions: _authProviders.apple.webAuthenticationOptions,
+    _performActionOnAuthFacadeWithOAuthProviders(
+      () => _authFacade.signInWithOAuth(
+        'apple.com',
+        ["email"],
+        {"lang": "en"},
+      ),
     );
+  }
 
-    if (mounted) {
-      state = state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(auth),
-      );
+  Future<void> signInWithGithub() async {
+    if (!_authProviders.github) {
+      throw AuthProviderNotEnabled('Github');
     }
+
+    _performActionOnAuthFacadeWithOAuthProviders(
+      () => _authFacade.signInWithOAuth(
+        'github.com',
+        ["user:email"],
+        {"lang": "en"},
+      ),
+    );
+  }
+
+  Future<void> signInWithTwitter() async {
+    if (!_authProviders.twitter) {
+      throw AuthProviderNotEnabled('Twitter');
+    }
+
+    _performActionOnAuthFacadeWithOAuthProviders(
+      () => _authFacade.signInWithOAuth(
+        'twitter.com',
+        ["email"],
+        {"lang": "en"},
+      ),
+    );
   }
 
   Future<void> signInWithCredential(AuthCredential credential) async {
-    state = state.copyWith(
-      isSubmitting: true,
-      authFailureOrSuccessOption: none(),
+    _performActionOnAuthFacadeWithOAuthProviders(
+      () => _authFacade.signInWithCredential(credential),
     );
-
-    final auth = await _authFacade.signInWithCredential(credential);
-
-    if (mounted) {
-      state = state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(auth),
-      );
-    }
   }
 
   Future<void> signInAnonymously() async {
     if (!_authProviders.anonymous) {
       throw AuthProviderNotEnabled('Anonymous');
     }
-    state = state.copyWith(
-      isSubmitting: true,
-      authFailureOrSuccessOption: none(),
-    );
-    final auth = await _authFacade.signInAnonymously();
 
-    if (mounted) {
-      state = state.copyWith(
-        isSubmitting: false,
-        authFailureOrSuccessOption: some(auth),
-      );
-    }
+    _performActionOnAuthFacadeWithOAuthProviders(
+      () => _authFacade.signInAnonymously(),
+    );
   }
 
   Future<void> _performActionOnAuthFacadeWithEmailAndPassword(
@@ -161,6 +155,23 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
       state = state.copyWith(
         isSubmitting: false,
         showErrorMessages: true,
+        authFailureOrSuccessOption: some(auth),
+      );
+    }
+  }
+
+  Future<void> _performActionOnAuthFacadeWithOAuthProviders(
+    Future<Auth> Function() signInProvider,
+  ) async {
+    state = state.copyWith(
+      isSubmitting: true,
+      authFailureOrSuccessOption: none(),
+    );
+    final auth = await signInProvider();
+
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
         authFailureOrSuccessOption: some(auth),
       );
     }
