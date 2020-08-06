@@ -270,7 +270,7 @@ class SignInAnonymouslyButton extends StatelessWidget {
                 .buttonTheme
                 .copyWith(height: defaultButtonHeight, minWidth: 200),
             child: const Text(
-              'Sing in anonymously',
+              defaultLabel,
               style: TextStyle(
                 fontSize: defaultFontSize,
                 fontWeight: defaultFontWeight,
