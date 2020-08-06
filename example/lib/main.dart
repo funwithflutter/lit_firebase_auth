@@ -11,8 +11,10 @@ class MyApp extends StatelessWidget {
       authProviders: AuthProviders(
         emailAndPassword: true, // enabled by default
         google: true,
+        apple: true,
         anonymous: true,
         github: true,
+        twitter: true,
         // apple: AppleAuthProvider(
         //   // required for web-based authentication flows
         //   webAuthenticationOptions: WebAuthenticationOptions(
@@ -25,10 +27,15 @@ class MyApp extends StatelessWidget {
       ),
       child: MaterialApp(
         title: 'Material App',
+        themeMode: ThemeMode.light,
+        darkTheme: ThemeData.dark(),
         theme: ThemeData(
-          primaryColor: Colors.blueGrey,
-          accentColor: Colors.pink[400],
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.white,
+            textTheme: ButtonTextTheme.primary,
+            height: 40,
+          ),
         ),
         home: SplashScreen(),
       ),
@@ -57,6 +64,8 @@ class SplashScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headline4,
                 ),
+                googleButton: GoogleButtonConfig.light(),
+                appleButton: AppleButtonConfig.dark(),
               ),
             ),
 
