@@ -234,15 +234,14 @@ context.getSignedInUser()
  ```
 
 ## Authentication Providers
-For the time being, Lit Firebase auth will only directly provide Google and Apple sign in.
-
-**NOTE:** Apple requires Apple sign in to be enalbed if any other third-party sign-in option is used.
 
 The supported third-party providers are:
 * Google
 * Apple
 * Github
 * Twitter
+
+**NOTE:** Apple requires Apple sign in to be enalbed if any other third-party sign-in option is used.
 
 These need to be enabled in the `LitAuthInit` widget.
 ```dart
