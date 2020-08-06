@@ -1,3 +1,10 @@
+# 0.2.0
+
+- BREAKING: change in Apple authentication method
+- BREAKING: change in the way buttons are customized through `AuthConfig`
+- feat: additional sign-in providers added - Github, Twitter and Apple (iOS, Android and Web)
+- docs: various documentation updates
+
 # 0.1.3
 
 - feat: add functionality to customize notification messages

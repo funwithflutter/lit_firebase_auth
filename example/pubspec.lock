@@ -146,20 +146,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_auth_buttons:
-    dependency: transitive
-    description:
-      name: flutter_auth_buttons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.0"
   flutter_state_notifier:
     dependency: transitive
     description:
       name: flutter_state_notifier
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.2"
+    version: "0.6.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -176,7 +169,7 @@ packages:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.11.0"
+    version: "0.11.0+1"
   google_sign_in:
     dependency: transitive
     description:
@@ -232,7 +225,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.1.3"
+    version: "0.2.0"
   matcher:
     dependency: transitive
     description:
@@ -314,7 +307,7 @@ packages:
       name: state_notifier
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.0"
+    version: "0.6.0"
   stream_channel:
     dependency: transitive
     description:

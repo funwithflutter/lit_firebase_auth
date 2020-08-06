@@ -10,19 +10,19 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
 ## Features
 
 - **Multiple platform support**
-  - Works on mobile and web. No changes needed
+  - Works on mobile (Android/iOS) and web. No changes needed
   - Windows, macOS and Linux to be added in the future
 - **Multiple authentication providers**
-  - Package supported: Google and Apple
-  - Please see [Authentication Providers](#authentication-providers) for other sign-in providers
+  - Package supported: Google, Apple, Twitter and Github
+  - Please see [Authentication Providers](#authentication-providers) for additional information
 - **Services and state managed for you**
   - Easily interact with Firebase from anywhere in your app
   - Monitor the auth state and react to changes
 - **Error handling and error messages**
   - Built in error handling that will display friendly in-app error messages
-  - Error/Success dialogs will be customizable in future versions
+  - Error/Success dialogs can be customized
 - **Highly customizable**
-  - Either use the standard sign-in widgets, or easily create your own.
+  - Either use the standard sign-in widgets, or create your own.
 
 ## Getting started
 
