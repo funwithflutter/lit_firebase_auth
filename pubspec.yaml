@@ -41,8 +41,12 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - graphics/twitter_logo_blue.png
+    - graphics/github.png
+    - graphics/apple_logo_black.png
+    - graphics/apple_logo_white.png
+    - graphics/google_logo.png
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see

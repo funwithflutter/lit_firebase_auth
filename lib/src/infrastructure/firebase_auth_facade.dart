@@ -287,6 +287,7 @@ class FirebaseAuthFacade implements AuthFacade {
       }
       return const Auth.failure(AuthFailure.serverError());
     } catch (e) {
+      debugPrint(e.toString());
       if (e.toString().contains('auth/popup-closed-by-user')) {
         return const Auth.failure(AuthFailure.cancelledByUser());
       }

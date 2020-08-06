@@ -1,38 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
+
 import '../core/auth_config.dart';
 import '../core/extensions.dart';
+import 'oauth_logos.dart';
 
-class _ButtonConfigOverride extends StatelessWidget {
-  const _ButtonConfigOverride({
-    Key key,
-    @required this.buttonConfig,
-    @required this.onPressed,
-  })  : assert(buttonConfig != null),
-        super(key: key);
-
-  final ButtonConfig buttonConfig;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    final button = buttonConfig.type.map(
-      raised: (_) => RaisedButton(
-        onPressed: onPressed,
-        child: buttonConfig.child,
-      ),
-      flat: (_) => FlatButton(
-        onPressed: onPressed,
-        child: buttonConfig.child,
-      ),
-    );
-
-    return ButtonTheme.fromButtonThemeData(
-      data: buttonConfig.themeData,
-      child: button,
-    );
-  }
-}
+const double defaultButtonHeight = 40.0;
+const FontWeight defaultFontWeight = FontWeight.w500;
+const double defaultFontSize = 16.0;
 
 /// Button to sign-in with Google on Firebase
 ///
@@ -49,36 +23,147 @@ class SignInWithGoogleButton extends StatelessWidget {
 
   final ButtonConfig config;
 
+  static const String defaultLabel = 'Continue with Google';
+
+  /// Returns a dark version of the sign in with Google button
+  factory SignInWithGoogleButton.dark({Key key, Widget label}) {
+    return SignInWithGoogleButton(
+      key: key,
+      config: ButtonConfig.raisedIcon(
+        themedata: const ButtonThemeData(
+          buttonColor: Color(0xFF4285F4),
+          textTheme: ButtonTextTheme.primary,
+          height: defaultButtonHeight,
+        ),
+        icon: Container(
+          height: defaultButtonHeight - 1,
+          width: defaultButtonHeight - 1,
+          margin: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(2),
+            color: Colors.white,
+          ),
+          child: Center(
+            child: OAuthIcon.google(),
+          ),
+        ),
+        child: label ?? const _ContinueWithLabel(label: defaultLabel),
+      ),
+    );
+  }
+
+  /// Returns a light version of the sign in with Google button
+  factory SignInWithGoogleButton.light({Key key, Widget label}) {
+    return SignInWithGoogleButton(
+      key: key,
+      config: ButtonConfig.raisedIcon(
+        themedata: const ButtonThemeData(
+          buttonColor: Colors.white,
+          height: defaultButtonHeight,
+        ),
+        icon: _IconWrapper(
+          buttonHeight: defaultButtonHeight,
+          child: OAuthIcon.google(),
+        ),
+        child: label ?? const _ContinueWithLabel(label: defaultLabel),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    if (config != null) {
-      return _ButtonConfigOverride(
-        buttonConfig: ButtonConfig(
-          type: config?.type ?? const ButtonType.raised(),
-          themeData: config?.themeData ??
-              const ButtonThemeData(
-                buttonColor: Colors.lightBlue,
-              ),
-          child: config?.child ??
-              const Text(
-                'SIGN IN WITH GOOGLE',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.raisedIcon(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight),
+            icon: _IconWrapper(
+              buttonHeight: defaultButtonHeight,
+              child: OAuthIcon.google(),
+            ),
+            child: const _ContinueWithLabel(label: defaultLabel),
+          ),
+      onPressed: () {
+        context.signInWithGoogle();
+      },
+    );
+  }
+}
+
+/// Button to sign-in with Apple on Firebase
+///
+/// Make sure to enable Apple sign-in in your Firebase Authentication
+/// console
+///
+/// Create your own sign-in button by calling
+/// `context.signInWithApple();` in the [onPressed] handler
+class SignInWithAppleButton extends StatelessWidget {
+  const SignInWithAppleButton({
+    Key key,
+    this.config,
+  }) : super(key: key);
+
+  final ButtonConfig config;
+
+  static const String defaultLabel = 'Continue with Apple';
+
+  /// Returns a dark version of the sign in with Apple button
+  factory SignInWithAppleButton.dark({Key key, Widget label}) {
+    return SignInWithAppleButton(
+      key: key,
+      config: ButtonConfig.raisedIcon(
+        themedata: const ButtonThemeData(
+          buttonColor: Colors.black,
+          height: defaultButtonHeight,
+          textTheme: ButtonTextTheme.primary,
         ),
-        onPressed: () {
-          context.signInWithGoogle();
-        },
-      );
-    } else {
-      return GoogleSignInButton(
-        onPressed: () {
-          context.signInWithGoogle();
-        },
-      );
-    }
+        child: label ?? const _ContinueWithLabel(label: defaultLabel),
+        icon: _IconWrapper(
+          buttonHeight: defaultButtonHeight,
+          child: OAuthIcon.appleWhite(),
+        ),
+      ),
+    );
+  }
+
+  /// Returns a light version of the sign in with Apple button
+  factory SignInWithAppleButton.light({Key key, Widget label}) {
+    return SignInWithAppleButton(
+      key: key,
+      config: ButtonConfig.raisedIcon(
+        themedata: const ButtonThemeData(
+          buttonColor: Colors.white,
+          height: defaultButtonHeight,
+          textTheme: ButtonTextTheme.primary,
+        ),
+        child: label ?? const _ContinueWithLabel(label: defaultLabel),
+        icon: _IconWrapper(
+          buttonHeight: defaultButtonHeight,
+          child: OAuthIcon.appleBlack(),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.raisedIcon(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight),
+            icon: _IconWrapper(
+              buttonHeight: defaultButtonHeight,
+              child: OAuthIcon.appleBlack(),
+            ),
+            child: const _ContinueWithLabel(label: defaultLabel),
+          ),
+      onPressed: () {
+        context.signInWithApple();
+      },
+    );
   }
 }
 
@@ -97,37 +182,65 @@ class SignInWithGithubButton extends StatelessWidget {
 
   final ButtonConfig config;
 
+  static const String defaultLabel = 'Continue with Github';
+
   @override
   Widget build(BuildContext context) {
-    if (config != null) {
-      return _ButtonConfigOverride(
-        buttonConfig: ButtonConfig(
-          type: config?.type ?? const ButtonType.raised(),
-          themeData: config?.themeData ??
-              const ButtonThemeData(
-                buttonColor: Colors.lightBlue,
-              ),
-          child: config?.child ??
-              const Text(
-                'SIGN IN WITH GITHUB',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-        ),
-        onPressed: () {
-          context.signInWithGithub();
-        },
-      );
-    } else {
-      return RaisedButton(
-        onPressed: () {
-          context.signInWithGithub();
-        },
-        child: const Text('Sign in with Github'),
-      );
-    }
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.raisedIcon(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight),
+            icon: _IconWrapper(
+              buttonHeight: defaultButtonHeight,
+              child: OAuthIcon.github(),
+            ),
+            child: const _ContinueWithLabel(label: defaultLabel),
+          ),
+      onPressed: () {
+        context.signInWithGithub();
+      },
+    );
+  }
+}
+
+/// Button to sign-in with Twitter on Firebase
+///
+/// Make sure to enable Twitter sign-in in your Firebase Authentication
+/// console
+///
+/// Create your own sign-in button by calling
+/// `context.signInWithTwitter();` in the [onPressed] handler
+class SignInWithTwitterButton extends StatelessWidget {
+  const SignInWithTwitterButton({
+    Key key,
+    this.config,
+  }) : super(key: key);
+
+  // final ButtonConfig config;
+  final ButtonConfig config;
+
+  static const String defaultLabel = 'Continue with Twitter';
+
+  @override
+  Widget build(BuildContext context) {
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.raisedIcon(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight),
+            icon: _IconWrapper(
+              buttonHeight: defaultButtonHeight,
+              child: OAuthIcon.twitter(),
+            ),
+            child: const _ContinueWithLabel(label: defaultLabel),
+          ),
+      onPressed: () {
+        context.signInWithTwitter();
+      },
+    );
   }
 }
 
@@ -146,30 +259,24 @@ class SignInAnonymouslyButton extends StatelessWidget {
 
   final ButtonConfig config;
 
-  static final _buttonColor = Colors.blue[400];
-
-  static const _buttonHeight = 40.0;
+  static const String defaultLabel = 'Continue Anonymously';
 
   @override
   Widget build(BuildContext context) {
-    return _ButtonConfigOverride(
-      buttonConfig: ButtonConfig(
-        themeData: config?.themeData ??
-            ButtonThemeData(
-              buttonColor: _buttonColor,
-              height: _buttonHeight,
-            ),
-        type: config?.type ?? const ButtonType.raised(),
-        child: config?.child ??
-            Text(
-              'SIGN IN ANONYMOUSLY',
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.raised(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight, minWidth: 200),
+            child: const Text(
+              'Sing in anonymously',
               style: TextStyle(
-                color: _buttonColor.computeLuminance() > 0.5
-                    ? Colors.black
-                    : Colors.white,
+                fontSize: defaultFontSize,
+                fontWeight: defaultFontWeight,
               ),
             ),
-      ),
+          ),
       onPressed: () {
         context.signInAnonymously();
       },
@@ -192,29 +299,18 @@ class EmailAndPasswordSignInButton extends StatelessWidget {
 
   final ButtonConfig config;
 
-  static const _buttonHeight = 40.0;
+  static const Widget defaultChild = Text('SIGN IN');
 
   @override
   Widget build(BuildContext context) {
-    final accentColor = Theme.of(context).accentColor;
-    return _ButtonConfigOverride(
-      buttonConfig: ButtonConfig(
-        type: config?.type ?? const ButtonType.raised(),
-        themeData: config?.themeData ??
-            Theme.of(context).buttonTheme.copyWith(
-                  buttonColor: accentColor,
-                  height: _buttonHeight,
-                ),
-        child: config?.child ??
-            Text(
-              'SIGN IN',
-              style: TextStyle(
-                color: accentColor.computeLuminance() > 0.5
-                    ? Colors.black
-                    : Colors.white,
-              ),
-            ),
-      ),
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.raised(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight),
+            child: defaultChild,
+          ),
       onPressed: () {
         context.signInWithEmailAndPassword();
       },
@@ -237,23 +333,198 @@ class EmailAndPasswordRegisterButton extends StatelessWidget {
 
   final ButtonConfig config;
 
-  static const _buttonHeight = 40.0;
+  static const Widget defaultChild = Text('REGISTER');
 
   @override
   Widget build(BuildContext context) {
-    return _ButtonConfigOverride(
-      buttonConfig: ButtonConfig(
-        type: config?.type ?? const ButtonType.flat(),
-        themeData: config?.themeData ??
-            const ButtonThemeData(
-              buttonColor: Colors.transparent,
-              height: _buttonHeight,
-            ),
-        child: config?.child ?? const Text('REGISTER'),
-      ),
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.flat(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight),
+            child: defaultChild,
+          ),
       onPressed: () {
         context.registerWithEmailAndPassword();
       },
+    );
+  }
+}
+
+class _SignInButton extends StatelessWidget {
+  const _SignInButton({
+    Key key,
+    @required this.config,
+    @required this.onPressed,
+  }) : super(key: key);
+
+  final ButtonConfig config;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return config.map(
+      raised: (button) => _RaisedSignInButton(
+        button: button,
+        onPressed: onPressed,
+      ),
+      raisedIcon: (button) => _RaisedIconSignInButton(
+        button: button,
+        onPressed: onPressed,
+      ),
+      flat: (button) => _FlatSignInButton(
+        button: button,
+        onPressed: onPressed,
+      ),
+      flatIcon: (button) => _FlatIconSignInButton(
+        button: button,
+        onPressed: onPressed,
+      ),
+    );
+  }
+}
+
+class _RaisedSignInButton extends StatelessWidget {
+  const _RaisedSignInButton({
+    Key key,
+    @required this.button,
+    @required this.onPressed,
+  })  : assert(button != null),
+        assert(onPressed != null),
+        super(key: key);
+
+  final ButtonConfigRaised button;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonTheme.fromButtonThemeData(
+      data: button.themedata,
+      child: RaisedButton(
+        onPressed: onPressed,
+        child: button.child,
+      ),
+    );
+  }
+}
+
+class _RaisedIconSignInButton extends StatelessWidget {
+  const _RaisedIconSignInButton({
+    Key key,
+    @required this.button,
+    @required this.onPressed,
+  })  : assert(button != null),
+        assert(onPressed != null),
+        super(key: key);
+
+  final ButtonConfigRaisedIcon button;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonTheme.fromButtonThemeData(
+      data: button.themedata,
+      child: RaisedButton.icon(
+        padding: const EdgeInsets.only(right: 8),
+        onPressed: onPressed,
+        icon: button.icon,
+        label: button.child,
+      ),
+    );
+  }
+}
+
+class _FlatSignInButton extends StatelessWidget {
+  const _FlatSignInButton({
+    Key key,
+    @required this.button,
+    @required this.onPressed,
+  })  : assert(button != null),
+        assert(onPressed != null),
+        super(key: key);
+
+  final ButtonConfigFlat button;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonTheme.fromButtonThemeData(
+      data: button.themedata,
+      child: FlatButton(
+        onPressed: onPressed,
+        child: button.child,
+      ),
+    );
+  }
+}
+
+class _FlatIconSignInButton extends StatelessWidget {
+  const _FlatIconSignInButton({
+    Key key,
+    @required this.button,
+    @required this.onPressed,
+  })  : assert(button != null),
+        assert(onPressed != null),
+        super(key: key);
+
+  final ButtonConfigFlatIcon button;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ButtonTheme.fromButtonThemeData(
+      data: button.themedata,
+      child: FlatButton.icon(
+        padding: const EdgeInsets.only(right: 8),
+        onPressed: onPressed,
+        icon: button.icon,
+        label: button.child,
+      ),
+    );
+  }
+}
+
+class _IconWrapper extends StatelessWidget {
+  const _IconWrapper({
+    Key key,
+    @required this.buttonHeight,
+    this.child,
+  }) : super(key: key);
+  final double buttonHeight;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: buttonHeight - 2,
+      width: buttonHeight - 2,
+      child: Center(child: child),
+    );
+  }
+}
+
+class _ContinueWithLabel extends StatelessWidget {
+  const _ContinueWithLabel({
+    Key key,
+    @required this.label,
+  }) : super(key: key);
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minWidth: 175),
+      child: Center(
+        child: Text(
+          label,
+          style: const TextStyle(
+            fontWeight: defaultFontWeight,
+            fontSize: defaultFontSize,
+          ),
+        ),
+      ),
     );
   }
 }

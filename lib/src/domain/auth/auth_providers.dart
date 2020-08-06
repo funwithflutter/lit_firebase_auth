@@ -14,6 +14,8 @@ abstract class AuthProviders with _$AuthProviders {
     @Default(true) bool emailAndPassword,
     @Default(false) bool anonymous,
     @Default(false) bool google,
+    @Default(false) bool apple,
     @Default(false) bool github,
+    @Default(false) bool twitter,
   }) = _AuthProviders;
 }

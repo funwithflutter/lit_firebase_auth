@@ -16,12 +16,16 @@ class _$AuthProvidersTearOff {
       {bool emailAndPassword = true,
       bool anonymous = false,
       bool google = false,
-      bool github = false}) {
+      bool apple = false,
+      bool github = false,
+      bool twitter = false}) {
     return _AuthProviders(
       emailAndPassword: emailAndPassword,
       anonymous: anonymous,
       google: google,
+      apple: apple,
       github: github,
+      twitter: twitter,
     );
   }
 }
@@ -33,7 +37,9 @@ mixin _$AuthProviders {
   bool get emailAndPassword;
   bool get anonymous;
   bool get google;
+  bool get apple;
   bool get github;
+  bool get twitter;
 
   $AuthProvidersCopyWith<AuthProviders> get copyWith;
 }
@@ -42,7 +48,13 @@ abstract class $AuthProvidersCopyWith<$Res> {
   factory $AuthProvidersCopyWith(
           AuthProviders value, $Res Function(AuthProviders) then) =
       _$AuthProvidersCopyWithImpl<$Res>;
-  $Res call({bool emailAndPassword, bool anonymous, bool google, bool github});
+  $Res call(
+      {bool emailAndPassword,
+      bool anonymous,
+      bool google,
+      bool apple,
+      bool github,
+      bool twitter});
 }
 
 class _$AuthProvidersCopyWithImpl<$Res>
@@ -58,7 +70,9 @@ class _$AuthProvidersCopyWithImpl<$Res>
     Object emailAndPassword = freezed,
     Object anonymous = freezed,
     Object google = freezed,
+    Object apple = freezed,
     Object github = freezed,
+    Object twitter = freezed,
   }) {
     return _then(_value.copyWith(
       emailAndPassword: emailAndPassword == freezed
@@ -66,7 +80,9 @@ class _$AuthProvidersCopyWithImpl<$Res>
           : emailAndPassword as bool,
       anonymous: anonymous == freezed ? _value.anonymous : anonymous as bool,
       google: google == freezed ? _value.google : google as bool,
+      apple: apple == freezed ? _value.apple : apple as bool,
       github: github == freezed ? _value.github : github as bool,
+      twitter: twitter == freezed ? _value.twitter : twitter as bool,
     ));
   }
 }
@@ -77,7 +93,13 @@ abstract class _$AuthProvidersCopyWith<$Res>
           _AuthProviders value, $Res Function(_AuthProviders) then) =
       __$AuthProvidersCopyWithImpl<$Res>;
   @override
-  $Res call({bool emailAndPassword, bool anonymous, bool google, bool github});
+  $Res call(
+      {bool emailAndPassword,
+      bool anonymous,
+      bool google,
+      bool apple,
+      bool github,
+      bool twitter});
 }
 
 class __$AuthProvidersCopyWithImpl<$Res>
@@ -95,7 +117,9 @@ class __$AuthProvidersCopyWithImpl<$Res>
     Object emailAndPassword = freezed,
     Object anonymous = freezed,
     Object google = freezed,
+    Object apple = freezed,
     Object github = freezed,
+    Object twitter = freezed,
   }) {
     return _then(_AuthProviders(
       emailAndPassword: emailAndPassword == freezed
@@ -103,7 +127,9 @@ class __$AuthProvidersCopyWithImpl<$Res>
           : emailAndPassword as bool,
       anonymous: anonymous == freezed ? _value.anonymous : anonymous as bool,
       google: google == freezed ? _value.google : google as bool,
+      apple: apple == freezed ? _value.apple : apple as bool,
       github: github == freezed ? _value.github : github as bool,
+      twitter: twitter == freezed ? _value.twitter : twitter as bool,
     ));
   }
 }
@@ -113,11 +139,15 @@ class _$_AuthProviders implements _AuthProviders {
       {this.emailAndPassword = true,
       this.anonymous = false,
       this.google = false,
-      this.github = false})
+      this.apple = false,
+      this.github = false,
+      this.twitter = false})
       : assert(emailAndPassword != null),
         assert(anonymous != null),
         assert(google != null),
-        assert(github != null);
+        assert(apple != null),
+        assert(github != null),
+        assert(twitter != null);
 
   @JsonKey(defaultValue: true)
   @override
@@ -130,11 +160,17 @@ class _$_AuthProviders implements _AuthProviders {
   final bool google;
   @JsonKey(defaultValue: false)
   @override
+  final bool apple;
+  @JsonKey(defaultValue: false)
+  @override
   final bool github;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool twitter;
 
   @override
   String toString() {
-    return 'AuthProviders(emailAndPassword: $emailAndPassword, anonymous: $anonymous, google: $google, github: $github)';
+    return 'AuthProviders(emailAndPassword: $emailAndPassword, anonymous: $anonymous, google: $google, apple: $apple, github: $github, twitter: $twitter)';
   }
 
   @override
@@ -149,8 +185,12 @@ class _$_AuthProviders implements _AuthProviders {
                     .equals(other.anonymous, anonymous)) &&
             (identical(other.google, google) ||
                 const DeepCollectionEquality().equals(other.google, google)) &&
+            (identical(other.apple, apple) ||
+                const DeepCollectionEquality().equals(other.apple, apple)) &&
             (identical(other.github, github) ||
-                const DeepCollectionEquality().equals(other.github, github)));
+                const DeepCollectionEquality().equals(other.github, github)) &&
+            (identical(other.twitter, twitter) ||
+                const DeepCollectionEquality().equals(other.twitter, twitter)));
   }
 
   @override
@@ -159,7 +199,9 @@ class _$_AuthProviders implements _AuthProviders {
       const DeepCollectionEquality().hash(emailAndPassword) ^
       const DeepCollectionEquality().hash(anonymous) ^
       const DeepCollectionEquality().hash(google) ^
-      const DeepCollectionEquality().hash(github);
+      const DeepCollectionEquality().hash(apple) ^
+      const DeepCollectionEquality().hash(github) ^
+      const DeepCollectionEquality().hash(twitter);
 
   @override
   _$AuthProvidersCopyWith<_AuthProviders> get copyWith =>
@@ -171,7 +213,9 @@ abstract class _AuthProviders implements AuthProviders {
       {bool emailAndPassword,
       bool anonymous,
       bool google,
-      bool github}) = _$_AuthProviders;
+      bool apple,
+      bool github,
+      bool twitter}) = _$_AuthProviders;
 
   @override
   bool get emailAndPassword;
@@ -180,7 +224,11 @@ abstract class _AuthProviders implements AuthProviders {
   @override
   bool get google;
   @override
+  bool get apple;
+  @override
   bool get github;
+  @override
+  bool get twitter;
   @override
   _$AuthProvidersCopyWith<_AuthProviders> get copyWith;
 }

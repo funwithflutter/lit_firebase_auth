@@ -58,6 +58,20 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     );
   }
 
+  Future<void> signInWithApple() async {
+    if (!_authProviders.apple) {
+      throw AuthProviderNotEnabled('Apple');
+    }
+
+    _performActionOnAuthFacadeWithOAuthProviders(
+      () => _authFacade.signInWithOAuth(
+        'apple.com',
+        ["email"],
+        {"lang": "en"},
+      ),
+    );
+  }
+
   Future<void> signInWithGithub() async {
     if (!_authProviders.github) {
       throw AuthProviderNotEnabled('Github');
@@ -67,6 +81,20 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
       () => _authFacade.signInWithOAuth(
         'github.com',
         ["user:email"],
+        {"lang": "en"},
+      ),
+    );
+  }
+
+  Future<void> signInWithTwitter() async {
+    if (!_authProviders.twitter) {
+      throw AuthProviderNotEnabled('Twitter');
+    }
+
+    _performActionOnAuthFacadeWithOAuthProviders(
+      () => _authFacade.signInWithOAuth(
+        'twitter.com',
+        ["email"],
         {"lang": "en"},
       ),
     );

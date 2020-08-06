@@ -22,6 +22,7 @@ class StandardSignInWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authProviders = context.watch<AuthProviders>();
+
     return Padding(
       padding: const EdgeInsets.all(8),
       child: ConstrainedBox(
@@ -41,7 +42,23 @@ class StandardSignInWidget extends StatelessWidget {
                     PasswordTextFormField(
                       decoration: config?.passwordTextFormField,
                     ),
-                    _formButtons(context),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: EmailAndPasswordSignInButton(
+                            config: config?.signInButton,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: EmailAndPasswordRegisterButton(
+                            config: config?.registerButton,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -64,15 +81,39 @@ class StandardSignInWidget extends StatelessWidget {
             if (authProviders.google)
               Padding(
                 padding: const EdgeInsets.all(4.0),
-                child: SignInWithGoogleButton(
-                  config: config?.googleButton,
-                ),
+                child: config?.googleButton?.map(
+                      (c) => SignInWithGoogleButton(
+                        config: c?.config,
+                      ),
+                      dark: (c) => SignInWithGoogleButton.dark(label: c?.label),
+                      light: (c) =>
+                          SignInWithGoogleButton.light(label: c?.label),
+                    ) ??
+                    SignInWithGoogleButton.dark(),
+              ),
+            if (authProviders.apple)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: config?.appleButton?.map(
+                      (c) => SignInWithAppleButton(config: c?.config),
+                      dark: (c) => SignInWithAppleButton.dark(label: c?.label),
+                      light: (c) =>
+                          SignInWithAppleButton.light(label: c?.label),
+                    ) ??
+                    SignInWithAppleButton.dark(),
               ),
             if (authProviders.github)
               Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: SignInWithGithubButton(
                   config: config?.githubButton,
+                ),
+              ),
+            if (authProviders.twitter)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInWithTwitterButton(
+                  config: config?.twitterButton,
                 ),
               ),
             const LoadingWidget(),
@@ -87,22 +128,6 @@ class StandardSignInWidget extends StatelessWidget {
       'Sign in / Register',
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.headline4,
-    );
-  }
-
-  Widget _formButtons(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: EmailAndPasswordSignInButton(),
-        ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: EmailAndPasswordRegisterButton(),
-        ),
-      ],
     );
   }
 }
