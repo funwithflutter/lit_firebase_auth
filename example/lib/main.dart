@@ -8,22 +8,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // Initialize Lit Firebase Auth. Needs to be above [MaterialApp]
     return LitAuthInit(
-      authProviders: AuthProviders(
+      authProviders: const AuthProviders(
         emailAndPassword: true, // enabled by default
         google: true,
         apple: true,
         anonymous: true,
         github: true,
         twitter: true,
-        // apple: AppleAuthProvider(
-        //   // required for web-based authentication flows
-        //   webAuthenticationOptions: WebAuthenticationOptions(
-        //     clientId: 'com.aboutyou.dart_packages.sign_in_with_apple.example',
-        //     redirectUri: Uri.parse(
-        //       'https://flutter-sign-in-with-apple-example.glitch.me/callbacks/sign_in_with_apple',
-        //     ),
-        //   ),
-        // ),
       ),
       child: MaterialApp(
         title: 'Material App',
@@ -66,6 +57,12 @@ class SplashScreen extends StatelessWidget {
                 ),
                 googleButton: GoogleButtonConfig.light(),
                 appleButton: AppleButtonConfig.dark(),
+                emailTextField: TextFieldConfig(
+                  style: TextStyle(fontSize: 18, color: Colors.red),
+                  inputDecoration: InputDecoration(
+                    labelText: 'Your Email',
+                  ),
+                ),
               ),
             ),
 
@@ -146,11 +143,6 @@ class CustomSignInWidget extends StatelessWidget {
                 },
                 child: Text('Anony Sign In'),
               ),
-              // SignInWithAppleButton(
-              //   onPressed: () {
-              //     context.signInWithApple();
-              //   },
-              // ),
               FlatButton(
                 onPressed: () {
                   context.signInWithGithub();

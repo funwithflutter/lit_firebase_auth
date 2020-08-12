@@ -290,17 +290,23 @@ The UI can be as customizable as you need. But for simple usage it's fairly stra
 It's easy to provide custom decoration/configuration for the sign-in elements. You can either customize the elements of the standard sign-in widget, or create an entirely custom sign-in widget from scratch. Up to you.
 
 ### Standard Sign-in widget customization
-For example, to override the standard email `InputDecoration` just provide a custom `InputDecoration` for the `emailTextFormField`:
+For example, to override the standard email `TextFormField` just provide a `TextFieldConfig` for the `emailTextField` parameter. In this example we are providing a new [style] and [inputDecoration]:
 
 ```dart
 return LitAuth(
   config: AuthConfig(
     emailTextFormField: InputDecoration(labelText: 'My beautiful label'),
+    emailTextField: TextFieldConfig(
+      style: TextStyle(fontSize: 18),
+      inputDecoration: InputDecoration(
+        labelText: 'My beautiful label',
+      ),
+    ),
   )
 );
  ```
 
- Or, to customize a button:
+To customize a button:
 
  ```dart
 return LitAuth(
@@ -369,12 +375,14 @@ class YourCustomSignInWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: EmailTextFormField(
+                  style: TextStyle(fontSize: 18),
                   decoration: InputDecoration(labelText: 'My Email Label'),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: PasswordTextFormField(
+                  style: TextStyle(fontSize: 18),
                   decoration: InputDecoration(labelText: 'My Password Label'),
                 ),
               ),

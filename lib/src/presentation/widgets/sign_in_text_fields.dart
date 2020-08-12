@@ -12,9 +12,11 @@ final border = OutlineInputBorder(
 class PasswordTextFormField extends StatelessWidget {
   const PasswordTextFormField({
     Key key,
+    this.style,
     this.decoration,
   }) : super(key: key);
 
+  final TextStyle style;
   final InputDecoration decoration;
 
   @override
@@ -22,6 +24,7 @@ class PasswordTextFormField extends StatelessWidget {
     final password =
         context.select((SignInHandlerState state) => state.password);
     return TextFormField(
+      style: style,
       decoration: decoration ??
           InputDecoration(
             prefixIcon: const Icon(Icons.vpn_key),
@@ -49,9 +52,11 @@ class PasswordTextFormField extends StatelessWidget {
 class EmailTextFormField extends StatelessWidget {
   const EmailTextFormField({
     Key key,
+    this.style,
     this.decoration,
   }) : super(key: key);
 
+  final TextStyle style;
   final InputDecoration decoration;
 
   @override
@@ -60,6 +65,7 @@ class EmailTextFormField extends StatelessWidget {
         context.select((SignInHandlerState state) => state.emailAddress);
     return TextFormField(
       keyboardType: TextInputType.emailAddress,
+      style: style,
       decoration: decoration ??
           InputDecoration(
             prefixIcon: const Icon(Icons.email),

@@ -36,11 +36,13 @@ class StandardSignInWidget extends StatelessWidget {
                 child: Column(
                   children: [
                     EmailTextFormField(
-                      decoration: config?.emailTextFormField,
+                      style: config?.emailTextField?.style,
+                      decoration: config?.emailTextField?.inputDecoration,
                     ),
                     const SizedBox(height: 8),
                     PasswordTextFormField(
-                      decoration: config?.passwordTextFormField,
+                      style: config?.passwordTextField?.style,
+                      decoration: config?.passwordTextField?.inputDecoration,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

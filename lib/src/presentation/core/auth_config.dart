@@ -17,31 +17,24 @@ abstract class AuthConfig with _$AuthConfig {
     AppleButtonConfig appleButton,
     ButtonConfig githubButton,
     ButtonConfig twitterButton,
-    InputDecoration emailTextFormField,
-    InputDecoration passwordTextFormField,
+    TextFieldConfig emailTextField,
+    TextFieldConfig passwordTextField,
   }) = _AuthConfig;
 }
 
-// @freezed
+class TextFieldConfig {
+  final TextStyle style;
+  final InputDecoration inputDecoration;
 
-// /// Provide configuration and themes for the standard sign-in buttons
-// abstract class ButtonConfig with _$ButtonConfig {
-//   const factory ButtonConfig({
-//     ButtonThemeData themeData,
-//     ButtonType type,
-//     Widget child,
-//   }) = _ButtonConfig;
-// }
-
-// @freezed
-
-// /// Specify different button types. For example, [RaisedButton] or [FlatButton]
-// abstract class ButtonType with _$ButtonType {
-//   const factory ButtonType.raised() = _ButtonTypeRaised;
-//   const factory ButtonType.flat() = _ButtonTypeFlat;
-// }
+  TextFieldConfig({
+    this.style,
+    this.inputDecoration,
+  });
+}
 
 @freezed
+
+/// Specify different button types. For example [ButtonConfig.raised()]
 abstract class ButtonConfig with _$ButtonConfig {
   const factory ButtonConfig.raised({
     @required ButtonThemeData themedata,
@@ -64,6 +57,8 @@ abstract class ButtonConfig with _$ButtonConfig {
 }
 
 @freezed
+
+/// Configuration for sign in with Apple button
 abstract class AppleButtonConfig with _$AppleButtonConfig {
   const factory AppleButtonConfig({ButtonConfig config}) = _AppleButtonConfig;
   const factory AppleButtonConfig.dark({Widget label}) = _AppleButtonConfigDark;
@@ -72,6 +67,8 @@ abstract class AppleButtonConfig with _$AppleButtonConfig {
 }
 
 @freezed
+
+/// Configuration for sign in with Google button
 abstract class GoogleButtonConfig with _$GoogleButtonConfig {
   const factory GoogleButtonConfig({ButtonConfig config}) = _GoogleButtonConfig;
   const factory GoogleButtonConfig.dark({Widget label}) =
