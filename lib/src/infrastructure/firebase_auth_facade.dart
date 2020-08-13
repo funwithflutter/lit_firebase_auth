@@ -79,6 +79,7 @@ class FirebaseAuthFacade implements AuthFacade {
           return const Auth.failure(AuthFailure.emailAlreadyInUse());
           break;
         default:
+          debugPrint(e.toString());
           return const Auth.failure(AuthFailure.serverError());
       }
     }
@@ -96,6 +97,7 @@ class FirebaseAuthFacade implements AuthFacade {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {
         return const Auth.failure(AuthFailure.emailAlreadyInUse());
       } else {
+        debugPrint(e.toString());
         return const Auth.failure(AuthFailure.serverError());
       }
     }
@@ -146,6 +148,7 @@ class FirebaseAuthFacade implements AuthFacade {
           return const Auth.failure(AuthFailure.userDisabled());
           break;
         default:
+          debugPrint(e.toString());
           return const Auth.failure(AuthFailure.serverError());
       }
     }
@@ -176,6 +179,7 @@ class FirebaseAuthFacade implements AuthFacade {
           return const Auth.failure(AuthFailure.userDisabled());
           break;
         default:
+          debugPrint(e.toString());
           return const Auth.failure(AuthFailure.serverError());
       }
     }
@@ -240,7 +244,8 @@ class FirebaseAuthFacade implements AuthFacade {
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return const Auth.success();
-    } on PlatformException catch (_) {
+    } on PlatformException catch (e) {
+      debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     }
   }
@@ -250,7 +255,8 @@ class FirebaseAuthFacade implements AuthFacade {
     try {
       await _firebaseAuth.signInAnonymously();
       return const Auth.success();
-    } catch (_) {
+    } catch (e) {
+      debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     }
   }
@@ -260,9 +266,11 @@ class FirebaseAuthFacade implements AuthFacade {
     try {
       await _firebaseAuth.signInWithCredential(credential);
       return const Auth.success();
-    } on PlatformException catch (_) {
+    } on PlatformException catch (e) {
+      debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
-    } catch (_) {
+    } catch (e) {
+      debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError()); // todo improve
     }
   }
@@ -285,12 +293,14 @@ class FirebaseAuthFacade implements AuthFacade {
       if (e.message == 'The web operation was canceled by the user.') {
         return const Auth.failure(AuthFailure.cancelledByUser());
       }
+      debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     } catch (e) {
       debugPrint(e.toString());
       if (e.toString().contains('auth/popup-closed-by-user')) {
         return const Auth.failure(AuthFailure.cancelledByUser());
       }
+      debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     }
   }
