@@ -14,17 +14,17 @@ import 'core/auth_config.dart';
 import 'core/notifications.dart';
 import 'lit_standard_sign_in_screen.dart';
 
-/// A widget to switch between child widgets, depending on the
-/// current authentication state.
-///
-/// Updates will automatically be triggered when the user's authentication state
-/// changes.
-///
-/// You can easily create your own auth state subscription by calling the
-/// following in a widget build method:
-/// `final user = context.watch<User>();`
-/// Which will listen to the current [User] object.
 class LitAuthState extends StatelessWidget {
+  /// A widget to switch between child widgets, depending on the
+  /// current authentication state.
+  ///
+  /// Updates will automatically be triggered when the user's authentication state
+  /// changes.
+  ///
+  /// You can easily create your own auth state subscription by calling the
+  /// following in a widget build method:
+  /// `final user = context.watch<User>();`
+  /// Which will listen to the current [User] object.
   const LitAuthState({
     Key key,
     @required this.authenticated,
@@ -68,50 +68,6 @@ class LitAuthState extends StatelessWidget {
 /// TypeDef callback for authentication failure
 typedef AuthFailureCallback = void Function(AuthFailure failure);
 
-/// The main widget to do any form of Authentication using **LitFirebaseAuth**.
-///
-/// Must be below a [Scaffold].
-///
-/// This widget is used to configure the UI, provide decorations/themes, or
-/// create a completely custom sign-in form.
-///
-/// To get started:
-/// ```dart
-/// LitAuth()
-/// ```
-/// {@end-tool}
-/// This will use the defaults configuration and UI theming.
-///
-/// Provide an [AuthConfig] parameter to override theming and decoration of the
-/// standard sign-in form.
-///
-/// Or, to create a completely custom sign-in form, make use of:
-/// ```dart
-/// LitAuth.custom(
-///   child: YourCustomSignInWidget(),
-/// )
-/// ```
-///
-/// For more theming and custom sign-in widgets, please see the README.md file
-///
-/// **Auth Success / Auth Failure**
-///
-/// You can provide callbacks for authentication, with [onAuthSuccess] and
-/// [onAuthFailure]
-/// ```dart
-/// LitAuth(
-///   onAuthFailure: (failure) {
-///     print('Auth failed.');
-///     // todo: show error message
-///   },
-///   onAuthSuccess: () {
-///     print('Auth success.');
-///     // todo: navigate to authenticated screen
-///   },
-/// )
-/// ```
-/// {@end-tool}
-///
 class LitAuth extends StatelessWidget {
   /// Configure the sign-in UI and provide custom decoration/configuration for
   /// the sign-in elements. Leaving this empty will show the standard sign-in
@@ -140,6 +96,50 @@ class LitAuth extends StatelessWidget {
   /// Configuration for custom success notifications
   final NotificationConfig successNotification;
 
+  /// The main widget to do any form of Authentication using **LitFirebaseAuth**.
+  ///
+  /// Must be below a [Scaffold].
+  ///
+  /// This widget is used to configure the UI, provide decorations/themes, or
+  /// create a completely custom sign-in form.
+  ///
+  /// To get started:
+  /// ```dart
+  /// LitAuth()
+  /// ```
+  /// {@end-tool}
+  /// This will use the defaults configuration and UI theming.
+  ///
+  /// Provide an [AuthConfig] parameter to override theming and decoration of the
+  /// standard sign-in form.
+  ///
+  /// Or, to create a completely custom sign-in form, make use of:
+  /// ```dart
+  /// LitAuth.custom(
+  ///   child: YourCustomSignInWidget(),
+  /// )
+  /// ```
+  ///
+  /// For more theming and custom sign-in widgets, please see the README.md file
+  ///
+  /// **Auth Success / Auth Failure**
+  ///
+  /// You can provide callbacks for authentication, with [onAuthSuccess] and
+  /// [onAuthFailure]
+  /// ```dart
+  /// LitAuth(
+  ///   onAuthFailure: (failure) {
+  ///     print('Auth failed.');
+  ///     // todo: show error message
+  ///   },
+  ///   onAuthSuccess: () {
+  ///     print('Auth success.');
+  ///     // todo: navigate to authenticated screen
+  ///   },
+  /// )
+  /// ```
+  /// {@end-tool}
+  ///
   const LitAuth({
     Key key,
     this.config,
