@@ -172,6 +172,8 @@ class LitAuth extends StatelessWidget {
     Key key,
     VoidCallback onAuthSuccess,
     AuthFailureCallback onAuthFailure,
+    NotificationConfig errorNotification,
+    NotificationConfig successNotification,
     TransitionBuilder builder,
     Widget child,
   }) = _LitAuthCustom;
