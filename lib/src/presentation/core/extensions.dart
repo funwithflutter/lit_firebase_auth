@@ -110,4 +110,8 @@ extension AuthContext on BuildContext {
   User getSignedInUser() {
     return Provider.of<User>(this, listen: false);
   }
+
+  User watchSignedInUser() {
+    return Provider.of<User>(this);
+  }
 }
