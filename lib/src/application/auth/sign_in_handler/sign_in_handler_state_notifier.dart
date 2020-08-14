@@ -24,6 +24,12 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
   final AuthProviders _authProviders;
   final AuthFacade _authFacade;
 
+  void reset() {
+    if (mounted) {
+      state = SignInHandlerState.initial();
+    }
+  }
+
   void emailChanged(EmailAddress e) {
     state = state.copyWith(
       emailAddress: e,

@@ -8,6 +8,12 @@ import '../../domain/auth/i_auth_facade.dart';
 import '../../domain/auth/user.dart';
 
 extension AuthContext on BuildContext {
+  /// Reset the sign in handler form. Clears the email and password from the
+  /// state and restores the form to its initial value.
+  void resetSignInForm() {
+    Provider.of<SignInHandlerStateNotifier>(this, listen: false).reset();
+  }
+
   /// Signs out the current user. Also signs out Google Sign-In.
   Future<void> signOut() async {
     Provider.of<AuthFacade>(this, listen: false).signOut();
