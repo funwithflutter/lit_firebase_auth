@@ -183,7 +183,7 @@ return LitAuth(
   },
 );
 ```
-**Note**: these handlers will not be called if `LitAuth` is already disposed.
+**NOTE**: these handlers will not be called if `LitAuth` is already disposed.
 
 For example, if you were to wrap this `LitAuth` in `LitAuthState`, such as:
 ```dart
@@ -213,11 +213,19 @@ RaisedButton(
 );
 ```
 
-### Current user
+### Get current user
 Get the current signed-in user:
 ```dart
-context.getSignedInUser()
+final user = context.getSignedInUser()
 ```
+
+### Watch user for changes
+Watches the `User` object for changes.
+```dart
+final user = context.watchSignedInUser()
+```
+Should only be used in the build method.
+
 ### Determine if submitting is active
  Whether Lit Firebase is currently attempting to authenticate. Can be used to show a loading indicator.
 
@@ -406,6 +414,18 @@ class YourCustomSignInWidget extends StatelessWidget {
   }
 }
 ```
+
+**NOTE**: `SignInForm` needs to be provided above the `EmailTextFormField` and `PasswordTextFormField`.
+
+The state of the password and email can be cleared manually by calling:
+
+```dart
+context.resetSignInForm()
+```
+
+This will reset the form to it's initial state.
+
+It's a good idea to do this when you have multiple `EmailTextFormField` and `PasswordTextFormField` widgets in seperate locations, for example when you have a separate Sign-in form and a Registration form.
 
 ## Planned features
 

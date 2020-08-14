@@ -1,3 +1,11 @@
+# 0.2.2
+
+- feat: add `context.watchSignedInUser()` method to watch the `User` object for changes in sign-in state.
+- feat: add `context.resetSignInForm()` method to reset clear the sign-in form state (password and email). To assist in more complicated UI builds.
+- fix: add notification configuration for `LitAuth.custom`
+- refactor: log all 'server errors' to console to provide help in debugging
+- docs: various documentation updates
+
 # 0.2.1
 
 - fix: revert to meta 1.1.8 package for testing
