@@ -1,3 +1,7 @@
+# 0.2.3
+
+- feat: expose `LitAuthIcon` to directly use the OAuth icons (`Images`) provided by the package (Google, Apple, Twitter, Github)
+
 # 0.2.2
 
 - feat: add `context.watchSignedInUser()` method to watch the `User` object for changes in sign-in state.

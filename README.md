@@ -427,6 +427,31 @@ This will reset the form to it's initial state.
 
 It's a good idea to do this when you have multiple `EmailTextFormField` and `PasswordTextFormField` widgets in seperate locations, for example when you have a separate Sign-in form and a Registration form.
 
+### Icons
+
+It's possible to use the OAuth icons provided by the package. For example:
+
+```dart
+class Icons extends StatelessWidget {
+  const Icons({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        LitAuthIcon.google(),
+        LitAuthIcon.appleBlack(),
+        LitAuthIcon.appleWhite(),
+        LitAuthIcon.github(),
+        LitAuthIcon.twitter(),
+      ],
+    );
+  }
+}
+```
+
+This will display a column of icons (images).
+
 ## Planned features
 
 
