@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 const iconSize = Size(24, 24);
 
-class OAuthIcon extends StatelessWidget {
-  const OAuthIcon._({
+class LitAuthIcon extends StatelessWidget {
+  const LitAuthIcon._({
     Key key,
     @required this.assetPath,
     this.size = iconSize,
@@ -15,39 +15,39 @@ class OAuthIcon extends StatelessWidget {
   static const googleIconPath = 'graphics/google_logo.png';
 
   // Google logo [Image]
-  factory OAuthIcon.google({Size size = iconSize}) {
-    return OAuthIcon._(
+  factory LitAuthIcon.google({Size size = iconSize}) {
+    return LitAuthIcon._(
       assetPath: googleIconPath,
       size: size,
     );
   }
 
   // Apple black logo [Image]
-  factory OAuthIcon.appleBlack({Size size = iconSize}) {
-    return OAuthIcon._(
+  factory LitAuthIcon.appleBlack({Size size = iconSize}) {
+    return LitAuthIcon._(
       assetPath: 'graphics/apple_logo_black.png',
       size: size,
     );
   }
 
   // Apple white [Image]
-  factory OAuthIcon.appleWhite({Size size = iconSize}) {
-    return OAuthIcon._(
+  factory LitAuthIcon.appleWhite({Size size = iconSize}) {
+    return LitAuthIcon._(
       assetPath: 'graphics/apple_logo_white.png',
       size: size,
     );
   }
   // Github logo [Image]
-  factory OAuthIcon.github({Size size = iconSize}) {
-    return OAuthIcon._(
+  factory LitAuthIcon.github({Size size = iconSize}) {
+    return LitAuthIcon._(
       assetPath: 'graphics/github.png',
       size: size,
     );
   }
 
   // Twitter logo [Image]
-  factory OAuthIcon.twitter({Size size = iconSize}) {
-    return OAuthIcon._(
+  factory LitAuthIcon.twitter({Size size = iconSize}) {
+    return LitAuthIcon._(
       assetPath: 'graphics/twitter_logo_blue.png',
       size: size,
     );

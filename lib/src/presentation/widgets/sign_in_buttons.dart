@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../core/auth_config.dart';
 import '../core/extensions.dart';
-import 'oauth_logos.dart';
+import 'lit_auth_icons.dart';
 
 const double defaultButtonHeight = 40.0;
 const FontWeight defaultFontWeight = FontWeight.w500;
@@ -44,7 +44,7 @@ class SignInWithGoogleButton extends StatelessWidget {
             color: Colors.white,
           ),
           child: Center(
-            child: OAuthIcon.google(),
+            child: LitAuthIcon.google(),
           ),
         ),
         child: label ?? const _ContinueWithLabel(label: defaultLabel),
@@ -63,7 +63,7 @@ class SignInWithGoogleButton extends StatelessWidget {
         ),
         icon: _IconWrapper(
           buttonHeight: defaultButtonHeight,
-          child: OAuthIcon.google(),
+          child: LitAuthIcon.google(),
         ),
         child: label ?? const _ContinueWithLabel(label: defaultLabel),
       ),
@@ -80,7 +80,7 @@ class SignInWithGoogleButton extends StatelessWidget {
                 .copyWith(height: defaultButtonHeight),
             icon: _IconWrapper(
               buttonHeight: defaultButtonHeight,
-              child: OAuthIcon.google(),
+              child: LitAuthIcon.google(),
             ),
             child: const _ContinueWithLabel(label: defaultLabel),
           ),
@@ -121,7 +121,7 @@ class SignInWithAppleButton extends StatelessWidget {
         child: label ?? const _ContinueWithLabel(label: defaultLabel),
         icon: _IconWrapper(
           buttonHeight: defaultButtonHeight,
-          child: OAuthIcon.appleWhite(),
+          child: LitAuthIcon.appleWhite(),
         ),
       ),
     );
@@ -140,7 +140,7 @@ class SignInWithAppleButton extends StatelessWidget {
         child: label ?? const _ContinueWithLabel(label: defaultLabel),
         icon: _IconWrapper(
           buttonHeight: defaultButtonHeight,
-          child: OAuthIcon.appleBlack(),
+          child: LitAuthIcon.appleBlack(),
         ),
       ),
     );
@@ -156,7 +156,7 @@ class SignInWithAppleButton extends StatelessWidget {
                 .copyWith(height: defaultButtonHeight),
             icon: _IconWrapper(
               buttonHeight: defaultButtonHeight,
-              child: OAuthIcon.appleBlack(),
+              child: LitAuthIcon.appleBlack(),
             ),
             child: const _ContinueWithLabel(label: defaultLabel),
           ),
@@ -194,7 +194,7 @@ class SignInWithGithubButton extends StatelessWidget {
                 .copyWith(height: defaultButtonHeight),
             icon: _IconWrapper(
               buttonHeight: defaultButtonHeight,
-              child: OAuthIcon.github(),
+              child: LitAuthIcon.github(),
             ),
             child: const _ContinueWithLabel(label: defaultLabel),
           ),
@@ -233,7 +233,7 @@ class SignInWithTwitterButton extends StatelessWidget {
                 .copyWith(height: defaultButtonHeight),
             icon: _IconWrapper(
               buttonHeight: defaultButtonHeight,
-              child: OAuthIcon.twitter(),
+              child: LitAuthIcon.twitter(),
             ),
             child: const _ContinueWithLabel(label: defaultLabel),
           ),
