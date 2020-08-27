@@ -29,9 +29,7 @@ class PasswordTextFormField extends StatelessWidget {
           InputDecoration(
             prefixIcon: const Icon(Icons.vpn_key),
             labelText: 'Password',
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(7),
-            ),
+            border: border,
           ),
       autocorrect: false,
       obscureText: true,
