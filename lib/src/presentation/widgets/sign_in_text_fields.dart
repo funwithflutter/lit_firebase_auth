@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../application/auth/sign_in_handler/sign_in_handler_state.dart';
@@ -9,7 +10,7 @@ final border = OutlineInputBorder(
   borderRadius: BorderRadius.circular(7),
 );
 
-class PasswordTextFormField extends StatelessWidget {
+class PasswordTextFormField extends StatefulWidget {
   const PasswordTextFormField({
     Key key,
     this.style,
@@ -20,19 +21,32 @@ class PasswordTextFormField extends StatelessWidget {
   final InputDecoration decoration;
 
   @override
+  _PasswordTextFormFieldState createState() => _PasswordTextFormFieldState();
+}
+
+class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
+  bool obscurePassword = true;
+  @override
   Widget build(BuildContext context) {
     final password =
         context.select((SignInHandlerState state) => state.password);
     return TextFormField(
-      style: style,
-      decoration: decoration ??
+      style: widget.style,
+      decoration: widget.decoration ??
           InputDecoration(
             prefixIcon: const Icon(Icons.vpn_key),
             labelText: 'Password',
+            suffixIcon: IconButton(
+                icon: obscurePassword
+                    ? FontAwesomeIcons.eye
+                    : FontAwesomeIcons.eyeSlash,
+                onPressed: () => setState(() {
+                      obscurePassword = !obscurePassword;
+                    })),
             border: border,
           ),
       autocorrect: false,
-      obscureText: true,
+      obscureText: obscurePassword,
       onChanged: (value) => context
           .read<SignInHandlerStateNotifier>()
           .passwordChanged(Password(value)),
