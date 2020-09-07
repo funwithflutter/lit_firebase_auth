@@ -36,33 +36,13 @@ Or take a look at a [live demo](https://funwithflutter.github.io/lit_firebase_ex
 
 ### Android integration
 
-Enable the Google services by configuring the Gradle scripts as such.
-
-1. Add the classpath to the `[project]/android/build.gradle` file.
-```gradle
-dependencies {
-  // Example existing classpath
-  classpath 'com.android.tools.build:gradle:3.2.1'
-  // Add the google services classpath
-  classpath 'com.google.gms:google-services:4.3.0'
-}
-```
-
-2. Add the apply plugin to the `[project]/android/app/build.gradle` file.
-```gradle
-// ADD THIS AT THE BOTTOM
-apply plugin: 'com.google.gms.google-services'
-```
-
-*Note:* If this section is not completed you will get an error like this:
-```
-java.lang.IllegalStateException:
-Default FirebaseApp is not initialized in this process [package name].
-Make sure to call FirebaseApp.initializeApp(Context) first.
-```
+Follow normal [Firebase Initialization](https://firebase.flutter.dev/docs/installation/android)
 
 *Note:* When you are debugging on android, use a device or AVD with Google Play services.
 Otherwise you will not be able to authenticate.
+
+### iOS integration
+Follow normal [Firebase Initialization](https://firebase.flutter.dev/docs/installation/ios)
 
 ### Web integration
 
@@ -243,6 +223,72 @@ Should only be used in the build method.
 
 ## Authentication Providers
 
+### Initialization
+Enable the sign-in method you want to use in firebase console 
+
+### Google Sign In for Android
+
+To access Google Sign-In, you'll need to make sure to [register your
+application](https://developers.google.com/mobile/add?platform=android).
+
+You don't need to include the google-services.json file in your app unless you
+are using Google services that require it. You do need to enable the OAuth APIs
+that you want, using the [Google Cloud Platform API
+manager](https://console.developers.google.com/). For example, if you
+want to mimic the behavior of the Google Sign-In sample app, you'll need to
+enable the [Google People API](https://developers.google.com/people/).
+
+Make sure you've filled out all required fields in the console for [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent). Otherwise, you may encounter `APIException` errors.
+
+### Google Sign In for iOS
+
+1. [First register your application](https://developers.google.com/mobile/add?platform=ios).
+2. Make sure the file you download in step 1 is named `GoogleService-Info.plist`.
+3. Move or copy `GoogleService-Info.plist` into the `[my_project]/ios/Runner` directory.
+4. Open Xcode, then right-click on `Runner` directory and select `Add Files to "Runner"`.
+5. Select `GoogleService-Info.plist` from the file manager.
+6. A dialog will show up and ask you to select the targets, select the `Runner` target.
+7. Then add the `CFBundleURLTypes` attributes below into the `[my_project]/ios/Runner/Info.plist` file.
+
+```xml
+<!-- Put me in the [my_project]/ios/Runner/Info.plist file -->
+<!-- Google Sign-in Section -->
+<key>CFBundleURLTypes</key>
+<array>
+	<dict>
+		<key>CFBundleTypeRole</key>
+		<string>Editor</string>
+		<key>CFBundleURLSchemes</key>
+		<array>
+			<!-- TODO Replace this value: -->
+			<!-- Copied from GoogleService-Info.plist key REVERSED_CLIENT_ID -->
+			<string>com.googleusercontent.apps.861823949799-vc35cprkp249096uujjn0vvnmcvjppkn</string>
+		</array>
+	</dict>
+</array>
+<!-- End of the Google Sign-in Section -->
+```
+### iOS additional requirement
+
+Note that according to https://developer.apple.com/sign-in-with-apple/get-started,
+starting June 30, 2020, apps that use login services must also offer a "Sign in
+with Apple" option when submitting to the Apple App Store.
+
+Consider also using an Apple sign in plugin from pub.dev.
+
+The Flutter Favorite [sign_in_with_apple](https://pub.dev/packages/sign_in_with_apple)
+plugin could be an option.
+
+### Apple Sign In for iOS
+
+1. [Configure your app](https://help.apple.com/developer-account/#/devde676e696) in Xcode to add the "Sign In with Apple" capability
+
+### Twitter Sign In for iOS and Android
+1. Register your app as a developer application in [Twitter Developer Portal](https://developer.twitter.com/en)
+2. Copy Paste your API Key and API Secret into the Twitter Sign In Method in Firebase
+3. Enable 3rd party authentication in Twitter Developer Portal and copy past callback URL from Firebase
+
+### Using with Lit Firebase Auth
 The supported third-party providers are:
 * Google
 * Apple
@@ -455,18 +501,18 @@ This will display a column of icons (images).
 ## Planned features
 
 
-|                   | State       |                                                                  |
-| ----------------- | ----------  | ---------------------------------------------------------------- |
-| Platforms         | ⌛          | Support more platforms (Windows, macOS, Linux)                   |
-| Auth providers    | ⌛          | Support more authentication providers (Facebook, Microsoft)         |
-| Cupertino         | ⌛          | Cupertino look and feel                                          |
-| Password reset    | ❌          | Add services and UI to reset password/email                      |
-| Email confirmation| ❌          | Add UI to notify users they need to confirm their email address  |
-| Support UI        | ❌          | Assist users who cannot authenticate with support links          |
-| Custom dialogs    | ✔️          | Add support to customize dialog messages                         |
-| Adaptive layouts  | ⌛          | Adaptive layouts to support multiple screen sizes               |
-| Customization     | ✔️          | Even more, or easier, customization                             |
-| Testing           | ❌          | Add testing                                                     |
+|                    | State |                                                                 |
+| ------------------ | ----- | --------------------------------------------------------------- |
+| Platforms          | ⌛     | Support more platforms (Windows, macOS, Linux)                  |
+| Auth providers     | ⌛     | Support more authentication providers (Facebook, Microsoft)     |
+| Cupertino          | ⌛     | Cupertino look and feel                                         |
+| Password reset     | ❌     | Add services and UI to reset password/email                     |
+| Email confirmation | ❌     | Add UI to notify users they need to confirm their email address |
+| Support UI         | ❌     | Assist users who cannot authenticate with support links         |
+| Custom dialogs     | ✔️     | Add support to customize dialog messages                        |
+| Adaptive layouts   | ⌛     | Adaptive layouts to support multiple screen sizes               |
+| Customization      | ✔️     | Even more, or easier, customization                             |
+| Testing            | ❌     | Add testing                                                     |
 
 ## Dart Versions
 
