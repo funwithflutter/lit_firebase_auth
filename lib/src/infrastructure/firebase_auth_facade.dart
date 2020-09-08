@@ -27,21 +27,21 @@ class FirebaseAuthFacade implements AuthFacade {
     this.googleSignInEnabled = false,
   })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn(),
-        _app = app ?? FirebaseApp.instance;
+        _app = app ?? Firebase.app();
 
   @override
-  Future<User> getSignedInUser() => _firebaseAuth.currentUser().then(_mapUser);
+  LitUser getSignedInUser() => _mapUser(_firebaseAuth.currentUser);
 
   @override
-  Stream<User> get onAuthStateChanged {
-    return _firebaseAuth.onAuthStateChanged.map(_mapUser);
+  Stream<LitUser> get onAuthStateChanged {
+    return _firebaseAuth.authStateChanges().map(_mapUser);
   }
 
-  User _mapUser(FirebaseUser user) {
+  LitUser _mapUser(User user) {
     if (user == null) {
-      return const User.empty();
+      return const LitUser.empty();
     }
-    return User(user: user);
+    return LitUser(user: user);
   }
 
   @override
@@ -215,7 +215,7 @@ class FirebaseAuthFacade implements AuthFacade {
     try {
       final googleAuthentication = await googleUser.authentication;
 
-      final authCredential = GoogleAuthProvider.getCredential(
+      final authCredential = GoogleAuthProvider.credential(
         idToken: googleAuthentication.idToken,
         accessToken: googleAuthentication.accessToken,
       );
@@ -237,7 +237,7 @@ class FirebaseAuthFacade implements AuthFacade {
 
       final googleAuthentication = await googleUser.authentication;
 
-      final authCredential = GoogleAuthProvider.getCredential(
+      final authCredential = GoogleAuthProvider.credential(
         idToken: googleAuthentication.idToken,
         accessToken: googleAuthentication.accessToken,
       );

@@ -24,7 +24,7 @@ class LitAuthState extends StatelessWidget {
   /// You can easily create your own auth state subscription by calling the
   /// following in a widget build method:
   /// `final user = context.watch<User>();`
-  /// Which will listen to the current [User] object.
+  /// Which will listen to the current [LitUser] object.
   const LitAuthState({
     Key key,
     @required this.authenticated,
@@ -46,9 +46,9 @@ class LitAuthState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.watch<User>();
+    final user = context.watch<LitUser>();
     return user.when(
-      (user) => authenticated,
+      (dynamic user) => authenticated,
       empty: () => unauthenticated,
       initializing: () => unintialized ?? _loading(),
     );
