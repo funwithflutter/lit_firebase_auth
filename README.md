@@ -6,6 +6,41 @@
 
 Pre-lit Firebase authentication. It provides a set of convenient utilities and widgets to easily add Firebase authentication to a Flutter app.
 
+## Table of Contents
+[Features](#features)
+- [Table of Contents](#table-of-contents)
+- [Features](#features)
+- [Getting started](#getting-started)
+- [Platform Configuration](#platform-configuration)
+  - [Android integration](#android-integration)
+  - [iOS integration](#ios-integration)
+  - [Web integration](#web-integration)
+- [Usage](#usage)
+  - [Lit Firebase Initialization](#lit-firebase-initialization)
+  - [Standard Sign-in widget](#standard-sign-in-widget)
+  - [Handle auth state changes](#handle-auth-state-changes)
+  - [Auth success and failure](#auth-success-and-failure)
+  - [Sign out](#sign-out)
+  - [Get current user](#get-current-user)
+  - [Watch user for changes](#watch-user-for-changes)
+  - [Determine if submitting is active](#determine-if-submitting-is-active)
+- [Authentication Providers](#authentication-providers)
+  - [Initialization](#initialization)
+  - [Google Sign In for Android](#google-sign-in-for-android)
+  - [Google Sign In for iOS](#google-sign-in-for-ios)
+  - [iOS additional requirement](#ios-additional-requirement)
+  - [Apple Sign In for iOS](#apple-sign-in-for-ios)
+  - [Twitter Sign In for iOS and Android](#twitter-sign-in-for-ios-and-android)
+  - [Using with Lit Firebase Auth](#using-with-lit-firebase-auth)
+- [Decoration and theming](#decoration-and-theming)
+  - [Standard Sign-in widget customization](#standard-sign-in-widget-customization)
+  - [Notifications](#notifications)
+  - [Additional Customization](#additional-customization)
+  - [Icons](#icons)
+- [Planned features](#planned-features)
+- [Dart Versions](#dart-versions)
+- [Maintainers](#maintainers)
+- [Starware](#starware)
 
 ## Features
 
