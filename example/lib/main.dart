@@ -1,35 +1,61 @@
 import 'package:lit_firebase_auth/lit_firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized(); // Needed for Firebase core
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
+  // Create the initilization Future outside of `build`:
+  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
   @override
   Widget build(BuildContext context) {
-    // Initialize Lit Firebase Auth. Needs to be above [MaterialApp]
-    return LitAuthInit(
-      authProviders: const AuthProviders(
-        emailAndPassword: true, // enabled by default
-        google: true,
-        apple: true,
-        anonymous: true,
-        github: true,
-        twitter: true,
-      ),
-      child: MaterialApp(
-        title: 'Material App',
-        themeMode: ThemeMode.light,
-        darkTheme: ThemeData.dark(),
-        theme: ThemeData(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          buttonTheme: ButtonThemeData(
-            buttonColor: Colors.white,
-            textTheme: ButtonTextTheme.primary,
-            height: 40,
-          ),
-        ),
-        home: SplashScreen(),
-      ),
+    // Before Lit Auth can be used, Firebase needs to be initialized and the
+    // initialization needs to finish.
+    return FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot) {
+        // Check for errors
+        if (snapshot.hasError) {
+          return Center(child: Text('Something went wrong'));
+        }
+        // Once complete, show your application
+        if (snapshot.connectionState == ConnectionState.done) {
+          // Initialize Lit Firebase Auth. Needs to be called before
+          // `MaterialApp`, to ensure all of the child widget, even when
+          // navigating to a new route, has access to the Lit auth methods
+          return LitAuthInit(
+            authProviders: const AuthProviders(
+              emailAndPassword: true, // enabled by default
+              google: true,
+              apple: true,
+              anonymous: true,
+              github: true,
+              twitter: true,
+            ),
+            child: MaterialApp(
+              title: 'Material App',
+              themeMode: ThemeMode.light,
+              darkTheme: ThemeData.dark(),
+              theme: ThemeData(
+                visualDensity: VisualDensity.adaptivePlatformDensity,
+                buttonTheme: ButtonThemeData(
+                  buttonColor: Colors.white,
+                  textTheme: ButtonTextTheme.primary,
+                  height: 40,
+                ),
+              ),
+              home: SplashScreen(),
+            ),
+          );
+        }
+
+        // Otherwise, show something whilst waiting for initialization to complete
+        return Center(child: CircularProgressIndicator());
+      },
     );
   }
 }
