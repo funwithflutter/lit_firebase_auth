@@ -6,9 +6,9 @@ import 'user.dart';
 import 'value_objects.dart';
 
 abstract class AuthFacade {
-  Future<User> getSignedInUser();
+  LitUser getSignedInUser();
 
-  Stream<User> get onAuthStateChanged;
+  Stream<LitUser> get onAuthStateChanged;
 
   Future<Auth> registerWithEmailAndPassword({
     @required EmailAddress emailAddress,

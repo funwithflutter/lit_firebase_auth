@@ -77,7 +77,7 @@ class LitAuthInit extends StatelessWidget {
             }
           },
           lazy: false,
-          initialData: const User.initializing(),
+          initialData: const LitUser.initializing(),
         ),
       ],
       child: child,

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named
+// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
 
 part of 'auth_config.dart';
 
@@ -12,6 +12,7 @@ T _$identity<T>(T value) => value;
 class _$AuthConfigTearOff {
   const _$AuthConfigTearOff();
 
+// ignore: unused_element
   _AuthConfig call(
       {Widget title,
       ButtonConfig signInButton,
@@ -442,6 +443,7 @@ abstract class _AuthConfig implements AuthConfig {
 class _$ButtonConfigTearOff {
   const _$ButtonConfigTearOff();
 
+// ignore: unused_element
   ButtonConfigRaised raised(
       {@required ButtonThemeData themedata, @required Widget child}) {
     return ButtonConfigRaised(
@@ -450,6 +452,7 @@ class _$ButtonConfigTearOff {
     );
   }
 
+// ignore: unused_element
   ButtonConfigFlat flat(
       {@required ButtonThemeData themedata, @required Widget child}) {
     return ButtonConfigFlat(
@@ -458,6 +461,7 @@ class _$ButtonConfigTearOff {
     );
   }
 
+// ignore: unused_element
   ButtonConfigFlatIcon flatIcon(
       {@required ButtonThemeData themedata,
       @required Widget icon,
@@ -469,6 +473,7 @@ class _$ButtonConfigTearOff {
     );
   }
 
+// ignore: unused_element
   ButtonConfigRaisedIcon raisedIcon(
       {@required ButtonThemeData themedata,
       @required Widget icon,
@@ -1213,18 +1218,21 @@ abstract class ButtonConfigRaisedIcon implements ButtonConfig {
 class _$AppleButtonConfigTearOff {
   const _$AppleButtonConfigTearOff();
 
+// ignore: unused_element
   _AppleButtonConfig call({ButtonConfig config}) {
     return _AppleButtonConfig(
       config: config,
     );
   }
 
+// ignore: unused_element
   _AppleButtonConfigDark dark({Widget label}) {
     return _AppleButtonConfigDark(
       label: label,
     );
   }
 
+// ignore: unused_element
   _AppleButtonConfigLight light({Widget label}) {
     return _AppleButtonConfigLight(
       label: label,
@@ -1683,18 +1691,21 @@ abstract class _AppleButtonConfigLight implements AppleButtonConfig {
 class _$GoogleButtonConfigTearOff {
   const _$GoogleButtonConfigTearOff();
 
+// ignore: unused_element
   _GoogleButtonConfig call({ButtonConfig config}) {
     return _GoogleButtonConfig(
       config: config,
     );
   }
 
+// ignore: unused_element
   _GoogleButtonConfigDark dark({Widget label}) {
     return _GoogleButtonConfigDark(
       label: label,
     );
   }
 
+// ignore: unused_element
   _GoogleButtonConfigLight light({Widget label}) {
     return _GoogleButtonConfigLight(
       label: label,

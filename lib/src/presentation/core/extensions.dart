@@ -107,11 +107,11 @@ extension AuthContext on BuildContext {
   }
 
   /// Retrieves the currently signed in user
-  User getSignedInUser() {
-    return Provider.of<User>(this, listen: false);
+  LitUser getSignedInUser() {
+    return Provider.of<LitUser>(this, listen: false);
   }
 
-  User watchSignedInUser() {
-    return Provider.of<User>(this);
+  LitUser watchSignedInUser() {
+    return Provider.of<LitUser>(this);
   }
 }
