@@ -28,9 +28,11 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
   - [Initialization](#initialization)
   - [Google Sign In for Android](#google-sign-in-for-android)
   - [Google Sign In for iOS](#google-sign-in-for-ios)
-  - [iOS additional requirement](#ios-additional-requirement)
+    - [iOS additional requirement](#ios-additional-requirement)
+  - [Apple Sign In for Android](#apple-sign-in-for-android)
   - [Apple Sign In for iOS](#apple-sign-in-for-ios)
   - [Twitter Sign In for iOS and Android](#twitter-sign-in-for-ios-and-android)
+  - [Github Sign In for iOS and Android](#github-sign-in-for-ios-and-android)
   - [Using with Lit Firebase Auth](#using-with-lit-firebase-auth)
 - [Decoration and theming](#decoration-and-theming)
   - [Standard Sign-in widget customization](#standard-sign-in-widget-customization)
@@ -61,13 +63,13 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
 
 ## Getting started
 
-See the [example](example/) project to get up and running fast.
+Please note that before this package can be used, Firebase Core needs to be initialized in your application. See the official [FlutterFire documentation](https://firebase.flutter.dev/docs/overview#initializing-flutterfire) for up to date information.
 
-Or take a look at a [live demo](https://funwithflutter.github.io/lit_firebase_example/).
+For a complete example (with Firebase initialization) see the [example](example/) project.
+
+Or take a look at a [live demo](https://funwithflutter.github.io/lit_firebase_example/). Note that this video was recorded with the old version of FlutterFire and Lit Firebase Auth. As such, some configuration may be different. For example, this does not show how to initialize FlutterFire.
 
 ## Platform Configuration
-<details>
-<summary>...</summary>
 
 ### Android integration
 
@@ -115,7 +117,6 @@ Below is an example of a Flutter Web `index.html` with Firebase Auth enabled:
   <!-- CONTINUE TO INITIALIZE FLUTTER WEB -->
   ...
 ```
-</details>
 
 ## Usage
 The two most important widgets are 
@@ -258,32 +259,28 @@ Should only be used in the build method.
 
 ## Authentication Providers
 
+Lit Firebase Auth supports a number of third party authentication providers, such as Google, Apple, Github, etc.
+
 ### Initialization
 Enable the sign-in method you want to use in firebase console 
 
 ### Google Sign In for Android
 
-To access Google Sign-In, you'll need to make sure to [register your
-application](https://developers.google.com/mobile/add?platform=android).
+Lit Firebase Auth uses the [google_sign_in](https://pub.dev/packages/google_sign_in) package for Google Sign in. Please see their documentation if you encounter difficulties.
 
-You don't need to include the google-services.json file in your app unless you
-are using Google services that require it. You do need to enable the OAuth APIs
-that you want, using the [Google Cloud Platform API
-manager](https://console.developers.google.com/). For example, if you
-want to mimic the behavior of the Google Sign-In sample app, you'll need to
-enable the [Google People API](https://developers.google.com/people/).
+Please ensure you have done the steps outline in [Android integration](#android-integration)
 
-Make sure you've filled out all required fields in the console for [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent). Otherwise, you may encounter `APIException` errors.
+The majority of the configuration is on Firebase side. First, Google Sign In needs to be enabled in the Authentication section of your Firebase project. Next, if you have not done so yet, you will need to provide your application's SHA certificate within your Firebase settings and replace the `google-services.json` file with the updated one. This is needed for Google Sign in to be allowed.
+
+A correctly setup Firebase project and the correct `google-services.json` file is all you'll need.
 
 ### Google Sign In for iOS
 
-1. [First register your application](https://developers.google.com/mobile/add?platform=ios).
-2. Make sure the file you download in step 1 is named `GoogleService-Info.plist`.
-3. Move or copy `GoogleService-Info.plist` into the `[my_project]/ios/Runner` directory.
-4. Open Xcode, then right-click on `Runner` directory and select `Add Files to "Runner"`.
-5. Select `GoogleService-Info.plist` from the file manager.
-6. A dialog will show up and ask you to select the targets, select the `Runner` target.
-7. Then add the `CFBundleURLTypes` attributes below into the `[my_project]/ios/Runner/Info.plist` file.
+Lit Firebase Auth uses the [google_sign_in](https://pub.dev/packages/google_sign_in) package for Google Sign in. Please see their documentation if you encounter difficulties.
+
+Please ensure you have done the steps outline in [iOS integration](#ios-integration)
+
+Then add the `CFBundleURLTypes` attributes below into the `[my_project]/ios/Runner/Info.plist` file.
 
 ```xml
 <!-- Put me in the [my_project]/ios/Runner/Info.plist file -->
@@ -303,16 +300,15 @@ Make sure you've filled out all required fields in the console for [OAuth consen
 </array>
 <!-- End of the Google Sign-in Section -->
 ```
-### iOS additional requirement
+
+#### iOS additional requirement
 
 Note that according to https://developer.apple.com/sign-in-with-apple/get-started,
 starting June 30, 2020, apps that use login services must also offer a "Sign in
 with Apple" option when submitting to the Apple App Store.
 
-Consider also using an Apple sign in plugin from pub.dev.
-
-The Flutter Favorite [sign_in_with_apple](https://pub.dev/packages/sign_in_with_apple)
-plugin could be an option.
+### Apple Sign In for Android
+This should be working, but has not been tested. There should be configuration examples in the Firebase documentation.
 
 ### Apple Sign In for iOS
 
@@ -322,6 +318,9 @@ plugin could be an option.
 1. Register your app as a developer application in [Twitter Developer Portal](https://developer.twitter.com/en)
 2. Copy Paste your API Key and API Secret into the Twitter Sign In Method in Firebase
 3. Enable 3rd party authentication in Twitter Developer Portal and copy past callback URL from Firebase
+
+### Github Sign In for iOS and Android
+Similar process to Twitter Sign in.
 
 ### Using with Lit Firebase Auth
 The supported third-party providers are:
@@ -504,9 +503,9 @@ The state of the password and email can be cleared manually by calling:
 context.resetSignInForm()
 ```
 
-This will reset the form to it's initial state.
+This will reset the form to its initial state.
 
-It's a good idea to do this when you have multiple `EmailTextFormField` and `PasswordTextFormField` widgets in seperate locations, for example when you have a separate Sign-in form and a Registration form.
+It's a good idea to do this when you have multiple `EmailTextFormField` and `PasswordTextFormField` widgets in separate locations, for example when you have a separate Sign-in form and a Registration form.
 
 ### Icons
 
