@@ -81,6 +81,12 @@ Otherwise you will not be able to authenticate.
 ### iOS integration
 Follow normal [Firebase Initialization](https://firebase.flutter.dev/docs/installation/ios)
 
+You will also need to define a global platform for your project. Modify the `ios/Podfile` and make sure the following is not commented out:
+```ruby
+platform :ios, '8.0'
+```
+You can find this at the top of the `Podfile`.
+
 ### Web integration
 
 You'll need to modify the `web/index.html` of your app following the Firebase setup instructions:
