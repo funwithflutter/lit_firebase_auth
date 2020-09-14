@@ -110,73 +110,28 @@ class FirebaseAuthFacade implements AuthFacade {
   }) async {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
-    if (kIsWeb) {
-      return _webSignInWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
-      );
-    } else {
-      return _signInWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
-      );
-    }
-  }
-
-  Future<Auth> _webSignInWithEmailAndPassword({
-    String email,
-    String password,
-  }) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: emailAddressStr,
+        password: passwordStr,
       );
       return const Auth.success();
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       switch (e.code) {
-        case "auth/wrong-password":
-        case "auth/user-not-found":
+        case "wrong-password":
+        case "user-not-found":
           return const Auth.failure(
             AuthFailure.invalidEmailAndPasswordCombination(),
           );
           break;
-        case "auth/invalid-email":
+        case "invalid-email":
           return const Auth.failure(AuthFailure.malformed());
           break;
-        case "auth/user-disabled":
+        case "user-disabled":
           return const Auth.failure(AuthFailure.userDisabled());
           break;
-        default:
-          debugPrint(e.toString());
-          return const Auth.failure(AuthFailure.serverError());
-      }
-    }
-  }
-
-  Future<Auth> _signInWithEmailAndPassword({
-    String email,
-    String password,
-  }) async {
-    try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return const Auth.success();
-    } on PlatformException catch (e) {
-      switch (e.code) {
-        case "ERROR_WRONG_PASSWORD":
-        case "ERROR_USER_NOT_FOUND":
-          return const Auth.failure(
-            AuthFailure.invalidEmailAndPasswordCombination(),
-          );
-          break;
-        case "ERROR_INVALID_EMAIL":
-          return const Auth.failure(AuthFailure.malformed());
-          break;
-        case "ERROR_USER_DISABLED":
-          return const Auth.failure(AuthFailure.userDisabled());
+        case "too-many-requests":
+          return const Auth.failure(AuthFailure.tooManyRequests());
           break;
         default:
           debugPrint(e.toString());
@@ -207,7 +162,7 @@ class FirebaseAuthFacade implements AuthFacade {
       googleUser = await _googleSignIn.signIn();
     } catch (e) {
       if (e.toString().contains('appClientId != null')) {
-        print(e);
+        debugPrint(e);
         return const Auth.failure(AuthFailure.serverError());
       }
       return const Auth.failure(AuthFailure.cancelledByUser());
@@ -223,7 +178,7 @@ class FirebaseAuthFacade implements AuthFacade {
       await _firebaseAuth.signInWithCredential(authCredential);
       return const Auth.success();
     } catch (e) {
-      print(e);
+      debugPrint(e);
       return const Auth.failure(AuthFailure.serverError());
     }
   }
@@ -244,7 +199,7 @@ class FirebaseAuthFacade implements AuthFacade {
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return const Auth.success();
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     }
@@ -255,7 +210,7 @@ class FirebaseAuthFacade implements AuthFacade {
     try {
       await _firebaseAuth.signInAnonymously();
       return const Auth.success();
-    } catch (e) {
+    } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     }
@@ -266,7 +221,7 @@ class FirebaseAuthFacade implements AuthFacade {
     try {
       await _firebaseAuth.signInWithCredential(credential);
       return const Auth.success();
-    } on PlatformException catch (e) {
+    } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     } catch (e) {
@@ -290,10 +245,9 @@ class FirebaseAuthFacade implements AuthFacade {
        * 3. PluginError: An error from this plugin
        */
       debugPrint("${e.code}: ${e.message}");
-      if (e.message == 'The web operation was canceled by the user.') {
+      if (e.message == 'The interaction was cancelled by the user.') {
         return const Auth.failure(AuthFailure.cancelledByUser());
       }
-      debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     } catch (e) {
       debugPrint(e.toString());

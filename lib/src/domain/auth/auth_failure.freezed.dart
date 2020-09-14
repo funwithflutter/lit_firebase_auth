@@ -41,6 +41,11 @@ class _$AuthFailureTearOff {
   UserDisabled userDisabled() {
     return const UserDisabled();
   }
+
+// ignore: unused_element
+  TooManyRequests tooManyRequests() {
+    return const TooManyRequests();
+  }
 }
 
 // ignore: unused_element
@@ -55,6 +60,7 @@ mixin _$AuthFailure {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result malformed(),
     @required Result userDisabled(),
+    @required Result tooManyRequests(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -64,6 +70,7 @@ mixin _$AuthFailure {
     Result invalidEmailAndPasswordCombination(),
     Result malformed(),
     Result userDisabled(),
+    Result tooManyRequests(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -76,6 +83,7 @@ mixin _$AuthFailure {
             InvalidEmailAndPasswordCombination value),
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -86,6 +94,7 @@ mixin _$AuthFailure {
         InvalidEmailAndPasswordCombination value),
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
     @required Result orElse(),
   });
 }
@@ -146,6 +155,7 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result malformed(),
     @required Result userDisabled(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -153,6 +163,7 @@ class _$CancelledByUser implements CancelledByUser {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return cancelledByUser();
   }
 
@@ -165,6 +176,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result invalidEmailAndPasswordCombination(),
     Result malformed(),
     Result userDisabled(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -185,6 +197,7 @@ class _$CancelledByUser implements CancelledByUser {
             InvalidEmailAndPasswordCombination value),
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -192,6 +205,7 @@ class _$CancelledByUser implements CancelledByUser {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return cancelledByUser(this);
   }
 
@@ -205,6 +219,7 @@ class _$CancelledByUser implements CancelledByUser {
         InvalidEmailAndPasswordCombination value),
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -260,6 +275,7 @@ class _$ServerError implements ServerError {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result malformed(),
     @required Result userDisabled(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -267,6 +283,7 @@ class _$ServerError implements ServerError {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return serverError();
   }
 
@@ -279,6 +296,7 @@ class _$ServerError implements ServerError {
     Result invalidEmailAndPasswordCombination(),
     Result malformed(),
     Result userDisabled(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -299,6 +317,7 @@ class _$ServerError implements ServerError {
             InvalidEmailAndPasswordCombination value),
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -306,6 +325,7 @@ class _$ServerError implements ServerError {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return serverError(this);
   }
 
@@ -319,6 +339,7 @@ class _$ServerError implements ServerError {
         InvalidEmailAndPasswordCombination value),
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -375,6 +396,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result malformed(),
     @required Result userDisabled(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -382,6 +404,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return emailAlreadyInUse();
   }
 
@@ -394,6 +417,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result invalidEmailAndPasswordCombination(),
     Result malformed(),
     Result userDisabled(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -414,6 +438,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
             InvalidEmailAndPasswordCombination value),
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -421,6 +446,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return emailAlreadyInUse(this);
   }
 
@@ -434,6 +460,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
         InvalidEmailAndPasswordCombination value),
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -495,6 +522,7 @@ class _$InvalidEmailAndPasswordCombination
     @required Result invalidEmailAndPasswordCombination(),
     @required Result malformed(),
     @required Result userDisabled(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -502,6 +530,7 @@ class _$InvalidEmailAndPasswordCombination
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -514,6 +543,7 @@ class _$InvalidEmailAndPasswordCombination
     Result invalidEmailAndPasswordCombination(),
     Result malformed(),
     Result userDisabled(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -534,6 +564,7 @@ class _$InvalidEmailAndPasswordCombination
             InvalidEmailAndPasswordCombination value),
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -541,6 +572,7 @@ class _$InvalidEmailAndPasswordCombination
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
@@ -554,6 +586,7 @@ class _$InvalidEmailAndPasswordCombination
         InvalidEmailAndPasswordCombination value),
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -610,6 +643,7 @@ class _$EmailMalformed implements EmailMalformed {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result malformed(),
     @required Result userDisabled(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -617,6 +651,7 @@ class _$EmailMalformed implements EmailMalformed {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return malformed();
   }
 
@@ -629,6 +664,7 @@ class _$EmailMalformed implements EmailMalformed {
     Result invalidEmailAndPasswordCombination(),
     Result malformed(),
     Result userDisabled(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -649,6 +685,7 @@ class _$EmailMalformed implements EmailMalformed {
             InvalidEmailAndPasswordCombination value),
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -656,6 +693,7 @@ class _$EmailMalformed implements EmailMalformed {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return malformed(this);
   }
 
@@ -669,6 +707,7 @@ class _$EmailMalformed implements EmailMalformed {
         InvalidEmailAndPasswordCombination value),
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -724,6 +763,7 @@ class _$UserDisabled implements UserDisabled {
     @required Result invalidEmailAndPasswordCombination(),
     @required Result malformed(),
     @required Result userDisabled(),
+    @required Result tooManyRequests(),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -731,6 +771,7 @@ class _$UserDisabled implements UserDisabled {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return userDisabled();
   }
 
@@ -743,6 +784,7 @@ class _$UserDisabled implements UserDisabled {
     Result invalidEmailAndPasswordCombination(),
     Result malformed(),
     Result userDisabled(),
+    Result tooManyRequests(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -763,6 +805,7 @@ class _$UserDisabled implements UserDisabled {
             InvalidEmailAndPasswordCombination value),
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -770,6 +813,7 @@ class _$UserDisabled implements UserDisabled {
     assert(invalidEmailAndPasswordCombination != null);
     assert(malformed != null);
     assert(userDisabled != null);
+    assert(tooManyRequests != null);
     return userDisabled(this);
   }
 
@@ -783,6 +827,7 @@ class _$UserDisabled implements UserDisabled {
         InvalidEmailAndPasswordCombination value),
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -795,4 +840,125 @@ class _$UserDisabled implements UserDisabled {
 
 abstract class UserDisabled implements AuthFailure {
   const factory UserDisabled() = _$UserDisabled;
+}
+
+abstract class $TooManyRequestsCopyWith<$Res> {
+  factory $TooManyRequestsCopyWith(
+          TooManyRequests value, $Res Function(TooManyRequests) then) =
+      _$TooManyRequestsCopyWithImpl<$Res>;
+}
+
+class _$TooManyRequestsCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $TooManyRequestsCopyWith<$Res> {
+  _$TooManyRequestsCopyWithImpl(
+      TooManyRequests _value, $Res Function(TooManyRequests) _then)
+      : super(_value, (v) => _then(v as TooManyRequests));
+
+  @override
+  TooManyRequests get _value => super._value as TooManyRequests;
+}
+
+class _$TooManyRequests implements TooManyRequests {
+  const _$TooManyRequests();
+
+  @override
+  String toString() {
+    return 'AuthFailure.tooManyRequests()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is TooManyRequests);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result malformed(),
+    @required Result userDisabled(),
+    @required Result tooManyRequests(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(malformed != null);
+    assert(userDisabled != null);
+    assert(tooManyRequests != null);
+    return tooManyRequests();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result malformed(),
+    Result userDisabled(),
+    Result tooManyRequests(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (tooManyRequests != null) {
+      return tooManyRequests();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(CancelledByUser value),
+    @required Result serverError(ServerError value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            InvalidEmailAndPasswordCombination value),
+    @required Result malformed(EmailMalformed value),
+    @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(malformed != null);
+    assert(userDisabled != null);
+    assert(tooManyRequests != null);
+    return tooManyRequests(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(CancelledByUser value),
+    Result serverError(ServerError value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        InvalidEmailAndPasswordCombination value),
+    Result malformed(EmailMalformed value),
+    Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (tooManyRequests != null) {
+      return tooManyRequests(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class TooManyRequests implements AuthFailure {
+  const factory TooManyRequests() = _$TooManyRequests;
 }

@@ -13,4 +13,5 @@ abstract class AuthFailure with _$AuthFailure {
       InvalidEmailAndPasswordCombination;
   const factory AuthFailure.malformed() = EmailMalformed;
   const factory AuthFailure.userDisabled() = UserDisabled;
+  const factory AuthFailure.tooManyRequests() = TooManyRequests;
 }

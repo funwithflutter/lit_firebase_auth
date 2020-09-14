@@ -241,15 +241,16 @@ class _SignInBuilder extends StatelessWidget {
                 context: context,
                 config: errorNotification,
                 message: f.failure.map(
-                  cancelledByUser: (_) => 'Cancelled',
-                  serverError: (_) => 'Server error',
-                  emailAlreadyInUse: (_) => 'Email already in use',
-                  invalidEmailAndPasswordCombination: (_) =>
-                      'Invalid email and password combination',
-                  malformed: (_) => 'Not a valid email address',
-                  userDisabled: (_) =>
-                      'User disabled. Contact customer care for assistance',
-                ),
+                    cancelledByUser: (_) => 'Cancelled',
+                    serverError: (_) => 'Server error',
+                    emailAlreadyInUse: (_) => 'Email already in use',
+                    invalidEmailAndPasswordCombination: (_) =>
+                        'Invalid email and password combination',
+                    malformed: (_) => 'Not a valid email address',
+                    userDisabled: (_) =>
+                        'User disabled. Contact customer care for assistance',
+                    tooManyRequests: (_) =>
+                        'Too many unsuccessful login attempts. Please try again later'),
               ).show(context),
             );
           },
