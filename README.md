@@ -29,6 +29,7 @@ Pre-lit Firebase authentication. It provides a set of convenient utilities and w
   - [Google Sign In for Android](#google-sign-in-for-android)
   - [Google Sign In for iOS](#google-sign-in-for-ios)
     - [iOS additional requirement](#ios-additional-requirement)
+  - [Google Sign in for Web](#google-sign-in-for-web)
   - [Apple Sign In for Android](#apple-sign-in-for-android)
   - [Apple Sign In for iOS](#apple-sign-in-for-ios)
   - [Twitter Sign In for iOS and Android](#twitter-sign-in-for-ios-and-android)
@@ -312,6 +313,22 @@ Then add the `CFBundleURLTypes` attributes below into the `[my_project]/ios/Runn
 Note that according to https://developer.apple.com/sign-in-with-apple/get-started,
 starting June 30, 2020, apps that use login services must also offer a "Sign in
 with Apple" option when submitting to the Apple App Store.
+
+### Google Sign in for Web
+
+You will need to add the Google Sign in Client ID to your `index.html` file. You can get this ID from the Firebase console, within the Google Sign-in Web Configuration (Authentication section).
+
+An example is below:
+
+`web/index.html`
+```html
+...
+<body>
+
+  <!-- GOOGLE SignIn Client ID -->
+  <meta name="google-signin-client_id" content="ADD-YOUR-CLIENT-ID.apps.googleusercontent.com">
+...
+```
 
 ### Apple Sign In for Android
 This should be working, but has not been tested. There should be configuration examples in the Firebase documentation.
