@@ -68,7 +68,14 @@ Please note that before this package can be used, Firebase Core needs to be init
 
 For a complete example (with Firebase initialization) see the [example](example/) project.
 
-Or take a look at a [live demo](https://funwithflutter.github.io/lit_firebase_example/). Note that this video was recorded with the old version of FlutterFire and Lit Firebase Auth. As such, some configuration may be different. For example, this does not show how to initialize FlutterFire.
+Or take a look at a [live demo](https://funwithflutter.github.io/lit_firebase_example/). 
+
+Some videos on Lit Firebase:
+[Introduction](https://www.youtube.com/watch?v=66TKtvgjFa8)
+
+Note that this video was recorded with the old version of FlutterFire and Lit Firebase Auth. As such, some configuration may be different. For example, this does not show how to initialize FlutterFire.
+
+[Customizing Lit Firebase UI](https://www.youtube.com/watch?v=bpvpbQF-2Js)
 
 ## Platform Configuration
 

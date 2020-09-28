@@ -1,3 +1,11 @@
+# 0.3.0
+- BREAKING: Updated to Firebase Core 0.5.0 (thanks @CiriousJoker)
+- BREAKING: `User` renamed to `LitUser`
+- BREAKING: `FirebaseUser` renamed to `User`
+- BREAKING: `getSignedInUser()` is no longer asynchronous
+- docs: various documentation updates
+- Additional setup is now required to ensure that Firebase Core is initialized. Please see the documentation or example for details.
+
 # 0.2.3
 
 - feat: expose `LitAuthIcon` to directly use the OAuth icons (`Images`) provided by the package (Google, Apple, Twitter, Github)
