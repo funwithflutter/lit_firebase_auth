@@ -89,6 +89,9 @@ platform :ios, '8.0'
 You can find this at the top of the `Podfile`.
 
 ### Web integration
+Follow normal [Firebase Initialization](https://firebase.flutter.dev/docs/installation/web)
+
+The above should be sufficient, and should provide up to date information. But for additional information, please see below:
 
 You'll need to modify the `web/index.html` of your app following the Firebase setup instructions:
 
@@ -237,17 +240,30 @@ RaisedButton(
 ```
 
 ### Get current user
-Get the current signed-in user:
+Depending on the status of the user you'll get a different state: empty, initializing, or success.
+
 ```dart
-final user = context.getSignedInUser()
+final litUser = context.getSignedInUser();
+litUser.when(
+  (user) => print(user.uid),
+  empty: () {},
+  initializing: () {},
+);
 ```
 
+The `value.user` is the Firebase `User` object.
+
 ### Watch user for changes
-Watches the `User` object for changes.
+Watches the Firebase `User` object for changes. Will be triggered every time the Firebase `User` changes (for example, on logout or new sign in).
 ```dart
-final user = context.watchSignedInUser()
+final litUser = context.watchSignedInUser();
+litUser.when(
+  (user) => Text('Signed in ${user.uid}'),
+  empty: () => Text('Not signed in'),
+  initializing: () => Text('Loading'),
+);
 ```
-Should only be used in the build method.
+The above should only be used in the build method. If you need direct access to the current user, prefer `context.getSignedInUser()`.
 
 ### Determine if submitting is active
  Whether Lit Firebase is currently attempting to authenticate. Can be used to show a loading indicator.
