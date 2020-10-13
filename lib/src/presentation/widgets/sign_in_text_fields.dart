@@ -14,16 +14,19 @@ class PasswordTextFormField extends StatelessWidget {
     Key key,
     this.style,
     this.decoration,
+    this.autofillHints
   }) : super(key: key);
 
   final TextStyle style;
   final InputDecoration decoration;
+  final Iterable<String> autofillHints;
 
   @override
   Widget build(BuildContext context) {
     final password =
         context.select((SignInHandlerState state) => state.password);
     return TextFormField(
+      autofillHints: autofillHints,
       style: style,
       decoration: decoration ??
           InputDecoration(
@@ -54,16 +57,20 @@ class EmailTextFormField extends StatelessWidget {
     Key key,
     this.style,
     this.decoration,
+    this.autofillHints
+    
   }) : super(key: key);
 
   final TextStyle style;
   final InputDecoration decoration;
+  final Iterable<String> autofillHints;
 
   @override
   Widget build(BuildContext context) {
     final emailAddress =
         context.select((SignInHandlerState state) => state.emailAddress);
     return TextFormField(
+      autofillHints: autofillHints,
       keyboardType: TextInputType.emailAddress,
       style: style,
       decoration: decoration ??
