@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'auth_providers.freezed.dart';
 
@@ -17,5 +18,6 @@ abstract class AuthProviders with _$AuthProviders {
     @Default(false) bool apple,
     @Default(false) bool github,
     @Default(false) bool twitter,
+    @Default(false) bool facebook,
   }) = _AuthProviders;
 }
