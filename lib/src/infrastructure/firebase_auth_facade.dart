@@ -220,7 +220,7 @@ class FirebaseAuthFacade implements AuthFacade {
       // get the user data
       final userData = await FacebookAuth.instance.getUserData();
       print(userData);
-      return Auth.success();
+      return const Auth.success();
     } catch (e, s) {
       if (e is FacebookAuthException) {
         print(e.message);
