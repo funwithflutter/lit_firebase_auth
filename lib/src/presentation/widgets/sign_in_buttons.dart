@@ -232,11 +232,12 @@ class SignInWithFacebookButton extends StatelessWidget {
                 .copyWith(height: defaultButtonHeight),
             icon: _IconWrapper(
               buttonHeight: defaultButtonHeight,
-              child: LitAuthIcon.facebook(),
+              child: LitAuthIcon.google(),
             ),
             child: const _ContinueWithLabel(label: defaultLabel),
           ),
       onPressed: () {
+        print ('Facebook login')
         context.signInWithFacebook();
       },
     );
