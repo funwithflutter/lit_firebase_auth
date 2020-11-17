@@ -216,7 +216,10 @@ class FirebaseAuthFacade implements AuthFacade {
     try {
       // by default the login method has the next permissions ['email','public_profile']
       AccessToken accessToken = await FacebookAuth.instance.login();
-      print(accessToken.toJson());
+
+      final facebookAuth = FacebookAuthProvider.credential(accessToken);
+
+      await _firebaseAuth.signInWithCredential(facebookAuth);
       return const Auth.success();
     } catch (e, s) {
       if (e is FacebookAuthException) {
