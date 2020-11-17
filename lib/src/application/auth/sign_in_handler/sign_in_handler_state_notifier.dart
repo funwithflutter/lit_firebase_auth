@@ -106,6 +106,16 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     );
   }
 
+  Future<void> signInWithFacebook() async {
+    if (!_authProviders.facebook) {
+      throw AuthProviderNotEnabled('Facebook');
+    }
+
+    _performActionOnAuthFacadeWithOAuthProviders(
+          () => _authFacade.signInWithFacebook(),
+    );
+  }
+
   Future<void> signInWithCredential(AuthCredential credential) async {
     _performActionOnAuthFacadeWithOAuthProviders(
       () => _authFacade.signInWithCredential(credential),

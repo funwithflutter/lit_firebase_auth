@@ -19,6 +19,7 @@ abstract class AuthFacade {
     @required Password password,
   });
   Future<Auth> signInWithGoogle();
+  Future<Auth> signInWithFacebook();
   Future<Auth> signInWithCredential(AuthCredential credential);
   Future<Auth> signInWithOAuth(
     String provider,

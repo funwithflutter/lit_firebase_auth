@@ -26,6 +26,7 @@ dependencies:
   flutter_state_notifier: ^0.6.1
   # ui
   flushbar: ^1.10.4
+  flutter_facebook_auth: ^1.0.0
 
 dev_dependencies:
   flutter_test:

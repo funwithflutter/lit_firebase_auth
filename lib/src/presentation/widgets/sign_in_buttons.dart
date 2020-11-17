@@ -237,7 +237,7 @@ class SignInWithFacebookButton extends StatelessWidget {
             child: const _ContinueWithLabel(label: defaultLabel),
           ),
       onPressed: () {
-      //  context.signInWithFacebook();
+        context.signInWithFacebook();
       },
     );
   }

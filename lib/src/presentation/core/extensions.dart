@@ -71,6 +71,11 @@ extension AuthContext on BuildContext {
         .signInWithTwitter();
   }
 
+  Future<void> signInWithFacebook() async {
+    Provider.of<SignInHandlerStateNotifier>(this, listen: false)
+        .signInWithFacebook();
+  }
+
   /// Sign in with Credentials
   ///
   /// Should only be used if your implementing your own third party sign-in
