@@ -71,6 +71,9 @@ extension AuthContext on BuildContext {
         .signInWithTwitter();
   }
 
+  /// Perform sign-in with Facebook.
+  ///
+  /// Should only be used if you're creating your own custom sign-in form
   Future<void> signInWithFacebook() async {
     Provider.of<SignInHandlerStateNotifier>(this, listen: false)
         .signInWithFacebook();

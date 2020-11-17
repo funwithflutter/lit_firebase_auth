@@ -217,9 +217,6 @@ class FirebaseAuthFacade implements AuthFacade {
       // by default the login method has the next permissions ['email','public_profile']
       AccessToken accessToken = await FacebookAuth.instance.login();
       print(accessToken.toJson());
-      // get the user data
-      final userData = await FacebookAuth.instance.getUserData();
-      print(userData);
       return const Auth.success();
     } catch (e, s) {
       if (e is FacebookAuthException) {
@@ -236,10 +233,8 @@ class FirebaseAuthFacade implements AuthFacade {
             break;
         }
       }
-      return Auth.failure(AuthFailure.serverError());
+      return const Auth.failure(AuthFailure.serverError());
     }
-
-    return Auth.failure(AuthFailure.serverError());
   }
 
   @override
