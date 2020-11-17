@@ -205,6 +205,44 @@ class SignInWithGithubButton extends StatelessWidget {
   }
 }
 
+/// Button to sign-in with Facebook on Firebase
+///
+/// Make sure to enable Facebook sign-in in your Firebase Authentication
+/// console
+///
+/// Create your own sign-in button by calling
+/// `context.signInWithFacebook();` in the [onPressed] handler
+class SignInWithFacebookButton extends StatelessWidget {
+  const SignInWithFacebookButton({
+    Key key,
+    this.config,
+  }) : super(key: key);
+
+  final ButtonConfig config;
+
+  static const String defaultLabel = 'Continue with Facebook';
+
+  @override
+  Widget build(BuildContext context) {
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.raisedIcon(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight),
+            icon: _IconWrapper(
+              buttonHeight: defaultButtonHeight,
+              child: LitAuthIcon.facebook(),
+            ),
+            child: const _ContinueWithLabel(label: defaultLabel),
+          ),
+      onPressed: () {
+      //  context.signInWithFacebook();
+      },
+    );
+  }
+}
+
 /// Button to sign-in with Twitter on Firebase
 ///
 /// Make sure to enable Twitter sign-in in your Firebase Authentication

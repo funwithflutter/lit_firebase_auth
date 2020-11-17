@@ -22,6 +22,7 @@ class _$AuthConfigTearOff {
       AppleButtonConfig appleButton,
       ButtonConfig githubButton,
       ButtonConfig twitterButton,
+      ButtonConfig facebookButton,
       TextFieldConfig emailTextField,
       TextFieldConfig passwordTextField}) {
     return _AuthConfig(
@@ -33,6 +34,7 @@ class _$AuthConfigTearOff {
       appleButton: appleButton,
       githubButton: githubButton,
       twitterButton: twitterButton,
+      facebookButton: facebookButton,
       emailTextField: emailTextField,
       passwordTextField: passwordTextField,
     );
@@ -51,6 +53,7 @@ mixin _$AuthConfig {
   AppleButtonConfig get appleButton;
   ButtonConfig get githubButton;
   ButtonConfig get twitterButton;
+  ButtonConfig get facebookButton;
   TextFieldConfig get emailTextField;
   TextFieldConfig get passwordTextField;
 
@@ -70,6 +73,7 @@ abstract class $AuthConfigCopyWith<$Res> {
       AppleButtonConfig appleButton,
       ButtonConfig githubButton,
       ButtonConfig twitterButton,
+      ButtonConfig facebookButton,
       TextFieldConfig emailTextField,
       TextFieldConfig passwordTextField});
 
@@ -80,6 +84,7 @@ abstract class $AuthConfigCopyWith<$Res> {
   $AppleButtonConfigCopyWith<$Res> get appleButton;
   $ButtonConfigCopyWith<$Res> get githubButton;
   $ButtonConfigCopyWith<$Res> get twitterButton;
+  $ButtonConfigCopyWith<$Res> get facebookButton;
 }
 
 class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
@@ -99,6 +104,7 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
     Object appleButton = freezed,
     Object githubButton = freezed,
     Object twitterButton = freezed,
+    Object facebookButton = freezed,
     Object emailTextField = freezed,
     Object passwordTextField = freezed,
   }) {
@@ -125,6 +131,9 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
       twitterButton: twitterButton == freezed
           ? _value.twitterButton
           : twitterButton as ButtonConfig,
+      facebookButton: facebookButton == freezed
+          ? _value.facebookButton
+          : facebookButton as ButtonConfig,
       emailTextField: emailTextField == freezed
           ? _value.emailTextField
           : emailTextField as TextFieldConfig,
@@ -203,6 +212,16 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
       return _then(_value.copyWith(twitterButton: value));
     });
   }
+
+  @override
+  $ButtonConfigCopyWith<$Res> get facebookButton {
+    if (_value.facebookButton == null) {
+      return null;
+    }
+    return $ButtonConfigCopyWith<$Res>(_value.facebookButton, (value) {
+      return _then(_value.copyWith(facebookButton: value));
+    });
+  }
 }
 
 abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
@@ -219,6 +238,7 @@ abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
       AppleButtonConfig appleButton,
       ButtonConfig githubButton,
       ButtonConfig twitterButton,
+      ButtonConfig facebookButton,
       TextFieldConfig emailTextField,
       TextFieldConfig passwordTextField});
 
@@ -236,6 +256,8 @@ abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
   $ButtonConfigCopyWith<$Res> get githubButton;
   @override
   $ButtonConfigCopyWith<$Res> get twitterButton;
+  @override
+  $ButtonConfigCopyWith<$Res> get facebookButton;
 }
 
 class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
@@ -257,6 +279,7 @@ class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
     Object appleButton = freezed,
     Object githubButton = freezed,
     Object twitterButton = freezed,
+    Object facebookButton = freezed,
     Object emailTextField = freezed,
     Object passwordTextField = freezed,
   }) {
@@ -283,6 +306,9 @@ class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
       twitterButton: twitterButton == freezed
           ? _value.twitterButton
           : twitterButton as ButtonConfig,
+      facebookButton: facebookButton == freezed
+          ? _value.facebookButton
+          : facebookButton as ButtonConfig,
       emailTextField: emailTextField == freezed
           ? _value.emailTextField
           : emailTextField as TextFieldConfig,
@@ -303,6 +329,7 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
       this.appleButton,
       this.githubButton,
       this.twitterButton,
+      this.facebookButton,
       this.emailTextField,
       this.passwordTextField});
 
@@ -323,13 +350,15 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
   @override
   final ButtonConfig twitterButton;
   @override
+  final ButtonConfig facebookButton;
+  @override
   final TextFieldConfig emailTextField;
   @override
   final TextFieldConfig passwordTextField;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AuthConfig(title: $title, signInButton: $signInButton, registerButton: $registerButton, anonymousButton: $anonymousButton, googleButton: $googleButton, appleButton: $appleButton, githubButton: $githubButton, twitterButton: $twitterButton, emailTextField: $emailTextField, passwordTextField: $passwordTextField)';
+    return 'AuthConfig(title: $title, signInButton: $signInButton, registerButton: $registerButton, anonymousButton: $anonymousButton, googleButton: $googleButton, appleButton: $appleButton, githubButton: $githubButton, twitterButton: $twitterButton, facebookButton: $facebookButton, emailTextField: $emailTextField, passwordTextField: $passwordTextField)';
   }
 
   @override
@@ -345,6 +374,7 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
       ..add(DiagnosticsProperty('appleButton', appleButton))
       ..add(DiagnosticsProperty('githubButton', githubButton))
       ..add(DiagnosticsProperty('twitterButton', twitterButton))
+      ..add(DiagnosticsProperty('facebookButton', facebookButton))
       ..add(DiagnosticsProperty('emailTextField', emailTextField))
       ..add(DiagnosticsProperty('passwordTextField', passwordTextField));
   }
@@ -376,6 +406,9 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
             (identical(other.twitterButton, twitterButton) ||
                 const DeepCollectionEquality()
                     .equals(other.twitterButton, twitterButton)) &&
+            (identical(other.facebookButton, facebookButton) ||
+                const DeepCollectionEquality()
+                    .equals(other.facebookButton, facebookButton)) &&
             (identical(other.emailTextField, emailTextField) ||
                 const DeepCollectionEquality()
                     .equals(other.emailTextField, emailTextField)) &&
@@ -395,6 +428,7 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
       const DeepCollectionEquality().hash(appleButton) ^
       const DeepCollectionEquality().hash(githubButton) ^
       const DeepCollectionEquality().hash(twitterButton) ^
+      const DeepCollectionEquality().hash(facebookButton) ^
       const DeepCollectionEquality().hash(emailTextField) ^
       const DeepCollectionEquality().hash(passwordTextField);
 
@@ -413,6 +447,7 @@ abstract class _AuthConfig implements AuthConfig {
       AppleButtonConfig appleButton,
       ButtonConfig githubButton,
       ButtonConfig twitterButton,
+      ButtonConfig facebookButton,
       TextFieldConfig emailTextField,
       TextFieldConfig passwordTextField}) = _$_AuthConfig;
 
@@ -432,6 +467,8 @@ abstract class _AuthConfig implements AuthConfig {
   ButtonConfig get githubButton;
   @override
   ButtonConfig get twitterButton;
+  @override
+  ButtonConfig get facebookButton;
   @override
   TextFieldConfig get emailTextField;
   @override

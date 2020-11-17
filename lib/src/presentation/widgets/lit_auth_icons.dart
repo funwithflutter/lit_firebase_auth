@@ -45,6 +45,13 @@ class LitAuthIcon extends StatelessWidget {
     );
   }
 
+  factory LitAuthIcon.facebook({Size size = iconSize}) {
+    return LitAuthIcon._(
+      assetPath: 'graphics/facebook.png',
+      size: size,
+    );
+  }
+
   // Twitter logo [Image]
   factory LitAuthIcon.twitter({Size size = iconSize}) {
     return LitAuthIcon._(

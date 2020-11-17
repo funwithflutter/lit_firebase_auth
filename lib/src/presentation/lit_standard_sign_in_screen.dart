@@ -104,6 +104,13 @@ class StandardSignInWidget extends StatelessWidget {
                     ) ??
                     SignInWithAppleButton.dark(),
               ),
+            if (authProviders.facebook)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInWithFacebookButton(
+                  config: config?.facebookButton,
+                ),
+              ),
             if (authProviders.github)
               Padding(
                 padding: const EdgeInsets.all(4.0),
