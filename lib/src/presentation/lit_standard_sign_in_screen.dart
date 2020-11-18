@@ -30,6 +30,67 @@ class StandardSignInWidget extends StatelessWidget {
         child: Column(
           children: [
             config?.title ?? _title(context),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 300),
+              child: const Divider(
+                thickness: 2,
+              ),
+            ),
+            if (authProviders.anonymous)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInAnonymouslyButton(config: config?.anonymousButton),
+              ),
+            if (authProviders.facebook)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInWithFacebookButton(
+                  config: config?.facebookButton,
+                ),
+              ),
+            if (authProviders.google)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: config?.googleButton?.map(
+                      (c) => SignInWithGoogleButton(
+                    config: c?.config,
+                  ),
+                  dark: (c) => SignInWithGoogleButton.dark(label: c?.label),
+                  light: (c) =>
+                      SignInWithGoogleButton.light(label: c?.label),
+                ) ??
+                    SignInWithGoogleButton.dark(),
+              ),
+            if (authProviders.apple)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: config?.appleButton?.map(
+                      (c) => SignInWithAppleButton(config: c?.config),
+                  dark: (c) => SignInWithAppleButton.dark(label: c?.label),
+                  light: (c) =>
+                      SignInWithAppleButton.light(label: c?.label),
+                ) ??
+                    SignInWithAppleButton.dark(),
+              ),
+            if (authProviders.github)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInWithGithubButton(
+                  config: config?.githubButton,
+                ),
+              ),
+            if (authProviders.twitter)
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: SignInWithTwitterButton(
+                  config: config?.twitterButton,
+                ),
+              ),
+            const SizedBox(height: 16),
+            Text(
+              'or',
+              style: Theme.of(context).textTheme.overline,
+            ),
             const SizedBox(height: 16),
             if (authProviders.emailAndPassword)
               SignInForm(
@@ -62,67 +123,6 @@ class StandardSignInWidget extends StatelessWidget {
                       ],
                     ),
                   ],
-                ),
-              ),
-            const SizedBox(height: 16),
-            Text(
-              'or',
-              style: Theme.of(context).textTheme.overline,
-            ),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 300),
-              child: const Divider(
-                thickness: 2,
-              ),
-            ),
-            if (authProviders.anonymous)
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: SignInAnonymouslyButton(config: config?.anonymousButton),
-              ),
-            if (authProviders.google)
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: config?.googleButton?.map(
-                      (c) => SignInWithGoogleButton(
-                        config: c?.config,
-                      ),
-                      dark: (c) => SignInWithGoogleButton.dark(label: c?.label),
-                      light: (c) =>
-                          SignInWithGoogleButton.light(label: c?.label),
-                    ) ??
-                    SignInWithGoogleButton.dark(),
-              ),
-            if (authProviders.apple)
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: config?.appleButton?.map(
-                      (c) => SignInWithAppleButton(config: c?.config),
-                      dark: (c) => SignInWithAppleButton.dark(label: c?.label),
-                      light: (c) =>
-                          SignInWithAppleButton.light(label: c?.label),
-                    ) ??
-                    SignInWithAppleButton.dark(),
-              ),
-            if (authProviders.facebook)
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: SignInWithFacebookButton(
-                  config: config?.facebookButton,
-                ),
-              ),
-            if (authProviders.github)
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: SignInWithGithubButton(
-                  config: config?.githubButton,
-                ),
-              ),
-            if (authProviders.twitter)
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: SignInWithTwitterButton(
-                  config: config?.twitterButton,
                 ),
               ),
             const LoadingWidget(),
