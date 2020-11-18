@@ -30,12 +30,6 @@ class StandardSignInWidget extends StatelessWidget {
         child: Column(
           children: [
             config?.title ?? _title(context),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 300),
-              child: const Divider(
-                thickness: 2,
-              ),
-            ),
             if (authProviders.anonymous)
               Padding(
                 padding: const EdgeInsets.all(4.0),
@@ -87,6 +81,12 @@ class StandardSignInWidget extends StatelessWidget {
                 ),
               ),
             const SizedBox(height: 16),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 300),
+              child: const Divider(
+                thickness: 2,
+              ),
+            ),
             Text(
               'or',
               style: Theme.of(context).textTheme.overline,
