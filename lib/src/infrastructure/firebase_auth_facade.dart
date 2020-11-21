@@ -165,7 +165,7 @@ class FirebaseAuthFacade implements AuthFacade {
     // See: https://github.com/FirebaseExtended/flutterfire/issues/2582
     GoogleSignInAccount googleUser;
     try {
-      googleUser = await _googleSignIn.signIn();
+      googleUser = await _googleSignIn.signInSilently();
     } catch (e) {
       if (e.toString().contains('appClientId != null')) {
         debugPrint(e);
