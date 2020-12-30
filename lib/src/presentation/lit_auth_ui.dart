@@ -68,6 +68,9 @@ class LitAuthState extends StatelessWidget {
 /// TypeDef callback for authentication failure
 typedef AuthFailureCallback = void Function(AuthFailure failure);
 
+/// TypeDef callback for link merge conflicts
+typedef LinkMergeConflictCallback = void Function(LinkMergeConflict conflict);
+
 class LitAuth extends StatelessWidget {
   /// Configure the sign-in UI and provide custom decoration/configuration for
   /// the sign-in elements. Leaving this empty will show the standard sign-in
@@ -89,6 +92,9 @@ class LitAuth extends StatelessWidget {
 
   /// Callback to be called if authentication fails
   final AuthFailureCallback onAuthFailure;
+  
+  /// Callback to be called to handle link merge conflicts
+  final LinkMergeConflictCallback onLinkMergeConflict;
 
   /// Configuration for custom error notifications
   final NotificationConfig errorNotification;
@@ -145,6 +151,7 @@ class LitAuth extends StatelessWidget {
     this.config,
     this.onAuthSuccess,
     this.onAuthFailure,
+    this.onLinkMergeConflict,
     this.errorNotification = const NotificationConfig(),
     this.successNotification = const NotificationConfig(),
   }) : super(key: key);
@@ -183,6 +190,7 @@ class LitAuth extends StatelessWidget {
     return _SignInBuilder(
       onAuthFailure: onAuthFailure,
       onAuthSuccess: onAuthSuccess,
+      onLinkMergeConflict: onLinkMergeConflict,
       errorNotification: errorNotification,
       successNotification: successNotification,
       child: StandardSignInWidget(
@@ -197,6 +205,7 @@ class _SignInBuilder extends StatelessWidget {
     Key key,
     @required this.onAuthFailure,
     @required this.onAuthSuccess,
+    @required this.onLinkMergeConflict,
     this.builder,
     @required this.errorNotification,
     @required this.successNotification,
@@ -205,6 +214,7 @@ class _SignInBuilder extends StatelessWidget {
 
   final VoidCallback onAuthSuccess;
   final AuthFailureCallback onAuthFailure;
+  final LinkMergeConflictCallback onLinkMergeConflict;
   final TransitionBuilder builder;
   final NotificationConfig errorNotification;
   final NotificationConfig successNotification;
@@ -236,26 +246,41 @@ class _SignInBuilder extends StatelessWidget {
               WidgetsBinding.instance
                   .addPostFrameCallback((_) => onAuthFailure(f.failure));
             }
-            WidgetsBinding.instance.addPostFrameCallback(
-              (_) => NotificationHelper.error(
-                context: context,
-                config: errorNotification,
-                message: f.failure.map(
-                    cancelledByUser: (_) => 'Cancelled',
-                    serverError: (_) => 'Server error',
-                    emailAlreadyInUse: (_) => 'Email already in use',
-                    invalidEmailAndPasswordCombination: (_) =>
-                        'Invalid email and password combination',
-                    malformed: (_) => 'Not a valid email address',
-                    userDisabled: (_) =>
-                        'User disabled. Contact customer care for assistance',
-                    tooManyRequests: (_) =>
-                        'Too many unsuccessful login attempts. Please try again later'),
-              ).show(context),
-            );
+            if (onLinkMergeConflict != null) {
+              // Skip showing error if link merge conflicts are handled
+              f.failure.maybeWhen(
+                  linkMergeConflict: (credential) => WidgetsBinding.instance
+                      .addPostFrameCallback((_) => onLinkMergeConflict(f.failure)),
+                  orElse: () { showError(context, f.failure); }
+              );
+            } else {
+              showError(context, f.failure);
+            }
           },
         );
       },
+    );
+  }
+
+  void showError(BuildContext context, AuthFailure failure) {
+    WidgetsBinding.instance.addPostFrameCallback(
+          (_) =>
+          NotificationHelper.error(
+            context: context,
+            config: errorNotification,
+            message: failure.map(
+              cancelledByUser: (_) => 'Cancelled',
+              serverError: (_) => 'Server error',
+              emailAlreadyInUse: (_) => 'Email already in use',
+              invalidEmailAndPasswordCombination: (_) =>
+              'Invalid email and password combination',
+              malformed: (_) => 'Not a valid email address',
+              userDisabled: (_) =>
+              'User disabled. Contact customer care for assistance',
+              tooManyRequests: (_) =>
+              'Too many unsuccessful login attempts. Please try again later',
+              linkMergeConflict: (_) => 'Account already exists for sign in method',),
+          ).show(context),
     );
   }
 
@@ -288,6 +313,7 @@ class _LitAuthCustom extends LitAuth {
     Key key,
     VoidCallback onAuthSuccess,
     AuthFailureCallback onAuthFailure,
+    LinkMergeConflictCallback onLinkMergeConflict,
     NotificationConfig errorNotification = const NotificationConfig(),
     NotificationConfig successNotification = const NotificationConfig(),
     this.builder,
@@ -296,6 +322,7 @@ class _LitAuthCustom extends LitAuth {
           key: key,
           onAuthSuccess: onAuthSuccess,
           onAuthFailure: onAuthFailure,
+          onLinkMergeConflict: onLinkMergeConflict,
           errorNotification: errorNotification,
           successNotification: successNotification,
         );
@@ -308,6 +335,7 @@ class _LitAuthCustom extends LitAuth {
     return _SignInBuilder(
       onAuthSuccess: onAuthSuccess,
       onAuthFailure: onAuthFailure,
+      onLinkMergeConflict: onLinkMergeConflict,
       builder: builder,
       errorNotification: errorNotification,
       successNotification: successNotification,

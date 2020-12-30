@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'auth_failure.freezed.dart';
@@ -14,4 +15,5 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.malformed() = EmailMalformed;
   const factory AuthFailure.userDisabled() = UserDisabled;
   const factory AuthFailure.tooManyRequests() = TooManyRequests;
+  const factory AuthFailure.linkMergeConflict(AuthCredential credentialForLinking) = LinkMergeConflict;
 }

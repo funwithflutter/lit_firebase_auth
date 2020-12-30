@@ -175,8 +175,7 @@ class FirebaseAuthFacade implements AuthFacade {
         accessToken: googleAuthentication.accessToken,
       );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
-      return const Auth.success();
+      return signInWithCredential(authCredential);
     } catch (e) {
       debugPrint(e);
       return const Auth.failure(AuthFailure.serverError());
@@ -197,8 +196,7 @@ class FirebaseAuthFacade implements AuthFacade {
         accessToken: googleAuthentication.accessToken,
       );
 
-      await _firebaseAuth.signInWithCredential(authCredential);
-      return const Auth.success();
+      return signInWithCredential(authCredential);
     } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
       return const Auth.failure(AuthFailure.serverError());
@@ -219,10 +217,19 @@ class FirebaseAuthFacade implements AuthFacade {
   @override
   Future<Auth> signInWithCredential(AuthCredential credential) async {
     try {
-      await _firebaseAuth.signInWithCredential(credential);
-      return const Auth.success();
+      if (_firebaseAuth.currentUser == null) {
+        await _firebaseAuth.signInWithCredential(credential);
+        return const Auth.success();
+      } else {
+        debugPrint("Already signed in, attempting to link current user with credential.");
+        await _firebaseAuth.currentUser.linkWithCredential(credential);
+        return const Auth.success();
+      }
     } on FirebaseAuthException catch (e) {
       debugPrint(e.toString());
+      if (e.code == "credential-already-in-use") {
+        return Auth.failure(AuthFailure.linkMergeConflict(e.credential));
+      }
       return const Auth.failure(AuthFailure.serverError());
     } catch (e) {
       debugPrint(e.toString());
@@ -234,10 +241,17 @@ class FirebaseAuthFacade implements AuthFacade {
   Future<Auth> signInWithOAuth(String provider, List<String> scopes,
       Map<String, String> parameters) async {
     try {
-      await FirebaseAuthOAuth(app: _app)
-          .openSignInFlow(provider, scopes, parameters);
-      return const Auth.success();
+      final firebaseAuthOAuth = FirebaseAuthOAuth(app: _app);
+      if (_firebaseAuth.currentUser == null) {
+        await firebaseAuthOAuth.openSignInFlow(provider, scopes, parameters);
+        return const Auth.success();
+      } else {
+        debugPrint("Already signed in, attempting to link current user with credential.");
+        await firebaseAuthOAuth.linkExistingUserWithCredentials(provider, scopes, parameters);
+        return const Auth.success();
+      }
     } on PlatformException catch (e) {
+      // TODO Merge accounts on link failure
       /**
        * The plugin has the following error codes:
        * 1. FirebaseAuthError: FirebaseAuth related error
