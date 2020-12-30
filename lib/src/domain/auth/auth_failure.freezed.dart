@@ -46,6 +46,13 @@ class _$AuthFailureTearOff {
   TooManyRequests tooManyRequests() {
     return const TooManyRequests();
   }
+
+// ignore: unused_element
+  LinkMergeConflict linkMergeConflict(AuthCredential credentialForLinking) {
+    return LinkMergeConflict(
+      credentialForLinking,
+    );
+  }
 }
 
 // ignore: unused_element
@@ -61,6 +68,7 @@ mixin _$AuthFailure {
     @required Result malformed(),
     @required Result userDisabled(),
     @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -71,6 +79,7 @@ mixin _$AuthFailure {
     Result malformed(),
     Result userDisabled(),
     Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -84,6 +93,7 @@ mixin _$AuthFailure {
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
     @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -95,6 +105,7 @@ mixin _$AuthFailure {
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
     Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
     @required Result orElse(),
   });
 }
@@ -156,6 +167,7 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result malformed(),
     @required Result userDisabled(),
     @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -164,6 +176,7 @@ class _$CancelledByUser implements CancelledByUser {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return cancelledByUser();
   }
 
@@ -177,6 +190,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result malformed(),
     Result userDisabled(),
     Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -198,6 +212,7 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
     @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -206,6 +221,7 @@ class _$CancelledByUser implements CancelledByUser {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return cancelledByUser(this);
   }
 
@@ -220,6 +236,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
     Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -276,6 +293,7 @@ class _$ServerError implements ServerError {
     @required Result malformed(),
     @required Result userDisabled(),
     @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -284,6 +302,7 @@ class _$ServerError implements ServerError {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return serverError();
   }
 
@@ -297,6 +316,7 @@ class _$ServerError implements ServerError {
     Result malformed(),
     Result userDisabled(),
     Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -318,6 +338,7 @@ class _$ServerError implements ServerError {
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
     @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -326,6 +347,7 @@ class _$ServerError implements ServerError {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return serverError(this);
   }
 
@@ -340,6 +362,7 @@ class _$ServerError implements ServerError {
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
     Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -397,6 +420,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result malformed(),
     @required Result userDisabled(),
     @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -405,6 +429,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return emailAlreadyInUse();
   }
 
@@ -418,6 +443,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result malformed(),
     Result userDisabled(),
     Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -439,6 +465,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
     @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -447,6 +474,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return emailAlreadyInUse(this);
   }
 
@@ -461,6 +489,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
     Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -523,6 +552,7 @@ class _$InvalidEmailAndPasswordCombination
     @required Result malformed(),
     @required Result userDisabled(),
     @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -531,6 +561,7 @@ class _$InvalidEmailAndPasswordCombination
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return invalidEmailAndPasswordCombination();
   }
 
@@ -544,6 +575,7 @@ class _$InvalidEmailAndPasswordCombination
     Result malformed(),
     Result userDisabled(),
     Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -565,6 +597,7 @@ class _$InvalidEmailAndPasswordCombination
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
     @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -573,6 +606,7 @@ class _$InvalidEmailAndPasswordCombination
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return invalidEmailAndPasswordCombination(this);
   }
 
@@ -587,6 +621,7 @@ class _$InvalidEmailAndPasswordCombination
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
     Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -644,6 +679,7 @@ class _$EmailMalformed implements EmailMalformed {
     @required Result malformed(),
     @required Result userDisabled(),
     @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -652,6 +688,7 @@ class _$EmailMalformed implements EmailMalformed {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return malformed();
   }
 
@@ -665,6 +702,7 @@ class _$EmailMalformed implements EmailMalformed {
     Result malformed(),
     Result userDisabled(),
     Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -686,6 +724,7 @@ class _$EmailMalformed implements EmailMalformed {
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
     @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -694,6 +733,7 @@ class _$EmailMalformed implements EmailMalformed {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return malformed(this);
   }
 
@@ -708,6 +748,7 @@ class _$EmailMalformed implements EmailMalformed {
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
     Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -764,6 +805,7 @@ class _$UserDisabled implements UserDisabled {
     @required Result malformed(),
     @required Result userDisabled(),
     @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -772,6 +814,7 @@ class _$UserDisabled implements UserDisabled {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return userDisabled();
   }
 
@@ -785,6 +828,7 @@ class _$UserDisabled implements UserDisabled {
     Result malformed(),
     Result userDisabled(),
     Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -806,6 +850,7 @@ class _$UserDisabled implements UserDisabled {
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
     @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -814,6 +859,7 @@ class _$UserDisabled implements UserDisabled {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return userDisabled(this);
   }
 
@@ -828,6 +874,7 @@ class _$UserDisabled implements UserDisabled {
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
     Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -885,6 +932,7 @@ class _$TooManyRequests implements TooManyRequests {
     @required Result malformed(),
     @required Result userDisabled(),
     @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -893,6 +941,7 @@ class _$TooManyRequests implements TooManyRequests {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return tooManyRequests();
   }
 
@@ -906,6 +955,7 @@ class _$TooManyRequests implements TooManyRequests {
     Result malformed(),
     Result userDisabled(),
     Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -927,6 +977,7 @@ class _$TooManyRequests implements TooManyRequests {
     @required Result malformed(EmailMalformed value),
     @required Result userDisabled(UserDisabled value),
     @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
   }) {
     assert(cancelledByUser != null);
     assert(serverError != null);
@@ -935,6 +986,7 @@ class _$TooManyRequests implements TooManyRequests {
     assert(malformed != null);
     assert(userDisabled != null);
     assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
     return tooManyRequests(this);
   }
 
@@ -949,6 +1001,7 @@ class _$TooManyRequests implements TooManyRequests {
     Result malformed(EmailMalformed value),
     Result userDisabled(UserDisabled value),
     Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -961,4 +1014,161 @@ class _$TooManyRequests implements TooManyRequests {
 
 abstract class TooManyRequests implements AuthFailure {
   const factory TooManyRequests() = _$TooManyRequests;
+}
+
+abstract class $LinkMergeConflictCopyWith<$Res> {
+  factory $LinkMergeConflictCopyWith(
+          LinkMergeConflict value, $Res Function(LinkMergeConflict) then) =
+      _$LinkMergeConflictCopyWithImpl<$Res>;
+  $Res call({AuthCredential credentialForLinking});
+}
+
+class _$LinkMergeConflictCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $LinkMergeConflictCopyWith<$Res> {
+  _$LinkMergeConflictCopyWithImpl(
+      LinkMergeConflict _value, $Res Function(LinkMergeConflict) _then)
+      : super(_value, (v) => _then(v as LinkMergeConflict));
+
+  @override
+  LinkMergeConflict get _value => super._value as LinkMergeConflict;
+
+  @override
+  $Res call({
+    Object credentialForLinking = freezed,
+  }) {
+    return _then(LinkMergeConflict(
+      credentialForLinking == freezed
+          ? _value.credentialForLinking
+          : credentialForLinking as AuthCredential,
+    ));
+  }
+}
+
+class _$LinkMergeConflict implements LinkMergeConflict {
+  const _$LinkMergeConflict(this.credentialForLinking)
+      : assert(credentialForLinking != null);
+
+  @override
+  final AuthCredential credentialForLinking;
+
+  @override
+  String toString() {
+    return 'AuthFailure.linkMergeConflict(credentialForLinking: $credentialForLinking)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is LinkMergeConflict &&
+            (identical(other.credentialForLinking, credentialForLinking) ||
+                const DeepCollectionEquality()
+                    .equals(other.credentialForLinking, credentialForLinking)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(credentialForLinking);
+
+  @override
+  $LinkMergeConflictCopyWith<LinkMergeConflict> get copyWith =>
+      _$LinkMergeConflictCopyWithImpl<LinkMergeConflict>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result serverError(),
+    @required Result emailAlreadyInUse(),
+    @required Result invalidEmailAndPasswordCombination(),
+    @required Result malformed(),
+    @required Result userDisabled(),
+    @required Result tooManyRequests(),
+    @required Result linkMergeConflict(AuthCredential credentialForLinking),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(malformed != null);
+    assert(userDisabled != null);
+    assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
+    return linkMergeConflict(credentialForLinking);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result serverError(),
+    Result emailAlreadyInUse(),
+    Result invalidEmailAndPasswordCombination(),
+    Result malformed(),
+    Result userDisabled(),
+    Result tooManyRequests(),
+    Result linkMergeConflict(AuthCredential credentialForLinking),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (linkMergeConflict != null) {
+      return linkMergeConflict(credentialForLinking);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(CancelledByUser value),
+    @required Result serverError(ServerError value),
+    @required Result emailAlreadyInUse(EmailAlreadyInUse value),
+    @required
+        Result invalidEmailAndPasswordCombination(
+            InvalidEmailAndPasswordCombination value),
+    @required Result malformed(EmailMalformed value),
+    @required Result userDisabled(UserDisabled value),
+    @required Result tooManyRequests(TooManyRequests value),
+    @required Result linkMergeConflict(LinkMergeConflict value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(serverError != null);
+    assert(emailAlreadyInUse != null);
+    assert(invalidEmailAndPasswordCombination != null);
+    assert(malformed != null);
+    assert(userDisabled != null);
+    assert(tooManyRequests != null);
+    assert(linkMergeConflict != null);
+    return linkMergeConflict(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(CancelledByUser value),
+    Result serverError(ServerError value),
+    Result emailAlreadyInUse(EmailAlreadyInUse value),
+    Result invalidEmailAndPasswordCombination(
+        InvalidEmailAndPasswordCombination value),
+    Result malformed(EmailMalformed value),
+    Result userDisabled(UserDisabled value),
+    Result tooManyRequests(TooManyRequests value),
+    Result linkMergeConflict(LinkMergeConflict value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (linkMergeConflict != null) {
+      return linkMergeConflict(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LinkMergeConflict implements AuthFailure {
+  const factory LinkMergeConflict(AuthCredential credentialForLinking) =
+      _$LinkMergeConflict;
+
+  AuthCredential get credentialForLinking;
+  $LinkMergeConflictCopyWith<LinkMergeConflict> get copyWith;
 }
