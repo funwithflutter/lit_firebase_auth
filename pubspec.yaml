@@ -12,10 +12,10 @@ dependencies:
   flutter:
     sdk: flutter
   # auth
-  firebase_core: ^0.5.0
-  firebase_auth: ^0.18.0+1
+  firebase_core: ^0.7.0
+  firebase_auth: ^0.20.0+1
   google_sign_in: ^4.5.1
-  firebase_auth_oauth: ^0.2.1
+  firebase_auth_oauth: ^0.2.4
   # annotation
   meta: ^1.1.8
   freezed_annotation: ^0.11.0+1
