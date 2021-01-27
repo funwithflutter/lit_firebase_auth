@@ -81,17 +81,17 @@ class StandardSignInWidget extends StatelessWidget {
                 ),
               ),
             const SizedBox(height: 16),
-            ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 300),
-              child: const Divider(
-                thickness: 2,
-              ),
-            ),
-            Text(
-              'or',
-              style: Theme.of(context).textTheme.overline,
-            ),
-            const SizedBox(height: 16),
+            // ConstrainedBox(
+            //   constraints: const BoxConstraints(maxWidth: 300),
+            //   child: const Divider(
+            //     thickness: 2,
+            //   ),
+            // ),
+            // Text(
+            //   'or',
+            //   style: Theme.of(context).textTheme.overline,
+            // ),
+            // const SizedBox(height: 16),
             if (authProviders.emailAndPassword)
               SignInForm(
                 child: Column(
