@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart' as func;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +49,13 @@ class LitAuthState extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = context.watch<LitUser>();
     return user.when(
-      (dynamic user) => authenticated,
+      (dynamic user) {
+        final User litUser = user as User;
+        if (litUser.isAnonymous) {
+          return unauthenticated;
+        }
+        return authenticated;
+      },
       empty: () => unauthenticated,
       initializing: () => unintialized ?? _loading(),
     );
