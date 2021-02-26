@@ -26,7 +26,7 @@ class StandardSignInWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: maxWidth, maxHeight: 300),
+        constraints: const BoxConstraints(maxWidth: maxWidth, maxHeight: 600),
         child: Column(
 
           children: [
