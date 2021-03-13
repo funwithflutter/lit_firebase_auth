@@ -26,13 +26,13 @@ class FirebaseAuthFacade implements AuthFacade {
   FirebaseAuthFacade({
     FirebaseAuth firebaseAuth,
     GoogleSignIn googleSignIn,
-    FacebookAuth facebookAuth,
+    // FacebookAuth facebookAuth,
     FirebaseApp app,
     this.googleSignInEnabled = false,
     this.facebookSignInEnabled = false,
   })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn(),
-        _facebookAuth = facebookAuth ?? FacebookAuth.instance,
+        // _facebookAuth = facebookAuth ?? FacebookAuth.instance,
         _app = app ?? Firebase.app();
 
   @override
@@ -215,7 +215,7 @@ class FirebaseAuthFacade implements AuthFacade {
   Future<Auth> signInWithFacebook() async {
     try {
       // by default the login method has the next permissions ['email','public_profile']
-      AccessToken accessToken = await FacebookAuth.instance.login();
+      AccessToken accessToken = null;
 
       final facebookAuth = FacebookAuthProvider.credential(accessToken.token);
 
