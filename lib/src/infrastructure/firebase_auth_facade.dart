@@ -4,7 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-// import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
 
@@ -18,7 +18,7 @@ import '../domain/auth/value_objects.dart';
 class FirebaseAuthFacade implements AuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
-  // final FacebookAuth _facebookAuth;
+  final FacebookAuth _facebookAuth;
   final FirebaseApp _app;
   final bool googleSignInEnabled;
   final bool facebookSignInEnabled;
@@ -26,13 +26,13 @@ class FirebaseAuthFacade implements AuthFacade {
   FirebaseAuthFacade({
     FirebaseAuth firebaseAuth,
     GoogleSignIn googleSignIn,
-    // FacebookAuth facebookAuth,
+    FacebookAuth facebookAuth,
     FirebaseApp app,
     this.googleSignInEnabled = false,
     this.facebookSignInEnabled = false,
   })  : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance,
         _googleSignIn = googleSignIn ?? GoogleSignIn(),
-        // _facebookAuth = facebookAuth ?? FacebookAuth.instance,
+        _facebookAuth = facebookAuth ?? FacebookAuth.instance,
         _app = app ?? Firebase.app();
 
   @override
@@ -213,35 +213,35 @@ class FirebaseAuthFacade implements AuthFacade {
 
   @override
   Future<Auth> signInWithFacebook() async {
-    // try {
-    //   // by default the login method has the next permissions ['email','public_profile']
-    //   AccessToken accessToken = null;
-    //
-    //   final facebookAuth = FacebookAuthProvider.credential(accessToken.token);
-    //
-    //   await _firebaseAuth.signInWithCredential(facebookAuth);
-    //   return const Auth.success();
-    // } catch (e, s) {
-    //   if (e is FacebookAuthException) {
-    //     print(e.message);
-    //     switch (e.errorCode) {
-    //       case FacebookAuthErrorCode.OPERATION_IN_PROGRESS:
-    //         print("You have a previous login operation in progress");
-    //         break;
-    //       case FacebookAuthErrorCode.CANCELLED:
-    //         print("login cancelled");
-    //         break;
-    //       case FacebookAuthErrorCode.FAILED:
-    //         print("login failed");
-    //         break;
-    //     }
-    //   }
-    //
-    //   if (e is FirebaseAuthException) {
-    //     debugPrint(e.toString());
-    //   }
-    //   return const Auth.failure(AuthFailure.serverError());
-    // }
+    try {
+      // by default the login method has the next permissions ['email','public_profile']
+      AccessToken accessToken = await FacebookAuth.instance.login();
+
+      final facebookAuth = FacebookAuthProvider.credential(accessToken.token);
+
+      await _firebaseAuth.signInWithCredential(facebookAuth);
+      return const Auth.success();
+    } catch (e, s) {
+      if (e is FacebookAuthException) {
+        print(e.message);
+        switch (e.errorCode) {
+          case FacebookAuthErrorCode.OPERATION_IN_PROGRESS:
+            print("You have a previous login operation in progress");
+            break;
+          case FacebookAuthErrorCode.CANCELLED:
+            print("login cancelled");
+            break;
+          case FacebookAuthErrorCode.FAILED:
+            print("login failed");
+            break;
+        }
+      }
+
+      if (e is FirebaseAuthException) {
+        debugPrint(e.toString());
+      }
+      return const Auth.failure(AuthFailure.serverError());
+    }
   }
 
   @override
