@@ -49,7 +49,6 @@ flutter:
     - graphics/apple_logo_black.png
     - graphics/apple_logo_white.png
     - graphics/google_logo.png
-    - graphics/facebook.png
   #   - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
