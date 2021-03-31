@@ -35,6 +35,7 @@ class FirebaseAuthFacade implements AuthFacade {
         _facebookAuth = facebookAuth ?? FacebookAuth.instance,
         _app = app ?? Firebase.app();
 
+
   @override
   LitUser getSignedInUser() => _mapUser(_firebaseAuth.currentUser);
 
