@@ -225,10 +225,7 @@ class FirebaseAuthFacade implements AuthFacade {
         return const Auth.success();
       }
     } catch (e, s) {
-      print(e.message);
-        print(e.errorCode + ' ' + e.message);
-      }
-
+      print(e.errorCode + ' ' + e.message);
       return const Auth.failure(AuthFailure.serverError());
     }
   }
