@@ -220,11 +220,10 @@ class FirebaseAuthFacade implements AuthFacade {
       if (result.status == LoginStatus.success) {
         // you are logged
         final AccessToken accessToken =  result.accessToken!;
+        final facebookAuth = FacebookAuthProvider.credential(accessToken.token);
+        await _firebaseAuth.signInWithCredential(facebookAuth);
+        return const Auth.success();
       }
-      final facebookAuth = FacebookAuthProvider.credential(accessToken.token);
-
-      await _firebaseAuth.signInWithCredential(facebookAuth);
-      return const Auth.success();
     } catch (e, s) {
       print(e.message);
       if (e is FacebookAuthException) {
