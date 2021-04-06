@@ -226,24 +226,9 @@ class FirebaseAuthFacade implements AuthFacade {
       }
     } catch (e, s) {
       print(e.message);
-      if (e is FacebookAuthException) {
-        print(e.message);
-        switch (e.errorCode) {
-          case FacebookAuthErrorCode.OPERATION_IN_PROGRESS:
-            print("You have a previous login operation in progress");
-            break;
-          case FacebookAuthErrorCode.CANCELLED:
-            print("login cancelled");
-            break;
-          case FacebookAuthErrorCode.FAILED:
-            print("login failed");
-            break;
-        }
+        print(e.errorCode + ' ' + e.message);
       }
 
-      if (e is FirebaseAuthException) {
-        debugPrint(e.toString());
-      }
       return const Auth.failure(AuthFailure.serverError());
     }
   }
