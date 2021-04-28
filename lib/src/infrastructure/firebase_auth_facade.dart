@@ -192,8 +192,11 @@ class FirebaseAuthFacade implements AuthFacade {
 
   Future<Auth> _signInWithGoogle() async {
     try {
+      print ("===BEFORE GOOGLE LOGIN");
       final googleUser = await _googleSignIn.signIn();
+      print ("===AFTER GOOGLE LOGIN");
       if (googleUser == null) {
+        print ("===GOOGLEUSER IS NULL");
         return const Auth.failure(AuthFailure.cancelledByUser());
       }
 
@@ -206,8 +209,9 @@ class FirebaseAuthFacade implements AuthFacade {
 
       await _firebaseAuth.signInWithCredential(authCredential);
       return const Auth.success();
-    } on FirebaseAuthException catch (e) {
+    } catch (e) {
       debugPrint(e.toString());
+      print(e.toString());
       return const Auth.failure(AuthFailure.serverError());
     }
   }
