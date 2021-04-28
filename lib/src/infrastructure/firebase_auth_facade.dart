@@ -210,8 +210,8 @@ class FirebaseAuthFacade implements AuthFacade {
       await _firebaseAuth.signInWithCredential(authCredential);
       return const Auth.success();
     } catch (e) {
-      debugPrint(e.toString());
-      print(e.toString());
+      debugPrint('===GOOGLE ERROR: ' + e.toString());
+      print('===GOOGLE ERROR: ' + e.toString());
       return const Auth.failure(AuthFailure.serverError());
     }
   }

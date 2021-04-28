@@ -16,7 +16,7 @@ dependencies:
   firebase_auth: ^1.0.1
   sign_in_with_apple: ^3.0.0
   crypto: ^3.0.0
-  google_sign_in: ^5.0.0
+  google_sign_in: ^5.0.2
   firebase_auth_oauth: ^1.0.1
   # annotation
   meta: ^1.1.8
