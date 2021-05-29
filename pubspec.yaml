@@ -20,7 +20,7 @@ dependencies:
   firebase_auth_oauth: ^1.0.1
   # annotation
   meta: ^1.1.8
-  freezed_annotation: ^0.14.0
+  freezed_annotation: ^0.12.0
   # state
   dartz: ^0.9.1
   provider: ^4.2.0
@@ -35,7 +35,7 @@ dev_dependencies:
     sdk: flutter
   lint: ^1.2.0
   build_runner: ^1.10.0
-  freezed: ^0.14.0+1
+  freezed: ^0.12.7
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

@@ -13,6 +13,16 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   }
 }
 
+Either<ValueFailure<String>, String> validateCellphoneNumber(String input) {
+  const cellphoneNumberRegex =
+  r"""\+[1-9]{1}[0-9]{3,14}""";
+  if (RegExp(cellphoneNumberRegex).hasMatch(input)) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidCellphoneNumber(failedValue: input));
+  }
+}
+
 Either<ValueFailure<String>, String> validatePassword(String input) {
   if (input.length >= 6) {
     return right(input);

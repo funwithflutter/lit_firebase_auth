@@ -14,6 +14,9 @@ abstract class AuthFacade {
     @required EmailAddress emailAddress,
     @required Password password,
   });
+  Future<Auth> registerWithCellphoneNumber({
+    @required CellphoneNumber cellphoneNumber
+  });
   Future<Auth> signInWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,

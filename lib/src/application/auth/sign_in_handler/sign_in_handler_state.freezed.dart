@@ -9,18 +9,21 @@ part of 'sign_in_handler_state.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$SignInHandlerStateTearOff {
   const _$SignInHandlerStateTearOff();
 
 // ignore: unused_element
   _SignInHandlerState call(
       {@required EmailAddress emailAddress,
+      @required CellphoneNumber cellphoneNumber,
       @required Password password,
       @required bool showErrorMessages,
       @required bool isSubmitting,
       @required Option<Auth> authFailureOrSuccessOption}) {
     return _SignInHandlerState(
       emailAddress: emailAddress,
+      cellphoneNumber: cellphoneNumber,
       password: password,
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
@@ -29,31 +32,38 @@ class _$SignInHandlerStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SignInHandlerState = _$SignInHandlerStateTearOff();
 
+/// @nodoc
 mixin _$SignInHandlerState {
   EmailAddress get emailAddress;
+  CellphoneNumber get cellphoneNumber;
   Password get password;
   bool get showErrorMessages;
   bool get isSubmitting;
   Option<Auth> get authFailureOrSuccessOption;
 
+  @JsonKey(ignore: true)
   $SignInHandlerStateCopyWith<SignInHandlerState> get copyWith;
 }
 
+/// @nodoc
 abstract class $SignInHandlerStateCopyWith<$Res> {
   factory $SignInHandlerStateCopyWith(
           SignInHandlerState value, $Res Function(SignInHandlerState) then) =
       _$SignInHandlerStateCopyWithImpl<$Res>;
   $Res call(
       {EmailAddress emailAddress,
+      CellphoneNumber cellphoneNumber,
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Auth> authFailureOrSuccessOption});
 }
 
+/// @nodoc
 class _$SignInHandlerStateCopyWithImpl<$Res>
     implements $SignInHandlerStateCopyWith<$Res> {
   _$SignInHandlerStateCopyWithImpl(this._value, this._then);
@@ -65,6 +75,7 @@ class _$SignInHandlerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object emailAddress = freezed,
+    Object cellphoneNumber = freezed,
     Object password = freezed,
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
@@ -74,6 +85,9 @@ class _$SignInHandlerStateCopyWithImpl<$Res>
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress as EmailAddress,
+      cellphoneNumber: cellphoneNumber == freezed
+          ? _value.cellphoneNumber
+          : cellphoneNumber as CellphoneNumber,
       password: password == freezed ? _value.password : password as Password,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
@@ -87,6 +101,7 @@ class _$SignInHandlerStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$SignInHandlerStateCopyWith<$Res>
     implements $SignInHandlerStateCopyWith<$Res> {
   factory _$SignInHandlerStateCopyWith(
@@ -95,12 +110,14 @@ abstract class _$SignInHandlerStateCopyWith<$Res>
   @override
   $Res call(
       {EmailAddress emailAddress,
+      CellphoneNumber cellphoneNumber,
       Password password,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Auth> authFailureOrSuccessOption});
 }
 
+/// @nodoc
 class __$SignInHandlerStateCopyWithImpl<$Res>
     extends _$SignInHandlerStateCopyWithImpl<$Res>
     implements _$SignInHandlerStateCopyWith<$Res> {
@@ -114,6 +131,7 @@ class __$SignInHandlerStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object emailAddress = freezed,
+    Object cellphoneNumber = freezed,
     Object password = freezed,
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
@@ -123,6 +141,9 @@ class __$SignInHandlerStateCopyWithImpl<$Res>
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress as EmailAddress,
+      cellphoneNumber: cellphoneNumber == freezed
+          ? _value.cellphoneNumber
+          : cellphoneNumber as CellphoneNumber,
       password: password == freezed ? _value.password : password as Password,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
@@ -136,14 +157,17 @@ class __$SignInHandlerStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SignInHandlerState implements _SignInHandlerState {
   const _$_SignInHandlerState(
       {@required this.emailAddress,
+      @required this.cellphoneNumber,
       @required this.password,
       @required this.showErrorMessages,
       @required this.isSubmitting,
       @required this.authFailureOrSuccessOption})
       : assert(emailAddress != null),
+        assert(cellphoneNumber != null),
         assert(password != null),
         assert(showErrorMessages != null),
         assert(isSubmitting != null),
@@ -151,6 +175,8 @@ class _$_SignInHandlerState implements _SignInHandlerState {
 
   @override
   final EmailAddress emailAddress;
+  @override
+  final CellphoneNumber cellphoneNumber;
   @override
   final Password password;
   @override
@@ -162,7 +188,7 @@ class _$_SignInHandlerState implements _SignInHandlerState {
 
   @override
   String toString() {
-    return 'SignInHandlerState(emailAddress: $emailAddress, password: $password, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'SignInHandlerState(emailAddress: $emailAddress, cellphoneNumber: $cellphoneNumber, password: $password, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -172,6 +198,9 @@ class _$_SignInHandlerState implements _SignInHandlerState {
             (identical(other.emailAddress, emailAddress) ||
                 const DeepCollectionEquality()
                     .equals(other.emailAddress, emailAddress)) &&
+            (identical(other.cellphoneNumber, cellphoneNumber) ||
+                const DeepCollectionEquality()
+                    .equals(other.cellphoneNumber, cellphoneNumber)) &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
                     .equals(other.password, password)) &&
@@ -192,11 +221,13 @@ class _$_SignInHandlerState implements _SignInHandlerState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(emailAddress) ^
+      const DeepCollectionEquality().hash(cellphoneNumber) ^
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(authFailureOrSuccessOption);
 
+  @JsonKey(ignore: true)
   @override
   _$SignInHandlerStateCopyWith<_SignInHandlerState> get copyWith =>
       __$SignInHandlerStateCopyWithImpl<_SignInHandlerState>(this, _$identity);
@@ -205,6 +236,7 @@ class _$_SignInHandlerState implements _SignInHandlerState {
 abstract class _SignInHandlerState implements SignInHandlerState {
   const factory _SignInHandlerState(
           {@required EmailAddress emailAddress,
+          @required CellphoneNumber cellphoneNumber,
           @required Password password,
           @required bool showErrorMessages,
           @required bool isSubmitting,
@@ -214,6 +246,8 @@ abstract class _SignInHandlerState implements SignInHandlerState {
   @override
   EmailAddress get emailAddress;
   @override
+  CellphoneNumber get cellphoneNumber;
+  @override
   Password get password;
   @override
   bool get showErrorMessages;
@@ -222,5 +256,6 @@ abstract class _SignInHandlerState implements SignInHandlerState {
   @override
   Option<Auth> get authFailureOrSuccessOption;
   @override
+  @JsonKey(ignore: true)
   _$SignInHandlerStateCopyWith<_SignInHandlerState> get copyWith;
 }

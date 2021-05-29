@@ -82,17 +82,6 @@ class StandardSignInWidget extends StatelessWidget {
                 ),
               ),
             const SizedBox(height: 16),
-            // ConstrainedBox(
-            //   constraints: const BoxConstraints(maxWidth: 300),
-            //   child: const Divider(
-            //     thickness: 2,
-            //   ),
-            // ),
-            // Text(
-            //   'or',
-            //   style: Theme.of(context).textTheme.overline,
-            // ),
-            // const SizedBox(height: 16),
             if (authProviders.emailAndPassword)
               SignInForm(
                 child: Column(
@@ -105,6 +94,34 @@ class StandardSignInWidget extends StatelessWidget {
                     PasswordTextFormField(
                       style: config?.passwordTextField?.style,
                       decoration: config?.passwordTextField?.inputDecoration,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: EmailAndPasswordSignInButton(
+                            config: config?.signInButton,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: EmailAndPasswordRegisterButton(
+                            config: config?.registerButton,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            if (authProviders.cellphone)
+              SignInForm(
+                child: Column(
+                  children: [
+                    CellphoneTextFormField(
+                      style: config?.emailTextField?.style,
+                      decoration: config?.emailTextField?.inputDecoration,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

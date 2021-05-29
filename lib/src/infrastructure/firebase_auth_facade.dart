@@ -71,6 +71,16 @@ class FirebaseAuthFacade implements AuthFacade {
     }
   }
 
+  @override
+  Future<Auth> registerWithCellphoneNumber({
+    @required CellphoneNumber cellphoneNumber,
+  }) async {
+    final cellphoneStr = cellphoneNumber.getOrCrash();
+    return _registerWithCellphoneNumber(
+      cellphoneNumber: cellphoneStr
+    );
+  }
+
   Future<Auth> _webRegisterWithEmailAndPassword(
       {String email, String password}) async {
     try {
@@ -107,6 +117,23 @@ class FirebaseAuthFacade implements AuthFacade {
         debugPrint(e.toString());
         return const Auth.failure(AuthFailure.serverError());
       }
+    }
+  }
+
+  Future<Auth> _registerWithCellphoneNumber(
+      {String cellphoneNumber}) async {
+    try {
+      await _firebaseAuth.verifyPhoneNumber(
+        phoneNumber: cellphoneNumber,
+        verificationCompleted: (PhoneAuthCredential credential) {},
+        verificationFailed: (FirebaseAuthException e) {},
+        codeSent: (String verificationId, int resendToken) {},
+        codeAutoRetrievalTimeout: (String verificationId) {},
+      );
+      return const Auth.success();
+    } on PlatformException catch (e) {
+      debugPrint(e.toString());
+      return const Auth.failure(AuthFailure.serverError());
     }
   }
 

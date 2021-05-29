@@ -390,6 +390,33 @@ class EmailAndPasswordRegisterButton extends StatelessWidget {
   }
 }
 
+class CellphoneRegisterButton extends StatelessWidget {
+  const CellphoneRegisterButton({
+    Key key,
+    this.config,
+  }) : super(key: key);
+
+  final ButtonConfig config;
+
+  static const Widget defaultChild = Text('REGISTER');
+
+  @override
+  Widget build(BuildContext context) {
+    return _SignInButton(
+      config: config ??
+          ButtonConfig.flat(
+            themedata: Theme.of(context)
+                .buttonTheme
+                .copyWith(height: defaultButtonHeight),
+            child: defaultChild,
+          ),
+      onPressed: () {
+        context.registerWithCellphone();
+      },
+    );
+  }
+}
+
 class _SignInButton extends StatelessWidget {
   const _SignInButton({
     Key key,

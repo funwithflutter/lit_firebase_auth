@@ -9,6 +9,7 @@ part of 'user.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$LitUserTearOff {
   const _$LitUserTearOff();
 
@@ -30,43 +31,47 @@ class _$LitUserTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $LitUser = _$LitUserTearOff();
 
+/// @nodoc
 mixin _$LitUser {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(User user), {
-    @required Result empty(),
-    @required Result initializing(),
+  TResult when<TResult extends Object>(
+    TResult $default(User user), {
+    @required TResult empty(),
+    @required TResult initializing(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(User user), {
-    Result empty(),
-    Result initializing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(User user), {
+    TResult empty(),
+    TResult initializing(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_LitUser value), {
-    @required Result empty(_Empty value),
-    @required Result initializing(_Initializing value),
+  TResult map<TResult extends Object>(
+    TResult $default(_LitUser value), {
+    @required TResult empty(_Empty value),
+    @required TResult initializing(_Initializing value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_LitUser value), {
-    Result empty(_Empty value),
-    Result initializing(_Initializing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_LitUser value), {
+    TResult empty(_Empty value),
+    TResult initializing(_Initializing value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $LitUserCopyWith<$Res> {
   factory $LitUserCopyWith(LitUser value, $Res Function(LitUser) then) =
       _$LitUserCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$LitUserCopyWithImpl<$Res> implements $LitUserCopyWith<$Res> {
   _$LitUserCopyWithImpl(this._value, this._then);
 
@@ -75,12 +80,14 @@ class _$LitUserCopyWithImpl<$Res> implements $LitUserCopyWith<$Res> {
   final $Res Function(LitUser) _then;
 }
 
+/// @nodoc
 abstract class _$LitUserCopyWith<$Res> {
   factory _$LitUserCopyWith(_LitUser value, $Res Function(_LitUser) then) =
       __$LitUserCopyWithImpl<$Res>;
   $Res call({User user});
 }
 
+/// @nodoc
 class __$LitUserCopyWithImpl<$Res> extends _$LitUserCopyWithImpl<$Res>
     implements _$LitUserCopyWith<$Res> {
   __$LitUserCopyWithImpl(_LitUser _value, $Res Function(_LitUser) _then)
@@ -99,6 +106,7 @@ class __$LitUserCopyWithImpl<$Res> extends _$LitUserCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_LitUser implements _LitUser {
   const _$_LitUser({@required this.user}) : assert(user != null);
 
@@ -122,16 +130,17 @@ class _$_LitUser implements _LitUser {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
+  @JsonKey(ignore: true)
   @override
   _$LitUserCopyWith<_LitUser> get copyWith =>
       __$LitUserCopyWithImpl<_LitUser>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(User user), {
-    @required Result empty(),
-    @required Result initializing(),
+  TResult when<TResult extends Object>(
+    TResult $default(User user), {
+    @required TResult empty(),
+    @required TResult initializing(),
   }) {
     assert($default != null);
     assert(empty != null);
@@ -141,11 +150,11 @@ class _$_LitUser implements _LitUser {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(User user), {
-    Result empty(),
-    Result initializing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(User user), {
+    TResult empty(),
+    TResult initializing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -156,10 +165,10 @@ class _$_LitUser implements _LitUser {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_LitUser value), {
-    @required Result empty(_Empty value),
-    @required Result initializing(_Initializing value),
+  TResult map<TResult extends Object>(
+    TResult $default(_LitUser value), {
+    @required TResult empty(_Empty value),
+    @required TResult initializing(_Initializing value),
   }) {
     assert($default != null);
     assert(empty != null);
@@ -169,11 +178,11 @@ class _$_LitUser implements _LitUser {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_LitUser value), {
-    Result empty(_Empty value),
-    Result initializing(_Initializing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_LitUser value), {
+    TResult empty(_Empty value),
+    TResult initializing(_Initializing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -187,14 +196,17 @@ abstract class _LitUser implements LitUser {
   const factory _LitUser({@required User user}) = _$_LitUser;
 
   User get user;
+  @JsonKey(ignore: true)
   _$LitUserCopyWith<_LitUser> get copyWith;
 }
 
+/// @nodoc
 abstract class _$EmptyCopyWith<$Res> {
   factory _$EmptyCopyWith(_Empty value, $Res Function(_Empty) then) =
       __$EmptyCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$EmptyCopyWithImpl<$Res> extends _$LitUserCopyWithImpl<$Res>
     implements _$EmptyCopyWith<$Res> {
   __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then)
@@ -204,6 +216,7 @@ class __$EmptyCopyWithImpl<$Res> extends _$LitUserCopyWithImpl<$Res>
   _Empty get _value => super._value as _Empty;
 }
 
+/// @nodoc
 class _$_Empty implements _Empty {
   const _$_Empty();
 
@@ -222,10 +235,10 @@ class _$_Empty implements _Empty {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(User user), {
-    @required Result empty(),
-    @required Result initializing(),
+  TResult when<TResult extends Object>(
+    TResult $default(User user), {
+    @required TResult empty(),
+    @required TResult initializing(),
   }) {
     assert($default != null);
     assert(empty != null);
@@ -235,11 +248,11 @@ class _$_Empty implements _Empty {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(User user), {
-    Result empty(),
-    Result initializing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(User user), {
+    TResult empty(),
+    TResult initializing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (empty != null) {
@@ -250,10 +263,10 @@ class _$_Empty implements _Empty {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_LitUser value), {
-    @required Result empty(_Empty value),
-    @required Result initializing(_Initializing value),
+  TResult map<TResult extends Object>(
+    TResult $default(_LitUser value), {
+    @required TResult empty(_Empty value),
+    @required TResult initializing(_Initializing value),
   }) {
     assert($default != null);
     assert(empty != null);
@@ -263,11 +276,11 @@ class _$_Empty implements _Empty {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_LitUser value), {
-    Result empty(_Empty value),
-    Result initializing(_Initializing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_LitUser value), {
+    TResult empty(_Empty value),
+    TResult initializing(_Initializing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (empty != null) {
@@ -281,12 +294,14 @@ abstract class _Empty implements LitUser {
   const factory _Empty() = _$_Empty;
 }
 
+/// @nodoc
 abstract class _$InitializingCopyWith<$Res> {
   factory _$InitializingCopyWith(
           _Initializing value, $Res Function(_Initializing) then) =
       __$InitializingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitializingCopyWithImpl<$Res> extends _$LitUserCopyWithImpl<$Res>
     implements _$InitializingCopyWith<$Res> {
   __$InitializingCopyWithImpl(
@@ -297,6 +312,7 @@ class __$InitializingCopyWithImpl<$Res> extends _$LitUserCopyWithImpl<$Res>
   _Initializing get _value => super._value as _Initializing;
 }
 
+/// @nodoc
 class _$_Initializing implements _Initializing {
   const _$_Initializing();
 
@@ -315,10 +331,10 @@ class _$_Initializing implements _Initializing {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(User user), {
-    @required Result empty(),
-    @required Result initializing(),
+  TResult when<TResult extends Object>(
+    TResult $default(User user), {
+    @required TResult empty(),
+    @required TResult initializing(),
   }) {
     assert($default != null);
     assert(empty != null);
@@ -328,11 +344,11 @@ class _$_Initializing implements _Initializing {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(User user), {
-    Result empty(),
-    Result initializing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(User user), {
+    TResult empty(),
+    TResult initializing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initializing != null) {
@@ -343,10 +359,10 @@ class _$_Initializing implements _Initializing {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_LitUser value), {
-    @required Result empty(_Empty value),
-    @required Result initializing(_Initializing value),
+  TResult map<TResult extends Object>(
+    TResult $default(_LitUser value), {
+    @required TResult empty(_Empty value),
+    @required TResult initializing(_Initializing value),
   }) {
     assert($default != null);
     assert(empty != null);
@@ -356,11 +372,11 @@ class _$_Initializing implements _Initializing {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_LitUser value), {
-    Result empty(_Empty value),
-    Result initializing(_Initializing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_LitUser value), {
+    TResult empty(_Empty value),
+    TResult initializing(_Initializing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initializing != null) {

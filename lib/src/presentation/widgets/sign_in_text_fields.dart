@@ -86,3 +86,41 @@ class EmailTextFormField extends StatelessWidget {
     );
   }
 }
+
+class CellphoneTextFormField extends StatelessWidget {
+  const CellphoneTextFormField({
+    Key key,
+    this.style,
+    this.decoration,
+  }) : super(key: key);
+
+  final TextStyle style;
+  final InputDecoration decoration;
+
+  @override
+  Widget build(BuildContext context) {
+    final cellphoneNumber =
+    context.select((SignInHandlerState state) => state.cellphoneNumber);
+    return TextFormField(
+      keyboardType: TextInputType.numberWithOptions(signed: true),
+      style: style,
+      decoration: decoration ??
+          InputDecoration(
+            prefixIcon: const Icon(Icons.email),
+            border: border,
+            labelText: 'Cellphone Number',
+          ),
+      autocorrect: false,
+      onChanged: (value) => context
+          .read<SignInHandlerStateNotifier>()
+          .cellphoneNumberChanged(CellphoneNumber(value)),
+      validator: (_) => cellphoneNumber.value.fold(
+            (failure) => failure.maybeMap(
+          invalidCellphoneNumber: (_) => 'Invalid cellphone number',
+          orElse: () => 'Invalid cellphone number',
+        ),
+            (_) => null,
+      ),
+    );
+  }
+}

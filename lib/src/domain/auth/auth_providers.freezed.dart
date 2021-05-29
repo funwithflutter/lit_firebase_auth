@@ -9,6 +9,7 @@ part of 'auth_providers.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AuthProvidersTearOff {
   const _$AuthProvidersTearOff();
 
@@ -20,7 +21,8 @@ class _$AuthProvidersTearOff {
       bool apple = false,
       bool github = false,
       bool twitter = false,
-      bool facebook = false}) {
+      bool facebook = false,
+      bool cellphone = false}) {
     return _AuthProviders(
       emailAndPassword: emailAndPassword,
       anonymous: anonymous,
@@ -29,13 +31,16 @@ class _$AuthProvidersTearOff {
       github: github,
       twitter: twitter,
       facebook: facebook,
+      cellphone: cellphone,
     );
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AuthProviders = _$AuthProvidersTearOff();
 
+/// @nodoc
 mixin _$AuthProviders {
   bool get emailAndPassword;
   bool get anonymous;
@@ -44,10 +49,13 @@ mixin _$AuthProviders {
   bool get github;
   bool get twitter;
   bool get facebook;
+  bool get cellphone;
 
+  @JsonKey(ignore: true)
   $AuthProvidersCopyWith<AuthProviders> get copyWith;
 }
 
+/// @nodoc
 abstract class $AuthProvidersCopyWith<$Res> {
   factory $AuthProvidersCopyWith(
           AuthProviders value, $Res Function(AuthProviders) then) =
@@ -59,9 +67,11 @@ abstract class $AuthProvidersCopyWith<$Res> {
       bool apple,
       bool github,
       bool twitter,
-      bool facebook});
+      bool facebook,
+      bool cellphone});
 }
 
+/// @nodoc
 class _$AuthProvidersCopyWithImpl<$Res>
     implements $AuthProvidersCopyWith<$Res> {
   _$AuthProvidersCopyWithImpl(this._value, this._then);
@@ -79,6 +89,7 @@ class _$AuthProvidersCopyWithImpl<$Res>
     Object github = freezed,
     Object twitter = freezed,
     Object facebook = freezed,
+    Object cellphone = freezed,
   }) {
     return _then(_value.copyWith(
       emailAndPassword: emailAndPassword == freezed
@@ -90,10 +101,12 @@ class _$AuthProvidersCopyWithImpl<$Res>
       github: github == freezed ? _value.github : github as bool,
       twitter: twitter == freezed ? _value.twitter : twitter as bool,
       facebook: facebook == freezed ? _value.facebook : facebook as bool,
+      cellphone: cellphone == freezed ? _value.cellphone : cellphone as bool,
     ));
   }
 }
 
+/// @nodoc
 abstract class _$AuthProvidersCopyWith<$Res>
     implements $AuthProvidersCopyWith<$Res> {
   factory _$AuthProvidersCopyWith(
@@ -107,9 +120,11 @@ abstract class _$AuthProvidersCopyWith<$Res>
       bool apple,
       bool github,
       bool twitter,
-      bool facebook});
+      bool facebook,
+      bool cellphone});
 }
 
+/// @nodoc
 class __$AuthProvidersCopyWithImpl<$Res>
     extends _$AuthProvidersCopyWithImpl<$Res>
     implements _$AuthProvidersCopyWith<$Res> {
@@ -129,6 +144,7 @@ class __$AuthProvidersCopyWithImpl<$Res>
     Object github = freezed,
     Object twitter = freezed,
     Object facebook = freezed,
+    Object cellphone = freezed,
   }) {
     return _then(_AuthProviders(
       emailAndPassword: emailAndPassword == freezed
@@ -140,10 +156,12 @@ class __$AuthProvidersCopyWithImpl<$Res>
       github: github == freezed ? _value.github : github as bool,
       twitter: twitter == freezed ? _value.twitter : twitter as bool,
       facebook: facebook == freezed ? _value.facebook : facebook as bool,
+      cellphone: cellphone == freezed ? _value.cellphone : cellphone as bool,
     ));
   }
 }
 
+/// @nodoc
 class _$_AuthProviders implements _AuthProviders {
   const _$_AuthProviders(
       {this.emailAndPassword = true,
@@ -152,14 +170,16 @@ class _$_AuthProviders implements _AuthProviders {
       this.apple = false,
       this.github = false,
       this.twitter = false,
-      this.facebook = false})
+      this.facebook = false,
+      this.cellphone = false})
       : assert(emailAndPassword != null),
         assert(anonymous != null),
         assert(google != null),
         assert(apple != null),
         assert(github != null),
         assert(twitter != null),
-        assert(facebook != null);
+        assert(facebook != null),
+        assert(cellphone != null);
 
   @JsonKey(defaultValue: true)
   @override
@@ -182,10 +202,13 @@ class _$_AuthProviders implements _AuthProviders {
   @JsonKey(defaultValue: false)
   @override
   final bool facebook;
+  @JsonKey(defaultValue: false)
+  @override
+  final bool cellphone;
 
   @override
   String toString() {
-    return 'AuthProviders(emailAndPassword: $emailAndPassword, anonymous: $anonymous, google: $google, apple: $apple, github: $github, twitter: $twitter, facebook: $facebook)';
+    return 'AuthProviders(emailAndPassword: $emailAndPassword, anonymous: $anonymous, google: $google, apple: $apple, github: $github, twitter: $twitter, facebook: $facebook, cellphone: $cellphone)';
   }
 
   @override
@@ -209,7 +232,10 @@ class _$_AuthProviders implements _AuthProviders {
                     .equals(other.twitter, twitter)) &&
             (identical(other.facebook, facebook) ||
                 const DeepCollectionEquality()
-                    .equals(other.facebook, facebook)));
+                    .equals(other.facebook, facebook)) &&
+            (identical(other.cellphone, cellphone) ||
+                const DeepCollectionEquality()
+                    .equals(other.cellphone, cellphone)));
   }
 
   @override
@@ -221,8 +247,10 @@ class _$_AuthProviders implements _AuthProviders {
       const DeepCollectionEquality().hash(apple) ^
       const DeepCollectionEquality().hash(github) ^
       const DeepCollectionEquality().hash(twitter) ^
-      const DeepCollectionEquality().hash(facebook);
+      const DeepCollectionEquality().hash(facebook) ^
+      const DeepCollectionEquality().hash(cellphone);
 
+  @JsonKey(ignore: true)
   @override
   _$AuthProvidersCopyWith<_AuthProviders> get copyWith =>
       __$AuthProvidersCopyWithImpl<_AuthProviders>(this, _$identity);
@@ -236,7 +264,8 @@ abstract class _AuthProviders implements AuthProviders {
       bool apple,
       bool github,
       bool twitter,
-      bool facebook}) = _$_AuthProviders;
+      bool facebook,
+      bool cellphone}) = _$_AuthProviders;
 
   @override
   bool get emailAndPassword;
@@ -253,5 +282,8 @@ abstract class _AuthProviders implements AuthProviders {
   @override
   bool get facebook;
   @override
+  bool get cellphone;
+  @override
+  @JsonKey(ignore: true)
   _$AuthProvidersCopyWith<_AuthProviders> get copyWith;
 }

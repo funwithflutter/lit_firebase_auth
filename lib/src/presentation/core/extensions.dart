@@ -29,6 +29,11 @@ extension AuthContext on BuildContext {
         .registerWithEmailAndPassword();
   }
 
+  Future<void> registerWithCellphone() async {
+    Provider.of<SignInHandlerStateNotifier>(this, listen: false)
+        .registerWithCellphone();
+  }
+
   /// Sign-in the user with email specified by [EmailTextFormField]
   /// and password specified by [PasswordTextFormField].
   ///

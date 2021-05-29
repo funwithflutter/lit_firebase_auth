@@ -9,6 +9,7 @@ part of 'auth_config.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AuthConfigTearOff {
   const _$AuthConfigTearOff();
 
@@ -41,9 +42,11 @@ class _$AuthConfigTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AuthConfig = _$AuthConfigTearOff();
 
+/// @nodoc
 mixin _$AuthConfig {
   Widget get title;
   ButtonConfig get signInButton;
@@ -57,9 +60,11 @@ mixin _$AuthConfig {
   TextFieldConfig get emailTextField;
   TextFieldConfig get passwordTextField;
 
+  @JsonKey(ignore: true)
   $AuthConfigCopyWith<AuthConfig> get copyWith;
 }
 
+/// @nodoc
 abstract class $AuthConfigCopyWith<$Res> {
   factory $AuthConfigCopyWith(
           AuthConfig value, $Res Function(AuthConfig) then) =
@@ -87,6 +92,7 @@ abstract class $AuthConfigCopyWith<$Res> {
   $ButtonConfigCopyWith<$Res> get facebookButton;
 }
 
+/// @nodoc
 class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
   _$AuthConfigCopyWithImpl(this._value, this._then);
 
@@ -224,6 +230,7 @@ class _$AuthConfigCopyWithImpl<$Res> implements $AuthConfigCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
   factory _$AuthConfigCopyWith(
           _AuthConfig value, $Res Function(_AuthConfig) then) =
@@ -260,6 +267,7 @@ abstract class _$AuthConfigCopyWith<$Res> implements $AuthConfigCopyWith<$Res> {
   $ButtonConfigCopyWith<$Res> get facebookButton;
 }
 
+/// @nodoc
 class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
     implements _$AuthConfigCopyWith<$Res> {
   __$AuthConfigCopyWithImpl(
@@ -319,6 +327,7 @@ class __$AuthConfigCopyWithImpl<$Res> extends _$AuthConfigCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
   const _$_AuthConfig(
       {this.title,
@@ -432,6 +441,7 @@ class _$_AuthConfig with DiagnosticableTreeMixin implements _AuthConfig {
       const DeepCollectionEquality().hash(emailTextField) ^
       const DeepCollectionEquality().hash(passwordTextField);
 
+  @JsonKey(ignore: true)
   @override
   _$AuthConfigCopyWith<_AuthConfig> get copyWith =>
       __$AuthConfigCopyWithImpl<_AuthConfig>(this, _$identity);
@@ -474,9 +484,11 @@ abstract class _AuthConfig implements AuthConfig {
   @override
   TextFieldConfig get passwordTextField;
   @override
+  @JsonKey(ignore: true)
   _$AuthConfigCopyWith<_AuthConfig> get copyWith;
 }
 
+/// @nodoc
 class _$ButtonConfigTearOff {
   const _$ButtonConfigTearOff();
 
@@ -523,49 +535,54 @@ class _$ButtonConfigTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ButtonConfig = _$ButtonConfigTearOff();
 
+/// @nodoc
 mixin _$ButtonConfig {
   ButtonThemeData get themedata;
   Widget get child;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result raised(ButtonThemeData themedata, Widget child),
-    @required Result flat(ButtonThemeData themedata, Widget child),
+  TResult when<TResult extends Object>({
+    @required TResult raised(ButtonThemeData themedata, Widget child),
+    @required TResult flat(ButtonThemeData themedata, Widget child),
     @required
-        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
     @required
-        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult raisedIcon(
+            ButtonThemeData themedata, Widget icon, Widget child),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result raised(ButtonThemeData themedata, Widget child),
-    Result flat(ButtonThemeData themedata, Widget child),
-    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult raised(ButtonThemeData themedata, Widget child),
+    TResult flat(ButtonThemeData themedata, Widget child),
+    TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    TResult raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result raised(ButtonConfigRaised value),
-    @required Result flat(ButtonConfigFlat value),
-    @required Result flatIcon(ButtonConfigFlatIcon value),
-    @required Result raisedIcon(ButtonConfigRaisedIcon value),
+  TResult map<TResult extends Object>({
+    @required TResult raised(ButtonConfigRaised value),
+    @required TResult flat(ButtonConfigFlat value),
+    @required TResult flatIcon(ButtonConfigFlatIcon value),
+    @required TResult raisedIcon(ButtonConfigRaisedIcon value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result raised(ButtonConfigRaised value),
-    Result flat(ButtonConfigFlat value),
-    Result flatIcon(ButtonConfigFlatIcon value),
-    Result raisedIcon(ButtonConfigRaisedIcon value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult raised(ButtonConfigRaised value),
+    TResult flat(ButtonConfigFlat value),
+    TResult flatIcon(ButtonConfigFlatIcon value),
+    TResult raisedIcon(ButtonConfigRaisedIcon value),
+    @required TResult orElse(),
   });
 
+  @JsonKey(ignore: true)
   $ButtonConfigCopyWith<ButtonConfig> get copyWith;
 }
 
+/// @nodoc
 abstract class $ButtonConfigCopyWith<$Res> {
   factory $ButtonConfigCopyWith(
           ButtonConfig value, $Res Function(ButtonConfig) then) =
@@ -573,6 +590,7 @@ abstract class $ButtonConfigCopyWith<$Res> {
   $Res call({ButtonThemeData themedata, Widget child});
 }
 
+/// @nodoc
 class _$ButtonConfigCopyWithImpl<$Res> implements $ButtonConfigCopyWith<$Res> {
   _$ButtonConfigCopyWithImpl(this._value, this._then);
 
@@ -594,6 +612,7 @@ class _$ButtonConfigCopyWithImpl<$Res> implements $ButtonConfigCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class $ButtonConfigRaisedCopyWith<$Res>
     implements $ButtonConfigCopyWith<$Res> {
   factory $ButtonConfigRaisedCopyWith(
@@ -603,6 +622,7 @@ abstract class $ButtonConfigRaisedCopyWith<$Res>
   $Res call({ButtonThemeData themedata, Widget child});
 }
 
+/// @nodoc
 class _$ButtonConfigRaisedCopyWithImpl<$Res>
     extends _$ButtonConfigCopyWithImpl<$Res>
     implements $ButtonConfigRaisedCopyWith<$Res> {
@@ -627,6 +647,7 @@ class _$ButtonConfigRaisedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ButtonConfigRaised
     with DiagnosticableTreeMixin
     implements ButtonConfigRaised {
@@ -670,19 +691,21 @@ class _$ButtonConfigRaised
       const DeepCollectionEquality().hash(themedata) ^
       const DeepCollectionEquality().hash(child);
 
+  @JsonKey(ignore: true)
   @override
   $ButtonConfigRaisedCopyWith<ButtonConfigRaised> get copyWith =>
       _$ButtonConfigRaisedCopyWithImpl<ButtonConfigRaised>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result raised(ButtonThemeData themedata, Widget child),
-    @required Result flat(ButtonThemeData themedata, Widget child),
+  TResult when<TResult extends Object>({
+    @required TResult raised(ButtonThemeData themedata, Widget child),
+    @required TResult flat(ButtonThemeData themedata, Widget child),
     @required
-        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
     @required
-        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult raisedIcon(
+            ButtonThemeData themedata, Widget icon, Widget child),
   }) {
     assert(raised != null);
     assert(flat != null);
@@ -693,12 +716,12 @@ class _$ButtonConfigRaised
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result raised(ButtonThemeData themedata, Widget child),
-    Result flat(ButtonThemeData themedata, Widget child),
-    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult raised(ButtonThemeData themedata, Widget child),
+    TResult flat(ButtonThemeData themedata, Widget child),
+    TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    TResult raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (raised != null) {
@@ -709,11 +732,11 @@ class _$ButtonConfigRaised
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result raised(ButtonConfigRaised value),
-    @required Result flat(ButtonConfigFlat value),
-    @required Result flatIcon(ButtonConfigFlatIcon value),
-    @required Result raisedIcon(ButtonConfigRaisedIcon value),
+  TResult map<TResult extends Object>({
+    @required TResult raised(ButtonConfigRaised value),
+    @required TResult flat(ButtonConfigFlat value),
+    @required TResult flatIcon(ButtonConfigFlatIcon value),
+    @required TResult raisedIcon(ButtonConfigRaisedIcon value),
   }) {
     assert(raised != null);
     assert(flat != null);
@@ -724,12 +747,12 @@ class _$ButtonConfigRaised
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result raised(ButtonConfigRaised value),
-    Result flat(ButtonConfigFlat value),
-    Result flatIcon(ButtonConfigFlatIcon value),
-    Result raisedIcon(ButtonConfigRaisedIcon value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult raised(ButtonConfigRaised value),
+    TResult flat(ButtonConfigFlat value),
+    TResult flatIcon(ButtonConfigFlatIcon value),
+    TResult raisedIcon(ButtonConfigRaisedIcon value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (raised != null) {
@@ -749,9 +772,11 @@ abstract class ButtonConfigRaised implements ButtonConfig {
   @override
   Widget get child;
   @override
+  @JsonKey(ignore: true)
   $ButtonConfigRaisedCopyWith<ButtonConfigRaised> get copyWith;
 }
 
+/// @nodoc
 abstract class $ButtonConfigFlatCopyWith<$Res>
     implements $ButtonConfigCopyWith<$Res> {
   factory $ButtonConfigFlatCopyWith(
@@ -761,6 +786,7 @@ abstract class $ButtonConfigFlatCopyWith<$Res>
   $Res call({ButtonThemeData themedata, Widget child});
 }
 
+/// @nodoc
 class _$ButtonConfigFlatCopyWithImpl<$Res>
     extends _$ButtonConfigCopyWithImpl<$Res>
     implements $ButtonConfigFlatCopyWith<$Res> {
@@ -785,6 +811,7 @@ class _$ButtonConfigFlatCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ButtonConfigFlat
     with DiagnosticableTreeMixin
     implements ButtonConfigFlat {
@@ -828,19 +855,21 @@ class _$ButtonConfigFlat
       const DeepCollectionEquality().hash(themedata) ^
       const DeepCollectionEquality().hash(child);
 
+  @JsonKey(ignore: true)
   @override
   $ButtonConfigFlatCopyWith<ButtonConfigFlat> get copyWith =>
       _$ButtonConfigFlatCopyWithImpl<ButtonConfigFlat>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result raised(ButtonThemeData themedata, Widget child),
-    @required Result flat(ButtonThemeData themedata, Widget child),
+  TResult when<TResult extends Object>({
+    @required TResult raised(ButtonThemeData themedata, Widget child),
+    @required TResult flat(ButtonThemeData themedata, Widget child),
     @required
-        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
     @required
-        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult raisedIcon(
+            ButtonThemeData themedata, Widget icon, Widget child),
   }) {
     assert(raised != null);
     assert(flat != null);
@@ -851,12 +880,12 @@ class _$ButtonConfigFlat
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result raised(ButtonThemeData themedata, Widget child),
-    Result flat(ButtonThemeData themedata, Widget child),
-    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult raised(ButtonThemeData themedata, Widget child),
+    TResult flat(ButtonThemeData themedata, Widget child),
+    TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    TResult raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (flat != null) {
@@ -867,11 +896,11 @@ class _$ButtonConfigFlat
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result raised(ButtonConfigRaised value),
-    @required Result flat(ButtonConfigFlat value),
-    @required Result flatIcon(ButtonConfigFlatIcon value),
-    @required Result raisedIcon(ButtonConfigRaisedIcon value),
+  TResult map<TResult extends Object>({
+    @required TResult raised(ButtonConfigRaised value),
+    @required TResult flat(ButtonConfigFlat value),
+    @required TResult flatIcon(ButtonConfigFlatIcon value),
+    @required TResult raisedIcon(ButtonConfigRaisedIcon value),
   }) {
     assert(raised != null);
     assert(flat != null);
@@ -882,12 +911,12 @@ class _$ButtonConfigFlat
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result raised(ButtonConfigRaised value),
-    Result flat(ButtonConfigFlat value),
-    Result flatIcon(ButtonConfigFlatIcon value),
-    Result raisedIcon(ButtonConfigRaisedIcon value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult raised(ButtonConfigRaised value),
+    TResult flat(ButtonConfigFlat value),
+    TResult flatIcon(ButtonConfigFlatIcon value),
+    TResult raisedIcon(ButtonConfigRaisedIcon value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (flat != null) {
@@ -907,9 +936,11 @@ abstract class ButtonConfigFlat implements ButtonConfig {
   @override
   Widget get child;
   @override
+  @JsonKey(ignore: true)
   $ButtonConfigFlatCopyWith<ButtonConfigFlat> get copyWith;
 }
 
+/// @nodoc
 abstract class $ButtonConfigFlatIconCopyWith<$Res>
     implements $ButtonConfigCopyWith<$Res> {
   factory $ButtonConfigFlatIconCopyWith(ButtonConfigFlatIcon value,
@@ -919,6 +950,7 @@ abstract class $ButtonConfigFlatIconCopyWith<$Res>
   $Res call({ButtonThemeData themedata, Widget icon, Widget child});
 }
 
+/// @nodoc
 class _$ButtonConfigFlatIconCopyWithImpl<$Res>
     extends _$ButtonConfigCopyWithImpl<$Res>
     implements $ButtonConfigFlatIconCopyWith<$Res> {
@@ -945,6 +977,7 @@ class _$ButtonConfigFlatIconCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ButtonConfigFlatIcon
     with DiagnosticableTreeMixin
     implements ButtonConfigFlatIcon {
@@ -996,6 +1029,7 @@ class _$ButtonConfigFlatIcon
       const DeepCollectionEquality().hash(icon) ^
       const DeepCollectionEquality().hash(child);
 
+  @JsonKey(ignore: true)
   @override
   $ButtonConfigFlatIconCopyWith<ButtonConfigFlatIcon> get copyWith =>
       _$ButtonConfigFlatIconCopyWithImpl<ButtonConfigFlatIcon>(
@@ -1003,13 +1037,14 @@ class _$ButtonConfigFlatIcon
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result raised(ButtonThemeData themedata, Widget child),
-    @required Result flat(ButtonThemeData themedata, Widget child),
+  TResult when<TResult extends Object>({
+    @required TResult raised(ButtonThemeData themedata, Widget child),
+    @required TResult flat(ButtonThemeData themedata, Widget child),
     @required
-        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
     @required
-        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult raisedIcon(
+            ButtonThemeData themedata, Widget icon, Widget child),
   }) {
     assert(raised != null);
     assert(flat != null);
@@ -1020,12 +1055,12 @@ class _$ButtonConfigFlatIcon
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result raised(ButtonThemeData themedata, Widget child),
-    Result flat(ButtonThemeData themedata, Widget child),
-    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult raised(ButtonThemeData themedata, Widget child),
+    TResult flat(ButtonThemeData themedata, Widget child),
+    TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    TResult raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (flatIcon != null) {
@@ -1036,11 +1071,11 @@ class _$ButtonConfigFlatIcon
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result raised(ButtonConfigRaised value),
-    @required Result flat(ButtonConfigFlat value),
-    @required Result flatIcon(ButtonConfigFlatIcon value),
-    @required Result raisedIcon(ButtonConfigRaisedIcon value),
+  TResult map<TResult extends Object>({
+    @required TResult raised(ButtonConfigRaised value),
+    @required TResult flat(ButtonConfigFlat value),
+    @required TResult flatIcon(ButtonConfigFlatIcon value),
+    @required TResult raisedIcon(ButtonConfigRaisedIcon value),
   }) {
     assert(raised != null);
     assert(flat != null);
@@ -1051,12 +1086,12 @@ class _$ButtonConfigFlatIcon
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result raised(ButtonConfigRaised value),
-    Result flat(ButtonConfigFlat value),
-    Result flatIcon(ButtonConfigFlatIcon value),
-    Result raisedIcon(ButtonConfigRaisedIcon value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult raised(ButtonConfigRaised value),
+    TResult flat(ButtonConfigFlat value),
+    TResult flatIcon(ButtonConfigFlatIcon value),
+    TResult raisedIcon(ButtonConfigRaisedIcon value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (flatIcon != null) {
@@ -1078,9 +1113,11 @@ abstract class ButtonConfigFlatIcon implements ButtonConfig {
   @override
   Widget get child;
   @override
+  @JsonKey(ignore: true)
   $ButtonConfigFlatIconCopyWith<ButtonConfigFlatIcon> get copyWith;
 }
 
+/// @nodoc
 abstract class $ButtonConfigRaisedIconCopyWith<$Res>
     implements $ButtonConfigCopyWith<$Res> {
   factory $ButtonConfigRaisedIconCopyWith(ButtonConfigRaisedIcon value,
@@ -1090,6 +1127,7 @@ abstract class $ButtonConfigRaisedIconCopyWith<$Res>
   $Res call({ButtonThemeData themedata, Widget icon, Widget child});
 }
 
+/// @nodoc
 class _$ButtonConfigRaisedIconCopyWithImpl<$Res>
     extends _$ButtonConfigCopyWithImpl<$Res>
     implements $ButtonConfigRaisedIconCopyWith<$Res> {
@@ -1116,6 +1154,7 @@ class _$ButtonConfigRaisedIconCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ButtonConfigRaisedIcon
     with DiagnosticableTreeMixin
     implements ButtonConfigRaisedIcon {
@@ -1167,6 +1206,7 @@ class _$ButtonConfigRaisedIcon
       const DeepCollectionEquality().hash(icon) ^
       const DeepCollectionEquality().hash(child);
 
+  @JsonKey(ignore: true)
   @override
   $ButtonConfigRaisedIconCopyWith<ButtonConfigRaisedIcon> get copyWith =>
       _$ButtonConfigRaisedIconCopyWithImpl<ButtonConfigRaisedIcon>(
@@ -1174,13 +1214,14 @@ class _$ButtonConfigRaisedIcon
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result raised(ButtonThemeData themedata, Widget child),
-    @required Result flat(ButtonThemeData themedata, Widget child),
+  TResult when<TResult extends Object>({
+    @required TResult raised(ButtonThemeData themedata, Widget child),
+    @required TResult flat(ButtonThemeData themedata, Widget child),
     @required
-        Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
     @required
-        Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+        TResult raisedIcon(
+            ButtonThemeData themedata, Widget icon, Widget child),
   }) {
     assert(raised != null);
     assert(flat != null);
@@ -1191,12 +1232,12 @@ class _$ButtonConfigRaisedIcon
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result raised(ButtonThemeData themedata, Widget child),
-    Result flat(ButtonThemeData themedata, Widget child),
-    Result flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    Result raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult raised(ButtonThemeData themedata, Widget child),
+    TResult flat(ButtonThemeData themedata, Widget child),
+    TResult flatIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    TResult raisedIcon(ButtonThemeData themedata, Widget icon, Widget child),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (raisedIcon != null) {
@@ -1207,11 +1248,11 @@ class _$ButtonConfigRaisedIcon
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result raised(ButtonConfigRaised value),
-    @required Result flat(ButtonConfigFlat value),
-    @required Result flatIcon(ButtonConfigFlatIcon value),
-    @required Result raisedIcon(ButtonConfigRaisedIcon value),
+  TResult map<TResult extends Object>({
+    @required TResult raised(ButtonConfigRaised value),
+    @required TResult flat(ButtonConfigFlat value),
+    @required TResult flatIcon(ButtonConfigFlatIcon value),
+    @required TResult raisedIcon(ButtonConfigRaisedIcon value),
   }) {
     assert(raised != null);
     assert(flat != null);
@@ -1222,12 +1263,12 @@ class _$ButtonConfigRaisedIcon
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result raised(ButtonConfigRaised value),
-    Result flat(ButtonConfigFlat value),
-    Result flatIcon(ButtonConfigFlatIcon value),
-    Result raisedIcon(ButtonConfigRaisedIcon value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult raised(ButtonConfigRaised value),
+    TResult flat(ButtonConfigFlat value),
+    TResult flatIcon(ButtonConfigFlatIcon value),
+    TResult raisedIcon(ButtonConfigRaisedIcon value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (raisedIcon != null) {
@@ -1249,9 +1290,11 @@ abstract class ButtonConfigRaisedIcon implements ButtonConfig {
   @override
   Widget get child;
   @override
+  @JsonKey(ignore: true)
   $ButtonConfigRaisedIconCopyWith<ButtonConfigRaisedIcon> get copyWith;
 }
 
+/// @nodoc
 class _$AppleButtonConfigTearOff {
   const _$AppleButtonConfigTearOff();
 
@@ -1277,44 +1320,48 @@ class _$AppleButtonConfigTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AppleButtonConfig = _$AppleButtonConfigTearOff();
 
+/// @nodoc
 mixin _$AppleButtonConfig {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    @required Result dark(Widget label),
-    @required Result light(Widget label),
+  TResult when<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    @required TResult dark(Widget label),
+    @required TResult light(Widget label),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    Result dark(Widget label),
-    Result light(Widget label),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    TResult dark(Widget label),
+    TResult light(Widget label),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_AppleButtonConfig value), {
-    @required Result dark(_AppleButtonConfigDark value),
-    @required Result light(_AppleButtonConfigLight value),
+  TResult map<TResult extends Object>(
+    TResult $default(_AppleButtonConfig value), {
+    @required TResult dark(_AppleButtonConfigDark value),
+    @required TResult light(_AppleButtonConfigLight value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_AppleButtonConfig value), {
-    Result dark(_AppleButtonConfigDark value),
-    Result light(_AppleButtonConfigLight value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_AppleButtonConfig value), {
+    TResult dark(_AppleButtonConfigDark value),
+    TResult light(_AppleButtonConfigLight value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $AppleButtonConfigCopyWith<$Res> {
   factory $AppleButtonConfigCopyWith(
           AppleButtonConfig value, $Res Function(AppleButtonConfig) then) =
       _$AppleButtonConfigCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$AppleButtonConfigCopyWithImpl<$Res>
     implements $AppleButtonConfigCopyWith<$Res> {
   _$AppleButtonConfigCopyWithImpl(this._value, this._then);
@@ -1324,6 +1371,7 @@ class _$AppleButtonConfigCopyWithImpl<$Res>
   final $Res Function(AppleButtonConfig) _then;
 }
 
+/// @nodoc
 abstract class _$AppleButtonConfigCopyWith<$Res> {
   factory _$AppleButtonConfigCopyWith(
           _AppleButtonConfig value, $Res Function(_AppleButtonConfig) then) =
@@ -1333,6 +1381,7 @@ abstract class _$AppleButtonConfigCopyWith<$Res> {
   $ButtonConfigCopyWith<$Res> get config;
 }
 
+/// @nodoc
 class __$AppleButtonConfigCopyWithImpl<$Res>
     extends _$AppleButtonConfigCopyWithImpl<$Res>
     implements _$AppleButtonConfigCopyWith<$Res> {
@@ -1363,6 +1412,7 @@ class __$AppleButtonConfigCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AppleButtonConfig
     with DiagnosticableTreeMixin
     implements _AppleButtonConfig {
@@ -1396,16 +1446,17 @@ class _$_AppleButtonConfig
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(config);
 
+  @JsonKey(ignore: true)
   @override
   _$AppleButtonConfigCopyWith<_AppleButtonConfig> get copyWith =>
       __$AppleButtonConfigCopyWithImpl<_AppleButtonConfig>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    @required Result dark(Widget label),
-    @required Result light(Widget label),
+  TResult when<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    @required TResult dark(Widget label),
+    @required TResult light(Widget label),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -1415,11 +1466,11 @@ class _$_AppleButtonConfig
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    Result dark(Widget label),
-    Result light(Widget label),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    TResult dark(Widget label),
+    TResult light(Widget label),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -1430,10 +1481,10 @@ class _$_AppleButtonConfig
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_AppleButtonConfig value), {
-    @required Result dark(_AppleButtonConfigDark value),
-    @required Result light(_AppleButtonConfigLight value),
+  TResult map<TResult extends Object>(
+    TResult $default(_AppleButtonConfig value), {
+    @required TResult dark(_AppleButtonConfigDark value),
+    @required TResult light(_AppleButtonConfigLight value),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -1443,11 +1494,11 @@ class _$_AppleButtonConfig
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_AppleButtonConfig value), {
-    Result dark(_AppleButtonConfigDark value),
-    Result light(_AppleButtonConfigLight value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_AppleButtonConfig value), {
+    TResult dark(_AppleButtonConfigDark value),
+    TResult light(_AppleButtonConfigLight value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -1462,9 +1513,11 @@ abstract class _AppleButtonConfig implements AppleButtonConfig {
       _$_AppleButtonConfig;
 
   ButtonConfig get config;
+  @JsonKey(ignore: true)
   _$AppleButtonConfigCopyWith<_AppleButtonConfig> get copyWith;
 }
 
+/// @nodoc
 abstract class _$AppleButtonConfigDarkCopyWith<$Res> {
   factory _$AppleButtonConfigDarkCopyWith(_AppleButtonConfigDark value,
           $Res Function(_AppleButtonConfigDark) then) =
@@ -1472,6 +1525,7 @@ abstract class _$AppleButtonConfigDarkCopyWith<$Res> {
   $Res call({Widget label});
 }
 
+/// @nodoc
 class __$AppleButtonConfigDarkCopyWithImpl<$Res>
     extends _$AppleButtonConfigCopyWithImpl<$Res>
     implements _$AppleButtonConfigDarkCopyWith<$Res> {
@@ -1492,6 +1546,7 @@ class __$AppleButtonConfigDarkCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AppleButtonConfigDark
     with DiagnosticableTreeMixin
     implements _AppleButtonConfigDark {
@@ -1525,6 +1580,7 @@ class _$_AppleButtonConfigDark
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(label);
 
+  @JsonKey(ignore: true)
   @override
   _$AppleButtonConfigDarkCopyWith<_AppleButtonConfigDark> get copyWith =>
       __$AppleButtonConfigDarkCopyWithImpl<_AppleButtonConfigDark>(
@@ -1532,10 +1588,10 @@ class _$_AppleButtonConfigDark
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    @required Result dark(Widget label),
-    @required Result light(Widget label),
+  TResult when<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    @required TResult dark(Widget label),
+    @required TResult light(Widget label),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -1545,11 +1601,11 @@ class _$_AppleButtonConfigDark
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    Result dark(Widget label),
-    Result light(Widget label),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    TResult dark(Widget label),
+    TResult light(Widget label),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (dark != null) {
@@ -1560,10 +1616,10 @@ class _$_AppleButtonConfigDark
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_AppleButtonConfig value), {
-    @required Result dark(_AppleButtonConfigDark value),
-    @required Result light(_AppleButtonConfigLight value),
+  TResult map<TResult extends Object>(
+    TResult $default(_AppleButtonConfig value), {
+    @required TResult dark(_AppleButtonConfigDark value),
+    @required TResult light(_AppleButtonConfigLight value),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -1573,11 +1629,11 @@ class _$_AppleButtonConfigDark
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_AppleButtonConfig value), {
-    Result dark(_AppleButtonConfigDark value),
-    Result light(_AppleButtonConfigLight value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_AppleButtonConfig value), {
+    TResult dark(_AppleButtonConfigDark value),
+    TResult light(_AppleButtonConfigLight value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (dark != null) {
@@ -1592,9 +1648,11 @@ abstract class _AppleButtonConfigDark implements AppleButtonConfig {
       _$_AppleButtonConfigDark;
 
   Widget get label;
+  @JsonKey(ignore: true)
   _$AppleButtonConfigDarkCopyWith<_AppleButtonConfigDark> get copyWith;
 }
 
+/// @nodoc
 abstract class _$AppleButtonConfigLightCopyWith<$Res> {
   factory _$AppleButtonConfigLightCopyWith(_AppleButtonConfigLight value,
           $Res Function(_AppleButtonConfigLight) then) =
@@ -1602,6 +1660,7 @@ abstract class _$AppleButtonConfigLightCopyWith<$Res> {
   $Res call({Widget label});
 }
 
+/// @nodoc
 class __$AppleButtonConfigLightCopyWithImpl<$Res>
     extends _$AppleButtonConfigCopyWithImpl<$Res>
     implements _$AppleButtonConfigLightCopyWith<$Res> {
@@ -1622,6 +1681,7 @@ class __$AppleButtonConfigLightCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AppleButtonConfigLight
     with DiagnosticableTreeMixin
     implements _AppleButtonConfigLight {
@@ -1655,6 +1715,7 @@ class _$_AppleButtonConfigLight
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(label);
 
+  @JsonKey(ignore: true)
   @override
   _$AppleButtonConfigLightCopyWith<_AppleButtonConfigLight> get copyWith =>
       __$AppleButtonConfigLightCopyWithImpl<_AppleButtonConfigLight>(
@@ -1662,10 +1723,10 @@ class _$_AppleButtonConfigLight
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    @required Result dark(Widget label),
-    @required Result light(Widget label),
+  TResult when<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    @required TResult dark(Widget label),
+    @required TResult light(Widget label),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -1675,11 +1736,11 @@ class _$_AppleButtonConfigLight
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    Result dark(Widget label),
-    Result light(Widget label),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    TResult dark(Widget label),
+    TResult light(Widget label),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (light != null) {
@@ -1690,10 +1751,10 @@ class _$_AppleButtonConfigLight
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_AppleButtonConfig value), {
-    @required Result dark(_AppleButtonConfigDark value),
-    @required Result light(_AppleButtonConfigLight value),
+  TResult map<TResult extends Object>(
+    TResult $default(_AppleButtonConfig value), {
+    @required TResult dark(_AppleButtonConfigDark value),
+    @required TResult light(_AppleButtonConfigLight value),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -1703,11 +1764,11 @@ class _$_AppleButtonConfigLight
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_AppleButtonConfig value), {
-    Result dark(_AppleButtonConfigDark value),
-    Result light(_AppleButtonConfigLight value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_AppleButtonConfig value), {
+    TResult dark(_AppleButtonConfigDark value),
+    TResult light(_AppleButtonConfigLight value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (light != null) {
@@ -1722,9 +1783,11 @@ abstract class _AppleButtonConfigLight implements AppleButtonConfig {
       _$_AppleButtonConfigLight;
 
   Widget get label;
+  @JsonKey(ignore: true)
   _$AppleButtonConfigLightCopyWith<_AppleButtonConfigLight> get copyWith;
 }
 
+/// @nodoc
 class _$GoogleButtonConfigTearOff {
   const _$GoogleButtonConfigTearOff();
 
@@ -1750,44 +1813,48 @@ class _$GoogleButtonConfigTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $GoogleButtonConfig = _$GoogleButtonConfigTearOff();
 
+/// @nodoc
 mixin _$GoogleButtonConfig {
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    @required Result dark(Widget label),
-    @required Result light(Widget label),
+  TResult when<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    @required TResult dark(Widget label),
+    @required TResult light(Widget label),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    Result dark(Widget label),
-    Result light(Widget label),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    TResult dark(Widget label),
+    TResult light(Widget label),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_GoogleButtonConfig value), {
-    @required Result dark(_GoogleButtonConfigDark value),
-    @required Result light(_GoogleButtonConfigLight value),
+  TResult map<TResult extends Object>(
+    TResult $default(_GoogleButtonConfig value), {
+    @required TResult dark(_GoogleButtonConfigDark value),
+    @required TResult light(_GoogleButtonConfigLight value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_GoogleButtonConfig value), {
-    Result dark(_GoogleButtonConfigDark value),
-    Result light(_GoogleButtonConfigLight value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_GoogleButtonConfig value), {
+    TResult dark(_GoogleButtonConfigDark value),
+    TResult light(_GoogleButtonConfigLight value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $GoogleButtonConfigCopyWith<$Res> {
   factory $GoogleButtonConfigCopyWith(
           GoogleButtonConfig value, $Res Function(GoogleButtonConfig) then) =
       _$GoogleButtonConfigCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$GoogleButtonConfigCopyWithImpl<$Res>
     implements $GoogleButtonConfigCopyWith<$Res> {
   _$GoogleButtonConfigCopyWithImpl(this._value, this._then);
@@ -1797,6 +1864,7 @@ class _$GoogleButtonConfigCopyWithImpl<$Res>
   final $Res Function(GoogleButtonConfig) _then;
 }
 
+/// @nodoc
 abstract class _$GoogleButtonConfigCopyWith<$Res> {
   factory _$GoogleButtonConfigCopyWith(
           _GoogleButtonConfig value, $Res Function(_GoogleButtonConfig) then) =
@@ -1806,6 +1874,7 @@ abstract class _$GoogleButtonConfigCopyWith<$Res> {
   $ButtonConfigCopyWith<$Res> get config;
 }
 
+/// @nodoc
 class __$GoogleButtonConfigCopyWithImpl<$Res>
     extends _$GoogleButtonConfigCopyWithImpl<$Res>
     implements _$GoogleButtonConfigCopyWith<$Res> {
@@ -1836,6 +1905,7 @@ class __$GoogleButtonConfigCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_GoogleButtonConfig
     with DiagnosticableTreeMixin
     implements _GoogleButtonConfig {
@@ -1869,16 +1939,17 @@ class _$_GoogleButtonConfig
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(config);
 
+  @JsonKey(ignore: true)
   @override
   _$GoogleButtonConfigCopyWith<_GoogleButtonConfig> get copyWith =>
       __$GoogleButtonConfigCopyWithImpl<_GoogleButtonConfig>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    @required Result dark(Widget label),
-    @required Result light(Widget label),
+  TResult when<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    @required TResult dark(Widget label),
+    @required TResult light(Widget label),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -1888,11 +1959,11 @@ class _$_GoogleButtonConfig
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    Result dark(Widget label),
-    Result light(Widget label),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    TResult dark(Widget label),
+    TResult light(Widget label),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -1903,10 +1974,10 @@ class _$_GoogleButtonConfig
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_GoogleButtonConfig value), {
-    @required Result dark(_GoogleButtonConfigDark value),
-    @required Result light(_GoogleButtonConfigLight value),
+  TResult map<TResult extends Object>(
+    TResult $default(_GoogleButtonConfig value), {
+    @required TResult dark(_GoogleButtonConfigDark value),
+    @required TResult light(_GoogleButtonConfigLight value),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -1916,11 +1987,11 @@ class _$_GoogleButtonConfig
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_GoogleButtonConfig value), {
-    Result dark(_GoogleButtonConfigDark value),
-    Result light(_GoogleButtonConfigLight value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_GoogleButtonConfig value), {
+    TResult dark(_GoogleButtonConfigDark value),
+    TResult light(_GoogleButtonConfigLight value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if ($default != null) {
@@ -1935,9 +2006,11 @@ abstract class _GoogleButtonConfig implements GoogleButtonConfig {
       _$_GoogleButtonConfig;
 
   ButtonConfig get config;
+  @JsonKey(ignore: true)
   _$GoogleButtonConfigCopyWith<_GoogleButtonConfig> get copyWith;
 }
 
+/// @nodoc
 abstract class _$GoogleButtonConfigDarkCopyWith<$Res> {
   factory _$GoogleButtonConfigDarkCopyWith(_GoogleButtonConfigDark value,
           $Res Function(_GoogleButtonConfigDark) then) =
@@ -1945,6 +2018,7 @@ abstract class _$GoogleButtonConfigDarkCopyWith<$Res> {
   $Res call({Widget label});
 }
 
+/// @nodoc
 class __$GoogleButtonConfigDarkCopyWithImpl<$Res>
     extends _$GoogleButtonConfigCopyWithImpl<$Res>
     implements _$GoogleButtonConfigDarkCopyWith<$Res> {
@@ -1965,6 +2039,7 @@ class __$GoogleButtonConfigDarkCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_GoogleButtonConfigDark
     with DiagnosticableTreeMixin
     implements _GoogleButtonConfigDark {
@@ -1998,6 +2073,7 @@ class _$_GoogleButtonConfigDark
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(label);
 
+  @JsonKey(ignore: true)
   @override
   _$GoogleButtonConfigDarkCopyWith<_GoogleButtonConfigDark> get copyWith =>
       __$GoogleButtonConfigDarkCopyWithImpl<_GoogleButtonConfigDark>(
@@ -2005,10 +2081,10 @@ class _$_GoogleButtonConfigDark
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    @required Result dark(Widget label),
-    @required Result light(Widget label),
+  TResult when<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    @required TResult dark(Widget label),
+    @required TResult light(Widget label),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -2018,11 +2094,11 @@ class _$_GoogleButtonConfigDark
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    Result dark(Widget label),
-    Result light(Widget label),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    TResult dark(Widget label),
+    TResult light(Widget label),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (dark != null) {
@@ -2033,10 +2109,10 @@ class _$_GoogleButtonConfigDark
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_GoogleButtonConfig value), {
-    @required Result dark(_GoogleButtonConfigDark value),
-    @required Result light(_GoogleButtonConfigLight value),
+  TResult map<TResult extends Object>(
+    TResult $default(_GoogleButtonConfig value), {
+    @required TResult dark(_GoogleButtonConfigDark value),
+    @required TResult light(_GoogleButtonConfigLight value),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -2046,11 +2122,11 @@ class _$_GoogleButtonConfigDark
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_GoogleButtonConfig value), {
-    Result dark(_GoogleButtonConfigDark value),
-    Result light(_GoogleButtonConfigLight value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_GoogleButtonConfig value), {
+    TResult dark(_GoogleButtonConfigDark value),
+    TResult light(_GoogleButtonConfigLight value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (dark != null) {
@@ -2065,9 +2141,11 @@ abstract class _GoogleButtonConfigDark implements GoogleButtonConfig {
       _$_GoogleButtonConfigDark;
 
   Widget get label;
+  @JsonKey(ignore: true)
   _$GoogleButtonConfigDarkCopyWith<_GoogleButtonConfigDark> get copyWith;
 }
 
+/// @nodoc
 abstract class _$GoogleButtonConfigLightCopyWith<$Res> {
   factory _$GoogleButtonConfigLightCopyWith(_GoogleButtonConfigLight value,
           $Res Function(_GoogleButtonConfigLight) then) =
@@ -2075,6 +2153,7 @@ abstract class _$GoogleButtonConfigLightCopyWith<$Res> {
   $Res call({Widget label});
 }
 
+/// @nodoc
 class __$GoogleButtonConfigLightCopyWithImpl<$Res>
     extends _$GoogleButtonConfigCopyWithImpl<$Res>
     implements _$GoogleButtonConfigLightCopyWith<$Res> {
@@ -2096,6 +2175,7 @@ class __$GoogleButtonConfigLightCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_GoogleButtonConfigLight
     with DiagnosticableTreeMixin
     implements _GoogleButtonConfigLight {
@@ -2129,6 +2209,7 @@ class _$_GoogleButtonConfigLight
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(label);
 
+  @JsonKey(ignore: true)
   @override
   _$GoogleButtonConfigLightCopyWith<_GoogleButtonConfigLight> get copyWith =>
       __$GoogleButtonConfigLightCopyWithImpl<_GoogleButtonConfigLight>(
@@ -2136,10 +2217,10 @@ class _$_GoogleButtonConfigLight
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    @required Result dark(Widget label),
-    @required Result light(Widget label),
+  TResult when<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    @required TResult dark(Widget label),
+    @required TResult light(Widget label),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -2149,11 +2230,11 @@ class _$_GoogleButtonConfigLight
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>(
-    Result $default(ButtonConfig config), {
-    Result dark(Widget label),
-    Result light(Widget label),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>(
+    TResult $default(ButtonConfig config), {
+    TResult dark(Widget label),
+    TResult light(Widget label),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (light != null) {
@@ -2164,10 +2245,10 @@ class _$_GoogleButtonConfigLight
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>(
-    Result $default(_GoogleButtonConfig value), {
-    @required Result dark(_GoogleButtonConfigDark value),
-    @required Result light(_GoogleButtonConfigLight value),
+  TResult map<TResult extends Object>(
+    TResult $default(_GoogleButtonConfig value), {
+    @required TResult dark(_GoogleButtonConfigDark value),
+    @required TResult light(_GoogleButtonConfigLight value),
   }) {
     assert($default != null);
     assert(dark != null);
@@ -2177,11 +2258,11 @@ class _$_GoogleButtonConfigLight
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>(
-    Result $default(_GoogleButtonConfig value), {
-    Result dark(_GoogleButtonConfigDark value),
-    Result light(_GoogleButtonConfigLight value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>(
+    TResult $default(_GoogleButtonConfig value), {
+    TResult dark(_GoogleButtonConfigDark value),
+    TResult light(_GoogleButtonConfigLight value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (light != null) {
@@ -2196,5 +2277,6 @@ abstract class _GoogleButtonConfigLight implements GoogleButtonConfig {
       _$_GoogleButtonConfigLight;
 
   Widget get label;
+  @JsonKey(ignore: true)
   _$GoogleButtonConfigLightCopyWith<_GoogleButtonConfigLight> get copyWith;
 }

@@ -9,6 +9,7 @@ part of 'auth.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AuthTearOff {
   const _$AuthTearOff();
 
@@ -25,39 +26,43 @@ class _$AuthTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Auth = _$AuthTearOff();
 
+/// @nodoc
 mixin _$Auth {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result success(),
-    @required Result failure(AuthFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult success(),
+    @required TResult failure(AuthFailure failure),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result success(),
-    Result failure(AuthFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult success(),
+    TResult failure(AuthFailure failure),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result success(_AuthSucc value),
-    @required Result failure(_AuthFail value),
+  TResult map<TResult extends Object>({
+    @required TResult success(_AuthSucc value),
+    @required TResult failure(_AuthFail value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result success(_AuthSucc value),
-    Result failure(_AuthFail value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult success(_AuthSucc value),
+    TResult failure(_AuthFail value),
+    @required TResult orElse(),
   });
 }
 
+/// @nodoc
 abstract class $AuthCopyWith<$Res> {
   factory $AuthCopyWith(Auth value, $Res Function(Auth) then) =
       _$AuthCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$AuthCopyWithImpl<$Res> implements $AuthCopyWith<$Res> {
   _$AuthCopyWithImpl(this._value, this._then);
 
@@ -66,11 +71,13 @@ class _$AuthCopyWithImpl<$Res> implements $AuthCopyWith<$Res> {
   final $Res Function(Auth) _then;
 }
 
+/// @nodoc
 abstract class _$AuthSuccCopyWith<$Res> {
   factory _$AuthSuccCopyWith(_AuthSucc value, $Res Function(_AuthSucc) then) =
       __$AuthSuccCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$AuthSuccCopyWithImpl<$Res> extends _$AuthCopyWithImpl<$Res>
     implements _$AuthSuccCopyWith<$Res> {
   __$AuthSuccCopyWithImpl(_AuthSucc _value, $Res Function(_AuthSucc) _then)
@@ -80,6 +87,7 @@ class __$AuthSuccCopyWithImpl<$Res> extends _$AuthCopyWithImpl<$Res>
   _AuthSucc get _value => super._value as _AuthSucc;
 }
 
+/// @nodoc
 class _$_AuthSucc implements _AuthSucc {
   const _$_AuthSucc();
 
@@ -98,9 +106,9 @@ class _$_AuthSucc implements _AuthSucc {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result success(),
-    @required Result failure(AuthFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult success(),
+    @required TResult failure(AuthFailure failure),
   }) {
     assert(success != null);
     assert(failure != null);
@@ -109,10 +117,10 @@ class _$_AuthSucc implements _AuthSucc {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result success(),
-    Result failure(AuthFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult success(),
+    TResult failure(AuthFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (success != null) {
@@ -123,9 +131,9 @@ class _$_AuthSucc implements _AuthSucc {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result success(_AuthSucc value),
-    @required Result failure(_AuthFail value),
+  TResult map<TResult extends Object>({
+    @required TResult success(_AuthSucc value),
+    @required TResult failure(_AuthFail value),
   }) {
     assert(success != null);
     assert(failure != null);
@@ -134,10 +142,10 @@ class _$_AuthSucc implements _AuthSucc {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result success(_AuthSucc value),
-    Result failure(_AuthFail value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult success(_AuthSucc value),
+    TResult failure(_AuthFail value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (success != null) {
@@ -151,6 +159,7 @@ abstract class _AuthSucc implements Auth {
   const factory _AuthSucc() = _$_AuthSucc;
 }
 
+/// @nodoc
 abstract class _$AuthFailCopyWith<$Res> {
   factory _$AuthFailCopyWith(_AuthFail value, $Res Function(_AuthFail) then) =
       __$AuthFailCopyWithImpl<$Res>;
@@ -159,6 +168,7 @@ abstract class _$AuthFailCopyWith<$Res> {
   $AuthFailureCopyWith<$Res> get failure;
 }
 
+/// @nodoc
 class __$AuthFailCopyWithImpl<$Res> extends _$AuthCopyWithImpl<$Res>
     implements _$AuthFailCopyWith<$Res> {
   __$AuthFailCopyWithImpl(_AuthFail _value, $Res Function(_AuthFail) _then)
@@ -187,6 +197,7 @@ class __$AuthFailCopyWithImpl<$Res> extends _$AuthCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AuthFail implements _AuthFail {
   const _$_AuthFail(this.failure) : assert(failure != null);
 
@@ -210,15 +221,16 @@ class _$_AuthFail implements _AuthFail {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
+  @JsonKey(ignore: true)
   @override
   _$AuthFailCopyWith<_AuthFail> get copyWith =>
       __$AuthFailCopyWithImpl<_AuthFail>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result success(),
-    @required Result failure(AuthFailure failure),
+  TResult when<TResult extends Object>({
+    @required TResult success(),
+    @required TResult failure(AuthFailure failure),
   }) {
     assert(success != null);
     assert(failure != null);
@@ -227,10 +239,10 @@ class _$_AuthFail implements _AuthFail {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result success(),
-    Result failure(AuthFailure failure),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult success(),
+    TResult failure(AuthFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (failure != null) {
@@ -241,9 +253,9 @@ class _$_AuthFail implements _AuthFail {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result success(_AuthSucc value),
-    @required Result failure(_AuthFail value),
+  TResult map<TResult extends Object>({
+    @required TResult success(_AuthSucc value),
+    @required TResult failure(_AuthFail value),
   }) {
     assert(success != null);
     assert(failure != null);
@@ -252,10 +264,10 @@ class _$_AuthFail implements _AuthFail {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result success(_AuthSucc value),
-    Result failure(_AuthFail value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult success(_AuthSucc value),
+    TResult failure(_AuthFail value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (failure != null) {
@@ -269,5 +281,6 @@ abstract class _AuthFail implements Auth {
   const factory _AuthFail(AuthFailure failure) = _$_AuthFail;
 
   AuthFailure get failure;
+  @JsonKey(ignore: true)
   _$AuthFailCopyWith<_AuthFail> get copyWith;
 }

@@ -30,6 +30,13 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     }
   }
 
+  void cellphoneNumberChanged(CellphoneNumber e) {
+    state = state.copyWith(
+      cellphoneNumber: e,
+      authFailureOrSuccessOption: none(),
+    );
+  }
+
   void emailChanged(EmailAddress e) {
     state = state.copyWith(
       emailAddress: e,
@@ -47,6 +54,11 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
   Future<void> registerWithEmailAndPassword() async {
     await _performActionOnAuthFacadeWithEmailAndPassword(
         _authFacade.registerWithEmailAndPassword);
+  }
+
+  Future<void> registerWithCellphone() async {
+    await _performActionOnAuthFacadeWithCellphoneNumber(
+        _authFacade.registerWithCellphoneNumber);
   }
 
   Future<void> signInWithEmailAndPassword() async {
@@ -164,6 +176,47 @@ class SignInHandlerStateNotifier extends StateNotifier<SignInHandlerState>
     final auth = await forwardedCall(
       emailAddress: state.emailAddress,
       password: state.password,
+    );
+
+    // Need to check mounted
+    if (mounted) {
+      state = state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: true,
+        authFailureOrSuccessOption: some(auth),
+      );
+    }
+  }
+
+  Future<void> _performActionOnAuthFacadeWithCellphoneNumber(
+    Future<Auth> Function({
+      @required CellphoneNumber cellphoneNumber
+    })
+        forwardedCall,
+  ) async {
+    if (!_authProviders.cellphone) {
+      throw AuthProviderNotEnabled('Cellphone Number');
+    }
+
+    final isCellphoneValid = state.cellphoneNumber.isValid();
+
+    /* Invalid email or password. Show errors and return */
+    if (!isCellphoneValid) {
+      state = state.copyWith(
+        isSubmitting: false,
+        showErrorMessages: true,
+        authFailureOrSuccessOption: none(),
+      );
+      return; // quit
+    }
+
+    state = state.copyWith(
+      isSubmitting: true,
+      authFailureOrSuccessOption: none(),
+    );
+
+    final auth = await forwardedCall(
+      cellphoneNumber: state.cellphoneNumber
     );
 
     // Need to check mounted

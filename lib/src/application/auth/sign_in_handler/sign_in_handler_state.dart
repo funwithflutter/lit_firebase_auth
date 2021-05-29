@@ -10,6 +10,7 @@ part 'sign_in_handler_state.freezed.dart';
 abstract class SignInHandlerState with _$SignInHandlerState {
   const factory SignInHandlerState({
     @required EmailAddress emailAddress,
+    @required CellphoneNumber cellphoneNumber,
     @required Password password,
     @required bool showErrorMessages,
     @required bool isSubmitting,
@@ -18,6 +19,7 @@ abstract class SignInHandlerState with _$SignInHandlerState {
 
   factory SignInHandlerState.initial() => SignInHandlerState(
         emailAddress: EmailAddress(''),
+        cellphoneNumber: CellphoneNumber(''),
         password: Password(''),
         showErrorMessages: false,
         isSubmitting: false,

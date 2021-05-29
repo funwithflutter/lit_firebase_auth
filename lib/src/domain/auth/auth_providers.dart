@@ -18,5 +18,6 @@ abstract class AuthProviders with _$AuthProviders {
     @Default(false) bool github,
     @Default(false) bool twitter,
     @Default(false) bool facebook,
+    @Default(false) bool cellphone,
   }) = _AuthProviders;
 }
