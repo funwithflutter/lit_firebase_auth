@@ -113,12 +113,13 @@ class YourAuthenticatedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton.icon(
+
+    return ElevatedButton.icon(
       icon: Icon(Icons.lock_outline),
-      onPressed: () {
+      label: Text("Sign out"),
+      onPressed: (){
         context.signOut();
       },
-      label: Text("Sign out"),
     );
   }
 }
@@ -157,19 +158,19 @@ class CustomSignInWidget extends StatelessWidget {
                   decoration: InputDecoration(labelText: 'My Password Label'),
                 ),
               ),
-              RaisedButton(
-                onPressed: () {
+              ElevatedButton(
+                onPressed: (){
                   context.signInWithEmailAndPassword();
                 },
-                child: Text('Sign In'),
+                child: Text('Sign in'),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   context.signInAnonymously();
                 },
                 child: Text('Anony Sign In'),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   context.signInWithGithub();
                 },

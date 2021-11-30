@@ -401,7 +401,7 @@ class _RaisedSignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonTheme.fromButtonThemeData(
       data: button.themedata,
-      child: RaisedButton(
+      child: ElevatedButton(
         onPressed: onPressed,
         child: button.child,
       ),
@@ -451,7 +451,7 @@ class _FlatSignInButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ButtonTheme.fromButtonThemeData(
       data: button.themedata,
-      child: FlatButton(
+      child: TextButton(
         onPressed: onPressed,
         child: button.child,
       ),

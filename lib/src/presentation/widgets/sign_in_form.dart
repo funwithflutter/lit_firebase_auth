@@ -21,7 +21,7 @@ class SignInForm extends StatelessWidget {
       (SignInHandlerState state) => state.showErrorMessages,
     );
     return Form(
-      autovalidate: showErrorMessages,
+      autovalidateMode: showErrorMessages,
       child: child,
     );
   }
