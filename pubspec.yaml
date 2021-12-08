@@ -23,9 +23,9 @@ dependencies:
   freezed_annotation: ^1.0.0
   # state
   dartz: ^0.10.1
-  provider: ^4.3.3
+  provider: ^4.2.0
   state_notifier: ^0.6.0
-  flutter_state_notifier: ^0.6.0
+  flutter_state_notifier: ^0.6.1
   # ui``
   flushbar: ^1.10.4
   
