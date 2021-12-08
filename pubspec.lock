@@ -278,7 +278,7 @@ packages:
       name: flutter_state_notifier
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.1"
+    version: "0.6.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -470,7 +470,7 @@ packages:
       name: provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.1"
+    version: "4.3.3"
   pub_semver:
     dependency: transitive
     description:
@@ -559,7 +559,7 @@ packages:
       name: state_notifier
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.7.1"
+    version: "0.6.0"
   stream_channel:
     dependency: transitive
     description:
